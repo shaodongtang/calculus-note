@@ -1,0 +1,1320 @@
+
+\documentclass[color=green,titlestyle=hang]{elegantbook}%cyan，mathpazo，
+
+\author{唐绍东 \& TangShaodong}
+\email{1096084877@qq.com}
+\zhtitle{微积分}
+\zhend{备注}
+\entitle{Calculus }
+\enend{note}
+\version{3.10}
+\myquote{Victory won\rq t come to us unless we go to it.}
+\logo{logo.png}
+\cover{cover.pdf}
+
+%green color
+\definecolor{main1}{RGB}{0,120,2}
+\definecolor{seco1}{RGB}{230,90,7}
+\definecolor{thid1}{RGB}{0,160,152}
+%cyan color
+\definecolor{main2}{RGB}{0,175,152}
+\definecolor{seco2}{RGB}{239,126,30}
+\definecolor{thid2}{RGB}{120,8,13}
+%blue color
+\definecolor{main3}{RGB}{20,50,104}
+\definecolor{seco3}{RGB}{180,50,131}
+\definecolor{thid3}{RGB}{7,127,128}
+
+
+\usepackage{makecell}
+\usepackage{lipsum}
+\RequirePackage{calc}
+\allowdisplaybreaks[4]%%%公式换页
+\usepackage{cases}%\begin{numcases}{}编号
+\usepackage{scalerel} %\scaleobj{1.5}{} 缩放公式大小
+\usepackage{texnames}
+\usepackage{tabularx}
+\usepackage{CJKfntef}%修饰汉字画波浪线下划线删除线
+%\CJKunderwave{汉字，波浪线}\CJKunderdot{汉字，下加点}\CJKunderdlline{汉字，下双线}
+\usepackage{fancybox}
+\usepackage{pgfplots}%axis环境%\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+\usetikzlibrary{intersections}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{datavisualization.polar,arrows}	
+\usetikzlibrary{datavisualization.formats.functions}
+%\pgfplotsset{width=7cm,compat=1.14}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\mainmatter
+
+
+\chapter{极限}
+
+\begin{example}
+(2017/10/20)求极限 $\lim_{x\to\infty}\big(\cos\sqrt{x+1}-\cos\sqrt{x}\big)$
+\end{example}\begin{newproof}
+\[\cos\alpha-\cos\beta=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}\]
+\begin{align*}
+\text{原式}
+&\xlongequal{\text{和差化积}}-2\lim_{x\to\infty}\sin\frac{\sqrt{x+1}-\sqrt{x}}{2}\sin\frac{\sqrt{x+1}+\sqrt{x}}{2}\\
+&\xlongequal{\text{有理化}}-2\lim_{x\to\infty}\sin\frac{1}{2(\sqrt{x+1}+\sqrt{x})}\sin\frac{\sqrt{x+1}+\sqrt{x}}{2}\\
+&\xlongequal{\sin x\sim x}-2\lim_{x\to\infty}\frac{1}{2(\sqrt{x+1}+\sqrt{x})}\sin\frac{\sqrt{x+1}+\sqrt{x}}{2}\\
+&\xlongequal{\text{有界乘无穷小量}}0
+\end{align*}	
+\end{newproof}
+
+\begin{exercise}
+计算\[\lim_{n\to \infty}\left(\frac{\sum_{k=1}^{n}\sin(\frac{2k}{2n})}{\sum_{k=1}^{n}\sin(\frac{2k-1}{2n})}\right)^{n}=e^{2\cot(1/2)}\]
+\end{exercise}\begin{newproof}
+Using what is inside the parentheses:
+\[\sum_{k=1}^{n}\sin(k/n)=\frac{1}{2i}\sum_{k=1}^{n}\left(e^{\frac{ki}{n}}-e^{\frac{-ki}{n}}\right)\]
+\[\sum_{k=1}^{n}\sin(\frac{2k-1}{2n})=\frac{1}{2i}\sum_{k=1}^{n}\left(e^{\frac{(2k-1)i}{2n}}-e^{\frac{-(2k-1)i}{2n}}\right)\]
+So, we get:	
+\[\frac{\frac{1}{2i}\sum_{k=1}^{n}\left(e^{\frac{ki}{n}}-e^{\frac{-ki}{n}}\right)}{\frac{1}{2i}\sum_{k=1}^{n}\left(e^{\frac{(2k-1)i}{2n}}-e^{\frac{-(2k-1)i}{2n}}\right)}\]
+Now, factor a little:
+\[\frac{\sum_{k=1}^{n}\left(e^{i/n}\right)^{k}-\sum_{k=1}^{n}\left(e^{-i/n}\right)^{k}}{e^{-i/2n}\sum_{k=1}^{n}\left(e^{i/n}\right)^{k}-e^{i/2n}\sum_{k=1}^{n}\left(e^{-i/2n}\right)^{k}}\]
+These are partial geometric series. They should simplify down. \\
+The top left one evaluates to \[\frac{(e^{i}-1)e^{i/n}}{e^{i/n}-1}\]
+The top right one: \[\frac{(e^{i}-1)e^{-i}}{e^{i/n}-1}\]
+The bottom left: \[\frac{e^{-i/2n}(e^{i}-1)e^{i/n}}{e^{i/n}-1}\]
+The bottom right: \[\frac{e^{i/2n}(e^{i}-1)e^{-i}}{e^{i/n}-1}\]
+Putting these altogether, it should whittle down to some trig functions involving sin and/or cos. But, I have not finished yet.\\
+It looks encouraging though.\\
+EDIT:\\
+Well, I spent some time trying to hammer down the results of the sums above.\\
+They become:
+\[\frac{\sin(1/n+1)-\sin(1/n)-\sin(1)}{\sin(1/2n+1)+\sin(1/2n-1)-2\sin(1/2n)}\]
+this is equivalent to:
+\[\frac{\cos(1/2n)\sin(1/2)+\sin(1/2n)\cos(1/2)}{\sin(1/2)}\]
+Using the product-to-sum formulas on the numerator, it whittles down to:
+\(=\frac{\sin(\frac{n+1}{2n})}{\sin(1/2)}\)\\
+But, I admit I left tech do most of the work and played around with some trial and error.\\
+So, we finally get:
+\[\lim_{n\to \infty}\left(\frac{\sin(\frac{n+1}{2n})}{\sin(1/2)}\right)^{n}\]
+Now, since this is a limit and there is an 'e' in the required solution, I figured I would make the sub \(\displaystyle n=1/k\) in order to get something that resembles the 'e' limit.
+\[\lim_{k\to 0}\left(\frac{\sin(\frac{k+1}{2})}{\sin(1/2)}\right)^{1/k}\]
+So, take logs:
+\[\lim_{k\to 0}\frac{1}{k}[\log(\sin(\frac{k+1}{2})-\log(\sin(1/2))]\]
+Using L'Hopital and taking this limit:
+\[\lim_{k\to 0}\frac{1}{2}\cot(\frac{k+1}{2})\]
+results in \[1/2\cot(1/2)\]
+Now, e: \[e^{1/2\cot(1/2)}=e^{\frac{1}{2\tan(1/2)}}\]
+\end{newproof}
+
+\begin{example}(2017/10/8)
+求极限\[\lim_{x\to0^+}\frac{\sqrt{1-e^{-2x}}-\sqrt{1+2x-\cos x}}{\sqrt{x^3}}\]
+\end{example}\begin{newproof}
+\begin{align*}
+\text{原式}&\xlongequal{\text{有理化}}\lim_{x\to0^+}\frac{-e^{-2x}-2x+\cos x}{\sqrt{x^3}\big(\underbrace{\sqrt{1-e^{-2x}}}_{\sim\sqrt{2x}}+\underbrace{\sqrt{1+2x-\cos x}\big)}_{\sim\sqrt{2x}}}\\
+&\xlongequal{\text{等价无穷小}}\lim_{x\to0^+}\frac{\cos x-e^{-2x}-2x}{2\sqrt{2}x^2}\\
+&\xlongequal{\text{洛必达}}\lim_{x\to0^+}\frac{-\sin x+2e^{-2x}-2}{4\sqrt{2}x}\\
+&\begin{cases}
+\xlongequal{\text{等价无穷小}}\lim_{x\to0^+}\frac{-x+(-4x)}{4\sqrt{2}x}=-\frac{5}{4\sqrt{2}}\\
+\xlongequal{\text{洛必达}}\lim_{x\to0^+}\frac{-\cos x-4e^{-2x}}{4\sqrt{2}}=-\frac{5}{4\sqrt{2}}
+\end{cases}
+\end{align*}\begin{align*}
+\text{原式}&\xlongequal{\text{有理化}}\lim_{x\to0^+}\frac{-e^{-2x}-2x+\cos x}{\sqrt{x^3}\big(\underbrace{\sqrt{1-e^{-2x}}}_{\sim\sqrt{2x}}+\underbrace{\sqrt{1+2x-\cos x}\big)}_{\sim\sqrt{2x}}}\\
+&\xlongequal{\text{等价无穷小}}\lim_{x\to0^+}\frac{\cos x-e^{-2x}-2x}{2\sqrt{2}x^2}\\
+&\xlongequal{\text{泰勒展开}}\lim_{x\to0^+}\frac{\Big(1-\frac{1}{2!}x^2+o(x^2)\Big)-\Big(1+(-2x)+\frac{1}{2!}(-2x)^2+o(x^2)\Big)-2x}{2\sqrt{2}x^2}\\
+&=\lim_{x\to0^+}\frac{\Big(-\frac{1}{2!}-\frac{1}{2!}(-2)^2\Big)x^2}{2\sqrt{2}x^2}=-\frac{5}{4\sqrt{2}}
+\end{align*}
+\end{newproof}
+
+\begin{exercise}
+求极限\begin{equation*}\lim_{x\to 0}x^6\left(\frac{1}{\sin^8x}-\frac{1}{x^8}\right)\end{equation*}
+\end{exercise}\begin{Solution}\begin{align*}
+\lim_{x\to 0}x^6\left(\frac{1}{\sin^8x}-\frac{1}{x^8}\right)=&\lim_{x\to 0}\frac{x^8-\sin^8x}{x^2\sin^{8}x}\\
+=&\lim_{x\to 0}\frac{(x^4-\sin^4x)(x^4+\sin^4x)}{x^{10}}\\
+=&2\lim_{x\to 0}\frac{x^4-\sin^4x}{x^6}\\
+=&2\lim_{x\to 0}\frac{(x^2-\sin^2x)(x^2+\sin^2x)}{x^6}\\
+=&4\lim_{x\to 0}\frac{x^2-\sin^2x}{x^4}\\
+=&4\lim_{x\to 0}\frac{(x-\sin x)(x+\sin x)}{x^4}\\
+=&8\lim_{x\to 0}\frac{x-\sin x}{x^3}\\
+=&8\lim_{x\to 0}\frac{1-\cos x}{3x^2}=\frac{8}{3}\lim_{x\to 0}\frac{\frac{1}{2}x^2}{x^2}\\
+=&\frac{4}{3}
+\end{align*}
+\end{Solution}
+
+\begin{exercise}
+设函数 $\displaystyle f(x)=x^{\frac{1}{x}}, x>1$\\[1mm]
+\makebox{\ding{172}} 证明：$\forall x>1$,恒有 $ 1<f(x)<1+e^{\frac{1}{e}}\cdot\dfrac{\ln x}{x}$\\[1mm]
+\makebox{\ding{173}}  计算：$\displaystyle\lim_{n\to\infty}\frac{1+2^{\frac{1}{2}}+3^{\frac{1}{3}}+\cdots+n^{\frac{1}{n}}}{n}$\\[1mm]
+\makebox{\ding{174}} 设数列$\displaystyle I_n=\sum_{k=1}^{n^2}\frac{1+2^{\frac{1}{2^k}}+3^{\frac{1}{3^k}}+\cdots+n^{\frac{1}{n^k}}}{n^2+k^2}$, 求$\displaystyle\lim_{n\to\infty} I_n$	
+\end{exercise}\begin{Solution}
+%--------------------------
+\makebox{\ding{172}} $\displaystyle f(x)=x^{\frac{1}{x}}=e^{\frac{\ln x}{x}}, x>1$并注意到 $\dfrac{\ln x}{x}>0\;(x>1)$ 故 $\displaystyle f(x)>e^0=1$\\[1mm]
+由于$e^x$ 在$\Big[0,\dfrac{\ln x}{x}\Big]$ 可导,由拉格朗日中值定理有
+\begin{equation*}
+e^{\frac{\ln x}{x}}-e^{0}=\frac{\ln x}{x}e^{\xi}\;\;\xi\in\Big(0,\dfrac{\ln x}{x}\Big)
+\end{equation*}
+令 $g(x)=\dfrac{\ln x}{x}$ 则 $g'(x)=\dfrac{1-\ln x}{x^2}$ 故$g(x)$在$(1,e)\uparrow$在$(e,+\infty)\downarrow$ 因此$g_{max}(x)=\dfrac{1}{e}$
+故\begin{equation*}
+f(x)=e^{\frac{\ln x}{x}}=1+e^{\xi}\frac{\ln x}{x}<1+\frac{\ln x}{x}e^{\frac{\ln x}{x}}{\color{blue}<1+\frac{\ln x}{x}e^{\frac{1}{e}}}
+\end{equation*}
+%-------------------------	
+\makebox{\ding{173}}:\; 由 \ding{172} 知
+\begin{equation*}
+1\leqslant\lim_{n\to\infty}\frac{1+2^{\frac{1}{2}}+3^{\frac{1}{3}}+\cdots+n^{\frac{1}{n}}}{n}\leqslant\lim_{n\to\infty}\Big(1+\frac{1}{n}\sum\limits_{i=1}^{n}\frac{\ln i}{i}e^{\frac{1}{e}}\Big)
+\end{equation*}
+其中
+\begin{equation*}
+\frac{1}{n}\sum\limits_{i=1}^{n}\frac{\ln i}{i}e^{\frac{1}{e}}<e^{\frac{1}{e}}\frac{\ln n}{n}{\color{red}\sum\limits_{i=1}^{n}\frac{1}{i}}<e^{\frac{1}{e}}\frac{\ln n({\color{red}\ln n+1})}{n}\rightarrow0\;\;(n\to\infty)
+\end{equation*}
+故由夹逼准则知
+\begin{equation*}\lim_{n\to\infty}\frac{1+2^{\frac{1}{2}}+3^{\frac{1}{3}}+\cdots+n^{\frac{1}{n}}}{n}=1\end{equation*}
+用到不等式\begin{equation*}{\color{red}\ln n<\sum\limits_{i=1}^{n}\frac{1}{i}<\ln n+1}\end{equation*}
+%---------------------------
+\makebox{\ding{174}}:\; 由 \ding{173} 知\begin{equation*}
+\Big(1+2^{\frac{1}{2}}+3^{\frac{1}{3}}+\cdots+n^{\frac{1}{n}}\Big)=\sum_{i=1}^{n}i^{\frac{1}{i}}\sim n+o(n)
+\end{equation*}
+\begin{equation*}
+\lim_{n\to\infty}\sum_{k=1}^{n^2}\frac{n}{n^2+k^2}\leqslant\lim_{n\to\infty}I_n\leqslant\lim_{n\to\infty}\sum_{k=1}^{n^2}\frac{\sum\limits_{i=1}^{n}i^{\frac{1}{i}}}{n^2+k^2}
+\end{equation*}
+下面计算极限 $\displaystyle \lim_{n\to\infty}\sum_{k=1}^{n^2}\frac{n}{n^2+k^2}$\\[1mm]
+一方面\begin{align*}
+\lim_{n\to\infty}\sum_{k=1}^{n^2}\frac{n}{n^2+k^2}&=\lim_{n\to\infty}\sum_{k=1}^{n^2}\int_{k-1}^k\frac{n}{n^2+k^2}\mathrm{d}x\\&\leqslant\lim_{n\to\infty}\sum_{k=1}^{n^2}\int_{k-1}^k\frac{n}{n^2+x^2}\mathrm{d}x=\int_0^{n^2}\frac{n}{n^2+x^2}\mathrm{d}x=\frac{\pi}{2}
+\end{align*}
+另一方面\begin{align*}
+\lim_{n\to\infty}\sum_{k=1}^{n^2}\frac{n}{n^2+k^2}&=\lim_{n\to\infty}\sum_{k=1}^{n^2}\int_{k}^{k+1}\frac{n}{n^2+k^2}\mathrm{d}x\\&\geqslant\lim_{n\to\infty}\sum_{k=1}^{n^2}\int_{k}^{k+1}\frac{n}{n^2+x^2}\mathrm{d}x=\int_1^{n^2+1}\frac{n}{n^2+x^2}\mathrm{d}x=\frac{\pi}{2}
+\end{align*}
+故由夹逼准则知\begin{equation*}\lim_{n\to\infty}\sum_{k=1}^{n^2}\frac{n}{n^2+k^2}=\frac{\pi}{2}\end{equation*}
+因此\begin{equation*}
+\lim_{n\to\infty} I_n=\lim_{n\to\infty} \sum_{k=1}^{n^2}\frac{1+2^{\frac{1}{2^k}}+3^{\frac{1}{3^k}}+\cdots+n^{\frac{1}{n^k}}}{n^2+k^2}=\frac{\pi}{2}
+\end{equation*}
+\end{Solution}
+
+\begin{exercise}
+求极限\[\mathop {\lim }\limits_{x \to 0} \frac{{\tan \tan x - \sin \sin x}}{{\tan x - \sin x}}\]
+\end{exercise}\begin{Solution}\begin{align*}
+\lim_{x\to0}\frac{\tan(\tan x)-\sin(\sin x)}{\tan x-\sin x}&=\lim_{x\to0}\frac{\tan(\tan x)-\sin(\tan x)}{\tan x-\sin x}+\lim_{x\to0}\frac{\sin(\tan x)-\sin(\sin x)}{\tan x-\sin x}\\
+&=\lim_{x\to0}\frac{\frac{1}{2}\tan^3x+o(\tan^3x)}{\frac{1}{2}x^3+o(x^3)}+\lim_{x\to0}\frac{2\cos\frac{\tan x+\sin x}{2}\sin\frac{\tan x-\sin x}{2}}{\tan x-\sin x}\\
+&=1+1=2
+\end{align*}	
+\end{Solution}\begin{Solution}\begin{align*}
+\lim_{x \to 0} \frac{{\tan \tan x - \sin \sin x}}{{\tan x - \sin x}} &=\lim_{x \to 0} \frac{{\tan \tan x - \tan \sin x + {\mathop{\rm tansin}\nolimits} x - \sin \sin x}}{{\tan x - \sin x}}\\
+& =\lim_{x \to 0} \frac{{\tan \tan x - \tan \sin x}}{{\tan x - \sin x}} + \mathop {\lim }\limits_{x \to 0} \frac{{{\mathop{\rm tansin}\nolimits} x - \sin \sin x}}{{\tan x - \sin x}}\\
+&=\lim_{x \to 0} \frac{{\tan \tan x - \tan \sin x}}{{\tan x - \sin x}} +\lim_{x \to 0} \frac{{{\mathop{\rm tansin}\nolimits} x\left( {1 - {\mathop{\rm cossin}\nolimits} x} \right)}}{{\tan x\left( {1 - \cos x} \right)}}\\
+&= \mathop{{\left( {\tan \varepsilon } \right)^\prime } }_{\varepsilon  \in \left( {\sin x,\tan x} \right)}+\lim_{x \to 0} \frac{{x \times \frac{1}{2}{x^2}}}{{x \times \frac{1}{2}{x^2}}} = \frac{1}{{{{\cos }^2}\varepsilon }} + 1 = 1 + 1 = 2
+\end{align*}
+\end{Solution}
+
+\begin{exercise}求极限\begin{equation*}\lim_{n\to\infty}n\left[\frac{e}{e - 1}-\sum_{k = 1}^n\left(\frac{k}{n}\right)^n\right]\end{equation*}\end{exercise}
+\begin{Solution}(小灰灰)
+\begin{align*}I&=\lim_{n\to\infty}n\left[\frac{e}{e - 1}-\sum_{k = 1}^n\left(\frac{k}{n}\right)^n\right]=\lim_{n\to\infty}n\left[\sum_{k=0}^{\infty}{e}^{-k}-\sum_{k=0}^{n-1}\Big(1-\frac{k}{n}\Big)^{n}\right]\\
+&=\lim_{n\to \infty}n\left[\sum_{k=0}^{n-1}{e}^{-k}-\Big(1-\frac{k}{n}\Big)^{n}+\sum_{k=n}^{\infty}{e}^{-k}\right]\\
+&=\lim\limits_{n\to\infty}n\left[\sum_{k=0}^{n-1}{e}^{-k}\biggl(1-\Big(1-\frac{k}{n}\Big)^{n}{e}^{k}\biggl)\right]\\
+&=\lim\limits_{n\to \infty}n\left[\sum_{k=0}^{n-1}{e}^{-k}\bigg(-\ln\Big(1-\frac{k}{n}\Big)^{n}-k\bigg)+O\left({\bigg(-\ln\Big(1-\frac{k}{n}\Big)^{n}-k\bigg)}^{2}\right)\right]\\
+&=\lim_{n\to \infty}n\left[\sum_{k=0}^{n-1}{e}^{-k}\biggl(n\bigg(\frac{k}{n}+\frac{{k}^{2}}{2{n}^{2}}+o\Big(\frac{{k}^{3}}{3{n}^{3}}\Big)\bigg)-k\biggl)+o\biggl(\bigg(-\ln\Big(1-\frac{k}{n}\Big)^{n}-k\bigg)^{2}\biggl)\right]\\
+&=\lim_{n\to\infty}n\left[\sum_{k=0}^{n-1}{e}^{-k}\bigg(\frac{{k}^{2}}{2n}+O\Big(\frac{k^3}{n^2}\Big)\bigg)+O\bigg(\Big(\frac{k^2}{2n}\Big)^{2}\bigg)\right]\\
+&=\lim\limits_{n\to \infty}\sum_{k=0}^{n-1}{e}^{-k}\frac{{k}^{2}}{2}+\frac{1}{n}o\bigg(\sum_{k=0}^{n-1}{e}^{-k}{k}^{3}\bigg)+\frac{1}{4n}o\bigg(\sum_{k=0}^{n-1}{e}^{-k}{k}^{4}\bigg)\\
+&=\lim\limits_{n\to \infty}\sum_{k=0}^{n-1}{e}^{-k}\frac{{k}^{2}}{2}=\sum_{k=0}^{\infty}{e}^{-k}\frac{{k}^{2}}{2} 
+=S=\sum_{k=1}^{\infty}{e}^{-k+1}\frac{{(k-1)}^{2}}{2}\\
+&=eS-\sum_{k=1}^{\infty}{e}^{-k+1}\frac{2k-1}{2} 
+=\frac{1}{2e-2}\sum_{k=1}^{\infty}{e}^{-k+1}(2k-1) \\
+&=\frac{1}{2e-2}\sum_{k=0}^{\infty}{e}^{-k}(2k+1)=\frac{1}{2e-2}+{e}^{-1}S+\frac{1}{2e-2}\sum_{k=1}^{\infty}2{e}^{-k}\\
+&=\frac{1}{1-{e}^{-1}}\frac{1}{2e-2}\bigg(1+\sum_{k=1}^{\infty}2{e}^{-k}\bigg) 
+=\frac{{e}^{-1}({e}^{-1}+1)}{2{(1-{e}^{-1})}^{3}}\\
+&=\frac{e(e^2+1)}{2(e-1)^{3}}
+\end{align*}
+\end{Solution}
+
+\chapter{导数}
+
+\begin{example}
+设函数 $f(x)$ 可导, $F(x)=f(x)(1+|\sin x|)$, $F(x)$ 在 $x=0$ 处可导, 求 $f(0)$
+\end{example}\begin{Solution}
+$f(x)$ 可导知 $f(x)$ 连续, 于是可知 $\lim_{x\to0}f(x)=f(0)$ 
+\begin{align*}
+F'_{-}(0)&=\lim_{x\to0^-}\frac{F(x)-F(0)}{x}=\lim_{x\to0^-}\frac{f(x)(1+|\sin x|)-f(0)}{x}\\
+&=\lim_{x\to0^-}\frac{f(x)-f(0)}{x}+\lim_{x\to0}f(x)\lim_{x\to0^-}\frac{|\sin x|}{x}\\
+&=f'(0)+f(0)\lim_{x\to0^-}\frac{-\sin x}{x}=f'(0)-f(0)\\[-3em]
+\end{align*}\begin{align*}
+F'_{+}(0)&=\lim_{x\to0^+}\frac{F(x)-F(0)}{x}=\lim_{x\to0^+}\frac{f(x)(1+|\sin x|)-f(0)}{x}\\
+&=\lim_{x\to0^+}\frac{f(x)-f(0)}{x}+\lim_{x\to0}f(x)\lim_{x\to0^+}\frac{|\sin x|}{x}\\
+&=f'(0)+f(0)\lim_{x\to0^+}\frac{\sin x}{x}=f'(0)+f(0)
+\end{align*}
+$F(x)$ 在 $x=0$ 处可导 $\Longrightarrow F'(0)=F'_{-}(0)=F'_{+}(0)\Longrightarrow f(0)=0$
+\end{Solution}
+
+\begin{exercise}
+设$f(x)$在$x=0$处连续, 且$\displaystyle\lim_{x\to 0} \frac{f(2x)-f(x)}{x}$存在. 求证$f'(0)$存在.	
+\end{exercise}\begin{solution}
+令$A=\lim\limits_{x\to 0}\frac{f(2x)-f(x)}{x}$, 下证$f'(0)=A$. \\
+事实上, 对任意$\varepsilon>0$, 根据所给条件, 存在$\delta>0$, 使得
+\[\left|\frac{f(2x)-f(x)}{x}-A\right|<\varepsilon, \forall 0<|x|<\delta,\]
+即
+\[Ax-\varepsilon |x|<f(2x)-f(x)<Ax+\varepsilon|x|,\forall 0<|x|<\delta.\]
+从而
+\[\frac{Ax}{2^i}- \frac{\varepsilon|x|}{2^i}<f\left(\frac{x}{2^{i-1}}\right)-f\left(\frac{x}{2^i}\right)<\frac{Ax}{2^i}+ \frac{\varepsilon|x|}{2^i},\forall
+0<|x|<\delta,i\in\mathbb N.\]
+因此对任意$0<|x|<\delta$和$n\in\mathbb N$,
+\[\left(1-\frac{1}{2^n}\right)(Ax-\varepsilon |x|)<f(x)-f\left(\frac{x}{2^n}\right)<\left(1-\frac{1}{2^n}\right)(Ax+\varepsilon |x|).
+\]
+令$n\to\infty$, 利用$f$在$x=0$处的连续性, 得到
+\[Ax-\varepsilon |x|\leqslant f(x)-f(0)\leqslant Ax+\varepsilon |x|,\forall 0<|x|<\delta.
+\]
+即
+\[\left|\frac{f(x)-f(0)}{x}-A\right|\leqslant \varepsilon,\forall 0<|x|<\delta,\]
+这就证明了$f'(0)$存在, 且$f'(0)=A$.	
+\end{solution}
+
+\begin{exercise}  已知 $\displaystyle y=x^2e^{2x}$ , 求 $\displaystyle y^{(20)}$\\[-3mm]
+\end{exercise}\begin{Solution}设 $\displaystyle u=e^{2x}$ , $\displaystyle v=x^2$ ,  则
+\begin{equation*}u^{(k)}=2^ke^{2x}\;(k=1,2,\cdots,20)\end{equation*}
+\begin{equation*}v'=2x,\;v''=2,\;v^{(k)}=0\;(k=3,4,\cdots,20)\end{equation*}
+代入莱布尼茨公式, 得\begin{align*}y^{(20)}&=(x^2e^{2x})^{(20)}\\
+&=2^{20}e^{2x}\cdot x^2+20\cdot2^{19}e^{2x}\cdot2x+\frac{20\cdot19}{2!}2^{18}e^{2x}\cdot2\\
+&=2^{20}e^{2x}(x^2+20x+95)
+\end{align*}
+莱布尼茨公式\begin{equation*}(uv)^{n}=\sum_{k=0}^{n}C_n^ku^{(n-k)}v^{(k)}\end{equation*}	
+\end{Solution}
+
+\chapter{积分}
+\section{不定积分}
+
+\begin{exercise}求不定积分\begin{equation*}
+	\int\frac{x^2}{\sqrt{1+x+x^2}}\,\mathrm{d}x
+	\end{equation*}\end{exercise}	
+\begin{Solution} 
+\begin{align*}
+\int\frac{x^2}{\sqrt{1+x+x^2}}\,\mathrm{d}x
+&\xlongequal{x+\frac{1}{2}=\frac{\sqrt{3}}{2}\tan t}\int\left(\frac{\sqrt{3}}{2}\tan t-\frac{1}{2}\right)^2\sec t\,\mathrm{d}t\\
+&={\color{red}{\color{blue}\frac{3}{4}\int \tan^2t\sec t \,\mathrm{d}t}}-\frac{\sqrt{3}}{2}\int \tan t\sec t\,\mathrm{d}t+\frac{1}{4}\int \sec t\,\mathrm{d}t\\
+&={\color{red}\frac{3}{4}\int \sec t(\sec^2t-1) \,\mathrm{d}t}-\frac{\sqrt{3}}{2}\sec t+\frac{1}{4}\ln|\sec t+\tan t|\\
+&={\color{red}\frac{3}{4}\int \sec^3t \,\mathrm{d}t-\frac{3}{4}\int \sec t\,\mathrm{d}t}-\frac{\sqrt{3}}{2}\sec t+\frac{1}{4}\ln|\sec t+\tan t|\\
+&={\color{red}\frac{3}{4}\sec t\tan t{\color{blue}-\frac{3}{4}\int \tan^2 t\sec t \,\mathrm{d}t}-\frac{3}{4}\int \sec t\,\mathrm{d}t}-\frac{\sqrt{3}}{2}\sec t+\frac{1}{4}\ln|\sec t+\tan t|\\
+&=\frac{3}{8}\sec t\tan t-\frac{\sqrt{3}}{2}\sec t-\frac{1}{8}\ln|\sec t+\tan t|+C\\
+&=\frac{1}{4}(2x-3)\sqrt{x^2+x+1}-\frac{1}{8}\ln|2\sqrt{x^2+x+1}+2x+1|+C
+\end{align*}		
+\end{Solution}
+
+\begin{exercise}计算积分\begin{equation*}\int \frac{1}{x\sqrt{x^2-2x-3}}\,\mathrm{d}x\end{equation*}\end{exercise}
+\begin{Solution}
+\begin{align*}\int \frac{1}{x\sqrt{x^2-2x-3}}\,\mathrm{d}x&=\int \frac{1}{x\sqrt{(x-1)^2-4}}\,\mathrm{d}x\\
+&\xlongequal{x-1=2\sec t}\int \frac{2\tan t\sec t}{2(2\sec t+1)\tan t}\,\mathrm{d}t=\int \frac{1}{2+\cos t}\,\mathrm{d}t\\
+&=\int \frac{2-\cos t}{4-\cos^2 t}\,\mathrm{d}t\\
+&=2\int \frac{1}{4\sin^2t+3\cos^2 t}\,\mathrm{d}t-\int \frac{\cos t}{3+\sin^2 t}\,\mathrm{d}t\\
+&=\int \frac{1}{(2\tan t)^2+3}\,\mathrm{d}(2\tan t)-\int \frac{1}{3+\sin^2 t}\,\mathrm{d}(\sin t)\\
+&=\frac{1}{\sqrt{3}}\arctan\frac{2\tan t}{\sqrt{3}}-\frac{1}{2\sqrt{3}}\arctan\frac{\sin t}{\sqrt{3}}+C\\
+&=\frac{1}{\sqrt{3}}\arctan\frac{\frac{2\tan t}{\sqrt{3}}-\frac{\sin t}{\sqrt{3}}}{1+\frac{2\tan t}{\sqrt{3}}\times\frac{\sin t}{\sqrt{3}}}+C\\
+&=-\frac{1}{\sqrt{3}}\arctan\frac{x+3}{\sqrt{3}\sqrt{x^2-2x-3}}+C
+\end{align*}		
+\end{Solution}
+
+\begin{exercise}
+求不定积分: $\int\frac{1}{\sin^6x+\cos^6x}\,\mathrm{d}x$
+\end{exercise}\begin{Solution} 
+注意到\begin{align*}
+\frac{1}{\sin^6x+\cos^6x}&=\frac{\sin^2x+\cos^2x}{\sin^4x(1-\cos^2x)+\cos^4x(1-\sin^2x)}\\
+&=\frac{\sin^2x+\cos^2x}{\sin^4x+\cos^4x-\sin^4x\cos^2x-\cos^4x\sin^2x}\\
+&=\frac{\sin^2x+\cos^2x}{\sin^4x+\cos^4x-\sin^2x\cos^2x(\sin^2x+\cos^2x)}\\
+&=\frac{\sin^2x+\cos^2x}{\sin^4x+\cos^4x-\sin^2x\cos^2x}
+\end{align*}
+故\begin{align*}
+\int\frac{1}{\sin^6x+\cos^6x}\,\mathrm{d}x&=\int\frac{\sin^2x+\cos^2x}{\sin^4x+\cos^4x-\sin^2x\cos^2x}\,\mathrm{d}x\\
+&=\int\frac{\tan^2x+1}{\tan^4x-\tan^2x+1}\,\mathrm{d}(\tan x)\\
+&\xlongequal{t=\tan x}\int\frac{t^2+1}{t^4-t^2+1}\,\mathrm{d}t\\
+&=\int\frac{1}{\left(t-\frac{1}{t}\right)^2+1}\,\mathrm{d}\left(t-\frac{1}{t}\right)\\
+&=\arctan\left(t-\frac{1}{t}\right)+C\\
+&=-\arctan\left(2\cot x\right)+C
+\end{align*}	
+\end{Solution}
+
+\begin{exercise}
+求不定积分: $\int\frac{1}{\sin x+\cos x}\,\mathrm{d}x$
+\end{exercise}\begin{Solution}
+\begin{align*}\int\frac{1}{\sin x+\cos x}\,\mathrm{d}x&=\int\frac{\cos x-\sin x}{\cos^2x-\sin^2x}\,\mathrm{d}x\\
+&=\int\frac{1}{1-2\sin^2x}\,\mathrm{d}(\sin x)+\int\frac{1}{2\cos^2x-1}\,\mathrm{d}(\cos x)\\
+&=-\frac{1}{\sqrt{2}}\int\frac{1}{2\sin^2x-1}\,\mathrm{d}\big(\sqrt{2}\sin x\big)+\frac{1}{\sqrt{2}}\int\frac{1}{2\cos^2x-1}\,\mathrm{d}\big(\sqrt{2}\cos x\big)\\
+&=-\frac{1}{2\sqrt{2}}\ln\left|\frac{\sqrt{2}\sin x-1}{\sqrt{2}\sin x+1}\right|+\frac{1}{2\sqrt{2}}\ln\left|\frac{\sqrt{2}\cos x-1}{\sqrt{2}\cos x+1}\right|+C
+\end{align*}	
+\end{Solution}\begin{Solution}
+\begin{align*}\int\frac{1}{\sin x+\cos x}\,\mathrm{d}x&=\int\frac{1}{\cos^2\left(\frac{1}{2}x\right)-\sin^2\left(\frac{1}{2}x\right)+2\cos\left(\frac{1}{2}x\right)\sin\left(\frac{1}{2}x\right)}\,\mathrm{d}x\\
+&=2\int\frac{1}{-\left(\tan\left(\frac{1}{2}x\right)-1\right)^2+2}\,\mathrm{d}\big(\tan\left(\tfrac{1}{2}x\right)-1\big)\\
+&=-\frac{1}{\sqrt{2}}\ln\left|\frac{\tan\left(\tfrac{1}{2}x\right)-1-\sqrt{2}}{\tan\left(\tfrac{1}{2}x\right)-1+\sqrt{2}}\right|+C
+\end{align*}	
+\end{Solution}\begin{Solution}
+\begin{align*}\int\frac{1}{\sin x+\cos x}\,\mathrm{d}x&=\int\frac{1}{\sqrt{2}\sin\big(x+\frac{\pi}{4}\big)}\,\mathrm{d}x\\
+&=\frac{1}{\sqrt{2}}\int\frac{1}{\sin\big(x+\frac{\pi}{4}\big)}\,\mathrm{d}\Big(x+\frac{\pi}{4}\Big)\\
+&=\frac{1}{\sqrt{2}}\ln\left|\tan\left(\frac{x+\frac{\pi}{4}}{2}\right)\right|+C\\
+&=\frac{1}{\sqrt{2}}\ln\left|\csc\left(x+\frac{\pi}{4}\right)-\cot\left(x+\frac{\pi}{4}\right)\right|+C\\
+\end{align*}	
+\end{Solution}
+
+\begin{exercise}求不定积分\[\int {{x^2}} \sqrt {{x^2} + 1} \dif x\]
+\end{exercise}\begin{Solution}
+\begin{align*}
+I &=\int {{x^2}} \sqrt {{x^2} + 1} \dif x{\rm{ = }}\int {x\sqrt {{x^4} + {x^2}} } \dif x = \frac{1}{2}\int {\sqrt {{x^4} + {x^2}} } d{x^2}\\
+& = \frac{1}{2}\int {\sqrt {{{\left( {{x^2} + \frac{1}{2}} \right)}^2} - {{\left( {\frac{1}{2}} \right)}^2}} } d{x^2} = \frac{1}{2}\int {\sqrt {{{\left( {{x^2} + \frac{1}{2}} \right)}^2} - {{\left( {\frac{1}{2}} \right)}^2}} } d\left( {{x^2} + \frac{1}{2}} \right)\\
+&= \frac{1}{2}\left( {{x^2} + \frac{1}{2}} \right)\sqrt {{x^4} + {x^2}}  - \frac{1}{2}\int {\frac{{{{\left( {{x^2} + \frac{1}{2}} \right)}^2}}}{{\sqrt {{{\left( {{x^2} + \frac{1}{2}} \right)}^2} - {{\left( {\frac{1}{2}} \right)}^2}} }}} d\left( {{x^2} + \frac{1}{2}} \right)\\
+&= \frac{1}{2}\left( {{x^2} + \frac{1}{2}} \right)\sqrt {{x^4} + {x^2}}  - \frac{1}{2}\int {\frac{{{{\left( {{x^2} + \frac{1}{2}} \right)}^2} + {{\left( {\frac{1}{2}} \right)}^2} - {{\left( {\frac{1}{2}} \right)}^2}}}{{\sqrt {{{\left( {{x^2} + \frac{1}{2}} \right)}^2} - {{\left( {\frac{1}{2}} \right)}^2}} }}} d\left( {{x^2} + \frac{1}{2}} \right)\\
+&= \frac{1}{2}\left( {{x^2} + \frac{1}{2}} \right)\sqrt {{x^4} + {x^2}}  - \frac{1}{2}\int {\sqrt {{{\left( {{x^2} + \frac{1}{2}} \right)}^2} - {{\left( {\frac{1}{2}} \right)}^2}} } d\left( {{x^2} + \frac{1}{2}} \right) \\
+&\phantom{=\;}- \frac{1}{8}\int {\frac{1}{{\sqrt {{{\left( {{x^2} + \frac{1}{2}} \right)}^2} - {{\left( {\frac{1}{2}} \right)}^2}} }}} d\left( {{x^2} + \frac{1}{2}} \right)\\
+&= \frac{1}{2}\left( {{x^2} + \frac{1}{2}} \right)\sqrt {{x^4} + {x^2}}  - I - \frac{1}{8}\ln \left( {{x^2} + \frac{1}{2} + \sqrt {{x^4} + {x^2}} } \right)\\
+\Rightarrow I &=\frac{1}{4}\left( {{x^2} + \frac{1}{2}} \right)\sqrt {{x^4} + {x^2}}  - \frac{1}{{16}}\ln \left( {{x^2} + \frac{1}{2} + \sqrt {{x^4} + {x^2}} } \right) + {c_1}\\
+& =\frac{1}{8}x\left( {2{x^2} - 1} \right)\sqrt {{x^2} + 1}  - \frac{1}{{16}}\ln {\left( {x + \sqrt {{x^2} + 1} } \right)^2} + c \left( {c = {c_1} + \frac{{\ln 2}}{{16}}} \right)\\
+&=\frac{1}{8}x\left( {2{x^2} - 1} \right)\sqrt {{x^2} + 1}  - \frac{1}{8}\ln \left( {x + \sqrt {{x^2} + 1} } \right) + c
+\end{align*}	
+\end{Solution}
+
+\begin{exercise}
+求不定积分: $\int {\frac{{16x + 11}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x$
+\end{exercise}\begin{Solution}
+\begin{align*}
+\int {\frac{{16x + 11}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x &= 8\int {\frac{{2x + 2}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x - \int {\frac{5}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x\\
+&= 8\int {\frac{1}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} d\left( {{x^2} + 2x + 2} \right) - 5\smash{\underbrace{\int {\frac{1}{{{{\left( {{{\left( {x + 1} \right)}^2} + 1} \right)}^2}}}} \dif x}\limits_{x+1=\tan t}}\\
+&=  - \frac{8}{{{x^2} + 2x + 2}} - 5\int {\frac{{{{\sec }^2}t}}{{{{\left( {{{\tan }^2}t + 1} \right)}^2}}}} \dif t\\
+&=  - \frac{8}{{{x^2} + 2x + 2}} - 5\int {{{\cos }^2}t} \dif t\\
+& =  - \frac{8}{{{x^2} + 2x + 2}} - 5\int {\frac{{1 + \cos 2t}}{2}} \dif t\\
+&=  - \frac{8}{{{x^2} + 2x + 2}} - \frac{5}{2}\int {\dif t}  - \frac{5}{4}\int {\cos 2t} d\left( {2t} \right)\\
+&=  - \frac{8}{{{x^2} + 2x + 2}} - \frac{5}{2}t - \frac{5}{4}\sin 2t + C\\
+& =  - \frac{{5x + 21}}{{2\left( {{x^2} + 2x + 2} \right)}} - \frac{5}{2}\arctan \left( {x + 1} \right) + C
+\end{align*}	
+\end{Solution}
+
+\begin{exercise}
+求不定积分: $I=
+\int {\frac{{16x + 11}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x$
+\end{exercise}\begin{Solution}
+\begin{align*}
+I &= 8\int {\frac{{2x + 2}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x - \int {\frac{5}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x\\
+&= 8\int {\frac{1}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} d\left( {{x^2} + 2x + 2} \right) - 5\int {\frac{1}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x\\
+&=  - \frac{8}{{{x^2} + 2x + 2}} - 5\int {\frac{{1 + {{\left( {x + 1} \right)}^2} - {{\left( {x + 1} \right)}^2}}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x\\
+&=  - \frac{8}{{{x^2} + 2x + 2}} - 5\int {\frac{1}{{{{\left( {x + 1} \right)}^2} + 1}}} d\left( {x + 1} \right) - \frac{5}{2}\int {\left( {x + 1} \right)} d\left( {\frac{1}{{{x^2} + 2x + 2}}} \right)\\
+&=  - \frac{8}{{{x^2} + 2x + 2}} - 5\arctan \left( {x + 1} \right) - \frac{{5x + 5}}{{2\left( {{x^2} + 2x + 2} \right)}} + \frac{5}{2}\int {\frac{1}{{{{\left( {x + 1} \right)}^2} + 1}}} d\left( {x + 1} \right)\\
+& =  - \frac{{5x + 21}}{{2\left( {{x^2} + 2x + 2} \right)}} - \frac{5}{2}\arctan \left( {x + 1} \right) + C
+\end{align*}	
+\end{Solution}
+
+\begin{exercise}求不定积分\begin{equation*}
+\int\sqrt[3]{\frac{1+\sin x}{1-\sin x}}\,\mathrm{d}x
+\end{equation*}\end{exercise}
+\begin{Solution}
+\begin{align*}
+I&=\int\sqrt[3]{\frac{1+\sin x}{1-\sin x}}\mathrm{d}x\\
+&\xlongequal{x=2\theta}2\int\sqrt[3]{\frac{1+\sin 2\theta}{1-\sin 2\theta}}\mathrm{d}\theta=2\int\sqrt[3]{\left(\frac{\sin\theta+\cos\theta}{\sin\theta-\cos\theta}\right)^2}\mathrm{d}\theta\\
+&=2\int\left(\frac{1+\tan\theta}{1-\tan\theta}\right)^{\frac{3}{2}}\mathrm{d}\theta\\
+&\xlongequal{\phi=\frac{\pi}{4}+\theta}2\int\left[\tan\left(\frac{\pi}{4}+\theta\right)\right]^{\frac{3}{2}}\mathrm{d}\theta\\
+&=2\int\tan^{\frac{3}{2}}\phi\mathrm{d}\phi\\
+&\xlongequal{\sqrt{\tan \phi}=t}4\int\frac{t^4}{1+t^4}\mathrm{d}t=4t-4\int\frac{1}{1+t^4}\mathrm{d}t\\
+&=4t-2\int\frac{(t^2+1)-(t^2-1)}{1+t^4}\mathrm{d}t\\
+&=4t-2\int\frac{t^2+1}{1+t^4}\mathrm{d}t+2\int\frac{t^2-1}{1+t^4}\mathrm{d}t\\
+&=4t-2\int\frac{1}{\left(t-\frac{1}{t}\right)^2+2}\mathrm{d}\left(t-\frac{1}{t}\right)+2\int\frac{1}{\left(t+\frac{1}{t}\right)^2-2}\mathrm{d}\left(t+\frac{1}{t}\right)\\
+&=4t-\frac{1}{\sqrt{2}}\arctan\frac{t^2-1}{\sqrt{2}}-\frac{1}{2\sqrt{2}}\ln\left|\frac{t^2+\sqrt{2}t+1}{t^2-\sqrt{2}t+1}\right|+C\\
+&=4\sqrt{\tan\left(\frac{1}{2}x-\frac{\pi}{4}\right)}-\frac{1}{\sqrt{2}}\arctan\frac{\tan\left(\frac{1}{2}x-\frac{\pi}{4}\right)-1}{\sqrt{2}}\\
+&\phantom{=\;}-\frac{1}{2\sqrt{2}}\ln\left|\frac{\tan\left(\frac{1}{2}x-\frac{\pi}{4}\right)+\sqrt{2}\sqrt{\tan\left(\frac{1}{2}x-\frac{\pi}{4}\right)}+1}{\tan\left(\frac{1}{2}x-\frac{\pi}{4}\right)-\sqrt{2}\sqrt{\tan\left(\frac{1}{2}x-\frac{\pi}{4}\right)}+1}\right|+C	
+\end{align*}
+\end{Solution}
+
+\begin{exercise}求不定积分\[\int {\frac{1}{{1 + \sqrt {\tan x} }}} \dif x\]
+\end{exercise}\begin{Solution}
+\[ I = \int {\frac{1}{{1 + \sqrt {\tan x} }}} \dif x\xlongequal{\sqrt {\tan x}  = t}\int\frac{2t}{(1+t)(1+t^4)}\]
+\begin{align*}
+\frac{{2t}}{{\left( {1 + {t^4}} \right)\left( {1 + t} \right)}}
+=& \frac{{A{t^3} + B{t^2} + Ct + D}}{{1 + {t^4}}} + \frac{E}{{1 + t}} \\
+=& \frac{{\left( {A + E} \right){t^4} + \left( {A + B} \right){t^3} + \left( {B + C} \right){t^2} + \left( {C + D} \right)t + \left( {D + E} \right)}}{{\left( {1 + {t^4}} \right)\left( {1 + t} \right)}}\end{align*}
+\[\begin{cases}
+A + E = 0\\A + B = 0\\B + C = 0\\C + D = 2\\D + E = 0
+\end{cases}  \Longrightarrow \begin{cases}
+A = 1\\B =  - 1\\C = 1\\D = 1\\E =  - 1
+\end{cases} \Longrightarrow \frac{{2t}}{{\left( {1 + {t^4}} \right)\left( {1 + t} \right)}} = \frac{{{t^3} - {t^2} + t + 1}}{{1 + {t^4}}} - \frac{1}{{1 + t}}\]
+\begin{align*}
+I = &\int {\frac{{{t^3} - {t^2} + t + 1}}{{1 + {t^4}}}} \dif t - \int {\frac{1}{{1 + t}}} \dif t \\
+= &\frac{1}{4}\int {\frac{1}{{1 + {t^4}}}} d({t^4}) + \frac{1}{2}\int {\frac{1}{{1 + {t^4}}}} d(t^2) + \int {\frac{{\frac{1}{{{t^2}}} - 1}}{{\frac{1}{{{t^2}}} + {t^2}}}\dif t}  - \ln \left| {1 + t} \right|\\
+=& \frac{1}{4}\ln \left( {1 + {t^4}} \right) + \frac{1}{2}\arctan {t^2} - \ln \left| {1 + t} \right| + \int {\frac{1}{{{{\left( {t + \frac{1}{t}} \right)}^2} - 2}}d\left( {t + \frac{1}{t}} \right)} \\
+=& \frac{1}{4}\ln \left( {1 + {{\tan }^2}x} \right) + \frac{1}{2}\arctan \tan x - \ln \left| {1 + \sqrt {\tan x} } \right| - \frac{{\sqrt 2 }}{4}\ln \left| {\frac{{\tan x + \sqrt {2\tan x}  + 1}}{{\tan x - \sqrt {2\tan x}  + 1}}} \right| + c
+\end{align*}	
+\end{Solution}
+
+\subsection{非初等表达}
+
+\begin{exercise}求不定积分\[\int\frac{\arctan x}{x} \dif x\]
+\end{exercise}\begin{Solution}设$\displaystyle f\left( x \right) = \arctan x$
+则\[ f'\left( x \right) = \frac{1}{{1 + {x^2}}} = \frac{1}{{\left( {1 - ix} \right)\left( {1 + ix} \right)}} = \frac{1}{2}\left( {\frac{1}{{1 - ix}} + \frac{1}{{1 + ix}}} \right)\]
+利用幂级数展开$\displaystyle f'(x)$,首先我们知道$\displaystyle \frac{1}{{1 - x}} = \sum\limits_{n = 0}^\infty  {{x^n}} ,x \in ( - 1,1)$\\
+因此\[ f'\left( x \right){\rm{ = }}\frac{1}{{\left( {1 - ix} \right)\left( {1 + ix} \right)}} = \frac{1}{2}\left( {\sum\limits_{n = 0}^\infty  {{{\left( {ix} \right)}^n}}  + \sum\limits_{n = 0}^\infty  {{{\left( { - ix} \right)}^n}} } \right)\]
+对两边积分有：\begin{align*}
+\int_0^x {f'\left( x \right)} \dif x &= \int_0^x {\frac{1}{2}\left( {\sum\limits_{n = 0}^\infty  {{{\left( {ix} \right)}^n}}  + \sum\limits_{n = 0}^\infty  {{{\left( { - ix} \right)}^n}} } \right)} \dif x\\
+&=  - \frac{1}{2}i\sum\limits_{n = 0}^\infty  {\frac{{{{\left( {ix} \right)}^{n + 1}}}}{{n + 1}}}  + \frac{1}{2}i\sum\limits_{n = 0}^\infty  {\frac{{{{\left( { - ix} \right)}^{n + 1}}}}{{n + 1}}} \\
+&=  - \frac{1}{2}i\sum\limits_{n = 1}^\infty  {\frac{{{{\left( {ix} \right)}^n}}}{n}}  + \frac{1}{2}i\sum\limits_{n = 1}^\infty  {\frac{{{{\left( { - ix} \right)}^n}}}{n}}
+\end{align*}
+所以:\[ f\left( x \right) = \arctan x = \frac{1}{2}i\sum\limits_{n = 1}^\infty  {\frac{{{{\left( { - ix} \right)}^n}}}{n}}  - \frac{1}{2}i\sum\limits_{n = 1}^\infty  {\frac{{{{\left( {ix} \right)}^n}}}{n}} \]
+所以\begin{align*}
+\int {\frac{{\arctan x}}{x}} \dif x &= \frac{1}{2}\int {\sum\limits_{n = 1}^\infty  {\frac{{{{\left( { - ix} \right)}^{n - 1}}}}{n}} } \dif x - \frac{1}{2}i\int {\sum\limits_{n = 1}^\infty  {\frac{{{{\left( {ix} \right)}^{n - 1}}}}{n}} } \dif x\\
+&= \frac{1}{2}i\sum\limits_{n = 1}^\infty  {\frac{{{{\left( { - ix} \right)}^n}}}{{{n^2}}}}  - \frac{1}{2}i\sum\limits_{n = 1}^\infty  {\frac{{{{\left( {ix} \right)}^n}}}{{{n^2}}}}  + c\\
+&= \frac{1}{2}i\left({\textrm{Li}_2\left( { - ix} \right) - {\textrm{Li}_2}\left( {ix} \right)} \right) + c
+\end{align*}
+\end{Solution}
+
+\newpage\begin{exercise}求不定积分\[\int {x\tan x} \dif x\]
+\end{exercise}\begin{Solution}\begin{align*}
+\int {x\tan x} \dif x &=\int {x \times \frac{{\frac{{{e^{ix}} - {e^{ - ix}}}}{{2i}}}}{{\frac{{{e^{ix}} + {e^{ - ix}}}}{2}}}} \dif x=  - \int {ix\frac{{{e^{ix}} - {e^{ - ix}}}}{{{e^{ix}} + {e^{ - ix}}}}} \dif x\\
+&=  - \int {ix\frac{{{e^{2ix}} - 1}}{{{e^{2ix}} + 1}}} \dif x =  - \int {ix} \dif x + 2i\int {\frac{x}{{{e^{2ix}} + 1}}} \dif x\\
+&\xlongequal{e^{2ix}= t}
+- \frac{1}{2}i{x^2} + 2i\int {\frac{{\frac{1}{{2i}}\ln t}}{{t + 1}}} \frac{1}{{2it}}\dif t =  - \frac{1}{2}i{x^2} - \frac{1}{2}i\int {\frac{{\ln t}}{{\left( {t + 1} \right)t}}} \dif t\\
+&=  - \frac{1}{2}i{x^2} - \frac{1}{2}i\left( {\int {\frac{{\ln t}}{t}} \dif t - \int {\frac{{\ln t}}{{t + 1}}} \dif t} \right)\\
+&=  - \frac{1}{2}i{x^2} - \frac{1}{2}i\left( {\frac{1}{2}{{\ln }^2}t - \ln t\ln (t + 1) + \int {\frac{{\ln (1 + t)}}{t}} \dif t} \right)\\
+&=  - \frac{1}{2}i{x^2} - \frac{1}{2}i\left( {\frac{1}{2}{{\ln }^2}t - \ln t\ln (t + 1) + \int {\sum\limits_{k = 1}^\infty  {\frac{{{{\left( { - t} \right)}^{k - 1}}}}{k}} } \dif t} \right)\\
+& =  - \frac{1}{2}i{x^2} - \frac{1}{2}i\left( {\frac{1}{2}{{\ln }^2}t - \ln t\ln (t + 1) - \sum\limits_{k = 1}^\infty  {\frac{{{{( - t)}^k}}}{{{k^2}}}} } \right) + c\\
+&  =  - \frac{1}{2}i{x^2} - \frac{1}{2}i\left( {\frac{1}{2}{{\ln }^2}t - \ln t\ln (t + 1) -\mathrm{Li}_2\left( { - t} \right)} \right) + c\\
+&= \frac{1}{2}i{x^2} + x\ln ({e^{2ix}} + 1) + \frac{1}{2}i\mathrm{Li}_2\left( { - {e^{2ix}}} \right) + c
+\end{align*}
+\end{Solution}
+
+\begin{exercise}求不定积分\[\int\frac{xe^x}{1+e^x}\dif x\]
+\end{exercise}\begin{Solution}\begin{align*}\int\frac{xe^x}{1+e^x}\dif x
+&\xlongequal{t=e^x}\int\frac{\ln t }{1+t}\dif t\\
+&=\ln t\ln(1+t)-\int\frac{\ln(1+t)}{t}\dif t\\
+&=\ln t\ln(1+t)-\int\sum_{n=1}^{\infty}\frac{(-t)^{n-1}}{n}\dif t\\
+&=\ln t\ln(1+t)-\sum_{n=1}^{\infty}\int\frac{(-t)^{n-1}}{n}\dif t\\
+&=\ln t\ln(1+t)+\sum_{n=1}^{\infty}\frac{(-t)^n}{n^2}\dif t+c\\
+&=\textrm{Li}_2(-t)+\ln t\ln(t+1)+c\\
+&=\textrm{Li}_2(-e^x)+x\ln(e^x+1)+c\\
+\end{align*}
+\end{Solution}
+
+\begin{exercise}求不定积分\[\int {\frac{x}{{\tan x}}\dif x}\]
+\end{exercise}\begin{Solution}\begin{align*}\int {\frac{x}{{\tan x}}\dif x}  &=\int {\frac{{x\cos x}}{{\sin x}}} \dif x = \int {\frac{{x \times \frac{{{e^{ix}} + {e^{ - ix}}}}{2}}}{{\frac{{{e^{ix}} - {e^{ - ix}}}}{{2i}}}}} \dif x \\
+&= \int {xi\frac{{{e^{ix}} + {e^{ - ix}}}}{{{e^{ix}} - {e^{ - ix}}}}} \dif x = \int {xi\frac{{\left( {{e^{ix}} - {e^{ - ix}} + 2{e^{ - ix}}} \right)}}{{{e^{ix}} - {e^{ - ix}}}}} \dif x\\
+&=\int {ix\dif x}  + 2\int {\frac{{i{e^{ - ix}}x}}{{{e^{ix}} - {e^{ - ix}}}}} \dif x = \frac{1}{2}i{x^2} + 2\int {\frac{{ix}}{{{e^{2ix}} - 1}}} \dif x \\
+&= \frac{1}{2}i{x^2} - 2\int {\frac{{ix}}{{1 - {e^{2ix}}}}} \dif x\\
+&\xlongequal{e^{2ix}= t}
+\frac{{i{x^2}}}{2} - 2\int {\frac{{i \times \frac{1}{{2i}}\ln t}}{{1 - t}}}  \times \left( {\frac{1}{{2it}}} \right)\dif t \\
+&= \frac{{i{x^2}}}{2} + \frac{i}{2}\int {\frac{{\ln t}}{{t\left( {1 - t} \right)}}} \dif t = \frac{1}{2}i{x^2} + \frac{i}{2}\left( {\int {\frac{{\ln t}}{t}} \dif t + \int {\frac{{\ln t}}{{1 - t}}} \dif t} \right)\\
+& = \frac{1}{2}i{x^2} + \frac{i}{2}\left( {\int {\ln t} d\ln t - \ln t\ln \left( {1 - t} \right) + \int {\frac{{\ln \left( {1 - t} \right)}}{t}} \dif t} \right)\\
+& = \frac{1}{2}i{x^2} + \frac{i}{2}\left( {\frac{1}{2}{{\ln }^2}t - \ln t\ln \left( {1 - t} \right) - \frac{{\rm{1}}}{n}\sum\limits_{n = 1}^\infty  {\int {{t^{n - 1}}} } \dif t} \right)\\
+&=\frac{1}{2}i{x^2} + \frac{i}{2}\left( {\frac{1}{2}{{\ln }^2}t - \ln t\ln \left( {1 - t} \right) - \sum\limits_{n = 1}^\infty  {\frac{{{t^n}}}{{{n^2}}}} } \right) + c\\
+&= \frac{1}{2}i{x^2} + \frac{i}{2}\left( {\frac{1}{2}{{\ln }^2}t - \ln t\ln \left( {1 - t} \right) -\mathrm{Li}_2\left( t \right)} \right) + c \\
+&= x\ln \left( {1 - {e^{2ix}}} \right) - \frac{1}{2}i\left( {{x^2} +\mathrm{Li}_2\left( {{e^{2ix}}} \right)} \right) + c
+\end{align*}
+\end{Solution}
+
+\begin{exercise}
+计算不定积分\[\int\frac{\tan x}{1+x^2}\dif x\]
+\end{exercise}\begin{solution}
+\begin{align*}
+\int\frac{\tan x}{1+x^2}\dif x
+&=\int\tan x\sum_{n=1}^{\infty}(-x^2)^n\dif x\\
+&=\sum_{n=1}^{\infty}(-1)^n\int x^{2n}\tan x\dif x\\
+&=\sum_{n=1}^{\infty}(-1)^n\int x^{2n}\sum_{k=1}^{\infty}\frac{B_{2k}(-4)^k(1-4^k)}{(2k)!}x^{2k-1}\dif x\\
+&=\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}\frac{(-1)^nB_{2k}(-4)^k(1-4^k)}{2(n+k)(2k)!}x^{2n+2k}+C
+\end{align*}	
+\end{solution}
+
+\begin{exercise}求不定积分\[\int\sqrt{x+\frac{1}{x}}\dif x\quad \lVert x\lVert<1\]
+\end{exercise}\begin{Solution}
+\begin{align*}
+\int\sqrt{x+\frac{1}{x}}\dif x&=\int\frac{\sqrt{x^2+1}}{\sqrt x}\dif x\quad \lVert x\lVert<1\\
+&=2\int\frac{\sqrt{(\sqrt{x})^4+1}}{2\sqrt{x}}\dif x=2\int\sqrt{(\sqrt{x})^4+1}\dif x\\
+&\xlongequal{\sqrt{x}=u}2\int\sqrt{u^4+1}\dif u\quad \lVert u\lVert<1\\
+&=2\sum_{n=0}^{\infty}C_n^{1/2}\int u^{4n}\dif x=2\sum_{n=0}^{\infty}C_n^{1/2}\frac{u^{4n+1}}{4n+1}+C\\
+&=2\sum_{n=0}^{\infty}C_n^{1/2}\frac{x^{2n+\frac{1}{2}}}{4n+1}+C
+\end{align*}
+\end{Solution}
+
+\begin{example}
+求不定积分\[\int\frac{1}{\ln x-1}\dif x\]
+\end{example}\begin{Solution}
+\begin{align*}
+\int\frac{1}{\ln x-1}\dif x&\xlongequal[\dif x=e^v\dif v]{\ln x=v}\int\frac{e^v}{v-1}\dif v\\
+&=-\int\frac{e^v}{1-v}\dif v=-\int\left(\sum_{p=0}^{\infty}\frac{v^p}{p!}\right)\dif v
+\left(\sum_{n=0}^{\infty}v^n\right)\\
+&=-\sum_{p=0}^{\infty}\sum_{n=0}^{\infty}\frac{1}{p!}\int v^{n+p}\dif v\\
+&=-\sum_{n=0}^{\infty}\sum_{p=0}^{\infty}\frac{1}{p!}\cdot\frac{v^{n+p+1}}{n+p+1}+C\\
+&=-\sum_{n=0}^{\infty}\sum_{p=0}^{\infty}\frac{1}{p!}\cdot\frac{(\ln x)^{n+p+1}}{n+p+1}+C
+\end{align*}
+\end{Solution}
+
+\section{定积分}
+\subsection{定积分定义}
+
+\begin{newdef}[定积分]
+设函数 $f(x)$ 在 $[a,b]$ 上有界, 在 $[a,b]$ 中任意插入若干个分点\[a=x_0<x_1<x_2<\cdots<x_{n-1}<x_n=b\]
+把区间 $[a,b]$ 分为若 $n$ 个小区间 \[[x_0,x_1],[x_1,x_2],\cdots,[x_{n-1},x_n]\]
+各个小区间长度依次为\[\Delta x_1=x_1-x_0,\Delta x_2=x_2-x_1,\cdots,\Delta x_n=x_n-x_{n-1}\]
+在小区间 $[x_{i-1},x_i]$ 上任取一点 $\xi_i$\,$(x_{i-1}\leqslant\xi\leqslant x_{i})$,  作函数值 $f(\xi_i)$ 与小区间长度 $\Delta x_i$ 的乘积 $f(\xi_i)\Delta x_i\,(i=1,2,\cdots,n)$, 并作出和
+\[S=\sum_{i=1}^{n}f(\xi_i)\Delta x_i\]
+记 $\lambda=\max\{\Delta x_1,\Delta x_2,\cdots,\Delta x_n\}$, 如果当 $\lambda\to0$ 时, 这个和的极限存在, 且与闭区间 $[a,b]$ 的分法无关及点 $\xi_i$ 的取法无关, 那么称这个极限 $I$ 为函数 $f(x)$ 在 $[a,b]$ 上的定积分(简称积分), 记作 $\int_a^bf(x)\,\mathrm{d}x$, 即\[\int_a^bf(x)\,\mathrm{d}x=I=\lim_{\lambda\to0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i\]
+其中 $f(x)$ 叫做被积函数, $f(x)\,\mathrm{d}x$ 叫做被积表达式, $x$ 叫做积分变量, $a$ 叫做积分下限, $b$ 叫做积分上限, $[a,b]$ 叫做积分区间	
+\end{newdef}
+
+\begin{exercise}求极限\begin{equation*}I=\lim_{n\to\infty}\frac{1}{n}\sqrt[n]{n(n+1)(n+2)\cdots(2n-1)}\end{equation*}
+\end{exercise}\begin{Solution}
+\[I=\exp\left(\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n-1}\ln\left(1+\frac{i}{n}\right)\right)=
+\exp\left(\int_0^1\ln(1+x)\,\mathrm{d}x\right)=\frac{4}{e}\]	
+\end{Solution}
+
+\begin{exercise}求极限\begin{equation*}I=\lim_{n\to\infty}\left(\frac{1}{\sqrt{1^2+n^2}}+\frac{1}{\sqrt{2^2+n^2}}+\frac{1}{\sqrt{3^2+n^2}}+\cdots+\frac{1}{\sqrt{n^2+n^2}}\right)\end{equation*}
+\end{exercise}\begin{Solution}
+\begin{align*}I
+=&\lim_{n\to\infty}\sum_{i=1}^{n}\frac{1}{\sqrt{i^2+n^2}}=\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\frac{1}{\sqrt{(\frac{i}{n})^2+1}}\\
+=&\int_{0}^{1}\frac{1}{\sqrt{x^2+1}}\mathrm{d}x=\Big[\ln(x+\sqrt{x^2+1})\Big]_{0}^{1}\\
+=&\ln(1+\sqrt{2})	
+\end{align*}
+\end{Solution}
+
+\begin{exercise}
+求极限\begin{equation*}\lim_{n\to\infty}\left(\frac{n!}{n^n}\right)^{\frac{1}{n}}\end{equation*}
+\end{exercise}
+\begin{Solution}
+\begin{align*}
+\lim\limits_{n \to \infty } {\left( {\frac{{n!}}{{{n^n}}}} \right)^{\frac{1}{n}}} =& \lim\limits_{n \to \infty } {\exp{\frac{1}{n}\ln\left( {\frac{{n!}}{{{n^n}}}} \right)}}
+= {\exp{\lim\limits_{n \to \infty } \frac{1}{n}\ln\left( {\frac{{n!}}{{{n^n}}}} \right)}}\\
+= &{\exp{\lim\limits_{n \to \infty } \frac{1}{n}\left( {\ln\frac{1}{n} + \ln \frac{2}{n} +  \cdots  + \ln \frac{n}{n}} \right)}} \\
+=& {\exp{\lim\limits_{n \to \infty } \frac{1}{n}\sum\limits_{i = 1}^n {\ln\frac{i}{n}} }}= {\displaystyle \exp{\int_0^1 {\ln x} \dif x}}\\
+=&{\exp\bigg\{\Big[x\ln x\Big]_{0}^{1}-\int_0^1\dif x}\bigg\}=\frac{1}{e}
+\end{align*}	
+\end{Solution}
+
+\begin{exercise}
+求极限\begin{equation*}\lim_{n\to\infty}\left(\frac{1}{1^2+n^2}+\frac{2}{2^2+n^2}+\cdots+\frac{n}{n^2+n^2}\right)\end{equation*}
+\end{exercise}\begin{Solution}
+\begin{align*}I&=\lim_{n\to\infty}\left(\frac{1}{1^2+n^2}+\frac{2}{2^2+n^2}+\cdots+\frac{n}{n^2+n^2}\right)\\
+&=\lim_{n\to\infty}\sum_{i=1}^{n}\frac{i}{i^2+n^2}=\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\frac{\frac{i}{n}}{\left(\frac{i}{n}\right)^2+1}\\
+&=\int_{0}^{1}\frac{x}{1+x^2}\,\mathrm{d}x=\frac{1}{2}\int_{0}^{1}\frac{1}{1+x^2}\,\mathrm{d}(1+x^2)\\
+&=\left[\frac{1}{2}\ln(1+x^2)\right]_{0}^{1}=\frac{1}{2}\ln2	
+\end{align*}
+\end{Solution}
+
+\begin{align*}
+\int_0^1x^4\ln^4x\dif x
+&\xlongequal{-\ln x=t}\int_{+\infty}^0e^{-4t}(-t)^4\times(-e^{-t})\dif  t\\
+&=\int_0^{+\infty}e^{-5t}t^4\dif  t\\
+&\xlongequal{5t=u}\frac{1}{5^5}\int_0^{+\infty}e^{-u}u^4\dif  u\\
+&=\frac{1}{5^5}\Gamma(5)=\frac{4!}{5^5}=\frac{24}{3125}
+\end{align*}
+
+\begin{example}
+设 $f(x)$ 和 $g(x)$ 在 $[a,b]$ 上有定义, 且满足下面的条件:
+\begin{enumerate}
+	\item $\forall n>N$, $f(x)e^{n\cdot g(x)}\in\mathbb{R}[a,b]$;
+	\item $g(x)$ 在 $[a,b]$ 上只有一个最大值点 $x=\xi\in(a,b)$, 且在任何不包含 $\xi$ 的闭区间 $[\alpha,\beta]$ 中, 有 $\sup_{x\in[\alpha,\beta]}g(x)<g(\xi)$; 中 有
+	\item 在 $\xi$ 的某领域内, $g''(x)<0$ 且连续;
+	\item $f(\xi)\neq0$, $f(x)$ 在 $x=\xi$ 连续.	
+\end{enumerate}
+则当 $n\to\infty$ 时, 有
+\[\int_a^bf(x)e^{n\cdot g(x)}\dif x\sim f(\xi)\sqrt{-\frac{2\pi}{ng''(\xi)}}e^{ng(\xi)} \]	
+\end{example}\begin{newproof}
+\[\Psi(x)=f(x),h(x)=g(x) \]
+由连续性, 对 $\forall \varepsilon>0$， 取 $\delta>0$ 使得 $\xi\pm\delta\in(a,b)$ 且当 $|x-\xi|<\delta$ 时, 有
+\[f(\xi)-\varepsilon<f(x)<f(\xi)+\varepsilon\]
+\[g''(\xi)-\varepsilon<g''(x)<g''(\xi)+\varepsilon<0\]
+于是
+\[\int_a^bf(x)e^{n(h(x)-h(\xi))}\dif x=\begin{multlined}[t]
+\int_{\xi-\delta}^{\xi+\delta}f(x)e^{n(h(x)-h(\xi))}\dif x\\
++\bigg(\int_{a}^{\xi-\delta}+\int_{\xi+\delta}^{b}\bigg)f(x)e^{n(h(x)-h(\xi))}\dif x
+\end{multlined}\]
+因为 $g(x)$ 在 $x=\xi$ 点唯一达到有效最大值, 所以
+\[\alpha=\sup_{|x-\xi|\geqslant b}\big(g(x)-g(\xi)\big)<0\]
+于是
+\[\Bigg|\bigg(\int_{a}^{\xi-\delta}+\int_{\xi+\delta}^{b}\bigg)f(x)e^{n(g(x)-g(\xi))}\dif x\Bigg|\leqslant e^{n\alpha}\int_{\alpha}^b|f(x)|\dif x=O(\theta^n),\;n\to\infty\]
+其中 $0<\theta<e^\alpha<1$, 所以有
+\[\int_{\alpha}^bf(x)e^{n(g(x)-g(\xi))}\dif x=\int_{\xi-\delta}^{\xi+\delta}f(x)e^{n(g(x)-g(\xi))}\dif x+O(\theta^n)\]
+注意到 $g'(\xi)=0$, 所以由Tayor展开和积分第一中值定理有
+\begin{align*}
+\int_{\xi-\delta}^{\xi+\delta}f(x)e^{n(g(x)-g(\xi))}\dif x
+&=\int_{\xi-\delta}^{\xi+\delta}f(x)e^{\frac{1}{2}n(x-\xi)^2g''(\xi')}\dif x\\
+&=\mu\int_{\xi-\delta}^{\xi+\delta}e^{\frac{1}{2}n(x-\xi)^2g''(\xi')}\dif x
+\end{align*}
+其中 $\xi'=\xi'(x)\in(\xi-\delta,\xi+\delta)$, 而
+\[f(\xi)-\varepsilon<f(x)<f(\xi)+\varepsilon\]
+于是有
+\begin{align*}
+&(f(\xi)-\varepsilon)\int_{\xi-\delta}^{\xi+\delta}f(x)e^{\frac{1}{2}n(x-\xi)^2(g''(\xi)-\varepsilon)}\dif x\\
+\leqslant& \mu\int_{\xi-\delta}^{\xi+\delta}f(x)e^{\frac{1}{2}n(x-\xi)^2g''(\xi')}\dif x\\
+\leqslant&(f(\xi)+\varepsilon)\int_{\xi-\delta}^{\xi+\delta}f(x)e^{\frac{1}{2}n(x-\xi)^2(g''(\xi)+\varepsilon)}\dif x
+\end{align*}
+利用  当 $n\to\infty$ 时, 有
+\[(f(\xi)\pm\varepsilon)\int_{\xi-\delta}^{\xi+\delta}f(x)e^{\frac{1}{2}n(x-\xi)^2(g''(\xi)\mp\varepsilon)}\dif x\sim(f(\xi)\mp\varepsilon)\sqrt{\frac{-2\pi}{n(g''(\xi)\mp\varepsilon)}}\]
+又 $\theta\in(0,1)$ 是仅依赖于 $\varepsilon>0$ 而与 $n$ 无关的, 且
+\[\theta^n=O\Big(\frac{1}{n}\Big),\;n\to\infty \]
+所以先令 $n\to\infty$, 再令 $\varepsilon\to0$ 即得
+\[\int_{\alpha}^bf(x)\bigg[\frac{f(x)}{f(\xi)}\bigg]^n\dif x\sim f(x)\sqrt{\frac{-2\pi}{ng''(\xi)}} \]
+或\[\int_{\alpha}^bf(x)\bigg[\frac{f(x)}{f(\xi)}\bigg]^n\dif x\sim f(x)\sqrt{\frac{-2\pi}{ng''(\xi)}} \]
+注意到
+因为  所以有
+从而得到
+徐利治的渐近分析方法及应用的43-45页	
+\end{newproof}
+
+\section{重积分}
+
+\begin{exercise} 计算积分 \begin{equation*}\int_0^2\!\!{\int_0^4 {\left( {6 - x - y} \right)} } \dif x\dif y\end{equation*}\end{exercise}
+\begin{Solution} 
+\begin{align*}
+&\int_0^2\!\!{\int_0^4 {\left( {6 - x - y} \right)} } \dif x\dif y\\
+=& \int_0^2 {\left[ {6x - \frac{1}{2}{x^2} - xy} \right]_0^4} \dif y\\
+= &\int_0^2 {\left( {16 - 4y} \right)} \dif y\\
+= &\left[ {16y - 2{y^2}} \right]_0^2 = 24
+\end{align*}	
+\end{Solution}
+
+\begin{exercise} 计算积分 \begin{equation*}\int_{0}^{1}\mathrm{d}y\!\!\int_{y}^{1}\left(\frac{e^{x^2}}{x}-e^{y^2}\right)\mathrm{d}x\end{equation*}\end{exercise}
+\begin{Solution} 
+\begin{align*}I&=\int_{0}^{1}\mathrm{d}y\!\!\int_{y}^{1}\left(\frac{e^{x^2}}{x}-e^{y^2}\right)\mathrm{d}x\\
+&=\int_{0}^{1}\mathrm{d}y\!\!\int_{y}^{1}\frac{e^{x^2}}{x}\mathrm{d}x-\int_{0}^{1}\mathrm{d}y\!\!\int_{y}^{1}e^{y^2}\mathrm{d}x\\
+&=\int_{0}^{1}\mathrm{d}x\!\!\int_{0}^{x}\frac{e^{x^2}}{x}\mathrm{d}y-\int_{0}^{1}\mathrm{d}y\!\!\int_{y}^{1}e^{y^2}\mathrm{d}x\\
+&=\int_{0}^{1}e^{x^2}\,\mathrm{d}x-\int_{0}^{1}(1-y)e^{y^2}\,\mathrm{d}y\\
+&=\int_{0}^{1}ye^{y^2}\,\mathrm{d}y\\
+&=\Big[\frac{1}{2}e^{y^2}\Big]_{0}^{1}=\frac{e-1}{2}
+\end{align*}
+\end{Solution}
+
+\begin{exercise} 设 $\varphi(x)=\int_0^xe^{-t^2}\dif t$ 证明:  \[I=\int_0^{+\infty}\Big[\frac{\sqrt{\pi}}{2}-\varphi(t)\Big]\dif t\]\end{exercise}
+\begin{Solution}
+\begin{align*}
+\int_0^{+\infty}\Big[\frac{\sqrt{\pi}}{2}-\varphi(t)\Big]\dif t&=
+\lim_{x\to+\infty}\int_0^{+\infty}\left(\frac{\sqrt{\pi}}{2}-\int_0^xe^{-t^2}\dif t\right)\dif u\\
+&=\lim_{x\to+\infty}\int_0^{+\infty}\left(\int_0^{+\infty}e^{-t^2}\dif t-\int_0^xe^{-t^2}\dif t\right)\dif u\\
+&=
+\lim_{x\to+\infty}\int_0^{+\infty}\left(\int_x^{+\infty}e^{-t^2}\dif t\right)\dif u\\
+&=\lim_{x\to+\infty}\int_0^{+\infty}e^{-t^2}\dif t\int_0^{t}\dif u\\
+\smash{\raisebox{-3ex}{\includegraphics[width=0.3\textwidth]{huanxu1}}}&=\frac{1}{2}
+\end{align*}
+\end{Solution}
+
+\begin{exercise}
+求极限\[\lim_{y\to+\infty}\left(\frac{\sqrt{\pi}}{2}y-\int_0^y\dif x\int_0^xe^{-u^2}\dif u\right)\]
+\end{exercise}\begin{solution}
+\begin{align*}
+&\lim_{y\to+\infty}\left(\frac{\sqrt{\pi}}{2}y-\int_0^y\dif x\int_0^xe^{-u^2}\dif u\right)\\
+=&\lim_{y\to+\infty}\left(\frac{\sqrt{\pi}}{2}y-\int_0^ye^{-u^2}(y-u)\dif u\right)\\
+=&\lim_{y\to+\infty}\left(\frac{\sqrt{\pi}}{2}y-y\int_0^ye^{-u^2}\dif u+\int_0^yue^{-u^2}\dif u\right)\\
+=&\lim_{y\to+\infty}\left(y\left(\frac{\sqrt{\pi}}{2}-\int_0^ye^{-u^2}\dif u\right)+\frac{1-e^{-y^2}}{2}\right)\\
+=&\lim_{y\to+\infty}y\left(\frac{\sqrt{\pi}}{2}-\int_0^ye^{-u^2}\dif u\right)+\lim_{y\to+\infty}\frac{1-e^{-y^2}}{2}\\
+=&0+\frac{1-0}{2}=\frac{1}{2}
+\end{align*}	
+\end{solution}
+
+\begin{example}
+求 $\iint_D\sgn(xy-1)\dif x\dif y$, 其中 $D=\{(x,y)|0\leqslant x\leqslant2, 0\leqslant y\leqslant2\}$	
+\end{example}\begin{Solution}
+{\begin{wrapfigure}{r}{0.45\textwidth}\vspace*{-2em}\includegraphics[width=0.35\textwidth,clip]{2011nomathyusai1-3}\end{wrapfigure}
+	设$D_1=\left\{(x,y)\bigg|0\leqslant x\leqslant\frac{1}{2}, 0\leqslant y\leqslant2\right\}$\, \\
+	$D_2=\left\{(x,y)\bigg|\frac{1}{2}\leqslant x\leqslant2, 0\leqslant y\leqslant\frac{1}{x}\right\}$\\
+	$D_3=\left\{(x,y)\bigg|\frac{1}{2}\leqslant x\leqslant2, \frac{1}{x}\leqslant y\leqslant2\right\}$\\
+	$\iint_{D_1\cup D_2}\dif \dif y=2\times\frac{1}{2}+\int_{\frac{1}{2}}^2\frac{1}{x}\dif x=1+2\ln2$}\\
+$\iint_{D_3}\dif \dif y=\left(2-\frac{1}{2}\right)\times2-\iint_{D_2}\dif \dif y=3-2\ln2$\\
+$\iint_D\sgn(xy-1)\dif x\dif y=\iint_{D_3}\dif \dif y-\iint_{D_1\cup D_2}\dif \dif y=2-4\ln2$
+\end{Solution}
+
+\begin{exercise} 证明 \begin{equation*}I=\int_{0}^{1}\dif x\!\int_{0}^{1}(xy)^{xy}\dif y=\int_{0}^{1}y^y\dif y=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^n}\end{equation*}\end{exercise}
+\begin{Solution} 
+令~$xy=t$~,我们有(注意~$xy=0$~时给定~$\displaystyle{xy}^{xy}=1$)
+\begin{align*}I=&\int_{0}^{1}\dif y\!\int_{0}^{1}(xy)^{xy}\dif x=\int_{0}^{1}\frac{\dif y}{y}\!\int_{0}^{1}(xy)^{xy}d(xy)\\
+=&\int_{0}^{1}\frac{\dif y}{y}\!\int_{0}^{y}t^t\dif t=\int_{0}^{1}\biggl(\int_{0}^{y}t^t\dif t\biggl)d\ln y\\
+=&\ln y\cdot\int_{0}^{y}t^t\dif t\biggl|_{0}^{1}-\int_{0}^{1}y^y\ln y\dif y=-\int_{0}^{1}y^y\ln y\dif y
+\end{align*}
+注意到\[\int_{0}^{1}y^y(1+\ln y)\dif y=\int_{0}^{1}d(y^y)=\Big[y^y\Big]_{0}^{1}=\lim_{x\to 1^-}y^y-\lim_{x\to 0^+}y^y=1-1=0\]
+故\[I=\int_{0}^{1}\dif x\!\int_{0}^{1}(xy)^{xy}\dif y=\int_{0}^{1}y^y(1+\ln y)\dif y-\int_{0}^{1}y^y\ln y\dif y=\int_{0}^{1}y^y\dif y\]
+进一步\[\int_0^1 {{y^y}} \dif y = \int_0^1 {{e^{y\ln y}}} \dif x = \int_0^1 {\sum\limits_{n = 0}^\infty  {\frac{{{{\left( {y\ln y} \right)}^n}}}{{n!}}} } \dif y = \sum\limits_{n = 0}^\infty  {\int_0^1 {\frac{{{{\left( {y\ln y} \right)}^n}}}{{n!}}\dif y} } \]
+因为\begin{align*}
+\int_0^1 {{\left( {y\ln y} \right)}^n}\dif y &= \int_0^1 {\frac{{{{\ln }^n}y}}{{n + 1}}d{y^{n + 1}}}\\
+&= \left[ {\frac{{{y^{n + 1}}}}{{n + 1}}{{\ln }^n}y} \right]_0^1 - \int_0^1 \frac{n}{{n + 1}}{y^n}{{\ln }^{n - 1}}y\dif y \\
+&=  - \frac{n}{{{{\left( {n + 1} \right)}^2}}}\int_0^1 {{{\ln }^{n - 1}}yd{y^{n + 1}}} \\
+& = \left[ { - \frac{n}{{{{\left( {n + 1} \right)}^2}}}{y^{n + 1}}{{\ln }^{n - 1}}y} \right]_0^1 + \int_0^1 {\frac{{n\left( {n - 1} \right)}}{{{{\left( {n + 1} \right)}^2}}}} {y^n}{\ln ^{n - 2}}y\dif y \\
+&=  \cdots  = \frac{{{{\left( { - 1} \right)}^n}n!}}{{{{\left( {n + 1} \right)}^{n + 1}}}}
+\end{align*}
+所以\[\int_0^1 {{y^y}} \dif y = \sum\limits_{n = 0}^\infty  {\int_0^1 {\frac{{{{\left( {y\ln y} \right)}^n}}}{{n!}}\dif y} }  = \sum\limits_{n = 0}^\infty  {\frac{{{{\left( { - 1} \right)}^n}}}{{{{\left( {n + 1} \right)}^{n + 1}}}}} =\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^n}\approx0.783430\cdots\]
+所以\[ I=\int_{0}^{1}\dif x\!\!\int_{0}^{1}(xy)^{xy}\dif y=\int_{0}^{1}y^y\dif y=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^n}\]	
+\end{Solution}
+
+\begin{exercise} 计算积分$\displaystyle \iint\limits_{D}(x+y)\mathrm{d}x\mathrm{d}y$其中$D$是由$x^2+y^2\leqslant2$和$x^2+y^2\geqslant 2x$所围成的区域 \end{exercise}
+\begin{Solution} 
+\begin{align*}
+\iint\limits_{D}(x+y)\mathrm{d}x\mathrm{d}y&=\iint\limits_{D}x\mathrm{d}x\mathrm{d}y+\iint\limits_{D}y\mathrm{d}x\mathrm{d}y=2\iint\limits_{D_1}x\mathrm{d}x\mathrm{d}y+0\\
+&=2\iint\limits_{D_{11}}x\mathrm{d}x\mathrm{d}y+2\iint\limits_{D_{12}}x\mathrm{d}x\mathrm{d}y\\
+&=2\int_{\frac{\pi}{2}}^{\pi}\mathrm{d}\theta\!\int_{0}^{\sqrt{2}}{\rho}^2\cos \theta\mathrm{d}\rho+2\int_{0}^{1}\dif x\!\int_{\sqrt{2x-x^2}}^{\sqrt{2-x^2}}x\dif y\\
+&=2\int_{\frac{\pi}{2}}^{\pi}\biggl [\frac{1}{3}{\rho}^3\cos\theta\biggl ]_{0}^{\sqrt{2}}\mathrm{d}\theta+2\int_{0}^{1}x\sqrt{2-x^2}\mathrm{d}x-2\int_{0}^{1}x\sqrt{2x-x^2}\mathrm{d}x\\
+&=\frac{4\sqrt{2}}{3}\int_{\frac{\pi}{2}}^{\pi}\cos\theta \mathrm{d}\theta+\biggl [-\frac{2}{3}\sqrt{(2-x^2)^3}\biggl ]_{0}^{1}\\
+&\phantom{=\,}+\int_{0}^{1}(2-2x)\sqrt{2x-x^2}\mathrm{d}x-2\int_0^1\sqrt{1-(x-1)^2}\mathrm{d}x\\
+&=\frac{4\sqrt{2}}{3}\biggl[\sin\theta\biggl]_{\frac{\pi}{2}}^{\pi}-\frac{2}{3}+\frac{4\sqrt{2}}{3}+\biggl[\frac{2}{3}\sqrt{(2x-x^2)^3}\biggl]_0^1-2\times\frac{\pi}{4}\\
+&=-\frac{\pi}{2}
+\end{align*}
+\end{Solution}	
+
+\begin{exercise} 计算积分$\displaystyle \iint\limits_{D}(x+y)\mathrm{d}\sigma$其中$D$是由$y=x^2$，$y=4x^2$，$y=1$所围成\end{exercise}
+\begin{Solution} 区域$D$如图
+\begin{align*}\iint\limits_{D}(x+y)\,\mathrm{d}\sigma&=\iint\limits_{D}x\,\mathrm{d}\sigma+\iint\limits_{D}y\,\mathrm{d}\sigma\\
+&=0+2\int_{0}^{1}\mathrm{d}y\!\int_{\frac{\sqrt{y}}{2}}^{\sqrt{y}}y\,\mathrm{d}x\hspace{10cm}\\
+&=2\int_{0}^{1}\Big[xy\Big]_{\frac{\sqrt{y}}{2}}^{\sqrt{y}}\mathrm{d}y\\
+&=\int_{0}^{1}y^{\frac{3}{2}}\mathrm{d}y=\biggl[\frac{2}{5}y^{\frac{5}{2}}\biggl]_{0}^{1}=\frac{2}{5}\\[-1cm]
+\end{align*}
+\begin{flushright}
+	\vspace{-6cm}\hspace{-1cm}
+	\pgfplotsset{width=7cm,compat=1.13}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend pos=south east,
+	y=2cm, x=2cm,
+	xlabel={$x$}, ylabel={$y$},
+	xmin=-1.7, xmax=2.7,
+	ymin=-0.4, ymax=1.8,
+	xtick={-1,-0.5,0,0.5,1,1.5}, 
+	ytick={0,1},
+	xticklabels={$-1$,$-\frac{1}{2}$,0,$\frac{1}{2}$,1,1.5}, yticklabels={0,1},
+	line width=1pt,
+	axis lines=center,
+	legend pos=north east]
+	legend style={at={(0.8,0.63)},anchor=north west},
+	nodes near coords%,enlargelimits=0.2
+	]
+	\addplot[smooth,cyan,domain=-1.2:1.2,name path={A}] {x^2};%magenta品红
+	\addplot[smooth,green,domain=-0.6:0.6,name path={B}] {4*x^2};
+	\addplot[smooth,magenta,domain=-1.3:1.3,name path={C}] {1};
+	\legend{$y = x^2$,$y=4x^2$,$y= 1$}
+	\addplot[blue!20] fill between[of=A and B,soft clip={domain=-0.5:0.5}];
+	\addplot[blue!20] fill between[of=A and C,soft clip={domain=-1:-0.5}];
+	\addplot[blue!20] fill between[of=A and C,soft clip={domain=0.5:1}];
+	\addplot[style=dashed,smooth,black,name path={S0}] coordinates{(-0.5,0)(-0.5,1.3)};
+	\addplot[style=dashed,smooth,black,name path={S1}] coordinates{(0.5,0)(0.5,1.3)};
+	\addplot[style=dashed,smooth,black,name path={S3}] coordinates{(-1,0)(-1,1.3)};
+	\addplot[style=dashed,smooth,black,name path={S4}] coordinates{(1,0)(1,1.3)};
+	\end{axis}\end{tikzpicture}\end{flushright}\hspace{5cm}\end{Solution}
+
+\begin{Solution} \begin{align*}\iint\limits_{D}(x+y)\,\mathrm{d}\sigma&=\int_{0}^{1}\mathrm{d}y\!\int_{-\sqrt{y}}^{-\frac{\sqrt{y}}{2}}(x+y)\,\mathrm{d}x+\int_{0}^{1}\mathrm{d}y\!\int_{\frac{\sqrt{y}}{2}}^{\sqrt{y}}(x+y)\,\mathrm{d}x\\
+&=\int_{0}^{1}\biggl[\frac{1}{2}x^2+xy\biggl]_{-\sqrt{y}}^{-\frac{\sqrt{y}}{2}}\mathrm{d}y+\int_{0}^{1}\biggl[\frac{1}{2}x^2+xy\biggl]_{\frac{\sqrt{y}}{2}}^{\sqrt{y}}\mathrm{d}y\\
+&=\int_{0}^{1}\left(\frac{1}{2}y^{\frac{3}{2}}-\frac{3}{8}y\right)\mathrm{d}y+\int_{0}^{1}\left(\frac{1}{2}y^{\frac{3}{2}}+\frac{3}{8}y\right)\mathrm{d}y\\
+&=\int_{0}^{1}y^{\frac{3}{2}}\mathrm{d}y=\biggl[\frac{2}{5}y^{\frac{5}{2}}\biggl]_{0}^{1}=\frac{2}{5}\\
+\end{align*}
+\end{Solution}
+
+\begin{exercise}
+计算二重积分 $\iint\limits_{x^2+y^2\leqslant R^2}e^x\cos y\dif x\dif y$.
+\end{exercise}\begin{Solution}
+令\[f(r)=\int_0^{2\pi}e^{r\cos\theta}\cos(r\sin\theta)d\theta,0\leqslant r\leqslant R,\]
+则施行极坐标变换后得到
+\[\iint\limits_{x^2+y^2\leqslant R^2}e^x\cos y\dif x\dif y=\int_0^Rrf(r)dr.\]
+先证\[f(r)\equiv f(0)=2\pi.\]
+事实上,\begin{align*}
+f'(r)&=\int_0^{2\pi}e^{r\cos\theta}[\cos\theta \cos(r\sin\theta) -\sin\theta \sin (r\sin\theta)]d\theta\\
+&=\frac{1}{r}\left(e^{r\cos\theta}\sin(r\sin\theta)\right)\Big|_0^{2\pi}\equiv 0.
+\end{align*}
+故 $f(r)\equiv f(0)=2\pi$. 因此
+\[\iint\limits_{x^2+y^2\leqslant R^2}e^x\cos y\dif x\dif y=\int_0^Rrf(r)dr=\int_0^R2\pi rdr=\pi R^2.\]
+\end{Solution}\begin{Solution}
+由于\[\iint\limits_{x^2+y^2\leqslant R^2}e^x\sin y\dif x\dif y=\int_{-R}^Re^x\dif x\int_{-\sqrt{R^2-x^2}}^{\sqrt{R^2-x^2}}\sin y\dif y=0,\]
+故\[\begin{split}\iint\limits_{x^2+y^2\leqslant R^2}e^x\cos y\dif x\dif y&=\iint\limits_{x^2+y^2\leqslant R^2}e^x(\cos y+i\sin 
+y)\dif x\dif y\\ 
+&=\iint\limits_{x^2+y^2\leqslant R^2}e^{x+iy}\dif x\dif y\\ 
+&=\sum_{n=0}^\infty\frac{1}{n!}\iint\limits_{x^2+y^2\leqslant 
+	R^2}(x+iy)^n\dif x\dif y\\ 
+&=\sum_{n=0}^\infty\frac{1}{n!}\int_0^R 
+r^{n+1}dr\int_0^{2\pi}e^{in\theta}d\theta\\ 
+&=\int_0^R2\pi rdr\\ 
+&=\pi R^2,\end{split}\]
+其中用到极坐标变换, 函数项级数一致收敛从而可以逐项积分和如下事实:
+\[\int_0^{2\pi}e^{in\theta}d\theta=\int_0^{2\pi}(\cos n\theta +i\sin n\theta)d\theta=\begin{cases}2\pi,&n=0,\\ 
+0,& n\geqslant 1.\end{cases}\]
+\end{Solution}
+
+\section{特殊函数}
+
+\begin{newthem}
+设~$\displaystyle \varphi(n)$~是欧拉函数，且~$f$~是连续函数，求证\[\lim_{n\to+\infty}\frac{1}{n^2}\sum_{k=1}^{n}f\left(\frac{k}{n}\right)\varphi(k)=\frac{6}{{\pi}^2}\int_{0}^{1}xf(x)\dif x\]
+实际上这个结果利用~\[\lim_{n\to+\infty}\frac{1}{n^2}\sum_{k=1}^{n}\varphi(k)=\frac{3}{{\pi}^2}~\mbox{和}~
+\lim_{n\to+\infty}\frac{1}{n^\alpha}\sum_{k=1}^{n}f\left(\frac{k}{n}\right)a_{k}=A\int_{0}^{1}ax^{a-1}f(x)\dif x\]
+其中~$\displaystyle A=\lim_{n\to+\infty}\sum_{k=1}^{n}\frac{a_{k}}{n},a_i>0,a>0$~拼一起	
+\end{newthem}
+
+\begin{exercise}求极限 $\lim_{s \to 0^+} \zeta(s)$
+\end{exercise}\begin{Solution}
+\begin{align*}
+\zeta(0) & =\lim_{s \to 0^+} \zeta(s) \\
+& =\lim_{s \to 0^+} 2^s \pi^{s-1} \sin \frac{\pi s}{2} \Gamma(1-s) \zeta(1-s) \\
+& =\lim_{s \to 0^+} 2^s \pi^{s-1} \left( \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{\pi s}{2} \right)^{2n+1} \right) \Gamma(1-s) \left( \frac{1}{(1-s)-1}+1-(1-s) \int_1^{\infty} \frac{x-[x]}{x^{(1-s)+1}} \, \dif x \right) \\
+& =\lim_{s \to 0^+} 2^s \pi^{s-1} \left( \frac{\pi s}{2} \right) \left( \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{\pi s}{2} \right)^{2n} \right) \Gamma(1-s) \left( \frac{1}{-s}+1-(1-s) \int_1^{\infty} \frac{x-[x]}{x^{2-s}} \, \dif x \right) \\
+& =\lim_{s \to 0^+} 2^s \pi^{s-1} \left( \frac{\pi}{2} \right) \left( 1+\sum_{n=1}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{\pi s}{2} \right)^{2n} \right) \Gamma(1-s) s \left( \frac{-1}{s}+1-(1-s) \int_1^{\infty} \frac{x-[x]}{x^{2-s}} \, \dif x \right) \\
+& =\lim_{s \to 0^+} 2^{s-1} \pi^s \left( 1+\sum_{n=1}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{\pi s}{2} \right)^{2n} \right) \Gamma(1-s) \left( -1+s-s(1-s) \int_1^{\infty} \frac{x-[x]}{x^{2-s}} \, \dif x \right) \\
+& =\left( \lim_{s \to 0^+} 2^{s-1} \pi^s \Gamma(1-s) \left( -1+s-s(1-s) \int_1^{\infty} \frac{x-[x]}{x^{2-s}} \, \dif x \right) \right) \left( \lim_{s \to 0^+} 1+\sum_{n=1}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{\pi s}{2} \right)^{2n} \right) \\
+& =\left( 2^{0-1} \pi^0 \Gamma(1-0) \left( -1+0-0(1-0) \int_1^{\infty} \frac{x-[x]}{x^{2-0}} \, \dif x \right) \right) \left(1+\sum_{n=1}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{\pi \cdot 0}{2} \right)^{2n} \right) \\
+& =\left( \frac{1}{2} \cdot 1 \cdot \Gamma(1) \cdot (-1+0-0) \right) \left( 1+\sum_{n=1}^{\infty} 0 \right) \\
+& =\frac{-1}{2}
+\end{align*}	
+\end{Solution}
+
+\begin{example}
+计算积分:~$\displaystyle\int_{\rm{0}}^{\rm{1}} \ln (1 - x)\ln x\ln (1 + x) \textrm{d}x$
+\end{example}\begin{Solution}
+\begin{align*}
+I=&\int_{\rm{0}}^{\rm{1}} {\ln (1 - x)\ln x\ln (1 + x)\dif x} \\
+=& \int_{\rm{0}}^{\rm{1}} {\ln (1 - x)\ln (1 + x)d(x\ln x - x + 1)} \\
+=& \int_{\rm{0}}^{\rm{1}} {(x\ln x - x + 1)\left[ {\frac{{\ln (1 + x)}}{{1 - x}} - \frac{{\ln (1 - x)}}{{1 + x}}} \right]} \dif x\\
+=& 2\int_{\rm{0}}^{\rm{1}} {(x\ln x - x + 1)\left[ {\sum\limits_{n = 0}^\infty  {({H_{2n + 1}} - {H_n}){x^{2n + 1}}} } \right]} \dif x\hspace{10mm}({H_0} = 0)\\
+=& 2\sum\limits_{n = 0}^\infty  {({H_{2n + 1}} - {H_n})\int_0^1 {(x\ln x - x + 1){x^{2n + 1}}\dif x} } \\
+=& 2\sum\limits_{n = 0}^\infty  {\frac{{{H_{2n + 1}} - {H_n}}}{{(2n + 3)(2n + 2)}}}  - 2\sum\limits_{n = 0}^\infty  {\frac{{{H_{2n + 1}} - {H_n}}}{{{{(2n + 3)}^2}}}} \\
+=& \frac{{{\pi ^2}}}{6} - {\ln ^2}2 - 2 + 2\ln 2 - 2\left[ {\frac{{7\zeta (3)}}{{16}} + 2 - \ln 2 - \frac{{{\pi ^2}}}{8} - \sum\limits_{n = 1}^\infty  {\frac{{{H_n}}}{{{{(2n + 1)}^2}}}} } \right]\\
+=& \frac{{5{\pi ^2}}}{{12}} - {\ln ^2}2 - 6 + 4\ln 2 + \frac{{21\zeta (3)}}{8} - \frac{{{\pi ^2}\ln 2}}{2}
+\end{align*}
+\end{Solution}\begin{note}
+\[2\sum_{k=1}^{\infty}\frac{H_k}{(k+1)^m}=m\zeta(m+1)-\sum_{k=1}^{m-2}\zeta(m-k)\zeta(k+1)\]
+\end{note}
+
+\begin{exercise}计算积分\[I=\int_0^1 \ln (1 + x)\ln (1 - x) \textrm{d}x\]\end{exercise}\begin{Solution}因为\[\ln (1 + x)\ln (1 - x) = \sum\limits_{n = 1}^\infty  {\frac{{{H_n} - {H_{2n}} - \frac{1}{{2n}}}}{n}{x^{2n}}} \]
+所以\[\int_0^1 {\ln (1 + x)\ln (1 - x)} \dif x = \sum\limits_{n = 1}^\infty  {\frac{{{H_n} - {H_{2n}}}}{{n(2n + 1)}}}  - \frac{1}{2}\sum\limits_{n = 1}^\infty  {\frac{1}{{{n^2}(2n + 1)}}} \]
+Since\begin{align*}
+I &= \int_0^1 {\ln (2 - x)\ln x} \dif x\\
+& =  - \int_0^1 {x[\frac{{\ln (2 - x)}}{x} - \frac{{\ln x}}{{2 - x}}]} \dif x\\
+&= 1 - 2\ln 2 + \int_0^1 {\frac{{x\ln x}}{{2 - x}}} \dif x\\
+& = 1 - 2\ln 2 + 2\int_0^{\frac{1}{2}} {\frac{{(2x)\ln (2x)}}{{2 - 2x}}} \dif x\\
+& = 1 - 3\ln 2 + 2{\ln ^2}2 + 2\int_0^{\frac{1}{2}} {\frac{{x\ln x}}{{1 - x}}} \dif x\\
+&= 1 - 3\ln 2 + 2{\ln ^2}2 + 2\sum\limits_{k = 0}^\infty  {\int_0^{\frac{1}{2}} {{x^{k + 1}}\ln x} } \dif x\\
+&= 1 - 3\ln 2 + 2{\ln ^2}2 - \sum\limits_{k = 0}^\infty  {\frac{{\ln 2}}{{(k + 2){2^{k + 1}}}} + \frac{1}{{{{(k + 2)}^2}{2^{k + 1}}}}} \dif x\\
+&= 1 - 3\ln 2 + 2{\ln ^2}2 - \ln 2[2\ln 2 - 1] - \frac{{{\pi ^2}}}{6} + {\ln ^2}2 + 1\hspace{10mm}{\rm{        The~ value~ of ~ L}}{{\rm{i}}_2}(\frac{1}{2})\\
+& = 2 - \frac{{{\pi ^2}}}{6} - 2\ln 2 + {\ln ^2}2
+\end{align*}
+and \[\sum\limits_{n = 1}^\infty  {\frac{1}{{{n^2}(2n + 1)}}}  = \frac{{{\pi ^2}}}{6} + 4\ln 2 - 4\]
+所以\[\sum\limits_{n = 1}^\infty  {\frac{{{H_{2n}} - {H_n}}}{{n(2n + 1)}}}  = \frac{{{\pi ^2}}}{{12}} - {\ln ^2}2\]\end{Solution}		
+
+\begin{exercise}计算积分:\[\int_{0}^{1}\frac{\ln^2(1-x)\ln x}{x}\dif x\]
+\end{exercise}\begin{Solution}方法1
+\begin{align*}
+\int_{0}^{1}\frac{\ln^2(1-x)\ln x}{x}\dif x=&\int_{0}^{1}\ln(1-x)\ln xd\textrm{Li}_2(x)\\
+=&\int_{0}^{1}\textrm{Li}_2(x)\frac{\ln(1-x)}{x}\dif x-\int_{0}^{1}\textrm{Li}_2(x)\frac{\ln x}{1-x}\dif x\\
+=&-\frac{1}{2}\textrm{Li}_{2}^{2}(1)-\int_{0}^{1}\frac{\ln x}{1-x}\sum_{n=1}^{\infty}\frac{x^n}{n^2}\dif x\\
+=&-\frac{1}{2}\textrm{Li}_{2}^{2}(1)+\sum_{n=1}^{\infty}\frac{1}{n^2}\sum_{k=n+1}^{\infty}\frac{1}{k^2}\\
+=&-\frac{{\pi}^4}{72}+\frac{{\pi}^4}{120}=-\frac{{\pi}^4}{180}
+\end{align*}
+方法2
+\begin{align*}
+\int_{0}^{1}\frac{\ln^2(1-x)\ln x}{x}\dif x&=\frac{1}{2}\ln^2x\ln^2(1-x)\biggl|_{0}^{1}+\int_{0}^{1}\frac{\ln^2x\ln(1-x)}{1-x}\dif x\\
+&=\int_{0}^{1}\sum_{k=1}^{\infty}(-1)^{2k-1}H_kx^k\ln^2x\dif x=\sum_{k=1}^{\infty}(-1)^{2k-1}H_k\int_{0}^{1}x^k\ln^2x\dif x\\
+&=2\sum_{k=1}^{\infty}(-1)^{2k-1}\frac{H_k}{(k+1)^3}\\
+&=2\sum_{k=1}^{\infty}(-1)^{2k-1}\left[\frac{H_{k+1}}{(k+1)^3}-\frac{1}{(k+1)^4}\right]\\
+&=2\sum_{k=1}^{\infty}(-1)^{2k-1}\left[\frac{H_{k}}{k^3}-\frac{1}{k^4}\right]\\
+&=-\frac{{\pi}^4}{36}+\frac{{\pi}^4}{45}=-\frac{{\pi}^4}{180}
+\end{align*}	
+\end{Solution}
+
+\newpage\begin{exercise}计算积分\[\int_{0}^{1}{\frac{\ln{x}}{x^2-x-1}\dif x}\]
+\end{exercise}\begin{Solution}由方程$x^2-x-1=0$的两个根，为了简单起见，我们记\\
+$r_{1}=\varphi=\dfrac{1+\sqrt{5}}{2},r_{2}=\dfrac{1-\sqrt{5}}{2}=1-\varphi$,\\
+且$r_{1}-r_{2}=\sqrt{5},\varphi^{2}=\varphi+1 , \dfrac{\varphi-1}{\varphi}=\dfrac{1}{\varphi^{2}}$
+则有
+\begin{align*} 
+I&=\int_{0}^{1}{\frac{\ln{x}}{x^2-x-1}\dif x}=\frac{1}{r_{1}-r_{2}}\int_{0}^{1}{\ln{x}\left(\frac{1}{x-\varphi}-\frac{1}{x-(1-\varphi)} \right)\dif x}\\ 
+&=\dfrac{1}{\sqrt{5}}\int_{0}^{1}{\ln{x}\left(\frac{1}{x-\varphi}-\frac{\varphi}{\varphi x+1}\right)\dif x}=\dfrac{1}{\sqrt{5}}\int_{0}^{1}{\frac{\ln{x}}{x-\varphi}\dif x}-\frac{\varphi}{\sqrt{5}}\int_{0}^{1}{\frac{\ln{y}}{\varphi y+1}\dif y}\\ 
+&=\frac{1}{\sqrt{5}}\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{\varphi u}}{u-1}\dif u}-\frac{1}{\sqrt{5}}\int_{0}^{\varphi}{\frac{\ln{\frac{u}{\varphi}}}{u+1}\dif u}\\ 
+&=\frac{\ln{\varphi}}{\sqrt{5}}\left(\int_{0}^{\frac{1}{\varphi}}{\frac{1}{u-1}\dif u}+\int_{0}^{\varphi}{\frac{1}{u+1}\dif u} \right)-\frac{1}{\sqrt{5}}\left(\int_{0}^{\varphi}{\frac{\ln{u}}{1+u}\dif u}+\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u} \right)\\ 
+&=\frac{\ln{\varphi}}{\sqrt{5}}\ln{\frac{\varphi^{2}-1}{\varphi}}-\frac{1}{\sqrt{5}}\left(\int_{0}^{\varphi}{\frac{\ln{u}}{1+u}\dif u}+\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u} \right)\\ 
+&=-\frac{1}{\sqrt{5}}\left(\int_{0}^{\varphi}{\frac{\ln{u}}{1+u}\dif u}+\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u} \right)=-\frac{1}{\sqrt{5}}\left(\int_{1}^{1+\varphi}{\frac{\ln{(u-1)}}{u}\dif u}+\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u}  \right)\\ 
+&=-\frac{1}{\sqrt{5}}\left(\int_{1}^{\varphi^{2}}{\frac{\ln{(u-1)}}{u}\dif u}+\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u}  \right)\\ 
+&=-\frac{1}{\sqrt{5}}\left(\int_{\frac{1}{\varphi^{2}}}^{1}{\frac{\ln{(1-u)}-\ln{u}}{u}\dif u}+\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u}  \right)\\ 
+&=-\frac{1}{\sqrt{5}}\left(\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}-\ln{(1-u)}}{u}\dif u}+\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u}  \right)\\ 
+&=-\frac{2}{\sqrt{5}}\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u}+\frac{1}{\sqrt{5}}\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{(1-u)}}{1-u}\dif u}\\ 
+&=-\frac{2}{\sqrt{5}}\int_{0}^{\frac{1}{\varphi}}{\frac{\ln{u}}{1-u}\dif u}-\frac{2}{\sqrt{5}}\ln^{2}{\varphi}=-\frac{2}{\sqrt{5}}\int_{\frac{1}{\varphi^{2}}}^{1}{\frac{\ln{(1-u)}}{u}\dif u}-\frac{2}{\sqrt{5}}\ln^{2}{\varphi}\\ 
+&=-\frac{2}{\sqrt{5}}\left(\int_{0}^{1}{\frac{\ln{(1-u)}}{u}\dif u}-\int_{0}^{\frac{1}{\varphi^{2}}}{\frac{\ln{(1-u)}}{u}\dif u} \right)-\frac{2}{\sqrt{5}}\ln^{2}{\varphi}\\ 
+&=\frac{\pi^{2}}{3\sqrt{5}}-\frac{2}{\sqrt{5}}\mathrm{Li\,}_{2}{\left(\frac{1}{\varphi^{2}}\right)}-\frac{2}{\sqrt{5}}\ln^{2}{\varphi}\\
+&=\frac{\pi^{2}}{3\sqrt{5}}-\frac{2}{\sqrt{5}}\left(\frac{\pi^{2}}{15}-\ln^{2}{\varphi} 
+\right)-\frac{2}{\sqrt{5}}\ln^{2}{\varphi}=\frac{\pi^{2}}{5\sqrt{5}} 
+\end{align*}
+最后一步用了dilogarithm函数的性质，详细可以参见http://mathworld.wolfram.com/Dilogarithm.html	
+\end{Solution}
+
+\begin{example}
+求定积分 \[\int_0^1\frac{\ln^2(1+x^2)}{1+x^2}\dif x\]
+\end{example}\begin{Solution}(by Renascence\verb|_|5)
+\begin{align*}
+&\int_0^1\frac{\ln^2(1+x^2)}{1+x^2}\dif x\\
+=&\int_0^1\frac{\ln^2(1-y^2)}{1+\mathrm{i}y}\mathrm{i}\dif y-\int_0^{\frac{\pi}{2}}\frac{\ln^2(1+e^{\mathrm{i}2\theta})}{1+e^{\mathrm{i}\theta}}\dif\theta\\
+=&\underbrace{\int_0^1\frac{y\ln^2(1-y^2)}{1+y^2}\dif y}_{I_1}+\underbrace{\frac{1}{2}\int_0^{\frac{\pi}{2}}\tan\left(\frac{\theta}{2}\right)\ln^2(2\cos\theta)\dif\theta}_{I_2}+\underbrace{\int_0^{\frac{\pi}{2}}\theta\ln(2\cos\theta)\dif\theta}_{I_3}-\underbrace{\frac{1}{2}\int_0^{\frac{\pi}{2}}\theta^2\tan\left(\frac{\theta}{2}\right)\dif\theta}_{I_4}
+\end{align*}
+\textbf{Evaluation of} $I_1$：
+\begin{align*}
+I_1&=\frac{1}{2}\int_0^1\frac{\ln^2(1-y)}{1+y}\dif y=\frac{1}{4}\int_0^1\frac{\ln^2y}{1-y/2}\dif y\\
+&=\frac{1}{4}\sum_{n=0}^{\infty}\frac{1}{2^n}\int_0^1y^2\ln^2y\dif y=\sum_{n=0}^{\infty}\frac{1}{2^{n+1}(n+1)^3}\\
+&=\Li_3\left(\frac{1}{2}\right)=\frac{7}{8}\zeta(3)-\frac{\pi^2}{12}\ln2+\frac{1}{6}\ln^32
+\end{align*}
+\textbf{Evaluation of} $I_2$：
+\begin{align*}
+I_2&=\int_0^1\frac{x}{1+x^2}\ln^2\left(2\frac{1-x^2}{1+x^2}\right)\dif x\\
+&=\frac{1}{2}\int_0^1\frac{1}{1+x}\ln^2\left(2\frac{1-x}{1+x}\right)\dif x\\
+&=\frac{1}{2}\int_0^1\frac{\ln^2x}{1+x}\dif x+\ln2\int_0^1\frac{\ln x}{1+x}\dif x+\frac{1}{2}\ln^22\int_0^1\frac{1}{1+x}\dif x\\
+&=\frac{1}{2}\sum_{n=0}^{\infty}(-1)^n\int_0^1x^n\ln^2x\dif x+\ln2\sum_{n=0}^{\infty}(-1)^n\int_0^1x^n\ln x\dif x+\frac{1}{2}\ln^32\\
+&=\sum_{n=0}^{\infty}\frac{(-1)^n}{(n+1)^3}-\ln2\sum_{n=0}^{\infty}\frac{(-1)^n}{(n+1)^2}+\frac{1}{2}\ln^32\\
+&=\frac{3}{4}\zeta(3)-\frac{\pi^2}{12}\ln2+\frac{1}{2}\ln^32
+\end{align*}
+\textbf{Evaluation of} $I_3$：
+\begin{align*}
+I_3&=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}\int_0^{\frac{\pi}{2}}\theta\cos(2n\theta)\dif\theta\\
+&=-\frac{1}{4}\sum_{n=1}^{\infty}\frac{1}{n^3}-\frac{1}{4}\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^3}\\
+&=-\frac{7}{16}\zeta(3)
+\end{align*}
+\textbf{Evaluation of} $I_4$：
+\begin{align*}
+I_4&=\left[\theta^2\ln\left(\cos\frac{\theta}{2}\right)\right]_0^{\frac{\pi}{2}}-2\int_0^{\frac{\pi}{2}}\theta\ln\left(\cos\frac{\theta}{2}\right)\dif\theta\\\
+&=-\frac{\pi^2}{8}\ln2+2\ln2\int_0^{\frac{\pi}{2}}\theta\dif\theta-2\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}\int_0^{\frac{\pi}{2}}\theta\cos(n\theta)\dif\theta\\
+&=\frac{\pi^2}{8}\ln2+2\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^3}-\pi\sum_{n=1}^{\infty}\frac{(-1)^{n-1}\sin(n\pi/2)}{n^2}-2\sum_{n=1}^{\infty}\frac{(-1)^{n-1}\cos(n\pi/2)}{n^2}\\
+&=\frac{21}{16}\zeta(3)-\pi\mathrm{\mathbf{G}}+\frac{\pi^2}{8}\ln2
+\end{align*}
+\textbf{Result}：
+\begin{align*}
+\color{blue}\int_0^1\frac{\ln^2(1+x^2)}{1+x^2}\dif x
+&=\left(\frac{7}{8}+\frac{3}{4}-\frac{7}{16}+\frac{21}{16}\right)\zeta(3)-\pi\mathrm{\mathbf{G}}+\left(-\frac{\pi^2}{12}-\frac{\pi^2}{12}+\frac{\pi^2}{8}\right)\ln2+\left(\frac{1}{6}+\frac{1}{2}\right)\ln^32\\
+&=\color{blue}\frac{5}{2}\zeta(3)-\pi\mathrm{\mathbf{G}}-\frac{\pi^2}{24}\ln2+\frac{2}{3}\ln^32
+\end{align*}
+\end{Solution}
+
+\section{积分不等式}
+
+\begin{example}
+证明\[\int_0^{\frac{\pi}{2}}\big(e^{\sin x}-e^{-\cos x}\big)\dif x\geqslant2\]
+\end{example}\begin{newproof}
+\[e^{\sin x}=1+\sin x+\frac{\sin^2x}{2!}+\cdots\]
+\[e^{-\sin x}=1-\sin x+\frac{\sin^2x}{2!}+\cdots\]
+所以\[e^{\sin x}-e^{-\sin x}=2\sin x+2\cdot\frac{\sin^3x}{3!}+\cdots\geqslant2\sin x\]
+因此
+\begin{align*}
+\int_0^{\frac{\pi}{2}}\big(e^{\sin x}-e^{-\cos x}\big)\dif x
+&=\int_0^{\frac{\pi}{2}}e^{\sin x}\dif x-\int_0^{\frac{\pi}{2}}e^{-\cos x}\dif x\\
+&=\int_0^{\frac{\pi}{2}}e^{\sin x}\dif x-\int_0^{\frac{\pi}{2}}e^{-\sin x}\dif x\\
+&=\int_0^{\frac{\pi}{2}}\big(e^{\sin x}-e^{-\sin x}\big)\dif x\\
+&\geqslant\int_0^{\frac{\pi}{2}}2\sin x=2	
+\end{align*}	
+\end{newproof}
+
+\begin{newthem}
+若 $D=\{(x,y)|\varphi_1(x)\leqslant y\leqslant\varphi_2(x),a\leqslant x\leqslant b\}$, $\varphi_1(x)$, $\varphi_2(x)$ 连续 , 则 $D$ 的面积为\begin{equation*}S_D=\int_{a}^{b}\left[\varphi_2(x)-\varphi_1(x)\right]\,\mathrm{d}x\end{equation*}	
+\end{newthem}
+
+\begin{newthem}
+若 $D=\{(x,y)|\psi_1(y)\leqslant x\leqslant\psi_2(y),c\leqslant y\leqslant d\}$, $\psi_1(y)$, $\psi_2(y)$  连续 , 则 $D$ 的面积为\begin{equation*}S_D=\int_{c}^{d}\left[\psi_2(y)-\psi_1(y)\right]\,\mathrm{d}y\end{equation*}	
+\end{newthem}
+
+
+
+%\begin{newthem}
+%若 $D=\{(\rho,\theta)|\rho_1(\theta)\leqslant \rho\leqslant\rho_2(\theta),\alpha\leqslant \theta\leqslant \beta\}$, $\rho_1(\theta)$, $\rho_2(\theta)$  连续 , 则 $D$ 的面积为\begin{equation*}S_D=\frac{1}{2}\int_{\alpha}^{\beta}\left[\rho_2^2(\theta)-\rho_1^2(\theta)\right]\,\mathrm{d}\theta\end{equation*}这里 $(\rho,\theta)$ 为极坐标。	
+%\end{newthem}
+
+%(2.1) 将由 $x$ 轴, 直线 $x=a$, $x=b$ \,$(a<b)$ , 及连续曲线 $y=f(x)\,(f(x)\geqslant0)$ 所围成的曲边梯形绕 $x$ 轴旋转一周所得到的旋转体的体积 \;\;$V_x=\pi\int_a^bf^2(x)\,\mathrm{d}x$
+
+%(2.2) 将由 $y$ 轴, 直线 $y=c$, $y=d$ \,$(c<d)$ , 及连续曲线 $x=\varphi(y) \,(\varphi(y)\geqslant0)$ 所围成的曲边梯形绕 $y$ 轴旋转一周所得到的旋转体的体积 \;\;$V_y=\pi\int_c^d\varphi^2(y)\,\mathrm{d}y$
+
+\chapter{级数}
+\begin{example}
+求 $\sum_{n=0}^{\infty}\frac{(x-2)^n}{(n+1)3^n}$ 的收敛半径与收敛域	
+\end{example}\begin{Solution}考虑比值审敛法
+\[\lim_{n\to0}\left|\cfrac{\cfrac{(x-2)^{n+1}}{(n+2)3^{n+1}}}{\cfrac{(x-2)^n}{(n+1)3^n}}\right|=\lim_{n\to0}\left|\frac{(x-2)(n+1)}{3(n+2)}\right|=\left|\frac{x-2}{3}\right|\]
+则当 $\left|\frac{x-2}{3}\right|<1$ 时，即 $-1<x<5$ 时，级数收敛；\\
+\par\setlength{\parindent}{1em}当 $\left|\frac{x-2}{3}\right|>1$ 时，即 $-1>x$ 或 $x<5$ 时，级数发散；{\color{red}收敛半径 $R=3$}\\
+且当  $x=1$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{(-1)^n}{n+1}$，由莱布尼茨判别法知收敛；\\
+\par 当  $x=5$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{1}{n+1}$，显然发散；
+因此原级数的{\color{red}收敛域为 $[-1,5)$}	
+\end{Solution}
+
+\begin{example}
+求 $\sum_{n=0}^{\infty}\frac{(x-3)^n}{n^2+1}$ 的收敛半径与收敛域	
+\end{example}\begin{Solution}考虑比值审敛法
+\[\lim_{n\to0}\left|\cfrac{\cfrac{(x-3)^{n+1}}{(n+1)^2+1}}{\cfrac{(x-3)^n}{n^2+1}}\right|=|x-3|\]
+则当 $|x-3|<1$ 时，即 $2<x<4$ 时，级数收敛；
+\par\setlength{\parindent}{1em}当 $\left|x-3\right|>1$ 时，即 $2>x$ 或 $x<4$ 时，级数发散；{\color{red}收敛半径 $R=1$}\\
+且当  $x=2$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{(-1)^n}{n^2+1}$，收敛；\\
+\par 当  $x=4$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{1}{n^2+1}$，收敛；
+因此原级数的{\color{red}收敛域为 $[2,4]$}	
+\end{Solution}
+
+\begin{example}
+求 $\sum_{n=0}^{\infty}\frac{x^n}{n^2+1}$ 的收敛半径与收敛域
+\end{example}\begin{Solution}因为
+\[\rho=\lim_{n\to0}\left|\frac{a_{n+1}}{a_n}\right|=\lim_{n\to0}\left|\cfrac{\cfrac{1}{(n+1)^2+1}}{\cfrac{1}{n^2+1}}\right|=1\]
+所以{\color{red}收敛半径 $R=\frac{1}{\rho}=1$}\\
+且当  $x=-1$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{(-1)^n}{n^2+1}$，收敛；\\
+\par\setlength{\parindent}{1em}当  $x=1$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{1}{n^2+1}$，收敛；
+因此原级数的{\color{red}收敛域为 $[-1,1]$}	
+\end{Solution}
+
+\begin{example}
+求 $\sum_{n=0}^{\infty}\frac{1}{2n+1}x^{2n+1}$ 的收敛域与和函数
+\end{example}\begin{Solution}先求收敛域，考虑比值审敛法
+\[\lim_{n\to0}\left|\cfrac{\cfrac{1}{2(n+1)+1}x^{2(n+1)+1}}{\cfrac{1}{2n+1}x^{2n+1}}\right|=\lim_{n\to0}\left|\frac{2n+1}{2n+3}x^2\right|=\left|x\right|^2\]
+则当 $\left|x\right|^2<1$ 时，即 $-1<x<1$ 时，级数收敛；\\
+\par\setlength{\parindent}{1em}当 $\left|x\right|^2>1$ 时，即 $-1>x$ 或 $x<1$ 时，级数发散；{\color{blue}收敛半径 $R=1$}\\
+且当  $x=-1$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}$，由莱布尼茨判别法知收敛；\\
+\par 当  $x=1$ 时，级数成为 $\sum_{n=0}^{\infty}\frac{1}{2n+1}$，显然发散；
+因此原级数的{\color{red}收敛域为 $[-1,1)$}\\
+再求和函数，设和函数为 $s(x)$，即
+\[s(x)=\sum_{n=0}^{\infty}\frac{1}{2n+1}x^{2n+1}\,,\quad x\in[-1,1)\]
+则 \[s'(x)=\sum_{n=0}^{\infty}x^{2n}=\frac{1}{1-x^2}\,,\quad x\in[-1,1)\]
+上式对 $0$ 到 $x$ 积分
+\[s(x)=s(x)-\underbrace{s(0)}\limits_{s(0)=0}=\int_{0}^{x}s'(x)\dif x=\int_{0}^{x}\frac{1}{1-x^2}\dif x=\frac{1}{2}\ln\left|\frac{1+x}{1-x}\right|\,,\quad x\in[-1,1)\]	
+\end{Solution}
+
+\begin{exercise}
+求幂级数~$\sum\limits_{n=1}^\infty\dfrac{(x-1)^n}{n\cdot3^n} $ 的收敛域与和函数~$s(x)$.
+\end{exercise}\begin{Solution}
+令~$t = x-1$, 上述级数变为$\sum\limits_{n=1}^\infty\dfrac{t^n}{n\cdot3^n} $ ,
+因为 $\rho = \lim\limits_{n\rightarrow\infty}\Big| \dfrac{a_{n+1}}{a_{n}}\Big| = \dfrac{1}{3}$, \\
+所以，收敛半径$R=3 $ 收敛区间~$|t|<3$, 即~$-2<x<4$. \\
+当~$x = 4$ 时，级数变为~$\sum\limits_{n=1}^\infty\dfrac{1}{n}$ , 这级数发散，\\
+当~$x = -2$ 时，级数变为~$\sum\limits_{n=1}^\infty\dfrac{(-1)^n}{n}$ , 这级数收敛, 原级数的收敛域为~$[-2,4)$.  \\
+设~$s(x) = \sum\limits_{n=1}^\infty\dfrac{(x-1)^n}{n\cdot3^n}$ , 则
+\[s'(x) = \sum\limits_{n=1}^\infty\left(\dfrac{(x-1)^n}{n\cdot3^n}\right)' = \sum\limits_{n=1}^\infty\dfrac{(x-1)^{n-1}}{3^n} = \dfrac{\frac{1}{3}}{1-\frac{x-1}{3}}=\dfrac{1}{4-x}\]
+又 $s(1) = 0$, 故
+\begin{align*}
+s(x) &= s(1)+\int_1^x s'(t)\dif t = 0 + \int_1^x\dfrac{1}{4-t}\dif t=-\ln(4-t)\Big|_1^x \\
+&= \ln3-\ln(4-x),-2\leqslant x<4.
+\end{align*}
+\end{Solution}
+
+\chapter{不等式}
+
+\begin{exercise}
+证明：\begin{equation*}\begin{vmatrix}
+\int_{0}^{1}x^2\,\mathrm{d}x&\int_{0}^{1}x^3\,\mathrm{d}x &\int_{0}^{1}x^4\,\mathrm{d}x&\int_{0}^{1}xe^x\,\mathrm{d}x\\[4mm]
+\int_{0}^{1}x^3\,\mathrm{d}x&\int_{0}^{1}x^4\,\mathrm{d}x &\int_{0}^{1}x^5\,\mathrm{d}x&\int_{0}^{1}x^2e^x\,\mathrm{d}x\\[4mm]
+\int_{0}^{1}x^4\,\mathrm{d}x&\int_{0}^{1}x^5\,\mathrm{d}x &\int_{0}^{1}x^6\,\mathrm{d}x&\int_{0}^{1}x^3e^x\,\mathrm{d}x\\[4mm]
+\int_{0}^{1}xe^x\,\mathrm{d}x&\int_{0}^{1}x^2e^x\,\mathrm{d}x&\int_{0}^{1}x^3e^x\,\mathrm{d}x&\int_{0}^{1}e^{2x}\,\mathrm{d}x
+\end{vmatrix}<\frac{e^2-1}{210}\end{equation*}					
+\end{exercise}\begin{Solution}
+\end{Solution}
+
+\begin{exercise}
+证明：\begin{equation*}
+\left|\begin{array}{lll}
+\int_{-1}^{1}x^2\,\mathrm{d}x&\int_{-1}^{1}(x^3+2x^3\sin x)\,\mathrm{d}x &\int_{-1}^{1}(x^4+2x^4\sin^2x)\,\mathrm{d}x \\[4mm]
+\int_{-1}^{1}(x^3-2x^3\sin x)\,\mathrm{d}x&\int_{-1}^{1}x^4\,\mathrm{d}x &\int_{-1}^{1}(x^5+2x^5\sin^3x)\,\mathrm{d}x\\[4mm]
+\int_{-1}^{1}(x^4-2x^4\sin^2x)\,\mathrm{d}x&\int_{-1}^{1}(x^5-2x^5\sin^3x)\,\mathrm{d}x&\int_{-1}^{1}x^6\,\mathrm{d}x
+\end{array}\right|>\frac{32}{2625}
+\end{equation*}	
+\end{exercise}\begin{Solution}
+\end{Solution}
+
+\chapter{中值定理}
+
+\begin{exercise}设 $f(x)$ 在 $[0,1]$ 上可微, $f(0)=0,f(1)=1$.\, 三个正数 $\lambda_1,\lambda_2,\lambda_3$ 的和\\
+为1,	证明: $(0,1)$ 内存在三个不同数  $\xi_1,\xi_2,\xi_3$, 使得\[\frac{\lambda_1}{f'(\xi_1)}+\frac{\lambda_2}{f'(\xi_2)}+\frac{\lambda_3}{f'(\xi_3)}=1\]
+\end{exercise}\begin{newproof}
+设 $0<x_1<x_2<1$, 对 $f(x)$ 在区间 $[0,x_1],[x_1,x_2],[x_2,1]$ 上分别使用拉格朗日中值定理可得
+\[f'(\xi_1)=\frac{f(x_1)-f(0)}{x_1-0}=\frac{f(x_1)}{x_1},\quad \xi_1\in(0,x_1)\Longrightarrow\frac{\lambda_1}{f'(\xi_1)}=\frac{\lambda_1x_1}{f(x_1)}\]
+\[f'(\xi_2)=\frac{f(x_2)-f(x_1)}{x_2-x_1},\quad \xi_1\in(x_1,x_2)\Longrightarrow\frac{\lambda_2}{f'(\xi_2)}=\frac{\lambda_2(x_2-x_1)}{f(x_2)-f(x_1)}\]
+\[f'(\xi_3)=\frac{f(1)-f(x_2)}{1-x_2}=\frac{1-f(x_2)}{1-x_2},\quad \xi_1\in(x_2,1)\Longrightarrow\frac{\lambda_3}{f'(\xi_3)}=\frac{\lambda_3(1-x_2)}{1-f(x_2)}\]
+欲使\[\frac{\lambda_1}{f'(\xi_1)}+\frac{\lambda_2}{f'(\xi_2)}+\frac{\lambda_3}{f'(\xi_3)}=1\]
+只需\[f(x_1)=\lambda_1,f(x_2)=\lambda_2-\lambda_1\] 
+又 $f(0)=0,f(1)=1$, 由连续函数的介值定理知,\\
+存在 $x_1\in(0,1)$, 使得 $f(x_1)=\lambda_1$ 和\, 存在 $x_2\in(0,1)$, 使得 $f(x_1)=\lambda_2-\lambda_1$ 
+\end{newproof}
+
+\begin{exercise}设 $f(x)$ 在 $[0,1]$ 上可导且 $f(0)=0,f(1)=1$.\, 且 $f(x)$ 在 $[0,1]$ 上严格递增\\
+证明: $(0,1)$ 内存在 $\xi_i\in(0,1)\;(1\leqslant i\leqslant n)$, 使得\[\frac{1}{f'(\xi_1)}+\cdots+\frac{1}{f'(\xi_n)}=n\]
+\end{exercise}\begin{newproof}
+设 $\xi_i\in(0,1)$, 对 $f(x)$ 在区间 $[0,x_1], [x_2,x_3], \cdots, [x_{n-1},1]$ 上分别使用拉格朗日中值定理可得
+\[f'(\xi_1)=\frac{f(x_1)-f(0)}{x_1-0}=\frac{f(x_1)}{x_1},\quad \xi_1\in(0,x_1)\Longrightarrow\frac{1}{f'(\xi_1)}=\frac{x_1}{f(x_1)}\]
+\[f'(\xi_2)=\frac{f(x_2)-f(x_1)}{x_2-x_1},\quad \xi_1\in(x_1,x_2)\Longrightarrow\frac{1}{f'(\xi_2)}=\frac{x_2-x_1}{f(x_2)-f(x_1)}\]
+\[\vdots\]
+\[f'(\xi_n)=\frac{f(1)-f(x_{n-1})}{1-x_{n-1}}=\frac{1-f(x_{n-1})}{1-x_{n-1}},\quad \xi_n\in(x_{n-1},1)\Longrightarrow\frac{1}{f'(\xi_n)}=\frac{1-x_{n-1}}{1-f(x_{n-1})}\]	
+欲使\[\frac{1}{f'(\xi_1)}+\cdots+\frac{1}{f'(\xi_2)}=n\]
+只需\[f(x_1)=\frac{1}{n},f(x_2)=\frac{2}{n},\cdots,f(x_{n-1})=\frac{n-1}{n}\] 
+又 $f(0)=0,f(1)=1$, 由连续函数的介值定理,存在 $x_k\in(0,1),\,k\in[1,n-1]$, 使得 $f(x_k)=\frac{k}{n}$ \\
+证毕
+\end{newproof}
+
+\begin{exercise}设 $f(x)$ 在 $[a,b]$ 上具有二阶导数, 且 $f'(a)=f'(b)=0$ \\
+证明:  $\exists\;\xi\in(a,b)$, 使 
+\begin{equation*}\big|f''(\xi)\big|\geqslant\frac{4}{(b-a)^2}\big|f(b)-f(a)\big|\end{equation*}	
+\end{exercise}\begin{Solution} 将 $\displaystyle f\bigg(\frac{a+b}{2}\bigg)$ 分别在 $a$ 和点 $b$ 展开成泰勒公式, 并考虑到 $f'(a)=f'(b)=0$ ,有
+\begin{align}f\bigg(\frac{a+b}{2}\bigg)&=f(a)+\frac{1}{2}f''(\xi_1)\bigg(\frac{b-a}{2}\bigg)^2,\quad a<\xi_1<\frac{a+b}{2}\label{eq.1}\\
+f\bigg(\frac{a+b}{2}\bigg)&=f(b)+\frac{1}{2}f''(\xi_2)\bigg(\frac{b-a}{2}\bigg)^2,\quad \frac{a+b}{2}<\xi_1<b\label{eq.2}
+\end{align}
+由 $(\ref{eq.2})-(\ref{eq.1})$, 得
+\begin{equation*}f(b)-f(a)+\frac{1}{8}\big[f''(\xi_2)-f''(\xi_1)\big](b-a)^2=0\end{equation*}
+故\begin{equation*}\frac{4\big|f(b)-f(a)\big|}{(b-a)^2}\leqslant\frac{1}{2}\left(\big|f''(\xi_1)\big|+\big|f''(\xi_2)\big|\right)\leqslant f''(\xi)\end{equation*}
+其中 $f''(\xi)=\max\Big\{\big|f''(\xi_1)\big|,\big|f''(\xi_2)\big|\Big\}$
+\end{Solution}
+
+\chapter{特殊函数}
+
+
+
+
+%\begin{newdef}
+%定义:~超几何方程\[ x(1-x)\frac{d^{2}y}{d{x^2}}+\big[c-(1+a+b)x\big]\frac{\dif y}{\dif x}-aby=0\]
+%的解为超几何函数\[ F(a,b;c;x)=\sum_
+%{n=0}^{\infty}\frac{(a)_{n}(b)_{n}}{(c)_{n}}\frac{x^n}{n!}\hspace{0.5cm}(\big|x\big|<1,c\neq 0,-1,-2,\cdots)\]
+%通常用符号\[_{2}F_{1}(a,b;c;x)\equiv F(a,b;c;x)\]
+%注:~\begin{align*}
+%(s)_{n}&=s(s+1)\cdots(s+n-1)=\frac{\Gamma(s+n)}{\Gamma(s)}\hspace{4mm}(n\geq1)\\
+%(s)_{0}&=1,~(s)_{1}=s
+%\end{align*}
+%\end{newdef}
+%\begin{newthem}有关公式
+%\[F(a,b;c;x)=F(b,a;c;x)\]
+%\[F(a,b;c;1)=\frac{\Gamma(c)\Gamma(c-a-b)}{\Gamma(c-a)\Gamma(c-b)}\hspace{4mm}(c-a-b>0)\]
+%\end{newthem}
+%
+%\begin{newdef}[广义超几何函数]
+%定义\[_{p}F_{q}(a_{1},a_{2},\cdots,a_{p};c_{1},c_{2},\cdots,c_{q};x)=\sum_{n=0}^{\infty}\frac{(a_1)_{n}(a_2)_{n}\cdots(a_p)_{n}}{(c_1)_{n}(c_2)_{n}\cdots(c_q)_{n}}\frac{x^n}{n!}\]
+%这里,~$p$~和~$q$~都是正整数,而且~$c_{k}(k=1,2,\cdots,q)$~不为0或负整数
+%\end{newdef}
+
+\begin{newdef}[菲涅尔积分函数]
+Fresnel Integrals\[{\rm C}\left( x \right) = \int_0^x {\cos \left( {\frac{1}{2}\pi {t^2}} \right)} \dif t\]
+\[{\rm S}\left( x \right) = \int_0^x {\sin \left( {\frac{1}{2}\pi {t^2}} \right)} \dif t\]
+\end{newdef}
+
+\begin{example}计算积分:~$\displaystyle \int_{\rm{0}}^{\frac{\pi }{{\rm{2}}}} {\sqrt x \sin x} \textrm{d}x$\end{example}
+\begin{Solution}\begin{align*}
+\int_{0}^{\frac{\pi }{{\rm{2}}}} {\sqrt x \sin x} \dif x &\xlongequal[\dif x = \pi t\dif t]{\sqrt x  = \sqrt {\frac{\pi }{2}} t} \pi \sqrt {\frac{\pi }{2}} \int_0^1 {{t^2}\sin } \left( {\frac{1}{2}\pi {t^2}} \right)\dif t\\
+&= \sqrt {\frac{\pi }{2}} \int_0^1 t d\left( { - \cos \left( {\frac{\pi }{2}{t^2}} \right)} \right)\\
+&= \left[ { - \sqrt {\frac{\pi }{2}} t\cos \left( {\frac{\pi }{2}{t^2}} \right)} \right]_0^1 + \sqrt {\frac{\pi }{2}} \int_0^1 {\cos \left( {\frac{\pi }{2}{t^2}} \right)} \dif t\\
+&= \sqrt {\frac{\pi }{2}} C\left( 1 \right) \approx 0.977451\end{align*}	
+\end{Solution}\[C\left( x \right) = \int_0^x {\cos \left( {\frac{{\pi {t^2}}}{2}} \right)} \dif t \xlongequal[{\dif u = \sqrt {\frac{\pi }{2}} \dif t}]{{\frac{{\pi {t^2}}}{2} = {u^2}}}\sqrt {\frac{2}{\pi }} \int_0^{\sqrt {\frac{\pi }{2}} x} {\cos {u^2}\dif u} \]
+\[ \Longrightarrow \int_x^0 {\cos {x^2}} \dif x =  - \int_0^x {\cos {x^2}} \dif x =  - \sqrt {\frac{\pi }{2}} C\left( {\sqrt {\frac{2}{\pi }} x} \right)
+\]
+
+\begin{newdef}[三角积分函数]
+\begin{enumerate}
+	\item Sine Integrals \[{\rm Si}(x)=\int_0^x\frac{\sin t}{t}\dif t\]
+	\[{\rm si}(x)=-\int_{x}^{\infty}\frac{\sin t}{t}\dif t\]
+	\item Cosine Integrals \[{\rm Ci}(x)=\int_0^x\frac{\cos t}{t}\dif t\]
+	\[{\rm ci}(x)=-\int_x^{\infty}\frac{\cos t}{t}\dif t\]
+	\[{\rm Cin}(x)=\int_0^x\frac{1-\cos t}{t}\dif t\]
+\end{enumerate}	
+\end{newdef}
+
+\begin{example}求不定积分\[\int\left(\frac{\sin x}{x}\right)^2\dif x\]
+\end{example}\begin{Solution}\begin{align*}\int\left(\frac{\sin x}{x}\right)^2\dif x
+=&-\int\sin^2x \dif \left(\frac{1}{x}\right)\\
+=&-\frac{\sin^2x}{x}+\int\frac{\sin{2x}}{x}\dif x\\
+=&-\frac{\sin^2x}{x}+\int\frac{\sin{2x}}{2x}\dif 2x\\
+=&-\frac{\sin^2x}{x}+\mathrm{Si}(2x)+c
+\end{align*}
+\end{Solution}
+
+\begin{exercise}求不定积分\[\int {\cos \frac{1}{x}} \dif x\]
+\end{exercise}\begin{Solution}\begin{align*}
+\int {\cos \frac{1}{x}} \dif x &\xlongequal{x=\frac{1}{t}}- \int {\frac{{\cos t}}{{{t^2}}}} \dif t= \int {\cos t} d\frac{1}{t}\\
+&=\frac{{\cos t}}{t} - \int {\frac{{\sin t}}{t}} \dif t\\
+& =\frac{{\cos t}}{t} - \mathrm{Si}\left( t \right) + c\\
+&= x\cos \frac{1}{x} - \mathrm{Si}\left( {\frac{1}{x}} \right) + c
+\end{align*}
+\end{Solution}
+
+\begin{exercise}求不定积分\[\int\sin x\log x\dif x\]
+\end{exercise}\begin{Solution}\begin{align*}\int\sin x\log x\dif x=&-\int\log xd\cos x\\
+=&-\log x\cos x+\int\frac{\cos x}{x}\dif x\\
+=&-\log x\cos x+\textrm{Ci}(x)+c
+\end{align*}
+\end{Solution}
+
+\begin{newdef}[双曲积分函数]
+\begin{enumerate}
+	\item 双曲正弦积分\[{\rm Shi}(x)=\int_0^x\frac{\sinh x}{x}\]
+	\item 双曲余弦积分\[{\rm Chi}(x)=\gamma+\ln x+\int_0^x\frac{\cosh t-1}{t}\dif t={\rm chi}(x)\]
+\end{enumerate}	
+\end{newdef}
+
+\begin{newthem}几个关于二重对数函数的等式
+\begin{enumerate}[label={(\arabic*)}]
+\item $\textrm{Li}_{2}(x)+\textrm{Li}_{2}(-x)=\frac{1}{2}\textrm{Li}_{2}(x^2)$
+\item $\textrm{Li}_{2}(1-x)+\textrm{Li}_{2}(1-x^{-1})=-\frac{1}{2}(\ln x)^2$
+\item $\textrm{Li}_{2}(x)+\textrm{Li}_{2}(1-x)=\frac{1}{6}{\pi}^2-(\ln x)\ln(1-x)$
+\item $\textrm{Li}_{2}(-x)+\textrm{Li}_{2}(1-x)+\frac{1}{2}\textrm{Li}_{2}(1-x^2)=-\frac{1}{12}{\pi}^2-(\ln x){\ln(x+1)}$			
+\end{enumerate}	
+\end{newthem}
+
+\begin{exercise}
+求\[\int_0^{\pi}{\frac{x^2}{1+\sin ^2x}\dif x}.\]
+\end{exercise}\begin{Solution}
+令 $t=x-\frac{\pi}{2}$ ,我们有
+\begin{align*}J&=\int_0^{\pi}{\frac{x^2}{1+\sin ^2x}\dif x}=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}{\frac{\left( t+\frac{\pi}{2} \right) ^2}{1+\cos ^2t}\dif t}\\&=2\int_0^{\frac{\pi}{2}}{\frac{t^2}{1+\cos ^2t}\dif t}+\frac{\pi ^2}{2}\int_0^{\frac{\pi}{2}}{\frac{1}{1+\cos ^2t}\dif t}\\&=2\int_0^{\frac{\pi}{2}}{\frac{t^2}{1+\cos ^2t}\dif t}+\frac{\pi ^2}{2}\int_0^{\frac{\pi}{2}}{\frac{1}{\sin ^2t+2\cos ^2t}\dif t}\\&=2\int_0^{\frac{\pi}{2}}{\frac{t^2}{1+\cos ^2t}\dif t}+\frac{\pi ^2}{2}\int_0^{\frac{\pi}{2}}{\frac{1}{\tan ^2t+2}d\left( \tan t \right)}\\&=\frac{\sqrt{2}}{24}\pi ^3+\frac{\sqrt{2}}{2}\pi \mathrm{Li}_2\left( 3-2\sqrt{2} \right) +\frac{\sqrt{2}}{8}\pi ^3\\&=\frac{\sqrt{2}}{2}\pi \mathrm{Li}_2\left( 3-2\sqrt{2} \right) +\frac{\sqrt{2}}{6}\pi ^3.\end{align*}
+\end{Solution}
+
+\begin{exercise}计算积分:\[I=\int_{0}^{\pi}{\frac{x\cos{x}}{1+\sin^{2}{x}}dx}\]\end{exercise}\begin{Solution}(tian\_275461)
+\[I=\int_{0}^{\pi}{xd\arctan{(\sin{x})}}=-\int_{0}^{\pi}{\arctan{(\sin{x})}dx}=-2\int_{0}^{\frac{\pi}{2}}{\arctan{(\sin{x})}dx}\]
+注意到\[\arctan{\left(\frac{\sin{x}}{+\infty}\right)}-\arctan{\left(\frac{\sin{x}}{1}\right)}=-\int_{1}^{+\infty}{\frac{\sin{x}}{y^2+\sin^2{x}}dy}\]
+故\begin{align*} I&=-2\int_{0}^{\frac{\pi}{2}}{\int_{1}^{+\infty}{\frac{\sin{x}}{y^2+\sin^2{x}}dy}dx}\\ &=-2\int_{1}^{+\infty}{\int_{0}^{\frac{\pi}{2}}{\frac{\sin{x}}{y^2+\sin^2{x}}dx}dy}\\ &=-2\int_{1}^{+\infty}{\int_{0}^{1}{\frac{1}{y^2+1-t^2}dt}dy}\qquad (t=\cos{x}) \\ &=-\int_{1}^{+\infty}{\frac{1}{\sqrt{y^2+1}}\ln{\left(\frac{\sqrt{y^2+1}+1}{\sqrt{y^2+1}-1}  \right)}dy}\\ &=-\int_{\text{arcsinh}1}^{+\infty}{\ln\left(\frac{\cosh{z}+1}{\cosh{z}-1}\right)dz}\qquad (y=\sinh{z})\\ &=2\int_{\text{arcsinh}1}^{+\infty}{\ln\left(\frac{1-e^{-z}}{1+e^{-z}}\right)dz}\\ &=2\int_{0}^{\sqrt{2}-1}{\frac{\ln{(1-t)}-\ln(1+t)}{t}dt}\qquad (t=e^{-z})\\ &=2\text{Li}_{2}(1-\sqrt{2})-2\text{Li}_{2}(\sqrt{2}-1) 
+\end{align*}
+套用多重对数函数的性质(\ref{dcdsxzxx1})(\ref{dcdsxzxx2})(\ref{dcdsxzxx3})
+\begin{equation}\label{dcdsxzxx1}
+\text{Li}_{2}(1-x)+\text{Li}_{2}\left(1-\frac{1}{x}\right)=-\frac{1}{2}\ln^2{x}
+\end{equation}
+\begin{equation}\label{dcdsxzxx2}
+\text{Li}_{2}(x)+\text{Li}_{2}(1-x)=\frac{1}{6}\pi^2-\ln{x}\cdot\ln(1-x)
+\end{equation}
+\begin{equation}\label{dcdsxzxx3}
+\text{Li}_{2}(-x)-\text{Li}_{2}(1-x)+\frac{1}{2}\text{Li}_{2}(1-x^2)=-\frac{1}{12}\pi^2-\ln{x}\cdot\ln{(x+1)}
+\end{equation}
+故\[I=\int_{0}^{\pi}{\frac{x\cos{x}}{1+\sin^{2}{x}}dx}=\ln^2(\sqrt{2}+1)-\frac{\pi^2}{4}\]
+\end{Solution}
+
+\begin{exercise}
+Prove that \[\sum_{k=1}^\infty \frac{\zeta(2k+1)-1}{k+1}=-\gamma +\log 2\]
+\(\gamma\) is the well known Euler's constant.
+\end{exercise}\begin{newproof}
+\begin{align*}
+\sum_{k=1}^{\infty} \frac{\zeta(2k+1)-1}{k+1} &= \sum_{k=2}^{\infty} \frac{\zeta(2k-1)-1}{k}\\
+\sum_{k=2}^{\infty} \sum_{m=2}^{\infty} \frac{1}{k m^{2k-1}} 
+&= \sum_{m=2}^{\infty} \sum_{k=2}^{\infty} \frac{m}{km^{2k}} \quad\text{since all terms are positive}\\
+& = \sum_{m=2}^{\infty} \Big( -m \ln \Big( 1- \frac{1}{m^{2}} \Big) - \frac{1}{m} \Big) = \sum_{m=2}^{\infty} \Big(m \ln \Big( \frac{m^{2}}{m^{2}-1} \Big) - \frac{1}{m} \Big)\\
+&= \sum_{m=2}^{\infty} \Bigg( m \Big( \ln(m^{2}) - \ln(m^{2}-1) \Big) - \frac{1}{m} \Bigg)\\
+&= \lim_{M \to \infty} \sum_{m=2}^{M} \Big( 2m \ln(m) - m \ln(m+1) - m \ln(m-1) - \frac{1}{m} \Big)\\
+&= \lim_{M \to \infty} \Big( \ln 2 + (M+1) \ln(M) - M \ln(M+1) - H_{M}+1 \Big)\\
+&= \lim_{M \to \infty} \Bigg( \ln 2 - H_{M} + \ln(M) +1 - M \ln \Big( 1 + \frac{1}{M} \Big) \Bigg)\\
+& = \lim_{M \to \infty} \Bigg( \ln 2 - H_{M} + \ln(M) +1 - M \Big( \frac{1}{M} + \mathcal{O}(M^{-2}) \Big) \Bigg)\\
+&= \ln 2 - \gamma
+\end{align*}
+\end{newproof}
+
+\begin{exercise}证明:~\begin{equation*}\int_{0}^{2\pi}e^{\sin x}\sin x\,\mathrm{d}x=\int_{0}^{2\pi}e^{\sin x}\cos^2 x\,\mathrm{d}x=2\pi I_1(1)\end{equation*}
+\end{exercise}\begin{Solution}\begin{align*}\int_{0}^{2\pi}e^{\sin x}\sin x\,\mathrm{d}x&=\int_{0}^{2\pi}e^{\sin x}\,\mathrm{d}\big(-\cos x\big)\\
+&=\Big[-e^{\sin x}\cos x\Big]_{0}^{2\pi}+\int_{0}^{2\pi}e^{\sin x}\cos^2 x\,\mathrm{d}x\\
+&=0+\int_{0}^{2\pi}e^{\sin x}\cos^2 x\,\mathrm{d}x\\
+&=\int_{0}^{2\pi}e^{\sin x}\cos^2 x\,\mathrm{d}x
+\end{align*}
+又因为\begin{equation*}I_n\left(z\right)=\frac{1}{\pi}\int_0^\pi e^{z\cos\theta}\cos\left(n\theta\right)d\theta\end{equation*}
+\begin{align*}\int_{0}^{2\pi}e^{\sin x}\sin x\,\mathrm{d}x&=\underbrace{\int_{0}^{\frac{\pi}{2}}e^{\sin x}\sin x\,\mathrm{d}x}\limits_{u=\frac{\pi}{2}+x}+\underbrace{\int_{\frac{\pi}{2}}^{\frac{3\pi}{2}}e^{\sin x}\sin x\,\mathrm{d}x}\limits_{t=x-\frac{\pi}{2}}+\underbrace{\int_{\frac{3\pi}{2}}^{2\pi}e^{\sin x}\sin x\,\mathrm{d}x}\limits_{t=x-\frac{\pi}{2}}\\
+&=-\int_{\frac{\pi}{2}}^{\pi}e^{-\cos u}\cos u\,\mathrm{d}u+\int_{0}^{\pi}e^{\cos t}\cos t\,\mathrm{d}t+\underbrace{\int_{\pi}^{\frac{3\pi}{2}}e^{\cos t}\cos t\,\mathrm{d}t}\limits_{v=t-\pi}\\
+&=-\int_{\frac{\pi}{2}}^{\pi}e^{-\cos t}\cos t\,\mathrm{d}t+\int_{0}^{\pi}e^{\cos t}\cos t\,\mathrm{d}t-\int_{0}^{\frac{\pi}{2}}e^{-\cos v}\cos v\,\mathrm{d}v\\
+&=\int_{0}^{\pi}e^{\cos t}\cos t\,\mathrm{d}t-\underbrace{\int_{0}^{\pi}e^{-\cos t}\cos t\,\mathrm{d}t}\limits_{x=\pi-t}\\
+&=\int_{0}^{\pi}e^{\cos t}\cos t\,\mathrm{d}t-\int_{\pi}^{0}e^{\cos x}\cos x\,\mathrm{d}x\\
+&=2\int_{0}^{\pi}e^{\cos t}\cos t\,\mathrm{d}t\\
+&=2\pi I_1\left(1\right)\approx3.551
+\end{align*}	
+\end{Solution}
+
+\begin{equation*}
+I_n\left(z\right)=\frac{1}{\pi}\int_0^\pi e^{z\cos\theta}\cos\left(n\theta\right)\,\mathrm{d}\theta
+\end{equation*}
+\begin{align*}\int_{0}^{2\pi}e^{\cos x}\cos x\,\mathrm{d}x&=\int_{0}^{\pi}e^{\cos x}\cos x\,\mathrm{d}x+\overbrace{\int_{\pi}^{2\pi}e^{\cos x}\cos x\,\mathrm{d}x}^{t=2\pi-x}\\
+&=\int_{0}^{\pi}e^{\cos x}\cos x\,\mathrm{d}x-\int_{\pi}^{0}e^{\cos t}\cos t\,\mathrm{d}t\\
+&=2\int_{0}^{\pi}e^{\cos x}\cos x\,\mathrm{d}x\\
+&=2\pi I_1(1)\approx3.551
+\end{align*}
+
+\begin{newdef}[贝塞尔函数]
+\[{I_n}\left( z \right) = \frac{1}{\pi }\int_0^\pi  {{e^{z\cos \theta }}} \cos \left( {n\theta } \right)d\theta \]	
+\end{newdef}
+
+\begin{exercise}计算积分:~\begin{equation*}\int_{\rm{0}}^{\rm{1}} {\frac{{{e^{ - {x^2}}}}}{{\sqrt {1 - {x^2}} }}} \dif x\end{equation*}
+\end{exercise}\begin{Solution}因为\[{I_n}\left( z \right) = \frac{1}{\pi }\int_0^\pi  {{e^{z\cos \theta }}} \cos \left( {n\theta } \right)d\theta \]
+\begin{align*}
+\int_{\rm{0}}^{\rm{1}} {\frac{{{e^{ - {x^2}}}}}{{\sqrt {1 - {x^2}} }}} \dif x
+& \xlongequal{\text{令}x=\cos t}  - \int_{\frac{\pi }{2}}^0 {{e^{ - {{\cos }^2}t}}} \dif t\\
+&\xlongequal{\text{令}u=\frac{\pi}{2}-t} \int_0^{\frac{\pi }{2}} {{e^{ - {{\sin }^2}u}}} \dif u = \int_0^{\frac{\pi }{2}} {{e^{ - \frac{{1 - \cos 2u}}{2}}}} \dif u = \frac{1}{{\sqrt e }}\int_0^{\frac{\pi }{2}} {{e^{\frac{1}{2}\cos 2u}}} \dif u\\
+&\xlongequal{\text{令}\theta=2u}\frac{1}{{2\sqrt e }}\int_0^\pi  {{e^{\frac{1}{2}\cos \theta }}} d\theta \\
+& = \frac{\pi {I_0}\left( {\frac{1}{2}} \right)}{{2\sqrt e }}
+\end{align*}		
+\end{Solution}
+
+\begin{newdef}[$\beta$~函数]
+定义\[\beta(x)=\frac{1}{2}\left[\psi\left(\frac{x+1}{2}\right)-\psi\left(\frac{x}{2}\right)\right]\]
+\[\beta(x)=\int_{0}^{1}\frac{t^{x-1}}{1+t}\dif t~~(\Re x>0)\]
+\end{newdef}
+
+\begin{newthem}
+\begin{align*}
+(s)_{n}&=s(s+1)\cdots(s+n-1)=\frac{\Gamma(s+n)}{\Gamma(s)}\hspace{4mm}(n\geq1)\\
+(s)_{0}&=1,~(s)_{1}=s
+\end{align*}
+\end{newthem}
+
+\bibliographystyle{ieeetr}
+\bibliography{reference}
+\addcontentsline{toc}{chapter}{参考文献} 
+
+\end{document}
