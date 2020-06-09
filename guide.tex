@@ -55,6 +55,66 @@
 \chapter{极限}
 
 \begin{example}
+利用定义证明 $\lim\limits_{n\to \infty}\frac{(-1)^n}{n}=0$.
+\end{example}\begin{proof}
+首先有 $$|x_n-0|=\Big|\frac{(-1)^n}{n}-0\Big|=\frac{1}{n}.$$ 因此 $\forall \varepsilon >0$,
+要使 $|x_n-0|<\varepsilon$, 只需要 $\frac{1}{n}<\varepsilon$, 即 $n>\frac{1}{\varepsilon}$.
+故取正整数 $N=\Big[\frac{1}{\varepsilon}\Big]+1$, \\
+则当 $n>N$ 时, 就有$$\Big|\frac{(-1)^n}{n}-0\Big|<\varepsilon,$$
+即 $\lim\limits_{n\to \infty}\frac{(-1)^n}{n}=0$. 证毕.	
+\end{proof}
+
+\begin{example}
+利用定义证明  $\lim\limits_{n\to \infty}q^{n-1}=0$.	
+\end{example}\begin{proof}
+由于 $$|x_n-0|=|q^{n-1}-0|=|q|^{n-1},$$ 因此 $\forall \varepsilon >0,$
+要使 $|x_n-0|<\varepsilon$, 只要
+$$|q|^{n-1}<\varepsilon.$$
+两边取自然对数, 得 $$(n-1)\ln|q|<\ln\varepsilon.$$  因 $|q|<1, \ln|q|<0,$
+故
+$$n>\frac{\ln\varepsilon}{\ln|q|}+1.$$
+当 $\varepsilon>1$ 时, $\frac{\ln \varepsilon}{\ln|q|}$ 是负数, 这时可取 $N=1$. 当 $\varepsilon<1$ 时, 取
+$$N=\Big[\frac{\ln \varepsilon}{\ln|q|}+1\Big],$$
+则当 $n>N$ 时, 就有
+$$|q^{n-1}-0|<\varepsilon,$$
+即 $\lim\limits_{n\to \infty}q^{n-1}=0$. 证毕.	
+\end{proof}
+
+%\begin{example}
+%设 $x_n=\sqrt{1+\frac{1}{n^{k}}}\;(k\in {\bf N}^+)$, 用定义证明 $\lim\limits_{n\to \infty}x_n=1$.	
+%\end{example}\begin{proof}
+%首先,
+%$$|x_n-1|=\left|\sqrt{1+\frac{1}{n^{k}}}-1\right|=\sqrt{1+\frac{1}{n^{k}}}-1=\frac{\dfrac{1}{n^k}}{\sqrt{1+\frac{1}{n^{k}}}+1}<\frac{1}{2n^k}<\frac{1}{n}.$$
+%因此 $\forall 0<\varepsilon <1,$ 要使 $|x_n-1|<\varepsilon$, 只要 $\frac{1}{n}<\varepsilon$, 即 $n>\frac{1}{\varepsilon}$.
+%故取正整数 $N=\Big[\frac{1}{\varepsilon}\Big]$, \\
+%则当 $n>N$ 时, 就有 $\frac{1}{n}<\varepsilon$, 从而有
+%$$\left|\sqrt{1+\frac{1}{n^{k}}}-1\right|<\varepsilon,$$
+%即 $\lim\limits_{n\to \infty}x_n=1$. 证毕.	
+%\end{proof}
+
+\begin{example}
+利用定义证明 $\lim\limits_{n\to\infty}\frac{3n-1}{2n+1}=\frac{3}{2}$.
+\end{example}\begin{proof}
+首先有 \[\left|\frac{3n-1}{2n+1}-\frac{3}{2}\right|=\frac{5}{2(2n+1)}<\frac{5}{4n}.\]
+因此 $\forall \varepsilon >0$,
+要使 $\left|\frac{3n-1}{2n+1}-\frac{3}{2}\right|<\varepsilon$, 只需要 $\frac{5}{4n}<\varepsilon$, 即 $n>\frac{5}{4\varepsilon}$.
+故取正整数 $N=\Big\lfloor\frac{5}{4\varepsilon}\Big\rfloor$, \\
+则当 $n>N$ 时, 就有\[\left|\frac{3n-1}{2n+1}-\frac{3}{2}\right|<\varepsilon,\]
+即 $\lim\limits_{n\to\infty}\frac{3n-1}{2n+1}=\frac{3}{2}$. 		
+\end{proof}
+
+\begin{example}
+用定义证明:  $\lim_{n\to\infty}\frac{n+2}{n^2-2}\sin n=0$
+\end{example}\begin{solution}
+首先有 \[\left|\frac{n+2}{n^2-2}\sin n-0\right|\leqslant\left|\frac{n+2}{n^2-2}\right|<\frac{n+2}{n^2-4}=\frac{1}{n-2}\,,\;n\geqslant3\]
+因此, $\forall \varepsilon >0$,
+要使 $\left|\frac{n+2}{n^2-2}\sin n-0\right|<\varepsilon$, 只需要 $\frac{1}{n-2}<\varepsilon$, 即 $n>\frac{1}{\varepsilon}+2$.\\
+故取正整数 $N=\big\lfloor\tfrac{1}{\varepsilon}+2\big\rfloor+1$, 
+则当 $n>N$ 时, 就有\[\left|\frac{n+2}{n^2-2}\sin n-0\right|<\varepsilon,\]
+即 $\lim_{n\to\infty}\frac{n+2}{n^2-2}\sin n=0$. 
+\end{solution}
+
+\begin{example}
 (2017/10/20)求极限 $\lim_{x\to\infty}\big(\cos\sqrt{x+1}-\cos\sqrt{x}\big)$
 \end{example}\begin{newproof}
 \[\cos\alpha-\cos\beta=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}\]
