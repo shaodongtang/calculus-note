@@ -701,6 +701,100 @@ I = &\int {\frac{{{t^3} - {t^2} + t + 1}}{{1 + {t^4}}}} \dif t - \int {\frac{1}{
 徐利治的渐近分析方法及应用的43-45页	
 \end{newproof}
 
+\begin{exercise}计算积分:~\begin{equation*}\int_{0}^{1}\ln\Gamma(x)\dif x\end{equation*}\end{exercise}
+\begin{solution}本题需用到的公式~\[\Gamma(x)\Gamma(1-x)=\frac{\pi}{\sin \pi x},x\in(0,1)\hspace{1.2cm}\raisebox{1.5pt}{-----}\mbox{余元公式}\]
+\[I=\int_{0}^{1}\ln\Gamma(x)\dif x\xlongequal{t=1-x}=\int_{0}^{1}\ln\Gamma(1-x)\dif x\]
+\begin{align*}2I&=\int_{0}^{1}\ln\Gamma(x)\dif x+\int_{0}^{1}\ln\Gamma(1-x)\dif x\\
+&=\int_{0}^{1}\left(\ln\Gamma(x)+\ln\Gamma(1-x)\right)\dif x=\int_{0}^{1}\ln\frac{\pi}{\sin\pi x}\dif x\\
+&=\int_{0}^{1}\ln{\pi}\dif x-\int_{0}^{1}\ln{\sin\pi x}\dif x=\ln{\pi}-\int_{0}^{1}\ln{\sin\pi x}\dif x\\
+&\xlongequal{\pi x=t}\ln{\pi}-\frac{1}{\pi}\int_{0}^{\pi}\ln{\sin t}\dif t\\
+&=\ln{\pi}-\frac{1}{\pi}\mathop{\underbrace{\int_{0}^{\frac{\pi}{2}}\ln{\sin t}\dif t}}_{=-\frac{\pi}{2}\ln 2}-\frac{1}{\pi}\mathop{\underbrace{\int_{\frac{\pi}{2}}^{{\pi}}\ln{\sin t}\dif t}}_{u=\pi-t}\\
+&=\ln{\pi}+\frac{1}{2}\ln 2+\frac{1}{\pi}\int_{\frac{\pi}{2}}^{0}\ln{\sin u}\dif u\\
+&=\ln{\pi}+\frac{1}{2}\ln 2-\frac{1}{\pi}\int_{0}^{\frac{\pi}{2}}\ln{\sin u}\dif u\\
+&=\ln(2\pi)
+\end{align*}
+$\displaystyle\Longrightarrow I=\int_{0}^{1}\ln\Gamma(x)\dif x=\frac{1}{2}\ln(2\pi)$
+\end{solution}
+
+\begin{exercise}
+计算积分: $\int_{0}^{1}\sin(\pi x)\log\Gamma(x)\mathrm{d}x$. 
+\end{exercise}\begin{solution}
+\begin{align*}
+\int_{0}^{1}\sin(\pi x)\log\Gamma(x)\dif x
+&\xlongequal{t=1-x}\int_{0}^{1}\sin( t\pi)\log\Gamma(1-t)\dif t\\
+%&=\frac{1}{2}\left(\int_{0}^{1}\sin(\pi x)\log\Gamma(x)\dif x+\int_{0}^{1}\sin( x\pi)\log\Gamma(1-x)\dif x\right)\\
+&=\frac{1}{2}\int_{0}^{1}\sin(\pi x)\log\left(\Gamma(x)+\Gamma(1-x)\right)\dif x\\
+&=\frac{1}{2}\int_{0}^{1}\sin(\pi x)\log\left(\frac{\pi}{\sin\pi x}\right)\dif x\\
+&=\frac{1}{\pi}\left(1+\ln\frac{\pi}{2}\right)
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+计算积分:~$\int_0^\infty  \frac{{\ln x}}{{{x^2} + 3x + 9}}\textrm{d}x$
+\end{exercise}\begin{solution}
+在~$\displaystyle\int_0^\infty  {\frac{{\ln x}}{{{x^2} + 3x + 9}}\dif x} $~中做代换~$x=3u$~
+有\[3\int_0^\infty  {\frac{{\ln (3u)}}{{9{u^2} + 9u + 9}}\dif u}= \frac{{\ln 3}}{3}\int_0^\infty  {\frac{1}{{{u^2} + u + 1}}\dif u}  + \frac{1}{3}\int_0^\infty  {\frac{{\ln u}}{{{u^2} + u + 1}}\dif u} \]
+如果在~$\displaystyle\int_0^\infty  {\frac{{\ln u}}{{{u^2} + u + 1}}\dif u} $~做代换~$\displaystyle u = \frac{1}{t}$~
+即得~\[\int_0^\infty  {\frac{{\ln u}}{{{u^2} + u + 1}}\dif u}  =
+\int_0^\infty  {\frac{{\ln \frac{1}{t}}}{{{t^2} + t + 1}}\dif t}  \Rightarrow \int_0^\infty  {\frac{{\ln u}}{{{u^2} + u + 1}}\dif u}  = 0\]
+所以\begin{align*}
+\int_0^\infty  {\frac{{\ln x}}{{{x^2} + 3x + 9}}\dif x}  &= \frac{{\ln 3}}{3}\int_0^\infty  {\frac{1}{{{u^2} + u + 1}}\dif u}  = \frac{{\ln 3}}{3}\int_0^\infty  {\frac{1}{{{{(u + \frac{1}{2})}^2} + \frac{3}{4}}}\dif u} \\
+&= \frac{{\ln 3}}{3}\left[ {\frac{2}{{\sqrt 3 }}\arctan \frac{{2(u + \frac{1}{2})}}{{\sqrt 3 }}} \right]_0^\infty  = \frac{{2\ln 3}}{{3\sqrt 3 }}\left( {\frac{\pi }{2} - \frac{\pi }{6}} \right)\\
+& = \frac{{2\pi \ln 3}}{{9\sqrt 3 }}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+计算积分: $\int_0^\infty\frac{\arctan x}{x^{2}+x+1}\dif x$.
+\end{exercise}\begin{solution}
+在 $\int_0^\infty\frac{\arctan x}{x^{2}+x+1}\dif x$~中做倒代换
+即有
+\[
+\int_{0}^{\infty} \frac{\arctan x}{x^{2}+x+1}\dif x=\int_{0}^{\infty} \frac{\arctan \frac{1}{x}}{\frac{1}{x^{2}}+\frac{1}{x}+1} \frac{1}{x^{2}}\dif x=\int_{0}^{\infty} \frac{\frac{\pi}{2}-\arctan x}{x^{2}+x+1}\dif x
+\]
+其中利用了恒等式~$\arctan\frac{1}{x}+\arctan x=\frac{\pi}{2}$, 所以
+\begin{align*}
+\int_{0}^{\infty} \frac{\arctan x}{x^{2}+x+1}\dif x 
+&=\frac{\pi}{4} \int_{0}^{\infty} \frac{1}{x^{2}+x+1}\dif x=\frac{\pi}{4} \int_{0}^{\infty} \frac{1}{\left(x+\frac{1}{2}\right)^{2}+\frac{3}{4}}\dif x \\ &=\frac{\pi}{4}\left[\frac{2}{\sqrt{3}} \arctan \frac{2\left(x+\frac{1}{2}\right)}{\sqrt{3}}\right]_{0}^{\infty}=\frac{\pi}{2 \sqrt{3}}\left[\frac{\pi}{2}-\frac{\pi}{6}\right]=\frac{\pi^{2}}{6 \sqrt{3}}
+\end{align*}
+\end{solution}
+
+\begin{example}
+计算积分 $\int_{1}^{2}\frac{2x-3}{\sqrt{-x^2+3x-2}}\dif x$. 
+\end{example}\begin{solution}
+\begin{align*}\int_{1}^{2}\frac{2x-3}{\sqrt{-x^2+3x-2}}\,\mathrm{d}x&\xlongequal{t=x-\frac{3}{2}}\int_{-\frac{1}{2}}^{\frac{1}{2}}\frac{2\left(t+\frac{3}{2}\right)-3}{\sqrt{-\left(t+\frac{3}{2}\right)^2+3\left(t+\frac{3}{2}\right)-2}}\,\mathrm{d}t\\
+&=\int_{-\frac{1}{2}}^{\frac{1}{2}}\frac{2t}{\sqrt{-t^2+\frac{11}{4}}}\,\mathrm{d}t=0
+\end{align*}	
+\end{solution}
+
+\begin{exercise}
+计算积分:~\[\int_{0}^{1}\left(\frac{\arcsin x}{x}\right)^3\dif x\]
+\end{exercise}\begin{solution}
+这里需要一些公式
+\[\cot x=\frac{\cos x}{\sin x}, \csc x=\frac{1}{\sin x}\]
+\[
+\frac{\dif }{\dif x} \cot x=-\csc ^{2} x, \frac{\dif }{\mathrm{d} x} \csc x=-\cot x \csc x, \csc ^{2} x=\cot ^{2} x+1
+\]
+做代换 $x=\sin u,$ 有 
+\[\int_{0}^{1}\left(\frac{\arcsin x}{x}\right)^3\dif x= \int_0^{\frac{\pi }{2}} {{u^3}\frac{{\cos u}}{{{{\sin }^3}u}}\dif u}  = \int_0^{\frac{\pi }{2}} {{u^3}\cot u{{\csc }^2}u\dif u}\]
+利用分布积分\[ =  - \int_0^{\frac{\pi }{2}} {{u^3}\cot ud(\cot u)}  = \int_0^{\frac{\pi }{2}} {(3{u^2}\cot u - {u^3}{{\csc }^2}u)\cot u\dif u} \]
+其中利用了~$\displaystyle\cot \frac{\pi }{2} = 0$~这个值
+所以\[\int_0^{\frac{\pi }{2}} {{u^3}\cot u{{\csc }^2}u\dif u}  = 3\int_0^{\frac{\pi }{2}} {{u^2}{{\cot }^2}u\dif u}  - \int_0^{\frac{\pi }{2}} {{u^3}\cot u{{\csc }^2}u\dif u} \]
+移项:	
+\begin{align*}
+\int_0^{\frac{\pi }{2}} {{u^3}\cot u{{\csc }^2}u\dif u}  &= \frac{3}{2}\int_0^{\frac{\pi }{2}} {{u^2}{{\cot }^2}u\dif u}  = \frac{3}{2}\int_0^{\frac{\pi }{2}} {{u^2}({{\csc }^2}u - 1)\dif u} \\
+&=  - \frac{3}{2}\int_0^{\frac{\pi }{2}} {{u^2}d(\cot u)}  - \frac{3}{2}\int_0^{\frac{\pi }{2}} {{u^2}\dif u}  = 3\int_0^{\frac{\pi }{2}} {u\cot u\dif u}  - \frac{{{\pi ^3}}}{{16}}
+\end{align*}
+留意到\[\int_0^{\frac{\pi }{2}} {u\cot u\dif u}  = \int_0^{\frac{\pi }{2}} {ud(\ln (\sin u))}  =  - \int_0^{\frac{\pi }{2}} {\ln (\sin x)\dif x} \]
+做代换~$\displaystyle x = \frac{\pi }{2} - u$~有~$\displaystyle\int_0^{\frac{\pi }{2}} {\ln (\sin x)\dif x}  = \int_0^{\frac{\pi }{2}} {\ln (\cos x)\dif x} $
+所以\begin{align*}
+2\int_0^{\frac{\pi }{2}} {\ln (\sin x)\dif x}  &= \int_0^{\frac{\pi }{2}} {\ln (\frac{{\sin 2x}}{2})\dif x}  = \int_0^{\frac{\pi }{2}} {\ln (\sin 2x)\dif x}  - \frac{\pi }{2}\ln 2\\
+&= \frac{1}{2}\int_0^\pi  {\ln (\sin x)\dif x}  - \frac{\pi }{2}\ln 2 = \int_0^{\frac{\pi }{2}} {\ln (\sin x)\dif x}  - \frac{\pi }{2}\ln 2
+\end{align*}
+\[ \Rightarrow \int_0^{\frac{\pi }{2}} {\ln (\sin x)\dif x}  =  - \frac{\pi }{2}\ln 2 \Rightarrow \int_0^{\frac{\pi }{2}} {u\cot u\dif u}  = \frac{\pi }{2}\ln 2\]
+最后就有\[\int_0^1 {{{\left( {\frac{{\arcsin x}}{x}} \right)}^3}\dif x}  = \frac{{3\pi }}{2}\ln 2 - \frac{{{\pi ^3}}}{{16}}\]	
+\end{solution}
+
 \section{重积分}
 
 \begin{exercise} 计算积分 \begin{equation*}\int_0^2\!\!{\int_0^4 {\left( {6 - x - y} \right)} } \dif x\dif y\end{equation*}\end{exercise}
