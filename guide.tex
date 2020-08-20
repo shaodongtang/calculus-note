@@ -1280,10 +1280,25 @@ f\bigg(\frac{a+b}{2}\bigg)&=f(b)+\frac{1}{2}f''(\xi_2)\bigg(\frac{b-a}{2}\bigg)^
 其中 $f''(\xi)=\max\Big\{\big|f''(\xi_1)\big|,\big|f''(\xi_2)\big|\Big\}$
 \end{Solution}
 
+\begin{example}
+(Putnam,14) 设 $f:[0,2]\to\mathbb{R}$ 二次可微, 且满足 $|f(x)|\leqslant1$, 及  $|f''(x)|\leqslant1, (x\in[0,2])$. 证明对一切 $x\in[0,2], |f'(x)|\leqslant2$ 成立.
+\end{example}\begin{proof}
+对任一点 $x\in[0,2]$, 由泰勒公式
+\[f(0)=f(x)+f'(x)(0-x)+\frac{f''(\xi_1)}{2}x^2, (0<\xi_1<x)\]
+\[f(2)=f(x)+f'(x)(2-x)+\frac{f''(\xi_2)}{2}x^2, (x<\xi_2<2)\]
+将上面二式相减并整理后得
+\[2f'(x)=f(2)-f(0)+\frac{1}{2}x^2f''(\xi_1)-\frac{1}{2}(2-x)^2f''(\xi_2),\]
+上式两边取绝对值, 并注意到绝对值不等式得
+\[2|f'(x)|\leqslant|f(0)|+|f(2)|+\frac{1}{2}x^2|f''(\xi_1)|+\frac{1}{2}(2-x)^2|f''(\xi_2)|,\]
+由题设我们有
+\[2|f'(x)|\leqslant2+\frac{x^2+(2-x)^2}{2}\]
+不难证明二次函数 $g(x)=x^2+(2-x)^2$ 在 $[0,2]$ 上最大值为 $4$, 因而
+\[2|f'(x)|\leqslant4\Longrightarrow |f'(x)|\leqslant2,x\in[0,2]\]
+\end{proof}
+
+
+
 \chapter{特殊函数}
-
-
-
 
 %\begin{newdef}
 %定义:~超几何方程\[ x(1-x)\frac{d^{2}y}{d{x^2}}+\big[c-(1+a+b)x\big]\frac{\dif y}{\dif x}-aby=0\]
