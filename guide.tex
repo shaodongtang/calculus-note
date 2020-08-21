@@ -1139,7 +1139,17 @@ I_4&=\left[\theta^2\ln\left(\cos\frac{\theta}{2}\right)\right]_0^{\frac{\pi}{2}}
 若 $D=\{(x,y)|\psi_1(y)\leqslant x\leqslant\psi_2(y),c\leqslant y\leqslant d\}$, $\psi_1(y)$, $\psi_2(y)$  连续 , 则 $D$ 的面积为\begin{equation*}S_D=\int_{c}^{d}\left[\psi_2(y)-\psi_1(y)\right]\,\mathrm{d}y\end{equation*}	
 \end{newthem}
 
-
+\begin{example}
+设 $f(x)$ 在 $[0,\pi]$ 上可微，若 $\int_0^\pi f(x)\dif x=0$，则
+\[\int_0^\pi f^2(x)\dif x\leqslant\int_0^\pi\big[f'(x)\big]^2\dif x\]
+\end{example}\begin{proof}
+将 $f(x)$ 在 $[-\pi,\pi]$ 上作偶延拓，从而可展开成 Fourier 余弦级数
+\[f(x)=\sum_{n=1}^{\infty}a_n\cos nx\quad(a_0=0)\]
+此时，易知有 $f(-\pi)=f(\pi)$
+\[f'(x)\sim\sum_{n=1}^{\infty}(-na_n)\sin nx\]
+从而由 $a_n^2\leqslant(-na_n)^2\;(n=1,2,\cdots)$, 根据 Parseval 等式，我们有
+\[\frac{1}{\pi}\int_0^\pi f^2(x)\dif x\leqslant\frac{1}{\pi}\int_0^\pi\big[f'(x)\big]^2\dif x\]
+\end{proof}
 
 %\begin{newthem}
 %若 $D=\{(\rho,\theta)|\rho_1(\theta)\leqslant \rho\leqslant\rho_2(\theta),\alpha\leqslant \theta\leqslant \beta\}$, $\rho_1(\theta)$, $\rho_2(\theta)$  连续 , 则 $D$ 的面积为\begin{equation*}S_D=\frac{1}{2}\int_{\alpha}^{\beta}\left[\rho_2^2(\theta)-\rho_1^2(\theta)\right]\,\mathrm{d}\theta\end{equation*}这里 $(\rho,\theta)$ 为极坐标。	
@@ -1295,8 +1305,6 @@ f\bigg(\frac{a+b}{2}\bigg)&=f(b)+\frac{1}{2}f''(\xi_2)\bigg(\frac{b-a}{2}\bigg)^
 不难证明二次函数 $g(x)=x^2+(2-x)^2$ 在 $[0,2]$ 上最大值为 $4$, 因而
 \[2|f'(x)|\leqslant4\Longrightarrow |f'(x)|\leqslant2,x\in[0,2]\]
 \end{proof}
-
-
 
 \chapter{特殊函数}
 
