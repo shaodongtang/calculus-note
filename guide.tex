@@ -795,6 +795,32 @@ $\displaystyle\Longrightarrow I=\int_{0}^{1}\ln\Gamma(x)\dif x=\frac{1}{2}\ln(2\
 最后就有\[\int_0^1 {{{\left( {\frac{{\arcsin x}}{x}} \right)}^3}\dif x}  = \frac{{3\pi }}{2}\ln 2 - \frac{{{\pi ^3}}}{{16}}\]	
 \end{solution}
 
+%\section{美丽的定积分}
+\begin{example}
+Prove that\[\int_0^1\sin(\pi x)x^x(1-x)^{1-x}\dif x=\frac{\pi e}{4!}\]
+\end{example}\begin{proof}
+First, we use $z^z = \exp ( z \log z )$ where $\log z$ is defined for $-\pi\leq \arg z < \pi.$\\
+For $(1-z)^{1-z} = \exp ( (1-z)\log (1-z) )$, we use $\log (1-z)$ defined for $0\leq \arg(1-z) <2\pi$.\\
+Then, let $f(z)= \exp( i\pi z + z \log z + (1-z) \log (1-z) ).$\\
+As shown in the Ex VI in the wikipedia link, we can prove that $f$ is continuous on $(-\infty, 0)$ and $(1,\infty)$, so that the cut of $f(z)$ is $[0,1]$.
+We use the contour: (consisted of upper segment: slightly above $[0,1]$, lower segment: slightly below $[0,1]$, circle of small radius enclosing 0, and circle of small radius enclosing 1, that looks like a dumbbell having knobs at 0 and 1, can someone edit this and include a picture of it please? In fact, this is also the same contour as in Ex VI, with different endpoints.)\\
+On the upper segment, the function $f$ gives, for $0\leq r \leq 1$,
+\[\exp(i\pi r) r^r (1-r)^{1-r} \exp( (1-r) 2\pi i ).\]
+On the lower segment, the function $f$ gives, for $0\leq r \leq 1$,
+\[\exp(i\pi r) r^r(1-r)^{1-r}.\]
+Since the functions are bounded, the integrals over circles vanishes when the radius tend to zero.\\
+Thus, the integral of $f(z)$ over the contour, is the integral over the upper and lower segments, which contribute to
+\[\int_0^1 \exp(i\pi r) r^r (1-r)^{1-r} \dif r - \int_0^1 \exp(-i\pi r) r^r(1-r)^{1-r} \dif r\]
+which is
+\[2i \int_0^1 \sin(\pi r) r^r (1-r)^{1-r} \dif r.\]
+By the Cauchy residue theorem, the integral over the contour is
+\[-2\pi i \textrm{Res}_{z=\infty} f(z) = 2\pi i \textrm{Res}_{z=0} \frac{1}{z^2} f(\frac 1 z).\]
+From a long and tedious calculation of residue, it turns out that the value on the right is
+\[2i \frac{\pi e}{24}.\]
+Then we have the result:
+\[\int_0^1 \sin(\pi r) r^r (1-r)^{1-r} \dif r = \frac{\pi e}{4!}.	\]
+\end{proof}
+
 \section{重积分}
 
 \begin{exercise} 计算积分 \begin{equation*}\int_0^2\!\!{\int_0^4 {\left( {6 - x - y} \right)} } \dif x\dif y\end{equation*}\end{exercise}
