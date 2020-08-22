@@ -821,6 +821,31 @@ Then we have the result:
 \[\int_0^1 \sin(\pi r) r^r (1-r)^{1-r} \dif r = \frac{\pi e}{4!}.	\]
 \end{proof}
 
+\begin{example}
+计算 \[\lim_{x\to0^+}\frac{\displaystyle\int_{0}^{2x}\big|x-t\big|\sin t\,\mathrm{d}t}{x^3}\]
+\end{example}\begin{solution}
+其中(注意奇偶性) \begin{align*}\int_{0}^{2x}\big|x-t\big|\sin t\,\mathrm{d}t&\xlongequal{x-t=u}\int_{-x}^{x}|u|\sin(x-u)\,\mathrm{d}u\\
+&=\int_{-x}^{x}|u|(\sin x\cos u-\cos x\sin u)\,\mathrm{d}u\\
+&=2\int_{0}^{x}u\cos u\,\mathrm{d}u\cdot\sin x
+\end{align*}
+所以\begin{align*}\lim_{x\to0^+}\frac{\displaystyle\int_{0}^{2x}\big|x-t\big|\sin t\,\mathrm{d}t}{x^3}&=\lim_{x\to0^+}\frac{2\sin x\displaystyle\int_{0}^{x}u\cos u\,\mathrm{d}u}{x^3}\\
+&=2\lim_{x\to0^+}\frac{\displaystyle\int_{0}^{x}u\cos u\,\mathrm{d}u}{x^2}=2\lim_{x\to0^+}\frac{x\cos x}{2x}=1\end{align*}
+或者\begin{equation*}\int_{0}^{x}u\cos u\,\mathrm{d}u\sim\int_{0}^{x}u\,\mathrm{d}u=\Big[\frac{1}{2}u^2\Big]_{0}^{x}=\frac{1}{2}x^2\end{equation*}
+\end{solution}
+
+\begin{exercise}
+计算积分 $\int_{0}^{\frac{\pi}{2}}\Big(\frac{x}{\sin x}\Big)^2\,\mathrm{d}x$
+\end{exercise}\begin{solution}
+\begin{align*}
+\int_{0}^{\frac{\pi}{2}}\Big(\frac{x}{\sin x}\Big)^2\,\mathrm{d}x
+&=\int_{0}^{\frac{\pi}{2}}x^2\dif(-\cot x)\\
+&=\Big[-x^2\cot x\Big]_{0}^{\frac{\pi}{2}}+2\int_{0}^{\frac{\pi}{2}}x\cot x\,\mathrm{d}x\\
+&=0+2\int_{0}^{\frac{\pi}{2}}x\,\mathrm{d}(\ln\sin x)\\
+&=\Big[2x\ln\sin x\Big]_{0}^{\frac{\pi}{2}}-2\int_{0}^{\frac{\pi}{2}}\ln\sin x\,\mathrm{d}x\\
+&=0-2\times\Big(-\frac{\pi}{2}\ln2\Big)=\pi\ln2
+\end{align*}
+\end{solution}
+
 \section{重积分}
 
 \begin{exercise} 计算积分 \begin{equation*}\int_0^2\!\!{\int_0^4 {\left( {6 - x - y} \right)} } \dif x\dif y\end{equation*}\end{exercise}
