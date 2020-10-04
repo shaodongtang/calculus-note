@@ -52,6 +52,23 @@
 \mainmatter
 
 
+\begin{example}
+已知函数 $f(x)$ 满足关系式
+\[af(x)+f\left(\frac{1}{x}\right)=\frac{b}{x}\quad(|a|\neq1\,,\;a\,,\;b,\,,\; \text{为常数})\]
+确定 $f(x)$ 的奇偶性
+\end{example}\begin{solution}
+将 $x=\frac{1}{t}$ 代入关系式得 $af\left(\frac{1}{t}\right)+f(t)=bt$,
+又将 $t$ 改为 $x$ 与关系式联立方程组
+\[\begin{cases*}
+af(x)+f\left(\frac{1}{x}\right)=\frac{b}{x}\\
+af(x)+f(x)=\frac{b}{x}
+\end{cases*}\]
+可解得
+\[f(x)=\frac{1}{a^2-1}\left(\frac{ab}{x}-bx\right)=\frac{ab-bx^2}{(a^2-1)x}\;(a\neq1)\,.\]
+显然\[f(-x)=\frac{ab-b(-x)^2}{(a^2-1)(-x)}=-f(x)\]
+所以 $f(x)$ 是奇函数
+\end{solution}
+
 \chapter{极限}
 
 \begin{example}
