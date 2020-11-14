@@ -662,6 +662,12 @@ I = &\int {\frac{{{t^3} - {t^2} + t + 1}}{{1 + {t^4}}}} \dif t - \int {\frac{1}{
 \end{align*}
 \end{Solution}
 
+\begin{example}
+计算积分 $\int_{0}^{1}\frac{1}{\sqrt{x(1-x)}}\dif x$
+\end{example}\begin{solution}
+\[\int_{0}^{1}\frac{1}{\sqrt{x(1-x)}}\dif x\xlongequal{x=\sin^2t}\int_{0}^{\frac{\pi}{2}}\frac{2\sin t\cos t}{\sin t\cos t}\dif t=\pi\]
+\end{solution}
+
 \begin{align*}
 \int_0^1x^4\ln^4x\dif x
 &\xlongequal{-\ln x=t}\int_{+\infty}^0e^{-4t}(-t)^4\times(-e^{-t})\dif  t\\
@@ -824,6 +830,27 @@ $\displaystyle\Longrightarrow I=\int_{0}^{1}\ln\Gamma(x)\dif x=\frac{1}{2}\ln(2\
 \end{align*}
 \[ \Rightarrow \int_0^{\frac{\pi }{2}} {\ln (\sin x)\dif x}  =  - \frac{\pi }{2}\ln 2 \Rightarrow \int_0^{\frac{\pi }{2}} {u\cot u\dif u}  = \frac{\pi }{2}\ln 2\]
 最后就有\[\int_0^1 {{{\left( {\frac{{\arcsin x}}{x}} \right)}^3}\dif x}  = \frac{{3\pi }}{2}\ln 2 - \frac{{{\pi ^3}}}{{16}}\]	
+\end{solution}
+
+\begin{exercise}计算积分:$$\int_{0}^{+\infty}e^{-ax}\sin^nx\dif x$$\end{exercise}\begin{solution}利用分布积分，我们有
+\begin{align*}I_n&=\int_{0}^{+\infty}e^{-ax}\sin^nx\dif x\hspace{4cm}\\
+&=-\frac{n}{a}e^{-ax}\sin^n(x)\biggl|_{0}^{+\infty}+\frac{n}{a}\int_{0}^{+\infty}\sin^{n-1}(x)\cos (x)e^{-ax}\dif x\\
+\Rightarrow I_n&=\frac{n}{a}\int_{0}^{+\infty}e^{-ax}\sin^{n-1}(x)\cos (x)\dif x\\
+\Rightarrow I_n&=\frac{n}{a}\biggl[\frac{-1}{a}e^{-ax}\sin^{n-1}(x)\cos(x)\biggl|_{0}^{+\infty}+\int_{0}^{+\infty}\frac{e^{-ax}}{a}\left((n-1)\sin^{n-2}(x)\cos^2(x)-\sin^n(x)\right)\dif x\biggl]\\
+\Rightarrow I_n&=\frac{n(n-1)}{a^2}\int_{0}^{+\infty}e^{-ax}\sin^{n-2}(x)\dif x-\frac{n^2}{a^2}\int_{0}^{+\infty}e^{-ax}\sin^{n}(x)\dif x\\
+\Rightarrow I_n&=\frac{n(n-1)}{a^2}I_{n-2}-\frac{n^2}{a^2}I_n
+\end{align*}
+解出$I_n$$$I_n\left(1+\frac{n^2}{a^2}\right)=\frac{n(n-1)}{a^2}I_{n-2}\Rightarrow I_n=\frac{n(n-1)}{n^2+a^2}I_{n-2}$$
+所以,当$n$为偶数时
+$$I_n=\frac{n(n-1)}{n^2+a^2}\cdot\frac{(n-2)(n-3)}{(n-2)^2+a^2}\cdots\frac{2\cdot1}{2^2+a^2}\cdot\frac{1}{\displaystyle\mathop{{\underbrace{a}}}_{I_0}}$$
+当$n$为奇数时$$I_n=\frac{n(n-1)}{n^2+a^2}\cdot\frac{(n-2)(n-3)}{(n-2)^2+a^2}\cdots\frac{3\cdot2}{a^2+1}\cdot\frac{1}{\displaystyle\mathop{{\underbrace{a^2+1}}}_{I_1}}\hspace{3.3cm}$$
+综上我们有
+\begin{equation*}\textcolor{blue}{\int_{0}^{+\infty}e^{-ax}\sin^nx\dif x=
+\begin{cases}
+&\frac{\displaystyle(2m)!}{\displaystyle a\cdot\prod_{k=1}^{m}\left(4k^2+a^2\right)}=\frac{\displaystyle\pi\cdot\textrm{csch}\left(\frac{\pi a}{2}\right)\cdot(2m)!}{\displaystyle2^{2m+1}\Gamma\left(m-\frac{ai}{2}+1\right)\Gamma\left(m+\frac{ai}{2}+1\right)}\\
+&\frac{\displaystyle(2m+1)!}{\displaystyle\cdot\prod_{k=1}^{m}\Big((2k+1)^2+a^2\Big)}=\frac{\displaystyle\pi\cdot\textrm{sech}\left(\frac{\pi a}{2}\right)\cdot(2m+1)!}{\displaystyle4^{m+1}\Gamma\left(m-\frac{ai}{2}+\frac{3}{2}\right)\Gamma\left(m+\frac{ai}{2}+\frac{3}{2}\right)}\\
+\end{cases}}		
+\end{equation*}
 \end{solution}
 
 %\section{美丽的定积分}
