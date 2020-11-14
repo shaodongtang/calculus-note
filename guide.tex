@@ -671,6 +671,15 @@ I = &\int {\frac{{{t^3} - {t^2} + t + 1}}{{1 + {t^4}}}} \dif t - \int {\frac{1}{
 \end{align*}
 
 \begin{example}
+设 $f(x)$ 是连续函数，满足 $f(x)=3x^2-\int_0^2f(x)\dif x-2$. 则 $f(x)=\underline{\qquad\qquad}$
+\end{example}
+\begin{solution}
+令 $A=\int_0^2f(x)\dif x$, 则 $f(x)=3x^2-A-2$, 故
+\[A=\int_0^1(3x^2-A-2)\dif x=8-2(A+2)=4-2A\]
+解得 $A=\frac{4}{3}$, 因此 $f(x)=3x^2-\frac{10}{3}$	
+\end{solution}
+
+\begin{example}
 设 $f(x)$ 和 $g(x)$ 在 $[a,b]$ 上有定义, 且满足下面的条件:
 \begin{enumerate}
 	\item $\forall n>N$, $f(x)e^{n\cdot g(x)}\in\mathbb{R}[a,b]$;
