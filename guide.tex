@@ -472,6 +472,26 @@ I &= 8\int {\frac{{2x + 2}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x - \
 \end{align*}	
 \end{Solution}
 
+\begin{align*}
+\int \frac{x+\sin x\cos x}{(\cos x-\sin x)^2}\mathrm{d}x
+&=\int \frac{x+\frac{1}{2}-\frac{1}{2}+\sin x\cos x}{(\cos x-\sin x)^2}\mathrm{d}x\\
+&=\int \frac{(x+\frac{1}{2})\sec^2x}{(1-\tan x)^2}\mathrm{d}x+\int\frac{-\frac{1}{2}+\sin x\cos x}{(\cos x-\sin x)^2}\mathrm{d} x\\
+&=\int\left(x+\frac{1}{2}\right)\mathrm{d}\left(\frac{1}{1-\tan x}\right)-\frac{1}{2}\int\frac{(\cos x-\sin x)^2}{(\cos x-\sin x)^2}\mathrm{d} x\\
+&=\frac{x+\frac{1}{2}}{1-\tan x}-\int\frac{1}{1-\tan x}\mathrm{d}x-\frac{1}{2}x\\
+&=\frac{(2x+1)\cos x}{2(\cos x-\sin x)}-\int\frac{\cos x}{\cos x-\sin x}\mathrm{d}x-\frac{1}{2}x\\
+&\xlongequal{\text{组合积分}}\frac{(2x+1)\cos x}{2(\cos x-\sin x)}-\frac{1}{2}\int\frac{(\cos x+\sin x)+(\cos x-\sin x)}{\cos x-\sin x}\mathrm{d}x-\frac{1}{2}x\\
+&=\frac{(2x+1)\cos x}{2(\cos x-\sin x)}+\frac{1}{2}\ln|\cos x-\sin x|+x+C
+\end{align*}
+
+\begin{align*}
+\int \frac{x}{(\cos x-\sin x)^2}\mathrm{d}x
+&\xlongequal{\text{分部积分}}\int \frac{x\sec^2x}{(1-\tan x)^2}\mathrm{d}x=\int x\mathrm{d}\left(\frac{1}{1-\tan x}\right)\\
+&=\frac{x}{1-\tan x}-\int\frac{1}{1-\tan x}\mathrm{d}x\\
+&=\frac{x}{1-\tan x}-\int\frac{\cos x}{\cos x-\sin x}\mathrm{d}x\\
+&\xlongequal{\text{组合积分}}\frac{x}{1-\tan x}-\frac{1}{2}\int\frac{(\cos x+\sin x)+(\cos x-\sin x)}{\cos x-\sin x}\mathrm{d}x\\
+&=\frac{x\cos x}{\cos x-\sin x}-\frac{1}{2}x+\frac{1}{2}\ln|\cos x-\sin x|+C
+\end{align*}
+
 \begin{exercise}求不定积分\begin{equation*}
 \int\sqrt[3]{\frac{1+\sin x}{1-\sin x}}\,\mathrm{d}x
 \end{equation*}\end{exercise}
