@@ -358,6 +358,19 @@ $F(x)$ 在 $x=0$ 处可导 $\Longrightarrow F'(0)=F'_{-}(0)=F'_{+}(0)\Longrighta
 \[ \sum f(x) = F(x) + C. \]
 \end{definition}
 
+\begin{exercise}
+求不定积分: $\int {\frac{{{2^x} \times {3^x}}}{{{9^x} - {4^x}}}} \dif x$	
+\end{exercise}\begin{solution}
+\begin{align*}
+\int {\frac{{{2^x} \times {3^x}}}{{{9^x} - {4^x}}}} \dif x&= \int {\frac{{\frac{{{2^x}}}{{{3^x}}}}}{{1 - {{\left( {\frac{{{2^x}}}{{{3^x}}}} \right)}^2}}}} \dif x\xlongequal{{d\left( {\frac{{{2^x}}}{{{3^x}}}} \right) = \frac{{{2^x}}}{{{3^x}}}\ln \frac{2}{3}\dif x}}
+\frac{1}{{\ln \frac{2}{3}}}\int {\frac{1}{{1 - {{\left( {\frac{{{2^x}}}{{{3^x}}}} \right)}^2}}}} d\left( {\frac{{{2^x}}}{{{3^x}}}} \right)\\
+&= \frac{1}{{\ln \frac{2}{3}}}\int {\frac{1}{{\left( {1 - \frac{{{2^x}}}{{{3^x}}}} \right)\left( {1 + \frac{{{2^x}}}{{{3^x}}}} \right)}}} d\left( {\frac{{{2^x}}}{{{3^x}}}} \right)\\
+&= \frac{1}{{2\ln \frac{2}{3}}}\left[ {\int {\frac{1}{{1 - \frac{{{2^x}}}{{{3^x}}}}}} d\left( {\frac{{{2^x}}}{{{3^x}}}} \right) - \int {\frac{1}{{1 + \frac{{{2^x}}}{{{3^x}}}}}} d\left( {\frac{{{2^x}}}{{{3^x}}}} \right)} \right]\\
+&= \frac{1}{{2\ln \frac{2}{3}}}\left( {\ln \left| {1 - \frac{{{2^x}}}{{{3^x}}}} \right| - \ln \left| {1 + \frac{{{2^x}}}{{{3^x}}}} \right|} \right) + c \\
+&= \frac{1}{{2\ln \frac{2}{3}}}\ln \left| {\frac{{1 - \frac{{{2^x}}}{{{3^x}}}}}{{1 + \frac{{{2^x}}}{{{3^x}}}}}} \right| + c = \frac{1}{{2\ln \frac{2}{3}}}\ln \left| {\frac{{{3^x} - {2^x}}}{{{3^x} + {2^x}}}} \right| + c
+\end{align*}	
+\end{solution}
+
 \begin{exercise}求不定积分\begin{equation*}
 	\int\frac{x^2}{\sqrt{1+x+x^2}}\,\mathrm{d}x
 	\end{equation*}\end{exercise}	
@@ -442,6 +455,19 @@ I &=\int {{x^2}} \sqrt {{x^2} + 1} \dif x{\rm{ = }}\int {x\sqrt {{x^4} + {x^2}} 
 &=\frac{1}{8}x\left( {2{x^2} - 1} \right)\sqrt {{x^2} + 1}  - \frac{1}{8}\ln \left( {x + \sqrt {{x^2} + 1} } \right) + c
 \end{align*}	
 \end{Solution}
+
+\begin{example}
+(18数学) 求不定积分: $\int e^{2x}\arctan\sqrt{e^x-1}\dif x$
+\end{example}\begin{solution}
+\begin{align*}
+\int e^{2x}\arctan\sqrt{e^x-1}\dif x
+&=\int \arctan\sqrt{e^x-1}\dif\Big(\frac{1}{2}e^{2x}\Big)\\
+&=\frac{1}{2}e^{2x}\arctan\sqrt{e^x-1}-\frac{1}{4}\int\frac{e^{2x}}{\sqrt{e^x-1}}\dif x\\
+&\xlongequal{\sqrt{e^x-1}=t}\frac{1}{2}e^{2x}\arctan\sqrt{e^x-1}-\frac{1}{2}\int(t^2+1)\dif t\\
+&=\frac{1}{2}e^{2x}\arctan\sqrt{e^x-1}-\frac{1}{6}t^3-\frac{1}{2}t+C\\
+&=\frac{1}{2}e^{2x}\arctan\sqrt{e^x-1}-\frac{1}{6}\sqrt{e^x-1}(e^x+2)+C
+\end{align*}
+\end{solution}
 
 \begin{exercise}
 求不定积分: $\int {\frac{{16x + 11}}{{{{\left( {{x^2} + 2x + 2} \right)}^2}}}} \dif x$
