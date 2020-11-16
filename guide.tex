@@ -657,6 +657,52 @@ I = &\int {\frac{{{t^3} - {t^2} + t + 1}}{{1 + {t^4}}}} \dif t - \int {\frac{1}{
 \end{align*}
 \end{Solution}
 
+\begin{exercise}
+求不定积分
+\begin{equation*}
+\int {\frac{{\sqrt {{x^2} - x + 1} }}{x}} \dif x
+\end{equation*}
+\end{exercise}\begin{solution}
+法I.
+\begin{align*}
+\int {\frac{{\sqrt {{x^2} - x + 1} }}{x}} \dif x&\xlongequal[{\dif x = \frac{{ - 1}}{{{t^2}}}\dif t}]{{x = \frac{1}{t}}}\int {\frac{{\sqrt {\frac{1}{{{t^2}}} - \frac{1}{t} + 1} }}{{\frac{1}{t}}} \times } \frac{{ - 1}}{{{t^2}}}\dif t\\
+&= - \int {\frac{{\sqrt {1 - t + {t^2}} }}{{{t^2}}}} \dif t = \int {\sqrt {1 - t + {t^2}} } d\frac{1}{t}\\
+&= \frac{{\sqrt {1 - t + {t^2}} }}{t} - \frac{1}{2}\int {\frac{{ - 1 + 2t}}{{t\sqrt {1 - t + {t^2}} }}} \dif t\\
+&= \frac{{\sqrt {1 - t + {t^2}} }}{t} - \int {\frac{1}{{\sqrt {1 - t + {t^2}} }}} \dif t + \frac{1}{2}\int {\frac{1}{{t\sqrt {1 - t + {t^2}} }}} \dif t\\
+&= \frac{{\sqrt {1 - t + {t^2}} }}{t} - \int {\frac{1}{{\sqrt {{{\left( {t - \frac{1}{2}} \right)}^2} + \frac{3}{4}} }}} \dif t + \frac{1}{2}\int {\frac{1}{{t\sqrt {1 - t + {t^2}} }}} \dif t\quad\mbox{备注 1}\\
+&{\rm{ = }}\frac{{\sqrt {1 - t + {t^2}} }}{t} - \ln \left| {t - \frac{1}{2} + \sqrt {{t^2} - t + 1} } \right| + \frac{1}{2}J
+\end{align*}
+\begin{align*}
+J = \int {\frac{1}{{t\sqrt {1 - t + {t^2}} }}} \dif t&\xlongequal[{\dif t = \frac{{ - 1}}{{{u^2}}}\dif u}]{{t = \frac{1}{u}}}\int {\frac{1}{{\frac{1}{u}\sqrt {1 - \frac{1}{u} + \frac{1}{{{u^2}}}} }} \times \frac{{ - 1}}{{{u^2}}}} \dif u =  - \int {\frac{1}{{\sqrt {{u^2} - u + 1} }}} \dif u\\
+&=  - \int {\frac{1}{{\sqrt {{{\left( {u - \frac{1}{2}} \right)}^2} + \frac{3}{4}} }}} \dif u = \ln \left| {u - \frac{1}{2} + \sqrt {{{\left( {u - \frac{1}{2}} \right)}^2} + \frac{3}{4}} } \right| + c\\
+&= \ln \left| {\frac{1}{t} - \frac{1}{2} + \frac{{\sqrt {{t^2} - t + 1} }}{t}} \right| + c
+\end{align*}
+\begin{align*}
+\int {\frac{{\sqrt {{x^2} - x + 1} }}{x}} \dif x &= \frac{{\sqrt {1 - t + {t^2}} }}{t} - \ln \left| {t - \frac{1}{2} + \sqrt {{{\left( {t - \frac{1}{2}} \right)}^2} + \frac{3}{4}} } \right| + \frac{1}{2}\ln \left| {\frac{1}{t} - \frac{1}{2} + \frac{{\sqrt {{t^2} - t + 1} }}{t}} \right| + c\\
+&= \sqrt {{x^2} - x + 1}  - \frac{1}{2}\ln \left| {2 - x + 2\sqrt {{x^2} - x + 1} } \right| + \ln \left| x \right| + c
+\end{align*}
+注：\[\int {\frac{1}{{\sqrt {{x^2} + {a^2}} }}\dif x = \ln \left| {x + \sqrt {{x^2} + {a^2}} } \right|}  + c\]
+法II.
+\begin{align*}
+\int {\frac{{\sqrt {{x^2} - x + 1} }}{x}} \dif x&{\rm{ = }}\int {\frac{{{x^2} - x + 1}}{{x\sqrt {{x^2} - x + 1} }}\dif x} \\
+&= \int {\frac{{2x - 1}}{{\sqrt {{x^2} - x + 1} }}\dif x}  - \int {\frac{x}{{\sqrt {{x^2} - x + 1} }}\dif x}  + \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}\dif x} \\
+&= \int {\frac{1}{{\sqrt {{x^2} - x + 1} }}d\left( {{x^2} - x + 1} \right)}  - J + K = 2\sqrt {{x^2} - x + 1}  - J + K
+\end{align*}
+\begin{align*}
+J &= \int {\frac{x}{{\sqrt {{x^2} - x + 1} }}\dif x}  = \int {\frac{x}{{\sqrt {\left( {x - \frac{1}{2}} \right) + \frac{3}{4}} }}\dif x} \\
+& \xlongequal[{\dif x = \frac{{\sqrt 3 }}{2}{{\sec }^2}t\dif t}]{{\left( {x - \frac{1}{2}} \right) = \frac{{\sqrt 3 }}{2}\tan t}}\int {\frac{{\frac{{\sqrt 3 }}{2}\tan t + \frac{1}{2}}}{{\frac{{\sqrt 3 }}{2}\sec t}} \times \frac{{\sqrt 3 }}{2}{{\sec }^2}t\dif t} \\
+&= \frac{{\sqrt 3 }}{2}\int {\frac{{\sin t}}{{{{\cos }^2}t}}} \dif t + \frac{1}{2}\int {\sec t} \dif t\\
+&= \frac{{\sqrt 3 }}{{2\cos t}} + \frac{1}{2}\ln \left| {\sec t + \tan t} \right| + c\\
+&= \sqrt {{x^2} - x + 1}  + \frac{1}{2}\ln \left| {2\sqrt {{x^2} - x + 1}  + 2x - 1} \right| + c
+\end{align*}
+\begin{align*}
+K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \frac{{ - 1}}{{{t^2}}}\dif t}]{{x = \frac{1}{t}}}\int {\frac{1}{{\frac{1}{t}\sqrt {1 - \frac{1}{t} + \frac{1}{{{t^2}}}} }} \times \frac{{ - 1}}{{{t^2}}}} \dif t =  - \int {\frac{1}{{\sqrt {{t^2} - t + 1} }}} \dif t\\
+&=  - \int {\frac{1}{{\sqrt {{{\left( {t - \frac{1}{2}} \right)}^2} + \frac{3}{4}} }}} \dif t =  - \ln \left| {t - \frac{1}{2} + \sqrt {{{\left( {t - \frac{1}{2}} \right)}^2} + \frac{3}{4}} } \right| + c\\
+&=  - \ln \left| {2x - 1 + 2\sqrt {{x^2} - x + 1} } \right| - \ln \left| x \right| + c
+\end{align*}
+所以\[\int {\frac{{\sqrt {{x^2} - x + 1} }}{x}} \dif x = \sqrt {{x^2} - x + 1}  - \frac{1}{2}\ln \left| {2\sqrt {{x^2} - x + 1}  + 2x - 1} \right| + \ln \left| x \right| + c\]
+\end{solution}
+
 \section{定积分}
 \subsection{定积分定义}
 
