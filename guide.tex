@@ -1314,6 +1314,18 @@ I_4&=\left[\theta^2\ln\left(\cos\frac{\theta}{2}\right)\right]_0^{\frac{\pi}{2}}
 \end{align*}
 \end{Solution}
 
+\begin{exercise}
+计算积分:\[\int_{0}^{1}\frac{\ln^2(1-x)\ln x}{x}\dif x\]
+\end{exercise}\begin{solution}
+\begin{equation*}\begin{aligned}
+\int_{0}^{1}\frac{\ln^2(1-x)\ln x}{x}\dif x=&\int_{0}^{1}\ln(1-x)\ln xd\textrm{Li}_2(x)\\
+=&\int_{0}^{1}\textrm{Li}_2(x)\frac{\ln(1-x)}{x}\dif x-\int_{0}^{1}\textrm{Li}_2(x)\frac{\ln x}{1-x}\dif x\\
+=&-\frac{1}{2}\textrm{Li}_{2}^{2}(1)-\int_{0}^{1}\frac{\ln x}{1-x}\sum_{n=1}^{\infty}\frac{x^n}{n^2}\dif x\\
+=&-\frac{1}{2}\textrm{Li}_{2}^{2}(1)+\sum_{n=1}^{\infty}\frac{1}{n^2}\sum_{k=n+1}^{\infty}\frac{1}{k^2}\\
+=&-\frac{{\pi}^4}{72}+\frac{{\pi}^4}{120}=-\frac{{\pi}^4}{180}
+\end{aligned}\end{equation*}
+\end{solution}
+
 \section{积分不等式}
 
 \begin{example}
@@ -1425,6 +1437,79 @@ s(x) &= s(1)+\int_1^x s'(t)\dif t = 0 + \int_1^x\dfrac{1}{4-t}\dif t=-\ln(4-t)\B
 &= \ln3-\ln(4-x),-2\leqslant x<4.
 \end{align*}
 \end{Solution}
+
+\begin{exercise}设 $a>1$,求 $\sum\limits_{n = 0}^\infty {\frac{{{2^n}}}{{{a^{{2^n}}} + 1}}}$的和.
+\end{exercise}\begin{solution}
+事实上
+\begin{align*}\sum\limits_{n = 0}^\infty {\frac{{{2^n}}}{{{a^{{2^n}}} + 1}}} &= \frac{1}{{a + 1}} + \sum\limits_{n = 1}^\infty {\frac{{{2^n}}}{{{a^{{2^n}}} + 1}}} = \frac{1}{{a + 1}} - \frac{1}{{a - 1}} + \frac{1}{{a + 1}} + \sum\limits_{n = 1}^\infty {\frac{{{2^n}}}{{{a^{{2^n}}} + 1}}} \\&= \frac{1}{{a + 1}} - \frac{2}{{{a^2} - 1}} + \sum\limits_{n = 1}^\infty {\frac{{{2^n}}}{{{a^{{2^n}}} + 1}}} = \frac{1}{{a + 1}} - \frac{{{2^2}}}{{{a^{{2^2}}} - 1}} + \sum\limits_{n = 2}^\infty {\frac{{{2^n}}}{{{a^{{2^n}}} + 1}}} \\&= \frac{1}{{a + 1}} - \mathop {\lim }\limits_{n \to \infty } \frac{{{2^{n + 1}}}}{{{a^{{2^{n + 1}}}} - 1}} = \frac{1}{{a + 1}}.\end{align*}
+\end{solution}
+
+\begin{exercise}求 $1 + \frac{1}{3} - \frac{1}{5} - \frac{1}{7} + \frac{1}{9} + \frac{1}{{11}} - \cdots$ 的和.
+\end{exercise}\begin{solution}
+\begin{align*}&\sum\limits_{n = 1}^\infty {\left( {\frac{1}{{8n - 7}} + \frac{1}{{8n - 5}} - \frac{1}{{8n - 3}} - \frac{1}{{8n - 1}}} \right)} \\
+=& \sum\limits_{n = 1}^\infty {\int_0^1 {\left( {{x^{8n - 8}} + {x^{8n - 6}} - {x^{8n - 4}} - {x^{8n - 2}}} \right)} } \\=& \int_0^1 {\sum\limits_{n = 1}^\infty {\left( {{x^{8n - 8}} + {x^{8n - 6}} - {x^{8n - 4}} - {x^{8n - 2}}} \right)} \dif x} = \int_0^1 {\frac{{1 + {x^2} - {x^4} - {x^6}}}{{1 - {x^8}}}\dif x} \\= &\left. {\frac{{\arctan \left( {1 + \sqrt 2 x} \right) - \arctan \left( {1 - \sqrt 2 x} \right)}}{{\sqrt 2 }}} \right|_0^1 = \frac{\pi }{{2\sqrt 2 }}.\end{align*}
+\end{solution}
+
+\begin{exercise}
+求 $1 - \frac{1}{7} + \frac{1}{9} - \frac{1}{{15}} + \cdots$ 的和.	
+\end{exercise}\begin{solution}
+\begin{align*}\sum\limits_{n = 1}^\infty {\left( {\frac{1}{{8n - 7}} - \frac{1}{{8n - 1}}} \right)} &= \sum\limits_{n = 1}^\infty {\int_0^1 {\left( {{x^{8n - 8}} - {x^{8n - 2}}} \right)} } \\=& \int_0^1 {\sum\limits_{n = 1}^\infty {\left( {{x^{8n - 8}} - {x^{8n - 2}}} \right)} \dif x} = \int_0^1 {\frac{{1 - {x^6}}}{{1 - {x^8}}}\dif x} \\= &\left. {\frac{{2\arctan x + \sqrt 2 \arctan \left( {1 + \sqrt 2 x} \right) - \arctan \left( {1 - \sqrt 2 x} \right)}}{4}} \right|_0^1 \\
+&= \frac{{\sqrt 2 + 1}}{8}\pi .
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+求 $1 - \frac{1}{4} + \frac{1}{7} - \frac{1}{{10}} + \cdots$ 的和.
+\end{exercise}\begin{solution}
+\begin{align*}\sum\limits_{n = 1}^\infty {\left( {\frac{1}{{6n - 5}} - \frac{1}{{6n - 2}}} \right)} = &\sum\limits_{n = 1}^\infty {\int_0^1 {\left( {{x^{6n - 6}} - {x^{6n - 3}}} \right)} } \\= &\int_0^1 {\sum\limits_{n = 1}^\infty {\left( {{x^{6n - 6}} - {x^{6n - 3}}} \right)} \dif x} \\= &\int_0^1 {\frac{{1 - {x^3}}}{{1 - {x^6}}}\dif x} = \int_0^1 {\frac{1}{{1 + {x^3}}}\dif x} \\=& \left. {\left( { - \frac{1}{6}\ln \left( {{x^2} - x + 1} \right) + \frac{1}{3}\ln \left( {x + 1} \right) + \frac{{\arctan \frac{{2x - 1}}{{\sqrt 3 }}}}{{\sqrt 3 }}} \right)} \right|_0^1 \\
+&= \frac{{\sqrt 3 \pi + 3\ln 2}}{9}.
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+求 $\sum\limits_{n = 0}^\infty {\left( {\frac{1}{{4n + 1}} + \frac{1}{{4n + 3}} - \frac{1}{{2n + 2}}} \right)}$ 的和.
+\end{exercise}\begin{solution}
+\begin{align*}\sum\limits_{n = 0}^\infty {\left( {\frac{1}{{4n + 1}} + \frac{1}{{4n + 3}} - \frac{1}{{2n + 2}}} \right)} =& \sum\limits_{n = 0}^\infty {\int_0^1 {\left( {{x^{4n}} + {x^{4n + 2}} - {x^{2n + 1}}} \right)} } \\= &\int_0^1 {\sum\limits_{n = 0}^\infty {\left( {{x^{4n}} + {x^{4n + 2}} - {x^{2n + 1}}} \right)} \dif x} \\
+=& \int_0^1 {\left( {\frac{{1 + {x^2}}}{{1 - {x^4}}} - \frac{x}{{1 - {x^2}}}} \right)\dif x} \\=& \int_0^1 {\frac{1}{{1 + x}}\dif x} = \ln 2.\end{align*}
+\end{solution}
+
+\begin{exercise}
+求 $1 - \frac{1}{4} + \frac{1}{6} - \frac{1}{9} + \frac{1}{{11}} - \frac{1}{{14}} + \cdots$ 的和.
+\end{exercise}\begin{solution}
+\begin{align*} \sum\limits_{n = 1}^\infty  {\left( {\frac{1}{{5n - 4}} - \frac{1}{{5n - 1}}} \right)}  =& \sum\limits_{n = 1}^\infty  {\int_0^1 {\left( {{x^{5n - 5}} - {x^{5n - 2}}} \right)\dif x} }  \\
+=& \int_0^1 {\sum\limits_{n = 1}^\infty  {\left( {{x^{5n - 5}} - {x^{5n - 2}}} \right)} \dif x}  = \int_0^1 {\frac{{1 - {x^3}}}{{1 - {x^5}}}\dif x}  \\
+=& \int_0^1 {\left( {\frac{{\left( {5 - \sqrt 5 } \right)/10}}{{{x^2} + \frac{{\sqrt 5  + 1}}{2}x + 1}} + \frac{{\left( {5 + \sqrt 5 } \right)/10}}{{{x^2} + \frac{{ - \sqrt 5  + 1}}{2}x + 1}}} \right)\dif x} \\ =& \frac{{\sqrt {25 + 10\sqrt 5 } }}{{25}}\pi . \end{align*}
+\end{solution}
+
+\begin{example}
+求级数 $\sum_{n=0}^{\infty}\frac{1}{(3n+1)(3n+2)(3n+3)}$ 的和
+\end{example}\begin{proof}%\color{green}
+易得\[\frac{1}{(3n+1)(3n+2)(3n+3)}=\frac{1}{2(3n+1)}-\frac{1}{3n+2}+\frac{1}{6(n+1)}\]
+故\begin{align*}
+\sum_{n=0}^{\infty}\frac{1}{(3n+1)(3n+2)(3n+3)}
+&=\sum_{n=0}^{\infty}\left(\frac{1}{2(3n+1)}-\frac{1}{3n+2}+\frac{1}{6(n+1)}\right)\\
+&=\sum_{n=0}^{\infty}\int_0^1\left(\frac{x^{3n}}{2}-x^{3n+1}+\frac{x^n}{6}\right)\dif x\\
+&=\int_0^1\sum_{n=0}^{\infty}\left(\frac{x^{3n}}{2}-x^{3n+1}+\frac{x^n}{6}\right)\dif x\\
+&=\int_0^1\left(\frac{1}{2(1-x^3)}-\frac{x}{1-x^3}+\frac{1}{6(1-x)}\right)\dif x\\
+&=\frac{1}{6}\int_0^1\frac{4-x}{x^2+x+1}\dif x=\frac{1}{12}\Big(\sqrt{3}\pi-3\ln3\Big)
+\end{align*}
+\end{proof}
+
+%\begin{exercise}
+%计算\[\sum_{n=1}^{\infty}\frac{1}{n(n+1)}\int_0^1\frac{1-x^{n+1}}{1-x}\,\mathrm{d}x\]
+%\end{exercise}\begin{proof}
+%\begin{align*}
+%\sum_{n=1}^{\infty}\frac{1}{n(n+1)}\int_0^1\frac{1-x^{n+1}}{1-x}\,\mathrm{d}x&=\int_0^1\left(\sum_{n=1}^{\infty}\frac{1}{n(n+1)}\frac{1}{1-x}-
+%\sum_{n=1}^{\infty}\frac{1}{n(n+1)}\frac{x^{n+1}}{1-x}\right)\,\mathrm{d}x\\
+%&=\int_0^1\left(\frac{1}{1-x}-
+%\frac{1}{1-x}\sum_{n=1}^{\infty}\frac{x^{n+1}}{n(n+1)}\right)\,\mathrm{d}x\\
+%&=\int_0^1\frac{1}{1-x}\left(1-\sum_{n=1}^{\infty}\frac{x^{n+1}}{n}+\sum_{n=1}^{\infty}\frac{x^{n+1}}{n+1}\right)\,\mathrm{d}x\\
+%&=\int_0^1\frac{1}{1-x}\Big(1-\big(-x\ln(1-x)\big)+\big(-x-\ln(1-x)\big)\Big)\,\mathrm{d}x\\
+%&=\int_0^1\big(1-\ln(1-x)\big)\,\mathrm{d}x=2
+%\end{align*}
+%其中\[\sum_{n=1}^{\infty}\frac{x^{n+1}}{n+1}=-x-\ln(1-x)\quad \mathrm{when} \quad |x|\leqslant1\wedge x\neq1\]
+%\[\sum_{n=1}^{\infty}\frac{x^{n+1}}{n+1}=-x\ln(1-x)\quad \mathrm{when} \quad |x|\leqslant1\wedge x\neq1\]
+%\end{proof}
 
 \chapter{不等式}
 
