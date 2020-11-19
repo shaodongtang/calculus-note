@@ -558,6 +558,52 @@ I = &\int {\frac{{{t^3} - {t^2} + t + 1}}{{1 + {t^4}}}} \dif t - \int {\frac{1}{
 \end{align*}	
 \end{Solution}
 
+\begin{example}
+求不定积分：
+\end{example}
+\begin{solution}
+法I. 注意到: $1+x^6=(x^2+1)(x^4-x^2+1)$
+\begin{align*} \frac{1}{1+x^6}&=\frac{1}{(x^2+1)(x^4-x^2+1)}=\frac{A}{1+x^2}+\frac{Bx^2+C}{x^4-x^2+1}\\ &\xlongequal{\text{通分}}\frac{A(x^4-x^2+1)+(Bx^2+C)(1+x^2)}{(x^2+1)(x^4-x^2+1)}\\ &\xlongequal{\text{整理}}\frac{(A+B)x^4+(B+C-A)x^2+A+C}{1+x^6} \end{align*} 
+比较系数, 得
+\[\begin{cases}
+A+B=0\\ B+C-A=0\\ A+C=1 
+\end{cases}\Rightarrow 
+\begin{cases} 
+A=\frac{1}{3}\\ B=-\frac{1}{3}\\ C=\frac{2}{3} 
+\end{cases} \]
+即得，
+\[\frac{1}{1+x^6}=\frac{1}{3(1+x^2)}+\frac{2-x^2}{3(x^4-x^2+1)}\]
+\[2-x^2=A(1+x^2)+B(1-x^2)=(A-B)x^2+(A+B)\] 
+比较系数解得
+\[\begin{cases} A-B=-1\\ A+B=2 
+\end{cases}
+\Rightarrow 
+\begin{cases} 
+A=\frac{1}{2}\\ B=\frac{3}{2} 
+\end{cases} \]
+故
+\begin{align*}
+\int\frac{1}{1+x^6}\mathrm{d}x
+&=\frac{1}{3}\int\frac{1}{1+x^2}\mathrm{d}x+\frac{1}{3}\int\frac{2-x^2}{x^4-x^2+1}\mathrm{d}x\\
+&=\frac{1}{3}\arctan x+\frac{1}{6}\int\frac{1+x^2}{x^4-x^2+1}\mathrm{d}x+\frac{1}{2}\int\frac{1-x^2}{x^4-x^2+1}\mathrm{d}x\\
+&=\frac{1}{3}\arctan x+\frac{1}{6}\int\frac{1+\frac{1}{x^2}}{x^2-1+\frac{1}{x^2}}\mathrm{d}x-\frac{1}{2}\int\frac{1-\frac{1}{x^2}}{x^2-1+\frac{1}{x^2}}\mathrm{d}x\\
+&=\frac{1}{3}\arctan x+\frac{1}{6}\int\frac{\mathrm{d}(x-\frac{1}{x})}{(x-\frac{1}{x})^2+1}-\frac{1}{2}\int\frac{\mathrm{d}(x+\frac{1}{x})}{(x+\frac{1}{x})^2-3}\\
+&\xlongequal{(1)}\frac{1}{3}\arctan x+\frac{1}{6}\arctan(x-\frac{1}{x})-\frac{1}{4\sqrt{3}}\ln\left|\frac{(x+\frac{1}{x})-\sqrt{3}}{(x+\frac{1}{x})+\sqrt{3}}\right|+C\\
+&=\frac{1}{3}\arctan x+\frac{1}{6}\arctan\frac{x^2+1}{x}-\frac{1}{4\sqrt{3}}\ln\left|\frac{x^2-\sqrt{3}x+1}{x^2+\sqrt{3}x+1}\right|+C
+\end{align*}
+其中, $(1)$ 用到公式
+\[\int\frac{\mathrm{d}x}{x^2-a^2}=\frac{1}{2a}\ln{\biggl|\frac{x-a}{x+a}\biggl|}+C\]
+法II. 
+\begin{align*}
+\int\frac{\mathrm{d}x}{1+x^6} 
+&=\frac{1}{2}\int\frac{(1-x^2+x^4)+x^2+(1-x^4)}{(1+x^2)(1-x^2+x^4)} \mathrm{d}x\\
+&=\frac{1}{2}\int\frac{\mathrm{d}x}{1+x^2}+\frac{1}{2} \int \frac{x^2}{1+x^6}\mathrm{d}x+\frac{1}{2}\int\frac{1-x^2}{1-x^2+x^4}\mathrm{d}x\\
+&=\frac{1}{2}\arctan x+\frac{1}{6}\int \frac{1}{1+(x^3)^2}\mathrm{d}(x^3)-\frac{1}{2}\int\frac{1-\frac{1}{x^2}}{x^2-1+\frac{1}{x^2}}\mathrm{d}\mathrm{d}x\\
+&=\frac{1}{2}\arctan x+\frac{1}{6}\arctan x^3-\frac{1}{2}\int\frac{\mathrm{d}(x+\frac{1}{x})}{(x+\frac{1}{x})^2-3}\\
+&=\frac{1}{2}\arctan x+\frac{1}{6}\arctan x^3-\frac{1}{4\sqrt{3}}\ln\left|\frac{x^2-\sqrt{3}x+1}{x^2+\sqrt{3}x+1}\right|+C
+\end{align*}
+\end{solution}
+
 \subsection{非初等表达}
 
 \begin{exercise}求不定积分\[\int\frac{\arctan x}{x} \dif x\]
