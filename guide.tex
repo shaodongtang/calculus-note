@@ -801,6 +801,17 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 \end{Solution}
 
 \begin{example}
+求极限\[\lim_{n\to\infty}\frac{\scaleobj{0.75}{\displaystyle\int_0^x}\sin^nt\cos^nt\dif t}{x}\]
+\end{example}\begin{solution}
+\begin{align*}
+\lim_{n\to\infty}\frac{\scaleobj{0.75}{\displaystyle\int_0^x}\sin^nt\cos^nt\dif t}{x}
+&\xlongequal{k\pi\leqslant t<(k+1)\pi}\frac{1}{\pi}\int_0^\pi\sin^nt\cos^nt\dif t\\
+&=\frac{2}{\pi}\int_0^{\frac{\pi}{2}}\frac{1}{2^n}\sin^n2t\dif t\\
+&\xlongequal{u=2t}\frac{1}{\pi}\int_0^\pi\Big(\frac{\sin u}{2}\Big)^n\dif u
+\end{align*}
+\end{solution}
+
+\begin{example}
 计算积分 $\int_{0}^{1}\frac{1}{\sqrt{x(1-x)}}\dif x$
 \end{example}\begin{solution}
 \[\int_{0}^{1}\frac{1}{\sqrt{x(1-x)}}\dif x\xlongequal{x=\sin^2t}\int_{0}^{\frac{\pi}{2}}\frac{2\sin t\cos t}{\sin t\cos t}\dif t=\pi\]
