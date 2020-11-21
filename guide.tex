@@ -680,6 +680,19 @@ A=\frac{1}{2}\\ B=\frac{3}{2}
 \end{align*}
 \end{Solution}
 
+\begin{align*}
+\int\ln\sin x\,\mathrm{d}x
+&\xlongequal{\text{分部积分}}x\ln\sin x-\int x\frac{\cos x}{\sin x}\,\mathrm{d}x\\
+&\xlongequal{\text{欧拉公式}}x\ln\sin x-\int x\frac{\frac{e^{\mathrm{i}x}+e^{-\mathrm{i}x}}{2}}{\frac{e^{\mathrm{i}x}-e^{-\mathrm{i}x}}{2\mathrm{i}}}\,\mathrm{d}x\\
+&=x\ln\sin x-\int \mathrm{i}x\frac{e^{\mathrm{i}x}+e^{-\mathrm{i}x}}{e^{\mathrm{i}x}-e^{-\mathrm{i}x}}\,\mathrm{d}x\\
+&=x\ln\sin x-\int \mathrm{i}x\,\mathrm{d}x-\int\frac{2\mathrm{i}xe^{-\mathrm{i}x}}{e^{\mathrm{i}x}-e^{-\mathrm{i}x}}\,\mathrm{d}x\\
+&=x\ln\sin x-\frac{1}{2}\mathrm{i}x^2+2\mathrm{i}\int\frac{x}{1-e^{2\mathrm{i}x}}\,\mathrm{d}x\\
+&=x\ln\sin x-\frac{1}{2}\mathrm{i}x^2+2\mathrm{i}\int x\sum_{n=0}^{\infty}e^{2\mathrm{i}nx}\,\mathrm{d}x\\
+&=x\ln\sin x+\frac{1}{2}\mathrm{i}x^2+2\mathrm{i}\sum_{n=1}^{\infty}\int xe^{2\mathrm{i}nx}\,\mathrm{d}x\\
+&\xlongequal{\text{分部积分}}x\ln\sin x+\frac{1}{2}\mathrm{i}x^2-x\sum_{n=0}^{\infty}\frac{e^{2\mathrm{i}nx}}{n}+\frac{\mathrm{i}}{2}\sum_{n=0}^{\infty}\frac{e^{2\mathrm{i}nx}}{n^2}\\
+&=x\ln\sin x+\frac{1}{2}\mathrm{i}x^2-x\ln(1-e^{2\mathrm{i}nx})+\frac{\mathrm{i}}{2}\mathrm{Li}_2(e^{2\mathrm{i}nx})
+\end{align*}
+
 \begin{exercise}
 计算不定积分\[\int\frac{\tan x}{1+x^2}\dif x\]
 \end{exercise}\begin{solution}
