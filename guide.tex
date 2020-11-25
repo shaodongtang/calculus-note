@@ -299,6 +299,29 @@ f(x)=e^{\frac{\ln x}{x}}=1+e^{\xi}\frac{\ln x}{x}<1+\frac{\ln x}{x}e^{\frac{\ln 
 \end{align*}
 \end{Solution}
 
+\begin{exercise}
+求极限: $\lim_{n\to\infty}\frac{n^2(\sqrt[n]{n+1}-\sqrt[n+1]{n})}{\ln (n+1)}$
+\end{exercise}\begin{solution}
+法1. 根据Lagrange 定理, 对任意 $n\geq 1$, 存在 $\xi_n,\eta_n\in (0,1)$, 使得
+\[\sqrt[n]{n+1}-\sqrt[n]{n}=\frac{(n+\xi_n)^{1/n-1}}{n}=n^{1/n-2}(1+\frac{\xi_n}{n})^{1/n-1},\]
+\[\sqrt[n]{n}-\sqrt[n+1]{n}=\ln n\cdot n^{\frac{1}{n+\eta_n}}\left(\frac{1}{n}-\frac{1}{n+1}\right).\]
+从而
+\[\sqrt[n]{n+1}-\sqrt[n]{n}\sim\frac{1}{n^2}, \sqrt[n]{n}-\sqrt[n+1]{n}\sim \frac{\ln (n+1)}{n^2}(n\to\infty).\]
+所以\begin{align*}
+\frac{n^2(\sqrt[n]{n+1}-\sqrt[n+1]{n})}{\ln (n+1)}&=\frac{n^2(\sqrt[n]{n+1}-\sqrt[n]{n})}{\ln (n+1)} +\frac{n^2(\sqrt[n]{n}-\sqrt[n+1]{n})}{\ln(n+1)}\\
+&\to 0+1=1(n\to\infty).
+\end{align*}
+即\[\lim_{n\to\infty}\frac{n^2(\sqrt[n]{n+1}-\sqrt[n+1]{n})}{\ln (n+1)}=1.\]
+法2. 注意到 $(\lambda_n\in (0,1))$
+\[\begin{array}{rl}\sqrt[n]{n+1}-\sqrt[n+1]{n}
+&=e^{\frac{\ln (n+1)}{n}}-e^{\frac{\ln n}{n+1}}\\ 
+&=e^{\lambda_n \frac{\ln (n+1)}{n}+(1-\lambda_n )\frac{\ln n}{n+1}} (\frac{\ln (n+1)}{n}-\frac{\ln n}{n+1})\\ 
+&\sim \frac{\ln (n+1)}{n}-\frac{\ln n}{n+1}=\frac{\ln n}{n(n+1)}+\frac{\ln (1+1/n)}{n}\\ 
+&=\frac{\ln n}{n(n+1)}+\frac{1}{n^2}+o\left(\frac{1}{n^2}\right)\\ 
+&\sim \frac{\ln n}{n(n+1)}\sim\frac{\ln (n+1)}{n^2}(n\to\infty),\end{array}\]
+故\[\lim_{n\to\infty}\frac{n^2(\sqrt[n]{n+1}-\sqrt[n+1]{n})}{\ln (n+1)}=1.\]
+\end{solution}
+
 \chapter{导数}
 
 \begin{example}
