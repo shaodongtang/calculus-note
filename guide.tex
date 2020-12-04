@@ -1503,6 +1503,40 @@ I_4&=\left[\theta^2\ln\left(\cos\frac{\theta}{2}\right)\right]_0^{\frac{\pi}{2}}
 \end{aligned}\end{equation*}
 \end{solution}
 
+\begin{theorem}{华里士公式}{}
+\begin{align*}
+I_n&=\int_0^{\frac{\pi}{2}}\sin^nx\,\mathrm{d}x=\int_0^{\frac{\pi}{2}}\cos^nx\,\mathrm{d}x\\
+&=\begin{cases}
+\displaystyle\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdot\,\cdots\,\cdot\frac{3}{4}\cdot \frac{1}{2}\cdot\frac{\pi}{2},&\quad n\mbox{为正偶数},~I_0=\frac{\pi}{2}\\[4mm]
+\displaystyle\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdot\,\cdots\,\cdot\frac{4}{5}\cdot \frac{2}{3},&\hspace{0.4cm}n \mbox{为大于1 的正奇数},~I_1=1
+\end{cases}
+\end{align*}	
+\end{theorem}\begin{proof}
+首先, 作代换 $x=t+\dfrac{\pi}{2}$, 由换元积分法得
+$$I_n=\int_0^{\frac{\pi}{2}}\sin^n x\dif x=\int_{-\frac{\pi}{2}}^{0}\cos^n t\dif t=-\int_{\frac{\pi}{2}}^0\cos^n t\dif t=\displaystyle\int_0^{\frac{\pi}{2}}\cos^n x\dif x.$$
+其次,
+\begin{align*}
+I_n&=\int_0^{\frac{\pi}{2}}\sin^{n-1} x \dif (-\cos x)\\
+&=[-\cos x \sin^{n-1} x]_0^{\frac{\pi}{2}}+\int_0^{\frac{\pi}{2}}{\cos x}\dif (\sin^{n-1}x)\\
+&=(n-1)\int_0^{\frac{\pi}{2}}{\cos^2 x \sin^{n-2} x}\dif x\\
+&=(n-1)\int_0^{\frac{\pi}{2}}(1-\sin^2 x) \sin^{n-2} x\dif x\\
+&=(n-1)\int_0^{\frac{\pi}{2}}{\sin^{n-2} x}{\rm d}x-(n-1)\int_0^{\frac{\pi}{2}}{\sin^{n} x}\dif x\\
+&=(n-1)I_{n-2}-(n-1)I_n,	
+\end{align*}
+从而得递推公式 $$I_n=\dfrac{n-1}{n}I_{n-2}.$$ 注意到
+$$I_0=\int_0^{\frac{\pi}{2}}\sin^0 x\dif x=\dfrac{\pi}{2},\quad I_1=\int_0^{\frac{\pi}{2}}\sin x \dif x=1,$$
+当 $n$ 为偶数时,
+\begin{align*}
+I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
+&= \frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{3}{4}\cdot\frac{1}{2}\cdot I_0= \frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{3}{4}\cdot\frac{1}{2}\cdot\frac{\pi}{2},	
+\end{align*}
+而当 $n$ 为奇数时,
+\begin{align*}
+I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
+&= \frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{4}{5}\cdot\frac{2}{3}\cdot I_1= \frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{4}{5}\cdot\frac{2}{3},	
+\end{align*} 结论获证.
+\end{proof}
+
 \section{积分不等式}
 
 \begin{example}
