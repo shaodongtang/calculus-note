@@ -460,6 +460,16 @@ $\frac{e^{x}\arcsin x-\frac{e^{x}}{\sqrt{1-x^{2}}}}{(\arcsin x)^{2}}\dif x=\dif\
 \end{align*}	
 \end{Solution}
 
+\begin{example}
+求不定积分 $\int\frac{1+x^4}{(1-x^4)^{\frac{3}{2}}}\dif x$
+\end{example}\begin{solution}
+\begin{align*}
+\int\frac{1+x^4}{(1-x^4)^{\frac{3}{2}}}\dif x
+&=\int\frac{\frac{1-x^4+2x^4}{\sqrt{1-x^4}}}{1-x^4}\dif x=\int\frac{\sqrt{1-x^4}+\frac{2x^4}{\sqrt{1-x^4}}}{1-x^4}\dif x\\
+&=\frac{x}{\sqrt{1-x^4}}+C
+\end{align*}
+\end{solution}
+
 \begin{exercise}
 求不定积分: $\int\frac{1}{\sin x+\cos x}\,\mathrm{d}x$
 \end{exercise}\begin{Solution}
@@ -984,6 +994,17 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 \end{align*}
 $\displaystyle\Longrightarrow I=\int_{0}^{1}\ln\Gamma(x)\dif x=\frac{1}{2}\ln(2\pi)$
 \end{solution}
+
+\begin{example}
+证明: $\int_0^{2017}\frac{1}{x}\left[1-\Big(1-\frac{x}{2017}\Big)^{2017}\right]\dif x=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{2017}$
+\end{example}\begin{proof}
+\begin{align*}
+I&=\int_0^{2017}\frac{1}{x}\left[1-\Big(1-\frac{x}{2017}\Big)^{2017}\right]\dif x\\
+&\xlongequal{u=\frac{x}{2017}}\int_0^1\frac{1-(1-u)^{2017}}{u}\dif u=\int_0^1\frac{1-u^{2017}}{1-u}\dif u\\
+&=\int_0^1\sum_{i=0}^{2016}u^i\dif u=\sum_{i=0}^{2016}\int_0^1u^i\dif u\\
+&=\sum_{i=0}^{2016}\frac{1}{i+1}=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{2017}
+\end{align*}
+\end{proof}
 
 \begin{exercise}
 计算积分: $\int_{0}^{1}\sin(\pi x)\log\Gamma(x)\mathrm{d}x$. 
