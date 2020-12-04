@@ -627,6 +627,22 @@ A=\frac{1}{2}\\ B=\frac{3}{2}
 \end{align*}
 \end{solution}
 
+\begin{example}
+$I_n=\int\frac{\dif x}{x^n\sqrt{x^2+1}}$ 的递推公式 $I_n=\underline{\hspace{2cm}}$
+\end{example}\begin{solution}
+注意到 $\frac{\dif}{\dif x}\sqrt{x^2+1}=\frac{x}{\sqrt{x^2+1}}$
+\begin{align*}
+I_n=\int\frac{\dif x}{x^n\sqrt{x^2+1}}
+&=\int\frac{1}{x^{n+1}}\dif\sqrt{x^2+1}\\
+&\xlongequal{\text{分部积分}}\frac{\sqrt{x^2+1}}{x^{n+1}}+\int\frac{(n+1)\sqrt{x^2+1}}{x^{n+2}}\dif x\\
+&=\frac{\sqrt{x^2+1}}{x^{n+1}}+\int\frac{(n+1)(x^2+1)}{x^{n+2}\sqrt{x^2+1}}\dif x\\
+&=\frac{\sqrt{x^2+1}}{x^{n+1}}+(n+1)I_n+(n+1)I_{n+2}
+\end{align*}
+%即\[I_{n+2}=-\frac{n}{n+1}I_n-\frac{\sqrt{x^2+1}}{(n+1)x^{n+1}}\]
+从而得到
+\[I_{n}=-\frac{n-2}{n-1}I_{n-2}-\frac{\sqrt{x^2+1}}{(n-1)x^{n-1}}\]
+\end{solution}
+
 \subsection{非初等表达}
 
 \begin{exercise}求不定积分\[\int\frac{\arctan x}{x} \dif x\]
