@@ -1161,6 +1161,65 @@ $$I_n=\frac{n(n-1)}{n^2+a^2}\cdot\frac{(n-2)(n-3)}{(n-2)^2+a^2}\cdots\frac{2\cdo
 \end{equation*}
 \end{solution}
 
+\begin{example}
+求定积分 $\int_0^1\frac{\sin\ln x}{\ln x}\dif x$.
+\end{example}\begin{solution}
+\begin{align*}
+\int_0^1\frac{\sin\ln x}{\ln x}\dif x
+&\xlongequal{\ln x=-t}\int_0^{+\infty}\frac{\sin t}{t}e^{-t}\dif t\\
+&=\int_0^{+\infty}\sin t\dif t\int_1^{+\infty}e^{-ty}\dif y=\int_0^{+\infty}\sin x\dif x\int_1^{+\infty}e^{-xy}\dif y\\
+&=\int_1^{+\infty}\dif y\int_0^{+\infty}e^{-xy}\sin x\dif x\\
+&=\int_1^{+\infty}\frac{1}{y^2+1}\dif y=\arctan y\bigg|_{1}^{+\infty}=\frac{\pi}{4}
+\end{align*}
+\end{solution}
+
+\begin{example}
+求定积分\[\int_0^{\frac{\pi}{2}}\frac{\arctan(2\tan x)}{\tan x}\dif x\]
+\end{example}\begin{solution}令 $F(\alpha)=\int_0^{\frac{\pi}{2}}\frac{\arctan(\alpha\tan x)}{\tan x}\dif x\,,\;\alpha>0$, 
+则\begin{align*}
+F'(\alpha)&=\int_0^{\frac{\pi}{2}}\frac{1}{1+\alpha^2\tan^2x}\dif x=\int_0^{+\infty}\frac{1}{(1+t^2)(1+\alpha^2t^2)}\dif t\\
+&=\frac{\alpha^2}{\alpha^2-1}\int_0^{+\infty}\frac{1}{1+\alpha^2t^2}\dif t-\frac{1}{\alpha^2-1}\int_0^{+\infty}\frac{1}{1+t^2}\dif t\\
+&=\frac{\alpha^2}{\alpha^2-1}\left[\frac{1}{\alpha}\arctan\frac{t}{\alpha}\right]_0^{+\infty}-\frac{1}{\alpha^2-1}\Big[\arctan t\Big]_0^{+\infty}=\frac{\pi}{2(\alpha+1)}
+\end{align*}
+又 $F(0)=0$, 于是
+\[F(\alpha)=F(\alpha)-F(0)=\int_0^{\alpha}\frac{\pi}{2(\alpha+1)}\dif x=\frac{\pi}{2}\ln(\alpha+1)\]
+因此\[\int_0^{\frac{\pi}{2}}\frac{\arctan(2\tan x)}{\tan x}\dif x=F(2)=\frac{\pi}{2}\ln3\]
+\end{solution}
+
+\begin{exercise}
+计算积分:~$\displaystyle\int_0^{+\infty}  \frac{{\cos ax - \cos bx}}{x}\textrm{d}x$,~其中~$a,b>0$
+\end{exercise}\begin{solution}~方法1：
+\begin{align*}
+\int_0^{+\infty}  {\frac{{\cos ax - \cos bx}}{x}\dif x}  &= \mathop {\lim }\limits_{\scriptstyle\varepsilon  \to {0^ + }\hfill\atop
+\scriptstyle\delta  \to  + \infty \hfill} \int_\varepsilon ^\delta  {\frac{{\cos ax - \cos bx}}{x}\dif x} \\
+&= \mathop {\lim }\limits_{\scriptstyle\varepsilon  \to {0^ + }\hfill\atop	\scriptstyle\delta  \to  + \infty \hfill} \left[ {\int_\varepsilon ^\delta  {\frac{{\cos ax}}{x}\dif x}  - \int_\varepsilon ^\delta  {\frac{{\cos bx}}{x}\dif x} } \right]
+\end{align*}
+分别作变量代换~$ax = u,bx = u,$~得
+\begin{align*}	
+&= \mathop {\lim }\limits_{\scriptstyle\varepsilon  \to {0^ + }\hfill\atop
+\scriptstyle\delta  \to  + \infty \hfill} \left[ {\int_{a\varepsilon }^{a\delta } {\frac{{\cos x}}{x}\dif x}  - \int_{b\varepsilon }^{b\delta } {\frac{{\cos x}}{x}\dif x} } \right] = \mathop {\lim }\limits_{\scriptstyle\varepsilon  \to {0^ + }\hfill\atop
+\scriptstyle\delta  \to  + \infty \hfill} \left[ {\int_{a\varepsilon }^{b\varepsilon } {\frac{{\cos x}}{x}\dif x}  - \int_{a\delta }^{b\delta } {\frac{{\cos x}}{x}\dif x} } \right]\\		
+&= \mathop {\lim }\limits_{\varepsilon  \to {0^ + }} \int_{a\varepsilon }^{b\varepsilon } {\frac{{\cos x}}{x}\dif x}  - \mathop {\lim }\limits_{\delta  \to {0^ + }} \int_{a\delta }^{b\delta } {\frac{{\cos x}}{x}\dif x}
+\end{align*}
+因为 $\displaystyle\int_1^{+\infty}  {\frac{{\cos x}}{x}\dif x}$~收敛(可由${\rm{Dirichlet}}$判别法得到)\\
+所以\begin{equation*}
+\mathop {\lim }\limits_{\delta  \to {0^ + }} \int_{a\delta }^{b\delta } {\frac{{\cos x}}{x}\dif x}  = \mathop {\lim }\limits_{\delta  \to {0^ + }} \left[ {\int_1^{b\delta } {\frac{{\cos x}}{x}\dif x}  - \int_1^{a\delta } {\frac{{\cos x}}{x}\dif x} } \right] = 0
+\end{equation*}
+对于前面那个极限~\begin{equation*}
+\lim\limits_{\varepsilon  \to {0^ + }} \int_{a\varepsilon }^{b\varepsilon } {\frac{{\cos x}}{x}\dif x}  =\lim\limits_{\varepsilon  \to {0^ + }} \left[ {\int_{a\varepsilon }^{b\varepsilon } {\frac{{\cos x - 1}}{x}\dif x}  + \int_{a\varepsilon }^{b\varepsilon } {\frac{1}{x}\dif x} } \right]= \ln \frac{b}{a} + \lim\limits_{\varepsilon  \to {0^ + }} \int_{a\varepsilon }^{b\varepsilon } {\frac{{\cos x - 1}}{x}\dif x} 
+\end{equation*}
+由于~$\displaystyle\int_0^1 {\frac{{\cos x - 1}}{x}\dif x} $~收敛,同理有$\displaystyle\lim\limits_{\varepsilon  \to {0^ + }} \int_{a\varepsilon }^{b\varepsilon } {\frac{{\cos x - 1}}{x}\dif x}  = 0$\\
+因此\[\int_0^{+\infty}  {\frac{{\cos ax - \cos bx}}{x}\dif x}  = \ln \frac{b}{a}\]
+注: 这个方法可以计算此题的一般形式~$\displaystyle\int_0^{+\infty}  {\frac{{f(ax) - f(bx)}}{x}\dif x}$~称为${\rm{Froullani}}$积分,其中$f(x)$需要满足适当条件	
+\end{solution}
+\begin{solution}方法2~记~$\displaystyle F(t) = \int_0^{+\infty}  {\frac{{{e^{ - tx}}(\cos ax - \cos bx)}}{x}\dif x}$~,则易验证$F(x)$ 在$[0,+\infty]$上一致收敛
+\\而\[F'(t) =  - \int_0^{+\infty}  {{e^{ - tx}}(\cos ax - \cos bx)\dif x}  = \frac{t}{{{b^2} + {t^2}}} - \frac{t}{{{a^2} + {t^2}}}\]
+$\displaystyle\Rightarrow F(t) = \frac{1}{2}\ln \left( {\frac{{{b^2} + {t^2}}}{{{a^2} + {t^2}}}} \right) + C$,其中$C$为积分常数
+\\留意到$F(+\infty)=0$
+\\所以\[0 = \frac{1}{2}\mathop {\lim }\limits_{t \to  + \infty } \ln \left( {\frac{{{b^2} + {t^2}}}{{{a^2} + {t^2}}}} \right) + C \Rightarrow C = 0\]
+所以\[F(t) = \frac{1}{2}\ln \left( {\frac{{{b^2} + {t^2}}}{{{a^2} + {t^2}}}} \right)\]
+令$t \to 0{}^ + $~即有~$\displaystyle\int_0^{+\infty}  {\frac{{\cos ax - \cos bx}}{x}\dif x}  = \ln \frac{b}{a}$\end{solution}	
+
 %\section{美丽的定积分}
 \begin{example}
 Prove that\[\int_0^1\sin(\pi x)x^x(1-x)^{1-x}\dif x=\frac{\pi e}{4!}\]
