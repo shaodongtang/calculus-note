@@ -219,6 +219,73 @@ results in \[1/2\cot(1/2)\]
 Now, e: \[e^{1/2\cot(1/2)}=e^{\frac{1}{2\tan(1/2)}}\]
 \end{newproof}
 
+\begin{example}
+求极限: $\lim_{n\to\infty}\left(\frac{1}{2}+\frac{3}{4}+\frac{5}{8}+\cdots+\frac{2n-1}{2^n}\right)$.
+\end{example}\begin{solution}
+由于 $\frac{2n-1}{2^n}=\frac{2n+1}{2^{n-1}}-\frac{2n+3}{2^n}$, 故
+\begin{align*}
+\lim_{n\to\infty}\sum_{k=1}^{n}\frac{2k-1}{2^k}
+&=\lim_{n\to\infty}\sum_{k=1}^{n}\bigg(\frac{2n+1}{2^{n-1}}-\frac{2n+3}{2^n}\bigg)\\
+&=\lim_{n\to\infty}\left(\bigg(3-\frac{5}{2}\bigg)+\bigg(\frac{5}{2}-\frac{7}{4}\bigg)+\cdots+\bigg(\frac{2n+1}{2^{n-1}}-\frac{2n+3}{2^n}\bigg)\right)\\
+&=\lim_{n\to\infty}\bigg(3-\frac{2n+3}{2^n}\bigg)=3
+\end{align*}
+显然, 
+\begin{align*}
+{\color{red}\frac{2n-1}{2^n}}&={\color{blue}\frac{an+b}{2^{n-1}}}-\frac{cn+d}{2^n}={\color{red}\frac{(2a-c)n-(d-2b)}{2^n}}\\[3mm]
+\frac{2(n-1)-1}{2^{n-1}}&=\frac{a(n-1)+b}{2^{n-2}}-\frac{c(n-1)+d}{2^{n-1}}=\frac{a(n-1)+b}{2^{n-2}}-{\color{blue}\frac{cn+d-c}{2^{n-1}}}
+\end{align*}
+若通项能裂项, 则需满足
+\[{\color{blue}
+	\begin{cases}
+	a=c\\
+	b=d-c
+	\end{cases}}\text{及}\quad{\color{red}\begin{cases}
+	2=2a-c\\
+	1=d-2b
+	\end{cases}}\]	
+解之得, $a=c=2,d=3,b=1$, 因此
+\[\frac{2n-1}{2^n}=\frac{2n+1}{2^{n-1}}-\frac{2n+3}{2^n}\]
+同时可以看出 $a=c$ 是一般的. 若通项为 $\frac{3n-2}{5^n}$. 同样的算法\\
+\begin{align*}
+{\color{red}\frac{3n-2}{5^n}}&={\color{blue}\frac{an+b}{5^{n-1}}}-\frac{cn+d}{5^n}={\color{red}\frac{(5a-c)n-(d-5b)}{5^n}}\\[3mm]
+\frac{3(n-1)-2}{5^{n-1}}&=\frac{a(n-1)+b}{5^{n-2}}-\frac{c(n-1)+d}{5^{n-1}}=\frac{a(n-1)+b}{2^{n-2}}-{\color{blue}\frac{cn+d-c}{5^{n-1}}}
+\end{align*}
+若通项能裂项, 则需满足
+\[{\color{blue}
+	\begin{cases}
+	a=c\\
+	b=d-c
+	\end{cases}}\text{及}\quad{\color{red}\begin{cases}
+	3=5a-c\\
+	2=d-5b
+	\end{cases}}\]	
+解之得, $a=c=\frac{3}{4},d=\frac{7}{16},b=-\frac{5}{16}$, 因此
+\[\frac{3n-2}{5^n}=\frac{\frac{3}{4}n-\frac{5}{16}}{5^{n-1}}-\frac{\frac{3}{4}n+\frac{7}{16}}{5^n}=\frac{1}{16}\bigg(\frac{12n-5}{5^{n-1}}-\frac{12n+7}{5^{n}}\bigg)\]
+\end{solution}
+
+\begin{example}
+证明: $\lim\limits_{x\to-1}x^2=1$.	
+\end{example}\begin{proof}
+因为 $x\to-1$, 我们可以设 $|x-(-1)|=|x+1|<1$, 也就是 $-2<x<0$,\\
+从而有, $|x-1|<3$, 于是\[|x^2-1|=|x-1|\cdot|x+1|<3|x+1|<\varepsilon\]
+因此, $\forall \,\varepsilon>0$, 要使 $|x^2-1|<\varepsilon$, 只要 $|x+1|<\tfrac{1}{3}\varepsilon$, 又 $|x-1|<3$,\\
+即只要取 $\delta=\min\{1,\tfrac{\varepsilon}{3}\}$,
+当 $0<|x+1|<\delta$ 时, $|x^2-1|<\varepsilon$ 成立, \\
+故 $\lim\limits_{x\to-1}x^2=1$.
+\begin{remark}
+我们也可以设 $|x-(-1)|=|x+1|<\frac{1}{2}$, 也就是 $-\frac{3}{2}<x<-\frac{1}{2}$,\\
+得到\[|x^2-1|=|x-1|\cdot|x+1|<\frac{5}{2}|x+1|<\varepsilon\,,\,|x+1|<\frac{2}{5}\varepsilon\]
+令：$\delta=\min\{\tfrac{1}{2},\tfrac{2}{5}\varepsilon\}$\\
+我们也可以设 $|x-(-1)|=|x+1|<2$, 也就是 $-3<x<1$,\\
+得到\[|x^2-1|=|x-1|\cdot|x+1|<4|x+1|<\varepsilon\,,\,|x+1|<\frac{1}{4}\varepsilon\]
+令：$\delta=\min\{2,\tfrac{1}{4}\varepsilon\}$\\
+我们也可以设 $|x-(-1)|=|x+1|<\frac{1}{3}$, 也就是 $-\frac{4}{3}<x<-\frac{2}{3}$,\\
+得到\[|x^2-1|=|x-1|\cdot|x+1|<\frac{7}{2}|x+1|<\varepsilon\,,\,|x+1|<\frac{2}{7}\varepsilon\]
+令：$\delta=\min\{\tfrac{1}{3},\tfrac{2}{57}\varepsilon\}$
+\end{remark}
+\end{proof}
+
+
 \begin{example}(2017/10/8)
 求极限\[\lim_{x\to0^+}\frac{\sqrt{1-e^{-2x}}-\sqrt{1+2x-\cos x}}{\sqrt{x^3}}\]
 \end{example}\begin{newproof}
@@ -880,6 +947,51 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 \end{solution}
 
 \section{定积分}
+
+%\begin{definition}{定和式}{}
+%如果$\Delta(F(x))=f(x)$，则$f(x)$的{定和式}等于
+%\[ \sum\nolimits_a^b f(x) = [F(x)]_a^b = F(b)-F(a). \]
+%其中, {\color{blue}定和式} $\sum_a^b f(x)$表示有限和$\sum\limits_{k=a}^{\color{red}{b-1}}f(k)$．
+%\end{definition}
+%
+%\begin{example}
+%利用不定和式的公式计算 $\sum_{k=1}^n k^2$
+%\end{example}\begin{solution}(by  吕荐瑞)
+%\begin{align*}
+%\sum_{k=1}^n k^2 &= \sum\nolimits_1^{n+1} x^2 = \sum\nolimits_1^{n+1} \big(x(x-1) + x \big)\\[-1em]
+%&= \sum\nolimits_1^{n+1} \big(x^{\underline{2}} + x^{\underline{1}} \big)
+%= \left[\frac13x^{\underline{3}} + \frac12x^{\underline{2}}\right]_1^{n+1} \\
+%&= \frac{(n+1)\,n\,(n-1)}{3} + \frac{(n+1)\,n}{2} - 0 \\
+%&= \frac{n(n+1)(2n+1)}{6}
+%\end{align*}
+%类似地，也可以计算出高次方和．
+%\end{solution}
+%
+%\begin{theorem}{分部求和}{}
+%定和式的{\color{blue}分部求和}公式为
+%\[ \sum\nolimits_a^b u\Delta{v} = [uv]_a^b - \sum\nolimits_a^b {\color{red}E{v}}\Delta{u}. \]
+%其中{\color{red}移位算子} $E(f(x))=f(x+1)$．
+%\end{theorem}
+%
+%\begin{example}
+%求 $\sum \frac{x}{2^x}$, $\sum_{k=1}^n \frac{k}{2^k}$, $\sum_{k=1}^{\infty} \frac{k}{2^k}$
+%\end{example}\begin{solution}
+%在分部求和公式中令$u=x$，$\Delta{v}=\frac1{2^x}$，得到
+%\begin{align*}
+%\sum \frac{x}{2^x} &= -2 \sum x\cdot\Delta\bigg(\frac1{2^x}\bigg)\\
+%&= -2x\cdot\frac{1}{2^x} + 2 \sum\frac{1}{2^{x+1}}\cdot\Delta{x} \\
+%&= -2x\cdot\frac{1}{2^x} + \sum\frac{1}{2^x} \\
+%&= -2x\cdot\frac{1}{2^x} -2 \frac{1}{2^x} + C= -\frac{2x+2}{2^x} + C
+%\end{align*}
+%由上面不定和式的结果，可以得到定和式
+%\[\sum_{k=1}^n \frac{k}{2^k} = \sum\nolimits_1^{n+1} \frac{x}{2^x}
+%=\left[-\frac{2x+2}{2^x}\right]_1^{n+1} \\
+%=2-\frac{n+2}{2^n}\]
+%以及无限和式
+%\[\sum_{k=1}^{\infty} \frac{k}{2^k} = \sum\nolimits_1^{\infty} \frac{x}{2^x}= \left[-\frac{2x+2}{2^x}\right]_1^{\infty} \\
+%= 2-0 = 2\]
+%\end{solution}
+
 \subsection{定积分定义}
 
 \begin{newdef}[定积分]
@@ -1097,6 +1209,19 @@ I&=\int_0^{2017}\frac{1}{x}\left[1-\Big(1-\frac{x}{2017}\Big)^{2017}\right]\dif 
 &=\sum_{i=0}^{2016}\frac{1}{i+1}=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{2017}
 \end{align*}
 \end{proof}
+
+%法1(换元法)
+%\begin{align*}
+%\int_{0}^{\frac{\pi}{2}}\ln\sin x\dif x
+%&=\frac{1}{2}\left(\int_{0}^{\frac{\pi}{2}}\ln\sin x\dif x+\int_{0}^{\frac{\pi}{2}}\ln\cos x\dif x\right)\\
+%&=\frac{1}{2}\int_{0}^{\frac{\pi}{2}}\ln\Big(\frac{1}{2}\sin2x\Big)\dif x\\
+%&=-\frac{\pi}{4}\ln2+\frac{1}{2}\int_{0}^{\frac{\pi}{2}}\ln\sin2x\dif x\\
+%&\xlongequal{u=2x}-\frac{\pi}{4}\ln2+\frac{1}{4}\int_{0}^{\pi}\ln\sin u\dif u\\
+%&=-\frac{\pi}{4}\ln2+\frac{1}{4}\int_{0}^{\frac{\pi}{2}}\ln\sin u\dif u+\frac{1}{4}\smash{\overbrace{\int_{\frac{\pi}{2}}^{\pi}\ln\sin u\dif u}\limits^{t=u-\frac{\pi}{2}}}\\
+%&=-\frac{\pi}{4}\ln2+\frac{1}{4}\int_{0}^{\frac{\pi}{2}}\ln\sin u\dif u+\frac{1}{4}\smash{\underbrace{\int_{0}^{\frac{\pi}{2}}\ln\cos t\dif t}_{\frac{\pi}{2}-t=x}}\\
+%&=-\frac{\pi}{2}\ln 2
+%\end{align*}
+%法2(换元法)
 
 \begin{exercise}
 计算积分: $\int_{0}^{1}\sin(\pi x)\log\Gamma(x)\mathrm{d}x$. 
