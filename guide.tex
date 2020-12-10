@@ -2079,6 +2079,15 @@ f\bigg(\frac{a+b}{2}\bigg)&=f(b)+\frac{1}{2}f''(\xi_2)\bigg(\frac{b-a}{2}\bigg)^
 \[2|f'(x)|\leqslant4\Longrightarrow |f'(x)|\leqslant2,x\in[0,2]\]
 \end{proof}
 
+\begin{example}
+设 $f(x)$ 在 $[0,1]$ 上二阶可导，且$f(0)=f(1)=0,\;f'(1)=1$, 求证：存在 $\xi\in(0,1)$ 使得 $f''(\xi)=2$
+\end{example}\begin{solution}
+令 $F(x)=f(x)-x^2$, 则 $F(0)=0, F(1)=-1$, 显然 $F(x)$ 满足拉格朗日中值定理的条件, 故 $\exists\,C\in(0,1)$, 使 
+\[F'(C)=\frac{F(1)-F(0)}{1-0}=-1\]
+又 $F'(x)=f'(x)-2x$, $F'(1)=-1$,
+且 $F'(x)$ 在 $[C,1]$ 满足罗尔定理的条件. 故 $\exists\,\xi\in(C,1)\subset(0,1)$, 使 $F''(\xi)=f''(\xi)-2=0$.
+\end{solution}
+
 \chapter{特殊函数}
 
 %\begin{newdef}
