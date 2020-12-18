@@ -168,6 +168,21 @@ $$|q^{n-1}-0|<\varepsilon,$$
 即 $\lim_{n\to\infty}\frac{n+2}{n^2-2}\sin n=0$. 
 \end{solution}
 
+\begin{theorem}{}{}
+\[\lim\limits_{x\to 0}\frac{\sin x}{x}=1.\]
+\end{theorem}\begin{proof}
+当 $x\ne 0$ 时, 函数 $\frac{\sin x}{x}$ 有定义. 因为
+$$|\sin x|<|x|<|\tan x|\quad \left(-\frac{\pi}{2}<x<\frac{\pi}{2}\right)$$
+不等式两边同除以 $|\sin x|$, 得到
+$$1<\Big| \frac{x}{\sin x}\Big|<\frac{1}{|\cos x|},$$
+由于当 $-\frac{\pi}{2}<x<\frac{\pi}{2}$ 时, $\frac{x}{\sin x}>0,\frac{1}{\cos x}>0$, 从而有
+$$ 1<\frac{x}{\sin x}<\frac{1}{\cos x}\quad \mbox{或}\quad 1>\frac{\sin x}{ x}>\cos x.$$
+于是有
+$$0<1-\frac{\sin x}{ x}<1-\cos x=2\sin^2\frac{x}{2}\leqslant 2\Big(\frac{x}{2}\Big)^2=\frac{1}{2}x^2,\eqno (1\mbox{-}2)$$
+而 $\lim\limits_{x\to 0}\frac{1}{2}x^2=0$, 所以由夹逼定理得到
+\[\lim_{x\to 0}\Big(1-\frac{\sin x}{x}\Big)=0\Longleftrightarrow \lim_{x\to 0}\frac{\sin x}{x}=1\]
+\end{proof}
+
 \begin{example}
 (2017/10/20)求极限 $\lim_{x\to\infty}\big(\cos\sqrt{x+1}-\cos\sqrt{x}\big)$
 \end{example}\begin{newproof}
