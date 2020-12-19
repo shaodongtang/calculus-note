@@ -492,6 +492,22 @@ $F(x)$ 在 $x=0$ 处可导 $\Longrightarrow F'(0)=F'_{-}(0)=F'_{+}(0)\Longrighta
 莱布尼茨公式\begin{equation*}(uv)^{n}=\sum_{k=0}^{n}C_n^ku^{(n-k)}v^{(k)}\end{equation*}	
 \end{Solution}
 
+\begin{example}
+设 $y=y(x)$ 是定义在 $[-1,1]$ 上的二阶可导函数, 且满足方程
+\[(1-x^2)\frac{\dif^2y}{\dif x^2}-x\frac{\dif y}{\dif x}+a^2y=0\,,\]
+作变量代换 $x=\sin t$ 后, 证明: 函数 $y$ 满足方程 $\frac{\dif^2y}{\dif t^2}+a^2y=0$
+\end{example}\begin{proof}
+注意到 $\frac{\dif x}{\dif t}=\cos t=\sqrt{1-x^2}$, 故
+\[\frac{\dif y}{\dif t}=\frac{\dif y}{\dif x}\frac{\dif x}{\dif t}=\frac{\dif y}{\dif x}\sqrt{1-x^2}\]
+于是\begin{align*}
+\frac{\dif^2y}{\dif t^2}&=\frac{\dif}{\dif t}\left(\frac{\dif y}{\dif t}\right)=\frac{\dif}{\dif x}\left(\frac{\dif y}{\dif t}\right)\frac{\dif x}{\dif t}\\
+&=\frac{\dif}{\dif x}\left(\frac{\dif y}{\dif x}\sqrt{1-x^2}\right)\sqrt{1-x^2}\\
+&=\left(\frac{\dif^2y}{\dif x^2}\sqrt{1-x^2}+\frac{\dif y}{\dif x}\frac{-x}{\sqrt{1-x^2}}\right)\sqrt{1-x^2}\\
+&=(1-x^2)\frac{\dif^2y}{\dif x^2}-x\frac{\dif y}{\dif x}
+\end{align*}
+再代入到方程即可得证
+\end{proof}
+
 \chapter{积分}
 \section{不定积分}
 
