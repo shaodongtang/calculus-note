@@ -2119,6 +2119,27 @@ f\bigg(\frac{a+b}{2}\bigg)&=f(b)+\frac{1}{2}f''(\xi_2)\bigg(\frac{b-a}{2}\bigg)^
 且 $F'(x)$ 在 $[C,1]$ 满足罗尔定理的条件. 故 $\exists\,\xi\in(C,1)\subset(0,1)$, 使 $F''(\xi)=f''(\xi)-2=0$.
 \end{solution}
 
+\begin{example}
+设$f(x)$在 $[a,b]$ 上连续, 在 $(a,b)$ 内可导, 且 $f'(x)\neq0$, 证明: 存在 $\xi,\eta\in(a,b)$, 使得
+\[\frac{f'(\xi)}{f'(\eta)}=\frac{e^b-e^a}{b-a}\cdot e^{-\eta}\]
+\end{example}\begin{solution}
+考虑\[\frac{e^{\eta}}{f'(\eta)}\Longrightarrow g'(x)=e^x\Longrightarrow  \makebox{构造\;} g(x)=e^x\]
+令 $g(x)=e^x$,  $g(x)$与$f(x)$ 在 $[a,b]$ 上连续,  在 $(a,b)$ 内可导, 由柯西中值定理知  $\exists\;\xi \in[a,b]$ 
+\[\frac{g(b)-g(a)}{f(b)-f(a)}=\frac{g'(\eta)}{f'(\eta)}=\frac{e^\eta}{f'(\eta)}\Longrightarrow f(b)-f(a)=\frac{(e^b-e^a)f'(\eta)}{e^\eta}\]
+$f(x)$ 在 $[a,b]$ 上连续,  在 $(a,b)$ 内可导, 由拉格朗日中值定理知  $\exists\;\eta\in[a,b]$ 
+\[f(b)-f(a)=(b-a)f'(\xi)\]
+故$\displaystyle\exists\;\xi,\eta\in(a,b)$ 使得 $\displaystyle \frac{f'(\xi)}{f'(\eta)}=\frac{e^b-e^a}{b-a}\cdot e^{-\eta}$.得证
+\end{solution}
+
+\begin{example}
+设函数 $f(x)$ 在 $[0,1]$ 连续, 且 $(0,1)$ 内可导.证明：$\forall\;\xi,\eta\in(0,1)$ 使 \[\frac{3}{7}f'(\xi)=\frac{f'(\eta)}{(1+\eta)^2}\]
+\end{example}\begin{proof}
+\,$f(x)$ 在 $[0,1]$ 上连续,  在 $(0,1)$ 内可导, 由拉格朗日中值定理可得
+\[f(1)-f(0)=f'(\xi)\quad\xi\in(0,1)\]
+令 $g(x)=\frac{(1+x)^3}{7}$,  $g(x)$与$f(x)$ 在 $[0,1]$ 上连续,  在 $(0,1)$ 内可导, 由柯西中值定理知  \[f(1)-f(0)=\frac{f(1)-f(0)}{g(1)-g(0)}=\frac{f'(\eta)}{\frac{3}{7}(1+\eta)^2}\quad\eta\in(0,1)\]
+故 $\forall\;\xi,\eta\in(0,1)$ 使 \[\frac{3}{7}f'(\xi)=\frac{f'(\eta)}{(1+\eta)^2}\]	
+\end{proof}
+
 \chapter{特殊函数}
 
 %\begin{newdef}
