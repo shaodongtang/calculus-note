@@ -395,6 +395,41 @@ Now, e: \[e^{1/2\cot(1/2)}=e^{\frac{1}{2\tan(1/2)}}\]
 \end{align*}
 \end{Solution}
 
+\begin{example}
+设 $\displaystyle f(a)=\int_{-1}^{1}|x-a|e^x\,\mathrm{d}x$, 求 $f(a)$ 并判断连续性．	
+\end{example}\begin{proof}
+首先去绝对值则有\\[1mm]
+1：$a\leqslant1$  时 $\displaystyle f(a)=\int_{-1}^{1}(a-x)e^x\,\mathrm{d}x=ae-\frac{a+2}{e}$\\[1mm]
+2：$a\geqslant1$  时 $\displaystyle f(a)=\int_{-1}^{1}(x-a)e^x\,\mathrm{d}x=\frac{a+2}{e}-ae$\\[1mm]
+3： $-1<a<1$ 时$\displaystyle f(a)=\int_{-1}^{a}(a-x)e^x\,\mathrm{d}x+\int_{a}^{1}(x-a)e^x\,\mathrm{d}x=2e^a-ae-\frac{a+2}{e}$\\[1mm]
+所以\begin{equation*}f(a)=\begin{cases}ae-\dfrac{a+2}{e}&a\leqslant1\\[1mm]
+\dfrac{a+2}{e}-ae&a\geqslant1\\[1mm]
+2e^a-ae-\dfrac{a+2}{e}&-1<a<1
+\end{cases}\end{equation*}
+因为\begin{equation*}\lim_{a\to1^+}f(a)=\lim_{a\to1^-}f(a)=e-\frac{3}{e}=f(1)\end{equation*}
+故 $f(a)$ 在 $x=1$ 处连续
+因为\begin{equation*}\lim_{a\to-1^+}f(a)=\lim_{a\to-1^-}f(a)=\frac{1}{e}+e=f(-1)\end{equation*}
+故 $f(a)$ 在 $x=-1$ 处连续	
+\end{proof}
+
+\begin{example}
+设 $f(x)=\lim_{n\to\infty}\frac{x^{2n-1}+ax^2+bx}{x^{2n}+1}$ 是连续函数, 求 $a,b$ 的值
+\end{example}\begin{solution} $x=1,x=-1$ 处可能是间断点, 在 $x=1,x=-1$ 分别求左右极限
+\[\lim_{x\to1^+}f(x)=\lim_{x\to1^+}\lim_{n\to\infty}\frac{\overbrace{x^{2n-1}}^{+\infty}+ax^2+bx}{\smash{\underbrace{x^{2n}}_{+\infty}}+1}=
+\lim_{x\to1^+}\lim_{n\to\infty}\frac{x^{2n-1}}{x^{2n}}=1\]
+\[\lim_{x\to1^-}f(x)=\lim_{x\to1^-}\lim_{n\to\infty}\frac{\overbrace{x^{2n-1}}^{0}+ax^2+bx}{\underbrace{x^{2n}}_0+1}=
+\lim_{x\to1^-}\lim_{n\to\infty}\frac{ax^2+bx}{1}=a+b\]
+$f(x)$ 连续$\Longrightarrow \lim_{x\to1^+}f(x)=\lim_{x\to1^-}f(x)\Longrightarrow a+b=1$
+\[\lim_{x\to-1^+}f(x)=\lim_{x\to-1^+}\lim_{n\to\infty}\frac{\overbrace{x^{2n-1}}^0+ax^2+bx}{\smash{\underbrace{x^{2n}}_0}+1}=
+\lim_{x\to-1^+}\lim_{n\to\infty}\frac{ax^2+bx}{1}=a-b\]
+\[\lim_{x\to-1^-}f(x)=\lim_{x\to-1^-}\lim_{n\to\infty}\frac{\overbrace{x^{2n-1}}^{\infty}+ax^2+bx}{\underbrace{x^{2n}}_{\infty}+1}=
+\lim_{x\to-1^-}\lim_{n\to\infty}\frac{x^{2n-1}}{x^{2n}}=-1\]
+$f(x)$ 连续$\Longrightarrow \lim_{x\to-1^+}f(x)=\lim_{x\to-1^-}f(x)\Longrightarrow a-b=-1$
+\[\bigg\{\begin{array}{@{}l}
+a+b=1\\a-b=-1
+\end{array}\Longrightarrow a=0,b=1\]
+\end{solution}
+
 \begin{exercise}
 设函数 $\displaystyle f(x)=x^{\frac{1}{x}}, x>1$\\[1mm]
 \makebox{\ding{172}} 证明：$\forall x>1$,恒有 $ 1<f(x)<1+e^{\frac{1}{e}}\cdot\dfrac{\ln x}{x}$\\[1mm]
