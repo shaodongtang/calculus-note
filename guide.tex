@@ -611,6 +611,18 @@ $F(x)$ 在 $x=0$ 处可导 $\Longrightarrow F'(0)=F'_{-}(0)=F'_{+}(0)\Longrighta
 \[ \sum f(x) = F(x) + C. \]
 \end{definition}
 
+\begin{example}
+计算不定积分 $\int[x]\dif x$
+\end{example}\begin{solution}
+由微积分基本定理，有
+\begin{align*}
+\int[x]\dif x&=\int_0^x[t]\dif t+C=\sum_{k=0}^{[x]-1}\int_k^{k+1}k\dif t+\int_{[x]}^x[t]\dif t+C\\
+&=\sum_{k=0}^{[x]-1}k+\int_{[x]}^x[x]\dif t+C\\
+&=\sum_{k=0}^{[x]-1}k+[x]\big(x-[x]\big)+C\\
+&=x[x]-\frac{[x]^2+[x]}{2}+C
+\end{align*}	
+\end{solution}
+
 \begin{exercise}
 求不定积分: $\int {\frac{{{2^x} \times {3^x}}}{{{9^x} - {4^x}}}} \dif x$	
 \end{exercise}\begin{solution}
