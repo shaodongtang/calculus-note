@@ -2193,6 +2193,29 @@ s(x) &= s(1)+\int_1^x s'(t)\dif t = 0 + \int_1^x\dfrac{1}{4-t}\dif t=-\ln(4-t)\B
 \end{exercise}\begin{Solution}
 \end{Solution}
 
+\begin{example}\label{Wirtingerintneq-fourier}
+(Wirtinger不等式)  设 $f(x)$ 为 $[-\pi,\pi]$ 上的连续可微函数, 且
+$f(-\pi)=f(\pi)$. 如果
+\[\int_{-\pi}^{\pi}f(x)\dif x=0. \]
+则
+\[\int_{-\pi}^{\pi}f^2(x)\dif x\leqslant\int_{-\pi}^{\pi}[f'(x)]^2\dif x,\]
+等号成立当且仅当 $f(x)=a\cos x+b\sin x$
+\end{example}\begin{proof}\footnote{梅加强《 数学分析》P380 }
+将 $f$ 延拓为 $(-\infty,+\infty)$ 上的周期函数, 周期为 $2\pi$. 则 $f$ 有 Fourier 展开
+\[f(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos nx+b_n\sin n x)\]
+其中
+\[a_0=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\dif x=0.\]
+$f'(x)$ 的 Fourier 展开为
+\[f'(x)\sim\sum_{n=1}^{\infty}(nb_n\cos nx-na_n\sin nx).\]
+根据 Parseval 等式,
+\begin{align*}
+\int_{-\pi}^{\pi} f^2(x)\dif x 
+&=\pi\sum_{n=1}^{\infty}(a_n^2+b_n^2)\\ 
+& \leqslant\pi\sum_{n=1}^{\infty}(n^2a_n^2+n^2 b_n^2)=\int_{-\pi}^{\pi}[f^{\prime}(x)]^2\dif x 
+\end{align*}
+等号成立当且仅当 $a_n=b_n=0$, $\forall n\geqslant2$.
+\end{proof}
+
 \chapter{中值定理}
 
 \begin{exercise}设 $f(x)$ 在 $[0,1]$ 上可微, $f(0)=0,f(1)=1$.\, 三个正数 $\lambda_1,\lambda_2,\lambda_3$ 的和\\
