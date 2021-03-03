@@ -2063,6 +2063,31 @@ because
 \par 二分法悖论(Dichotomy Paradox): 运动是不可能的. 你要到达终点, 必须首先到达全程的 1/2 处; 而要到达 1/2 处, 必须要先到 1/4 处⋯⋯每当你想到达一个点, 总有一个中点需要先到, 因此你是永远也到不了终点的. 其实,你根本连动都动不了, 运动是不可能的.
 
 \begin{example}
+设 ${a_n} = 1 + \frac{1}{2} + \cdots + \frac{1}{n},n = 1,2, \cdots$,求 $\sum\limits_{n = 1}^\infty {\frac{{{a_n}}}{{n\left( {n + 1} \right)}}}$ 的和.
+\end{example}\begin{solution}
+\begin{align*}
+\sum\limits_{n = 1}^\infty {\frac{{{a_n}}}{{n\left( {n + 1} \right)}}} =& \sum\limits_{n = 1}^\infty {\frac{{1 + \frac{1}{2} + \cdots + \frac{1}{n}}}{{n\left( {n + 1} \right)}}} \\
+=&\sum\limits_{n = 1}^\infty {\left( {\frac{{1 + \frac{1}{2} + \cdots + \frac{1}{n}}}{n} - \frac{{1 + \frac{1}{2} + \cdots + \frac{1}{{n + 1}}}}{{n + 1}}} \right)} + \sum\limits_{n = 1}^\infty {\frac{1}{{{{\left( {n + 1} \right)}^2}}}} \\
+= & 1 - \mathop {\lim }\limits_{n \to \infty } \frac{{1 + \frac{1}{2} + \cdots + \frac{1}{{n + 1}}}}{{n + 1}} + \left( {\frac{{{\pi ^2}}}{6} - 1} \right) = \frac{{{\pi ^2}}}{6} - \mathop {\lim }\limits_{n \to \infty } \frac{{\frac{1}{{n + 2}}}}{1} \\
+=& \frac{{{\pi ^2}}}{6}.
+\end{align*}
+\end{solution}
+
+\begin{example}
+求 $\sum_{n=1}^{\infty}\frac{1}{\sqrt{n(n+1)}(\sqrt{n}+\sqrt{n+1})}$ 的和	
+\end{example}\begin{proof}
+注意到
+\[\frac{1}{\sqrt{n(n+1)} (\sqrt{n} + \sqrt{n+1})} = \frac{\sqrt{n+1} -\sqrt{n}}{\sqrt{n(n+1)}} = \frac1{\sqrt{n}} - \frac1{\sqrt{n+1}}\]
+故\[\sum_{n=1}^{\infty}\frac{1}{\sqrt{n(n+1)} (\sqrt{n} + \sqrt{n+1})} 
+=  \sum_{n=1}^{\infty}\left(\frac1{\sqrt{n}} - \frac1{\sqrt{n+1}}\right)=1\]
+%\begin{align*}
+%&\sum_{n=1}^{\infty}\frac{1}{\sqrt{n(n+1)} (\sqrt{n} + \sqrt{n+1})} 
+%=  \sum_{n=1}^{\infty}\left(\frac1{\sqrt{n}} - \frac1{\sqrt{n+1}}\right)=1%\\
+%=& \frac{1}{1}-\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}} - \frac{1}{\sqrt{3}}+\cdots+\frac1{\sqrt{n}} - \frac1{\sqrt{n+1}}+\cdots = 1
+%\end{align*}
+\end{proof}
+
+\begin{example}
 求 $\sum_{n=0}^{\infty}\frac{(x-2)^n}{(n+1)3^n}$ 的收敛半径与收敛域	
 \end{example}\begin{Solution}考虑比值审敛法
 \[\lim_{n\to0}\left|\cfrac{\cfrac{(x-2)^{n+1}}{(n+2)3^{n+1}}}{\cfrac{(x-2)^n}{(n+1)3^n}}\right|=\lim_{n\to0}\left|\frac{(x-2)(n+1)}{3(n+2)}\right|=\left|\frac{x-2}{3}\right|\]
