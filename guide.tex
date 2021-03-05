@@ -2402,6 +2402,36 @@ $f'(x)$ 的 Fourier 展开为
 等号成立当且仅当 $a_n=b_n=0$, $\forall n\geqslant2$.
 \end{proof}
 
+\begin{example}\label{exam:intneq-amm11946}
+(\href{https://www.mat.uniroma2.it/~tauraso/AMM/AMM11946.pdf}{AMM11946}) %设 $f(x)$ 在 $[0,1]$ 上二阶连续可微, 且 $\int_{\frac{1}{3}}^{\frac{2}{3}}f(x)\dif x=0$. 证明：\[4860\left(\int_0^1f(x)\dif x \right)^2\leqslant 11\int_0^1\big(f''(x)\big)^2\dif x \]
+Let $f$ be a twice differentiable function [0,1] to $\mathbb R$ with $f''$ continuous on [0,1] and $\int_{\frac{1}{3}}^{\frac{2}{3}}f(x)\dif x=0$. Proof:
+\[4860\left(\int_0^1f(x)\dif x \right)^2\leqslant 11\int_0^1\big(f''(x)\big)^2\dif x \]
+\end{example}\begin{solution}\footnote{https://www.mat.uniroma2.it/~tauraso/AMM/AMM11946.pdf}
+Let $g(x)$ be the piecewise differentiable function defined as
+\[g(x):=\begin{cases}
+x   & \text{if}\; x\in[0,1/3),\\
+1-2x& \text{if}\; x\in[1/3,2/3],\\
+x-1 & \text{if}\; x\in[2/3,1),
+\end{cases}\]
+and let
+\[G(x):=\int_0^xg(t)\dif t=\begin{cases}
+\frac{x^2}{2}   & \text{if}\; x\in[0,1/3),\\
+-x^2+x-\frac{1}{6}& \text{if}\; x\in[1/3,2/3],\\
+\frac{x^2}{2}-x+\frac{1}{2}& \text{if}\; x\in[2/3,1).
+\end{cases}  \]
+Since $\int_{\frac{1}{3}}^{\frac{2}{3}}f(x)\dif x=0$, it follows that
+\[\int_0^1 f(x)\dif x=\int_0^{\frac{1}{3}} f(x)\dif x-2\int_{\frac{1}{3}}^{\frac{2}{3}} f(x)\dif x+\int_{\frac{2}{3}}^1 f(x)\dif x=\int_0^1 f(x)g'(x)\dif x. \]
+Hence, by integrating by parts,we obtain
+\begin{align*}
+\int_0^1 f(x)\dif x&=\int_0^1 f(x)\dif(g(x))=\big[f(x)g(x)\big]_0^1-\int_0^1 g(x)\dif(f(x))=\int_0^1 g(x)f'(x)\dif x\\
+&=-\int_0^1 f'(x)\dif(G(x))=-\big[f'(x)G(x)\big]_0^1+\int_0^1 f''(x)G(x)\dif x=\int_0^1 f''(x)G(x)\dif x
+\end{align*}
+Finally, by Cauchy-Schwarz inequality, we get
+\[\left(\int_0^1 f(x)\dif x\right)^2\leqslant \int_0^1 \big(G(x)\big)^2\dif x\cdot\int_0^1 \big(f''(x)\big)^2\dif x=\frac{11}{4860}\int_0^1 \big(f''(x)\big)^2\dif x \]
+because 
+\[\int_0^1 \big(G(x)\big)^2\dif x=2\int_0^{\frac{1}{3}} \frac{x^4}{4}\dif x+2\int_{\frac{1}{3}}^{\frac{1}{2}}\left(-x^2+x-\frac{1}{6}\right)^2\dif x=\frac{11}{4860}.\]
+\end{solution}
+
 \chapter{中值定理}
 
 \begin{exercise}设 $f(x)$ 在 $[0,1]$ 上可微, $f(0)=0,f(1)=1$.\, 三个正数 $\lambda_1,\lambda_2,\lambda_3$ 的和\\
