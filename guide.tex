@@ -1494,6 +1494,20 @@ $$I_n=\frac{n(n-1)}{n^2+a^2}\cdot\frac{(n-2)(n-3)}{(n-2)^2+a^2}\cdots\frac{2\cdo
 \end{solution}
 
 \begin{example}
+求反常积分: $\int_0^{+\infty}\frac{\sin x}{e^x-1}\dif x$
+\end{example}\begin{solution}
+对于 $x>0$ 有展开式
+\[\frac{1}{e^x-1}=\frac{e^{-x}}{1-e^{-x}}=e^{-x}\big(1+e^{-x}+e^{-2x}+\cdots\big)=\sum_{n=1}^{\infty}e^{-nx}\]
+于是有
+\begin{align*}
+\int_0^{+\infty}\frac{\sin x}{e^x-1}\dif x
+&=\sum_{n=1}^{\infty}\int_0^{+\infty}e^{-nx}\sin x\dif x\\
+&\xlongequal{\text{分部积分}}\sum_{n=1}^{\infty}\left[-\frac{e^{-nx}(n\sin x+\cos x)}{n^2+1}\right]_0^{+\infty}=\sum_{n=1}^{\infty}\frac{1}{n^2+1}\\
+&\xlongequal[\ref{sum1/(n^2+1)}]{\text{傅里叶}}\frac{1}{2}(\pi\coth(\pi)-1)\approx1.0766774....
+\end{align*}
+\end{solution}
+
+\begin{example}
 求定积分 $\int_0^1\frac{\sin\ln x}{\ln x}\dif x$.
 \end{example}\begin{solution}
 \begin{align*}
