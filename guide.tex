@@ -608,6 +608,39 @@ $F(x)$ 在 $x=0$ 处可导 $\Longrightarrow F'(0)=F'_{-}(0)=F'_{+}(0)\Longrighta
 这就证明了$f'(0)$存在, 且$f'(0)=A$.	
 \end{solution}
 
+\begin{example}
+设函数 $f(x)$ 连 续 , $g(x)=\int_0^1f(xt)\dif t$，且 $\lim_{x\to0}\frac{f(x)}{x}=A$, $\;A$ 为常数，求 $g'(x)$ 并讨论 $g'(x)$ 在 $x=0$ 处的连续性.
+\end{example}
+\begin{solution}
+由题设，知 $f(0)=0$，$g(0)=0$.令 $u=xt$，得\[g(x)=\frac{\int_0^xf(u)\dif u}{x}\quad x\neq0\]
+从而\[g'(x)=\frac{xf(x)-\int_0^xf(u)\dif u}{x^2}\quad x\neq0\]
+由导数定义有\[g'(0)=\lim\limits_{x\to0}\frac{\int_0^xf(u)\dif u}{x^2}=\lim_{x\to0}\frac{f(x)}{2x}=A\]
+由于 \begin{align*}
+\lim_{x\to0}g'(x)&=\lim_{x\to0}\frac{xf(x)-\int_0^xf(u)\dif u}{x^2}=\lim_{x\to0}\frac{f(x)}{x}-\lim_{x\to0}\frac{\int_0^xf(u)\dif u}{x^2}\\
+&=A-\frac{A}{2}=\frac{A}{2}=g'(0)
+\end{align*}
+从而知 $g'(x)$ 在 $x=0$ 处连续.	
+\end{solution}
+
+\begin{example}
+设函数 $f(x)$ 是连续可导函数, 且
+\[f(x)=x+x\int_0^1f(t)\dif t+x^2\lim_{x\to0}\frac{f(x)}{x} \]
+求 $f(x)$
+\end{example}\begin{solution}
+设 $\int_0^1f(t)\dif t=A$, $\lim_{x\to0}\frac{f(x)}{x}=f'(0)=B$, 则 $f(x)=x(1+A)+Bx^2$
+\[A=(1+A)\int_0^1x\dif x+B\int_0^1x^2\dif x \]
+\[B=1+A\]
+解得 $A=5,B=6$, 于是得 $f(x)=6x+6x^2$
+\end{solution}
+
+\begin{example}
+设 $f(x)$ 满足 $f(x)=3x-\sqrt{1-x^2}\int_0^1f^2(x)\dif x$. 求 $f(x)$
+\end{example}\begin{proof}
+令 $A=\int_0^1f^2(x)\dif x$, 则 $f^2(x)=(3x-A\sqrt{1-x^2})^2$, 故
+\[A=\int_0^1(3x-A\sqrt{1-x^2})^2\dif x=\frac{2A^2}{3}-2A+3\]
+解得 $A=\frac{3}{2}$ 或者 $A=3$, 因此 $f(x)=3x-3\sqrt{1-x^2}$ 或 $f(x)=3x-\frac{3}{2}\sqrt{1-x^2}$	
+\end{proof}
+
 \begin{exercise}  已知 $\displaystyle y=x^2e^{2x}$ , 求 $\displaystyle y^{(20)}$\\[-3mm]
 \end{exercise}\begin{Solution}设 $\displaystyle u=e^{2x}$ , $\displaystyle v=x^2$ ,  则
 \begin{equation*}u^{(k)}=2^ke^{2x}\;(k=1,2,\cdots,20)\end{equation*}
@@ -1353,6 +1386,47 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 从而得到
 徐利治的渐近分析方法及应用的43-45页	
 \end{newproof}
+
+\begin{example}
+已知 $f(x)=\int_0^1\big|\ln|x-t|\big|\dif t$, 则 $\max_{0\leqslant x\leqslant1}f(x)=$
+\end{example}\begin{solution}
+\begin{align*}
+f(x)&=\int_0^1\big|\ln|x-t|\big|\dif t=\int_0^x\big|\ln|x-t|\big|\dif t+\int_x^1\big|\ln|x-t|\big|\dif t\\
+&=\underbrace{\int_0^x\big|\ln(x-t)\big|\dif t}_{u=x-t}+\underbrace{\int_x^1\big|\ln(t-x)\big|\dif t}_{u=t-x}\\
+&=\int_0^x|\ln u|\dif u+\int_0^{1-x}|\ln u|\dif u=-\int_0^x\ln u\dif u-\int_0^{1-x}\ln u\dif u
+\end{align*}
+$f'(x)=\ln(1-x)-\ln x$, 易知 $\max_{0\leqslant x\leqslant1}f(x)=f(\tfrac{1}{2})$
+\[\max_{0\leqslant x\leqslant1}f(x)=f(\tfrac{1}{2})=-2\int_0^{\frac{1}{2}}\ln u\dif u=1+\ln2\]
+\end{solution}
+
+\begin{exercise}设 $f(x)$ 在 $(0,+\infty)$ 内为单调可导函数, 它的反函数为 $f^{-1}(x)$, 且\\
+$f(x)$ 满足等式 $\int_2^{f(x)}f^{-1}(t)\,\mathrm{d}t=\frac{1}{3}x^{\frac{3}{2}}-9$, 则 $f(x)=(\qquad)$
+\begin{tasks}(4)
+	\task $\sqrt{x}-1$
+	\task $\sqrt{x}+1$
+	\task $2\sqrt{x}-1$
+	\task $2\sqrt{x}+1$		
+\end{tasks}
+\end{exercise}\begin{solution}令 
+$\frac{1}{3}x^{\frac{3}{2}}-9=0\Longrightarrow x=9$,  又 $f(x)$ 在 $(0,+\infty)$ 内为单调可导函数\\故 $ f(9)=2$, 代入选项可知 $A$ 正确\\
+令 $f^{-1}(t)=u\Longrightarrow t=f(u)\Longrightarrow \mathrm{d}t=f'(u)\mathrm{d}u$\begin{align}
+\int_2^{f(x)}f^{-1}(t)\,\mathrm{d}t
+&\xlongequal{f^{-1}(t)=u}\int_9^xuf'(u)\,\mathrm{d}u\nonumber\\
+&=uf(u)\Big|_9^x-\int_9^xf(u)\,\mathrm{d}u\nonumber\\
+&=xf(x)-9f(9)-\int_9^xf(u)\,\mathrm{d}u=\frac{1}{3}x^{\frac{3}{2}}-9\label{17-4-30-1}
+\end{align}
+对 \eqref{17-4-30-1} 求导\[xf'(x)=\frac{1}{2}x^{\frac{1}{2}}\Longleftrightarrow f'(x)=\frac{1}{2}x^{-\frac{1}{2}}\]
+对上式积分可得\[f(x)=\sqrt{x}+C\]
+代入 $f(9)=2$ 得 $f(x)=\sqrt{x}-1$
+\end{solution}
+
+\begin{example}
+设 $f(x)=\int_0^x\frac{2\ln u}{1+u}\dif u$, $x\in(0,+\infty)$, 则 $f(x)+f\Big(\frac{1}{x}\Big)=\underline{\qquad\qquad}$
+\end{example}\begin{solution}
+令 $g(x)=f(x)+f\Big(\frac{1}{x}\Big)$, 则 $g'(x)=\frac{2\ln x}{x}$, 
+注意到 \[g(1)=2f(1)=\frac{\pi^2}{3}\]
+因此\[g(x)=\int_1^x\frac{2\ln x}{x}\dif x+g(1)=\ln^2x+\frac{\pi^2}{4}\]
+\end{solution}
 
 \begin{exercise}计算积分:~\begin{equation*}\int_{0}^{1}\ln\Gamma(x)\dif x\end{equation*}\end{exercise}
 \begin{solution}本题需用到的公式~\[\Gamma(x)\Gamma(1-x)=\frac{\pi}{\sin \pi x},x\in(0,1)\hspace{1.2cm}\raisebox{1.5pt}{-----}\mbox{余元公式}\]
