@@ -663,6 +663,31 @@ $\displaystyle(x^m)^{(n)}=m(m-1)\cdots(m-n+1)x^{m-n}$&$\displaystyle(x^n)^{(n)}=
 \end{Solution}
 
 \begin{example}
+$y=(x^2+1)\sin x$, 求 $y^{(60)}.$
+\end{example}\begin{proof}
+首先 $$(x^2+1)'=2x,\quad(x^2+1)''=2,\quad(x^2+1)'''=0.$$ 设 $u=\sin x,$ $v=x^2+1$, 而 $$(\sin x)^{(n)}=\sin \left(x+n\cdot \frac {\pi}{2}\right),$$
+故由莱布尼兹公式得\begin{align*}
+y^{(60)}&=u^{(60)}v+C_{60}^1 u^{(59)}v'+C_{60}^2 u^{(58)}v''\\
+&=\sin \left(x+60\cdot\frac {\pi}{2}\right)(x^2+1)+60 \sin \left(x+59\cdot\frac {\pi}{2}\right)\cdot 2x+\frac {60\cdot 59}{2!}\sin \left(x+58\cdot\frac {\pi}{2}\right)\cdot 2\\
+&=(x^2+1)\sin x+120x(-\cos x)+3540(-\sin x)\\
+&=(x^2-3539)\sin x-120x\cos x.
+\end{align*}
+\end{proof}
+
+\begin{example}
+求 $\displaystyle y=x^2e^{3x}$ 的 $\displaystyle n$ 阶导数\\[-3mm]
+\end{example}\begin{solution}设 $\displaystyle u=e^{3x}$ , $\displaystyle v=x^2$ ,  则
+\begin{equation*}u^{(k)}=2^ke^{2x}\;(k=1,2,\cdots,20)\end{equation*}
+\begin{equation*}v'=2x,\;v''=2,\;v^{(k)}=0\;(k=3,4,\cdots,20)\end{equation*}
+代入莱布尼茨公式, 得
+\begin{align*}y^{(n)}&=(x^2e^{3x})^{(n)}\\
+&=(e^{3x})^{(n)}x^2+n(e^{3x})^{(n-1)}(x^2)'+\frac{n(n-1)}{2}(e^{3x})^{(n-2)}(x^2)''\\
+&=3^{n-2}e^{3x}\left[9x^2+6nx+n(n-1)\right]	
+\end{align*}
+莱布尼茨公式\begin{equation*}(uv)^{n}=\sum_{k=0}^{n}C_n^ku^{(n-k)}v^{(k)}\end{equation*}	
+\end{solution}
+
+\begin{example}
 设 $y=y(x)$ 是定义在 $[-1,1]$ 上的二阶可导函数, 且满足方程
 \[(1-x^2)\frac{\dif^2y}{\dif x^2}-x\frac{\dif y}{\dif x}+a^2y=0\,,\]
 作变量代换 $x=\sin t$ 后, 证明: 函数 $y$ 满足方程 $\frac{\dif^2y}{\dif t^2}+a^2y=0$
