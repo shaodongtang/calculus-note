@@ -2181,6 +2181,49 @@ because
 
 %(2.2) 将由 $y$ 轴, 直线 $y=c$, $y=d$ \,$(c<d)$ , 及连续曲线 $x=\varphi(y) \,(\varphi(y)\geqslant0)$ 所围成的曲边梯形绕 $y$ 轴旋转一周所得到的旋转体的体积 \;\;$V_y=\pi\int_c^d\varphi^2(y)\,\mathrm{d}y$
 
+\chapter{重积分} %重积分
+
+\begin{exercise}
+设二元函数 $f(x,y)$ 在区域
+\[D=\big\{0\leqslant x\leqslant1,0\leqslant y\leqslant1\big\}\]
+上具有连续的四阶偏导数, $f(x,y)$ 在 $D$ 的边界上恒为零, 且 $\bigg|\frac{\partial^4f}{\partial x^2\partial y^2}\bigg|\leqslant3$, 试证明
+\[\bigg|\iint_Df(x,y)\dif x\dif y\bigg|\leqslant\frac{1}{48}\]
+\end{exercise}\begin{proof}
+法II(by xwmath)\footnote{考研竞赛数学：每日一题271：多元函数高阶偏导数条件的不等式证明}.
+%\href{https://mp.weixin.qq.com/s?__biz=MzI2OTE2NzczNQ==&mid=2649990740&idx=2&sn=520ec6ed5986a63e663be85db0b05231&chksm=f2e37b4cc594f25a5a8c5307d80e46d777db949b8e3ace5dc29ebcca020addaa000675e65c9a&mpshare=1&scene=23&srcid=#rd}{考研竞赛数学：每日一题271：多元函数高阶偏导数条件的不等式证明}
+由于 $f(x,y)$ 在 $D$ 的边界上恒为零, 所以
+\begin{align*}
+\int_0^1x(1-x)\frac{\partial^4 f}{\partial x^2\partial y^2}\dif x
+&=\int_0^1x(1-x)\dif \frac{\partial^3f}{\partial x\partial y^2} \\
+&=\left[\frac{\partial^3f}{\partial x \partial y^2} x(1-x)\right]_0^1-\int_0^1 \frac{\partial^3f}{\partial x \partial y^2}(1-2x)\dif x\\ 
+&=\int_0^1(2 x-1)\dif \frac{\partial^3f}{\partial y^2}=\left[(2x-1) \frac{\partial^2f}{\partial y^2}\right]_0^1-2 \int_0^1\frac{\partial^2f}{\partial y^2}\dif x \\ 
+&=-2\int_0^1\frac{\partial^2f}{\partial y^2}\dif x
+\end{align*}
+类似可得
+\begin{align*}
+\int_0^1y(1-y)\frac{\partial^2f}{\partial y^2}\dif  y&=\int_0^1y(1-y)\dif \frac{\partial f}{\partial y}\\
+&=y(1-y)\left.\frac{\partial f}{\partial y}\bigg|_0 ^1-\int_0^1(1-2y)\frac{\partial f}{\partial y}\dif y\right.\\
+&=\int_0^1(2y-1)\dif f(x, y) \\
+&=[(2y-1)f(x,y)]_0^1-2\int_0^1f(x,y)\dif y \\
+&=-2\int_0^1f(x,y)\dif y 
+\end{align*}
+将两个结果分别视为二重积分中的两个累次积分计算, 于是可得
+\begin{align*} 
+\iint_Dx(1-x)y(1-y)\frac{\partial^4f}{\partial x^2\partial y^2} \dif x\dif y 
+&=-2\int_0^1\left[-2\int_0^1f(x,y)\dif y\right]\dif x \\
+&=4\int_0^1\left[\int_0^1f(x,y)\dif y\right]\dif x=4\iint_Df(x,y)\dif x\dif y 
+\end{align*}
+于是由 $\bigg|\frac{\partial^4f}{\partial x^2\partial y^2}\bigg|\leqslant3$, 得
+\begin{align*} 
+\left|\iint_{D} f(x, y)\dif x\dif y\right|
+&=\frac{1}{4}\left|\iint_{D} x y(1-x)(1-y)\frac{\partial^4 f}{\partial x^2\partial y^2}\dif x\dif y\right|\\ 
+&\leqslant\frac{3}{4}\left|\iint_{D} x y(1-x)(1-y)\dif x\dif y\right| \\
+&= \frac{3}{4}\left|\int_0^1 x(1-x)\dif x\int_0^1y(1-y)\dif y\right|\\
+&=\frac{3}{4}\left|\int_0^1x(1-x)\dif x\int_0^1y(1-y)\dif y\right|\\
+&=\frac{3}{4}\left(\int_0^1x(1-x)\dif x\right)^2=\frac{3}{4} \cdot \frac{1}{36}=\frac{1}{48}
+\end{align*}
+\end{proof}
+
 \chapter{级数}
 
 \section{无穷带来的各种悖论}
