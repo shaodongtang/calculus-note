@@ -2183,6 +2183,18 @@ because
 
 \chapter{重积分} %重积分
 
+\begin{example}
+证明不等式：
+\[2\pi\left(\sqrt{17}-4\right)\le \iint\limits_{x^2+y^2\le 1}\frac{\text{d}x\text{d}y}{\sqrt{16+\sin^2x+\sin^2y}}\le \frac{\pi}{4}.\]	
+\end{example}
+\begin{solution}
+左边不等式：\begin{align*}
+\iint\limits_{{{x}^2}+{{y}^2}\leqslant 1}{\frac{\text{d}x\text{d}y}{\sqrt{16+{{\sin }^2}x+{{\sin }^2}y}}}&\geqslant \iint\limits_{{{x}^2}+{{y}^2}\leqslant 1}{\frac{\text{d}x\text{d}y}{\sqrt{16+x^2+y^2}}}\\
+&=2\pi (16+r^2)^{1/2}\Big|_0^1= 2\pi \left( \sqrt{17}-4 \right).
+\end{align*}
+右边不等式：\[\iint\limits_{x^2+y^2\leqslant1}\frac{\dif x\dif y}{\sqrt{16+\sin^2x+\sin^2y}}\leqslant4\iint\limits_{x^2+y^2\leqslant1}\dif x\dif y=\frac{\pi}{4}\]
+\end{solution}
+
 \begin{exercise}
 设二元函数 $f(x,y)$ 在区域
 \[D=\big\{0\leqslant x\leqslant1,0\leqslant y\leqslant1\big\}\]
