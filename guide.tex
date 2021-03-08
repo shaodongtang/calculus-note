@@ -2950,6 +2950,59 @@ k=\smash[b]{\begin{cases}
 于是原方程的通解为 \[y_x=Y+y^*=C2^x-5\]
 \end{solution}
 
+\section{二阶线性偏微分方程}
+\begin{definition}{二阶线性偏微分方程一般形式\footnote{徐利治的大学数学解题法诠释P601}}{}
+\begin{equation}\label{erjiePDSybxz}
+a(x,y)\frac{\partial^2u}{\partial x^2}+2b(x,y)\frac{\partial^2u}{\partial x\partial y}+c(x,y)\frac{\partial^2u}{\partial y^2}+F\bigg(x,y,u,\frac{\partial u}{\partial x},\frac{\partial u}{\partial y}\bigg)=0
+\end{equation}
+\end{definition}
+\par 设 $a(x,y),b(x,y)$ 及 $c(x,y)$ 是某区域 $D$ 上具有二阶连续偏导数的函数.
+\begin{enumerate}
+\item[(1)] 当 $b^2(x,y)-a(x,y)c(x,y){\color{red}>}0,(x,y)\in D$ 时,称 \eqref{erjiePDSybxz} 为{\heiti 双曲型}; 
+\item[(2)] 当 $b^2(x,y)-a(x,y)c(x,y){\color{red}=}0,(x,y)\in D$ 时,称 \eqref{erjiePDSybxz} 为{\heiti 抛物型}; 
+\item[(3)] 当 $b^2(x,y)-a(x,y)c(x,y){\color{red}<}0,(x,y)\in D$ 时,称 \eqref{erjiePDSybxz} 为{\heiti 椭圆型}; 
+\end{enumerate}
+\subsection{二阶线性偏微分方程-特征线法}
+%求解 \eqref{erjiePDSybxz} 的第一件事是将之化为正则型, 其法如下:
+首先求解特征线方程
+\begin{equation}\label{tezhenxianequation}
+a(x,y)\dif y^2-2b(x,y)\dif x\dif y+c(x,y)\dif x^2=0
+\end{equation}
+这是一个二次一阶常微分方程, 可写成两个方程
+\begin{equation}\label{XuLiZhi1999P602-3}
+a\dif y-(b+\sqrt{b^2-ac})\dif x=0,
+\end{equation}
+\begin{equation}\label{XuLiZhi1999P602-4}
+a\dif y-(b-\sqrt{b^2-ac})\dif x=0,
+\end{equation}
+设已求出 \eqref{XuLiZhi1999P602-3} 与 \eqref{XuLiZhi1999P602-4} 的通积分
+\[\varphi(x,y)=c\,,\quad \psi(x,y)=c\]
+\par(1) 对双曲方程 $(b^2-ac>0)$,%{\heiti 双曲型} 
+用新变量 $(\xi,\eta)$ 来代替原变量 $(x,y)$:
+\begin{equation}\label{XuLiZhi1999P602-5}
+\xi=\varphi(x,y)\,,\quad \eta=\psi(x,y)
+\end{equation}
+这时可以将原方程 \eqref{erjiePDSybxz} 化成
+\[\frac{\partial^2u}{\partial\xi\partial\eta}=F_1\Big(\xi,\eta,\frac{\partial u}{\partial\xi},\frac{\partial u}{\partial\eta}\Big)\]
+这是双曲型方程的正则型.
+\par(2) 对抛物型方程$(b^2-ac=0)$,%{\heiti 抛物型} 
+这时只得到一个通积分 $\varphi(x,y)=c$, 今任选一函数 $\eta=\eta(x,y)$. 要求它与 $\varphi$ 在 $D$ 上独立, 即要求
+\[\frac{D(\xi,\eta)}{D(x,y)}=\begin{vmatrix}
+\frac{\partial\varphi}{\partial x} & \frac{\partial\varphi}{\partial y}\\[3mm]
+\frac{\partial\psi}{\partial x} & \frac{\partial\psi}{\partial y}
+\end{vmatrix}\neq0\]
+则代换 \eqref{XuLiZhi1999P602-5} 可将方程 \eqref{erjiePDSybxz} 化成
+\[\frac{\partial^2u}{\partial\xi\partial\eta}=F_2\Big(\xi,\eta,u,\frac{\partial u}{\partial\xi},\frac{\partial u}{\partial\eta}\Big)\]
+这是抛物型方程的正则型.
+\par(3) 对椭圆型方程 $(b^2-ac<0)$, \eqref{XuLiZhi1999P602-3} 与 \eqref{XuLiZhi1999P602-4} 的通积分将为复共轭, 它们因此定义了一对虚特征线. 设 \eqref{XuLiZhi1999P602-3} 的通积分是
+\[\varphi(x,y)+i\psi(x,y)=c\]
+$\varphi(x)$ 及 $\psi(x)$ 为其实部与虚部, 则用它们来作代换 \eqref{XuLiZhi1999P602-5} 可将方程 \eqref{erjiePDSybxz} 化成
+\[\frac{\partial^2u}{\partial\xi^2}+\frac{\partial^2u}{\partial\eta^2}=F_3\Big(\xi,\eta,u,\frac{\partial u}{\partial\xi},\frac{\partial u}{\partial\eta}\Big)\]
+这是椭圆型方程的正则型.
+
+
+\subsection{二阶线性偏微分方程-分离变量法}
+
 \bibliographystyle{ieeetr}
 \bibliography{reference}
 \addcontentsline{toc}{chapter}{参考文献} 
