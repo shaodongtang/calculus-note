@@ -2886,6 +2886,26 @@ I_n\left(z\right)=\frac{1}{\pi}\int_0^\pi e^{z\cos\theta}\cos\left(n\theta\right
 %若$y^{(c)}$是齐次方程(\ref{qccf1})的通解，$\bar{y}$是非齐次方程(\ref{fqccf1})特解，则$y=y^{(c)}+\bar{y}$是非齐次方程(\ref{fqccf1})的通解
 %\end{theorem}
 
+\begin{theorem}{$f(x)=P_n(t)$型}{}
+非齐次方程
+\[y_{t+2}+py_{t+1}+qy_t=P_n(t)\]
+其中, $P_n(t)$ 为 $t$ 的 $n$ 次多项式. \\
+方程可改写为
+\[\Delta^2y_{t}+(p+2)\Delta y_{t}+(1+p+q)y_t=P_n(t)\]
+则设特解为
+\[y_t^*=t^kQ_n(t)\]
+其中
+$\begin{cases}
+\text{\ding{172} $Q_n(t)$ 为 $t$ 的 $n$ 次多项式};\\
+\text{\ding{173}\;} 
+k=\smash[b]{\begin{cases}
+	0\,,\! & \text{当}\,1+p+q\neq0\; \text{时}\\
+	1\,,\! & \text{当}\, 1+p+q=0, \;\text{且}\, p+2\neq0\, \text{时}\\
+	2\,,\! & \text{当}\, 1+p+q=0, \;\text{且}\, p+2=0\, \text{时}
+	\end{cases}}
+\end{cases}$\\[1.5em]
+\end{theorem}
+
 \begin{example}
 求$y_{t+2}-3y_{t+1}+2y_4=4$的通解\\[-4mm]
 \end{example}\begin{solution}
@@ -2912,6 +2932,22 @@ I_n\left(z\right)=\frac{1}{\pi}\int_0^\pi e^{z\cos\theta}\cos\left(n\theta\right
 比较系数，得\begin{equation*}\begin{cases}6b_1=12,&\\3b_0+5b_1=0,\end{cases}\end{equation*}		
 解得$b_0=-\dfrac{10}{3},b_1=2$\\故所求通解为\begin{equation*}y_t=C_1+C_2(-2)^t-\frac{10}{3}t+2x^2\end{equation*}
 其中$C_1$，$C_2$为任意常数
+\end{solution}
+
+\begin{example}(18数3)
+差分方程 $\Delta^2y_x-y_x=5$  的通解是\;\underline{\makebox[5.5em]{$C2^x-5$}}
+\end{example}\begin{solution}
+法I. 根据二阶差分的定义可得
+\begin{align*}
+\Delta^2y_x&=\Delta y_{x+1}-\Delta y_x=(y_{x+2}-y_{x+1})-(y_{x+1}-y_x)\\
+&=y_{x+2}-2y_{x+1}+y_{x}
+\end{align*}
+由 $\Delta^2y_x-y_{x}=5$ 得 \[y_{x+2}-2y_{x+1}=5\]
+先求齐次方程的通解, 特征方程为 $\lambda^2-2\lambda=0$, 齐次方程通解为 $Y=C2^x$. \\
+由于 $1+p+q=1+(-2)+0\neq0$, 故设原差分方程的特解为 $y^*=a$, \\
+将特解带入非齐次方程
+\[a-2a=5\Longrightarrow a=-5\]
+于是原方程的通解为 \[y_x=Y+y^*=C2^x-5\]
 \end{solution}
 
 \bibliographystyle{ieeetr}
