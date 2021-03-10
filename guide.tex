@@ -2848,6 +2848,8 @@ I_n\left(z\right)=\frac{1}{\pi}\int_0^\pi e^{z\cos\theta}\cos\left(n\theta\right
 \end{align*}
 \end{newthem}
 
+
+
 \chapter{差分方程}
 
 %\par\setlength{\parindent}{2em}差分方程中含有未知的最高阶数称为{\heiti 差分方程的阶}
@@ -2949,6 +2951,32 @@ k=\smash[b]{\begin{cases}
 \[a-2a=5\Longrightarrow a=-5\]
 于是原方程的通解为 \[y_x=Y+y^*=C2^x-5\]
 \end{solution}
+
+
+\chapter{微分方程}
+
+\begin{note}
+一些简单二元函数的全微分, 如\begin{align*}
+&y\,\mathrm{d}x+x\,\mathrm{d}y=\mathrm{d}(xy)\\
+&\frac{y\,\mathrm{d}x-x\,\mathrm{d}y}{y^2}=\mathrm{d}\left(\frac{x}{y}\right)\\
+&\frac{-y\,\mathrm{d}x+x\,\mathrm{d}y}{x^2}=\mathrm{d}\left(\frac{y}{x}\right)\\
+&\frac{y\,\mathrm{d}x-x\,\mathrm{d}y}{xy}=\mathrm{d}\left(\ln\left|\frac{x}{y}\right|\right)\\
+&\frac{y\,\mathrm{d}x-x\,\mathrm{d}y}{x^2+y^2}=\mathrm{d}\left(\arctan\frac{x}{y}\right)\\
+&\frac{y\,\mathrm{d}x-x\,\mathrm{d}y}{x^2-y^2}=\frac{1}{2}\mathrm{d}\left(\ln\left|\frac{x-y}{x+y}\right|\right)
+\end{align*}
+\end{note}
+
+\begin{exercise}
+求微分方程: $(3x^2+6xy^2)\dif x+(6x^2y+4y^3)\dif y=0$ 的通解
+\end{exercise}\begin{solution}
+法III. 原方程可化为
+\[3x^2\mathrm{d}x+4y^3\mathrm{d}y+6xy^2\mathrm{d}x+6x^2y\mathrm{d}y=0\]
+即\[\mathrm{d}x^3+\dif y^4+3y^2\mathrm{d}x^2+3x^2\mathrm{d}y^2=0\]
+或者写成\[\mathrm{d}(x^3+y^4+3x^2y^2)=0\]
+于是, 方程的通解为\[x^3+3x^2y^2+y^4=C\]
+这里 $C$ 为任意常数.\\
+\end{solution}
+
 
 \section{二阶线性偏微分方程}
 \begin{definition}{二阶线性偏微分方程一般形式\footnote{徐利治的大学数学解题法诠释P601}}{}
