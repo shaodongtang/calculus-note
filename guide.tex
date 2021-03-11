@@ -568,6 +568,19 @@ f(x)=e^{\frac{\ln x}{x}}=1+e^{\xi}\frac{\ln x}{x}<1+\frac{\ln x}{x}e^{\frac{\ln 
 故\[\lim_{n\to\infty}\frac{n^2(\sqrt[n]{n+1}-\sqrt[n+1]{n})}{\ln (n+1)}=1.\]
 \end{solution}
 
+\begin{exercise}
+求极限\[\lim_{x\to+\infty } {x^{\frac{3}{2}}}\left( {\sqrt {x + 1}  + \sqrt {x - 1}  - 2\sqrt x } \right)\]
+\end{exercise}\begin{solution}\begin{align*}
+&\lim\limits_{x \to  + \infty } {x^{\frac{3}{2}}}\left( {\sqrt {x + 1}  + \sqrt {x - 1}  - 2\sqrt x } \right)\\
+=&\lim\limits_{x \to  + \infty }{x^2}\left( {\sqrt {1 + \frac{1}{x}}  + \sqrt {1 - \frac{1}{x}}  - 2} \right)\\
+=&\lim\limits_{t \to {0^ + }} \frac{{\sqrt {1 + t}  + \sqrt {1 - t}  - 2}}{{{t^2}}}\\
+=&\lim\limits_{t \to {0^ + }} \frac{{\left( {1 + \frac{1}{2}t - \frac{1}{8}{t^2} + o\left( {{t^2}} \right)} \right) + \left( {1 - \frac{1}{2}t - \frac{1}{8}{t^2} + o\left( {{t^2}} \right)} \right) - 2}}{{{t^2}}}\\
+= &\lim\limits_{t \to {0^ + }} \frac{{ - \frac{1}{4}{t^2} + o\left( {{t^2}} \right)}}{{{t^2}}} =  - \frac{1}{4}
+\end{align*}\begin{note}
+	\[\sqrt {1 + x}  = 1 + \frac{1}{2}x - \frac{1}{8}{x^2} + o\left( {{x^2}} \right)\]
+\end{note}	
+\end{solution}
+
 \chapter{导数}
 
 \begin{example}
