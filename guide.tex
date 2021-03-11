@@ -2664,6 +2664,20 @@ $F(x)$ 是如何构造的呢？%为保证 $\eta$, $\xi$ 为两个不同的常数
 十字相乘法或者求根公式可得 $f(x_0)=1-x_0$ 或 $f(x_0)=x_0$
 \end{remark}
 
+\begin{example}
+设函数 $f(x)=x^{\frac{1}{x}}, x>1$. 证明：$\forall x>1$,恒有 $ 1<f(x)<1+e^{\frac{1}{e}}\cdot\dfrac{\ln x}{x}$
+\end{example}\begin{proof}
+$f(x)=x^{\frac{1}{x}}=e^{\frac{\ln x}{x}}, x>1$ 并注意到 $\dfrac{\ln x}{x}>0\;(x>1)$ 故 $\displaystyle f(x)>e^0=1$\\[1mm]
+由于$e^x$ 在$\Big[0,\dfrac{\ln x}{x}\Big]$ 可导,由拉格朗日中值定理有
+\begin{equation*}
+e^{\frac{\ln x}{x}}-e^{0}=\frac{\ln x}{x}e^{\xi}\;\;\xi\in\Big(0,\dfrac{\ln x}{x}\Big)
+\end{equation*}
+令 $g(x)=\dfrac{\ln x}{x}$ 则 $g'(x)=\dfrac{1-\ln x}{x^2}$ 故$g(x)$在$(1,e)\uparrow$在$(e,+\infty)\downarrow$ 因此$g_{max}(x)=\dfrac{1}{e}$
+故\begin{equation*}
+f(x)=e^{\frac{\ln x}{x}}=1+e^{\xi}\frac{\ln x}{x}<1+\frac{\ln x}{x}e^{\frac{\ln x}{x}}{\color{blue}<1+\frac{\ln x}{x}e^{\frac{1}{e}}}
+\end{equation*}
+\end{proof}
+
 \chapter{特殊函数}
 
 %\begin{newdef}
