@@ -581,6 +581,72 @@ f(x)=e^{\frac{\ln x}{x}}=1+e^{\xi}\frac{\ln x}{x}<1+\frac{\ln x}{x}e^{\frac{\ln 
 \end{note}	
 \end{solution}
 
+\begin{exercise}
+求极限\[\lim_{x\to\infty}\left(\frac{x^{x+1}}{(1+x)^x}-\frac{x}{e}\right)\]
+\end{exercise}\begin{solution}\begin{align*}\lim_{x\to\infty}\left(\frac{x^{x+1}}{(1+x)^x}-\frac{x}{e}\right)&=\lim_{x\to\infty}\left(\frac{x}{\left (1+\frac{1}{x}\right)^x}-\frac{x}{e}\right)\\
+&=\frac{1}{e}\lim_{x\to\infty}x\left[\frac{1}{\exp\Big(x\ln\big(1+\frac{1}{x}\big)-1\Big)}-1\right]\\
+&=\frac{1}{e}\lim_{x\to\infty}x\left[\exp\Biggl(1-x\biggl(\frac{1}{x}-\frac{1}{2x^2}+o\Big(\frac{1}{x^2}\Big)\biggl)\Biggl)-1\right]\\
+&=\frac{1}{e}\lim_{x\to\infty}x\left[\exp\biggl(\frac{1}{2x}+o\Big(\frac{1}{x}\Big)\biggl)-1\right]\\
+&=\frac{1}{2e}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+求极限\begin{equation*}\lim_{n \to \infty } \left( {{n^2}\sqrt {\frac{n}{{n + 1}}}  - \left( {{n^2} + 1} \right)\sqrt {\frac{{n + 1}}{{n + 2}}} } \right)\end{equation*}
+\end{exercise}\begin{solution}
+\begin{align*}
+&\lim_{n \to \infty } \left( {{n^2}\sqrt {\frac{n}{{n+1}}}-\left( {{n^2}+1}\right)\sqrt {\frac{{n+1}}{{n+2}}} }\right)\\
+=&\lim_{n \to \infty } \frac{{{n^3}\sqrt {n + 2}  - \left( {{n^2} + 1} \right)\left( {n + 1} \right)\sqrt n }}{{\sqrt {n\left( {n + 1} \right)\left( {n + 2} \right)} }}\\
+= &\lim_{n \to \infty } \frac{{\left( {{n^{\frac{7}{2}}}\sqrt {1 + \frac{2}{n}} } \right) - \left( {{n^{\frac{7}{2}}} + {n^{\frac{5}{2}}} + {n^{\frac{3}{2}}} + \sqrt n } \right)}}{{{n^{\frac{3}{2}}}}}\\
+= &\lim_{n \to \infty } \frac{{\left( {{n^{\frac{7}{2}}}\left( {1 + \frac{1}{n} - \frac{1}{{2{n^2}}} + o\left( {\frac{1}{{{n^2}}}} \right)} \right)} \right)-\left({{n^{\frac{7}{2}}} + {n^{\frac{5}{2}}} + {n^{\frac{3}{2}}} + \sqrt n}\right)}}{{{n^{\frac{3}{2}}}}}\\
+= & - \frac{3}{2}\end{align*}
+\begin{note}
+	\[\sqrt {1 + x}  = 1 + \frac{1}{2}x - \frac{1}{8}{x^2} + o\left( {{x^2}} \right)\]
+\end{note}	
+\end{solution}
+
+\begin{example}
+求极限 $\lim_{x\to+\infty}x^2\left[\ln\left(1+\frac{1}{x}\right)-\frac{1}{1+x}\right]$
+\end{example}\begin{solution}
+\begin{align*}
+&\lim_{x\to+\infty}x^2\left[\ln\left(1+\frac{1}{x}\right)-\frac{1}{1+x}\right]\\
+=&\lim_{x\to+\infty}x^2\left[\frac{1}{x}-\frac{1}{2x^2}-\frac{1}{1+x}+o\left(\frac{1}{x^2}\right)\right]\\
+=&\lim_{x\to+\infty}x^2\left[-\frac{1}{2x^2}+o\left(\frac{1}{x^2}\right)\right]+\lim_{x\to+\infty}x^2\left(\frac{1}{x}-\frac{1}{1+x}\right)\\
+=&-\frac{1}{2}+1=\frac{1}{2}
+\end{align*}
+\end{solution}
+
+\begin{example}
+求极限 $\lim_{x\to1}\frac{x^x-x}{\ln x-x+1}$
+\end{example}\begin{solution}
+\begin{align*}
+\lim_{x\to1}\frac{x^x-x}{\ln x-x+1}&=\lim_{x\to1}\frac{x\big(e^{(x-1)\ln x}-1\big)}{\ln x-x+1}\\
+&=\lim_{x\to1}x\times\lim_{x\to1}\frac{e^{(x-1)\ln x}-1}{\ln x-x+1}\\
+&=\lim_{x\to1}\frac{e^{(x-1)^2+o\left((x-1)^2\right)}-1}{-\frac{1}{2}(x-1)^2+o\big((x-1)^2\big)}\\
+&=\lim_{x\to1}\frac{(x-1)^2+o\big((x-1)^2\big)}{-\frac{1}{2}(x-1)^2+o\big((x-1)^2\big)}\\
+&=-2\end{align*}	
+\end{solution}
+
+\begin{example}
+求极限 $\lim_{n\to\infty}n\ln\left(\sum_{k=1}^{n}\frac{1}{C_n^k}\right)$
+\end{example}\begin{solution}
+\begin{align*}
+\lim_{n\to\infty}n\ln\left(\sum_{k=1}^{n}\frac{1}{C_n^k}\right)
+&=\lim_{n\to\infty}n\ln\left(1+\frac{1}{C_n^1}+\frac{1}{C_n^{n-1}}+o\Big(\frac{1}{n^2}\Big)\right)\\
+&=\lim_{n\to\infty}n\left(1+\frac{2}{n}+o\Big(\frac{1}{n^2}\Big)\right)=2
+\end{align*}
+\end{solution}
+
+\begin{example}
+求极限 $\lim_{x\to\infty}\int_0^x\sin\frac{\pi}{x+t}\dif t$
+\end{example}\begin{solution}
+\begin{align*}
+\lim_{x\to\infty}\int_0^x\sin\frac{\pi}{x+t}\dif t
+&\xlongequal{u=x+t}\lim_{x\to\infty}\int_x^{2x}\sin\frac{\pi}{u}\dif u\\
+&\xlongequal{\text{泰勒展开}}\lim_{x\to\infty}\int_x^{2x}\frac{\pi}{u}+o\left(\tfrac{1}{u}\right)\dif u=\pi\ln2
+\end{align*}
+\end{solution}
+
 \chapter{导数}
 
 \begin{example}
