@@ -647,6 +647,47 @@ f(x)=e^{\frac{\ln x}{x}}=1+e^{\xi}\frac{\ln x}{x}<1+\frac{\ln x}{x}e^{\frac{\ln 
 \end{align*}
 \end{solution}
 
+\begin{example}
+Define 
+\[A_n=\frac{n}{n^2+1^2}+\frac{n}{n^2+2^2}+\cdots+\frac{n}{n^2+n^2}\]
+Find \[\lim_{n\to\infty}n\left[n\Big(\frac{\pi}{4}-A_n\Big)-\frac{1}{4}\right]\]
+\rightline{\textit{Proposed by Yong Xi Wang, China}}
+\end{example}\begin{solution}
+Let $f$ be three-times differentiable on the interval $(0,1]$, and let $[a,b]\in[0,1]$. By Taylor's Theorem,
+\[f(x)=f(b)+f'(b)(x-b)+\frac{1}{2}f''(b)(x-b)^2+\frac{1}{6}f'''(\xi)(x-b)^3,\]
+for some $\xi$ between $x$ and $b$. It follows that
+\[\int_a^bf(x)\dif x=f(b)(b-a)-\frac{1}{2}f'(b)(b-a)^2+\frac{1}{6}f''(b)(b-a)^3+O\big((b-a)^4\big) \]
+Now, let $n$ be a positive integer. Then, for $k=0,1,2,\cdots,n-1$,
+\[\int_{(k-1)/n}^{k/n}f(x)\dif x=\frac{1}{n}f\Big(\frac{k}{n}\Big)-\frac{1}{2n^2}f'\Big(\frac{k}{n}\Big)+\frac{1}{6n^3}f''\Big(\frac{k}{n}\Big)+O\Big(\frac{1}{n^4}\Big).\]
+Summing over $k$ then yields
+\begin{equation}\label{U340-3}
+\int_0^1f(x)\dif x=\frac{1}{n}\sum_{k=1}^{n}f\Big(\frac{k}{n}\Big)-\frac{1}{2n^2}\sum_{k=1}^{n}f'\Big(\frac{k}{n}\Big)+\frac{1}{6n^3}\sum_{k=1}^{n}f''\Big(\frac{k}{n}\Big)+O\Big(\frac{1}{n^2}\Big).
+\end{equation}
+Similarly
+\begin{equation}\label{U340-4}
+f(1)-f(0)=\int_0^1f'(x)\dif x=\frac{1}{n}\sum_{k=1}^{n}f'\Big(\frac{k}{n}\Big)-\frac{1}{2n^2}\sum_{k=1}^{n}f''\Big(\frac{k}{n}\Big)+O\Big(\frac{1}{n^2}\Big)
+\end{equation}
+and
+\begin{equation}\label{U340-5}
+f'(1)-f'(0)=\int_0^1f''(x)\dif x=\frac{1}{n}\sum_{k=1}^{n}f''\Big(\frac{k}{n}\Big)+O\Big(\frac{1}{n}\Big).
+\end{equation}
+Combining \eqref{U340-3},\eqref{U340-4},and \eqref{U340-5} then yields
+\[\int_0^1f(x)\dif x=\frac{1}{n}\sum_{k=1}^{n}f\Big(\frac{k}{n}\Big)-\frac{1}{2n}[f(1)-f(0)]-\frac{1}{12n^2}[f'(1)-f'(0)]+O\Big(\frac{1}{n^3}\Big). \]
+Now,let
+\[f(x)=\frac{1}{1+x^2}\]
+Then
+\begin{align*}
+\int_0^1f(x)\dif x&=\frac{\pi}{4};\\
+\frac{1}{n}\sum_{k=1}^{n}f\Big(\frac{k}{n}\Big)&=\frac{1}{n}\sum_{k=1}^{n}\frac{1}{1+(k/n)^2}=\sum_{k=1}^{n}\frac{n}{n^2+k^2}=A_n;\\
+f(1)-f(0)&=\frac{1}{2}-1=-\frac{1}{2};\\
+f'(1)-f'(0)&=-\frac{1}{2}-0=-\frac{1}{2};
+\end{align*}
+so that
+\[\frac{\pi}{4}=A_n+\frac{1}{4n}+\frac{1}{24n^2}+o\Big(\frac{1}{n^3}\Big).\]
+Finally,
+\[\lim_{n\to\infty}n\left[n\Big(\frac{\pi}{4}-A_n\Big)-\frac{1}{4}\right]=\frac{1}{24}.\]
+\end{solution}
+
 \chapter{导数}
 
 \begin{example}
