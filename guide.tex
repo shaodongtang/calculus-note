@@ -409,6 +409,66 @@ Now, e: \[e^{1/2\cot(1/2)}=e^{\frac{1}{2\tan(1/2)}}\]
 故\[\lim_{x\to1^-}\sqrt{1-x}\int_0^{+\infty}x^{t^2}\,\mathrm{d}t=\lim_{x\to1^-}\left(\sqrt{1-x}\times\frac{1}{2}\sqrt{\frac{\pi}{1-x}}\right)=\frac{\sqrt{\pi}}{2}\]
 \end{solution}
 
+% 单调有界定理
+\begin{example}
+设 $a_n=\int_{n\pi}^{(n+1)\pi}\frac{\sin x}{x}\dif x$，$n$为自然数，\\
+求证：(1) $|a_{n+1}|\leqslant |a_n|$\;;\quad(2) $\lim_{n\to\infty}a_n=0$
+\end{example}\begin{proof}
+\begin{align*}
+|a_{n+1}|-|a_n|&=\left|\int_{(n+1)\pi}^{(n+2)\pi}\frac{\sin x}{x}\dif x\right|-\left|\int_{n\pi}^{(n+1)\pi}\frac{\sin x}{x}\dif x\right|\\
+&\xlongequal{t=x-\pi}\left|-\int_{n\pi}^{(n+1)\pi}\frac{\sin t}{t+\pi}\dif t\right|-\left|\int_{n\pi}^{(n+1)\pi}\frac{\sin x}{x}\dif x\right|\\
+&=\int_{n\pi}^{(n+1)\pi}|\sin x|\left(\frac{1}{x+\pi}-\frac{1}{x}\right)\dif x\leqslant0
+\end{align*}
+即数列 $\{|a_n|\}$ 单调递减，且 $|a_n|\geqslant0$。由单调有界定理知 $\lim_{n\to\infty}|a_n|$ 存在
+\begin{align*}
+\lim_{n\to\infty}|a_n|
+&=\lim_{n\to\infty}\left|\int_{n\pi}^{(n+1)\pi}\frac{\sin x}{x}\dif x\right|=\lim_{n\to\infty}\int_{n\pi}^{(n+1)\pi}\frac{|\sin x|}{x}\dif x\\
+&\xlongequal{\text{积分中值定理}}\lim_{n\to\infty}|\sin\xi|\int_{n\pi}^{(n+1)\pi}\frac{1}{x}\dif x\;,\;\;\xi\in[n\pi,(n+1)\pi]\\
+&=\lim_{n\to\infty}|\sin\xi|\cdot\ln\left(1+\frac{1}{n}\right)\to0\;,\quad n\to\infty
+\end{align*}
+即 $\lim_{n\to\infty}|a_n|=0$，因此 $\lim_{n\to\infty}a_n=0$ 
+\end{proof}
+
+% Stolz定理
+
+\begin{exercise}
+设$n\in N^{+},I_{n}=\displaystyle\int_0^{\frac {\pi}{2}} \frac{\sin^2nt}{\sin t}\dif t$,计算极限
+$\displaystyle\lim_{n \to \infty}\frac{I_{n}}{\ln n}$\\\end{exercise}
+\begin{solution}利用$\displaystyle{\sin ^2}nt{\rm{ = }}\frac{{{\rm{1}} - \cos 2nt}}{2}$,\mbox{可得}$\displaystyle{I_n} = \int_0^{\frac{\pi }{2}} {\frac{{{{\sin }^2}nt}}{{\sin t}}} \dif t{\rm{ = }}\int_0^{\frac{\pi }{2}} {\frac{{{\rm{1}} - \cos 2nt}}{{2\sin t}}} \dif t$\\所以\begin{equation*}\begin{aligned}I_{n+1}-I_{n}
+=&\int_0^{\frac{\pi}{2}}\frac{1-\cos{2(n+1)t}}{2\sin t}\dif t-\int_0^{\frac{\pi}{2}}\frac{1-\cos{2nt}}{2\sin t}\dif t\\
+=&\int_0^{\frac{\pi}{2}}\frac{\cos 2nt-\cos2(n+1)t}{2\sin t}\dif t
+\end{aligned}\end{equation*}
+利用和差化积公式
+\begin{equation*}\cos \alpha  - \cos \beta =- 2\sin \frac{{\alpha  + \beta }}{2}\sin \frac{{\alpha  - \beta }}{2}\end{equation*}
+有:\begin{equation*}\begin{aligned}
+I_{n+1}-I_{n}=&\int_0^{\frac{\pi}{2}}\frac{2\sin{2(n+1)t}\sin t}{2\sin t}\dif t=\int_0^{\frac{\pi}{2}}\sin{(2n+1)t}\dif t\\
+=&\left[-\frac{\cos {(2n+1)t}}{2n+1}\right]_0^{\frac{\pi}{2}}=\frac{1}{2n+1}
+\end{aligned}\end{equation*}
+所以~$\displaystyle I_{n}=1+\frac{1}{3}+\cdots+\frac{1}{2n+1}$,显然当$n\rightarrow+\infty$时，$\displaystyle\lim_{n \to\infty}\frac{n}{2n+1}$=$\displaystyle\frac{1}{2}$\\[2mm]
+应用$Stolz$ 定理有:
+\[\lim_{n\to\infty}\frac{I_{n}}{\ln n}=\lim_{n\to\infty}\frac{I_{n+1}-I_{n}}{\ln(n+1)-\ln n}=\lim_{n\to\infty}\frac{\frac{1}{2n+1}}{\ln(1+\frac{1}{n})}=\lim_{n\to\infty}\frac{n}{2n+1}
+=\frac{1}{2}\]
+\end{solution}
+
+\begin{example}
+(CMC,2019)设 $f(x)$ 在区间 $(-1,1)$ 内三阶连续可导, 满足 $f(0)=0$, $f'(0)=1$, $f''(0)=0$, $f'''(0)=-1$; 又设数列 $\{a_n\}$ 满足 $a_1\in(0,1)$, $a_{n+1}=f(a_n)(n=1,2,3,\cdots)$, 严格单调减少且 $\lim_{n\to\infty}a_n=0$. 计算 $\lim_{n\to\infty}na_n^2$
+\end{example}\begin{solution}
+由于 $f(x)$ 在区间 $(-1,1)$ 内三阶连续可导, $f(x)$ 在点 $x=0$ 处有 Tayor 公式
+\[f(x)=f(0)+f'(0)x+\frac{f''(0)}{2}x^2+\frac{f'''(0)}{3!}x^3+o(x^3),\]
+又 $f(0)=0$, $f'(0)=1$, $f''(0)=0$, $f'''(0)=-1$, 所以
+\begin{equation}\label{10nomathjs2-1}
+f(x)=x-\frac{1}{6}x^3+o(x^3).
+\end{equation}
+由于 $a_1\in(0,1)$, 数列 $\{a_n\}$ 严格单调且 $\lim_{n\to\infty}a_n=0$, 则 $a_n>0$, 且 $\bigg\{\frac{1}{a_n^2}\bigg\}$ 为严格单调增加趋向于 $+\infty$ 的数列, 注意到 $a_{n+1}=f(a_n)$, 故由 Stolz 定理及  \eqref{10nomathjs2-1} 式, 有
+\begin{align*}
+\lim_{n\to\infty}na_n^2
+&=\lim_{n\to\infty}\frac{n}{1/a_n^2}\xlongequal{\text{Stolz}}\lim_{n\to\infty}\frac{1}{1/a_{n+1}^2-1/a_n^2}\\
+&=\lim_{n\to\infty}\frac{a_n^2a_{n+1}^2}{a_n^2-a_{n+1}^2}=\lim_{n\to\infty}\frac{a_n^2f^2(a_n)}{a_n^2-f^2(a_n)}\\
+&=\lim_{n\to\infty}\frac{a_n^2\big(a_n^2-\frac{1}{6}a_n^3+o(a_n^3)\big)^2}{a_n^2-\big(a_n^2-\frac{1}{6}a_n^3+o(a_n^3)\big)^2}\\
+&=\lim_{n\to\infty}\frac{a_n^4-\frac{1}{3}a_n^6+\frac{1}{36}a_n^8+o(a_n^4)}{\frac{1}{3}a_n^4-\frac{1}{36}a_n^6+o(a_n^4)}=3
+\end{align*}
+\end{solution}
+
 \begin{example}
 证明函数 $y=\sin x$ 在区间 $(-\infty,+\infty)$ 内是连续的.	
 \end{example}\begin{proof}
