@@ -1422,6 +1422,47 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 其中 $f(x)$ 叫做被积函数, $f(x)\,\mathrm{d}x$ 叫做被积表达式, $x$ 叫做积分变量, $a$ 叫做积分下限, $b$ 叫做积分上限, $[a,b]$ 叫做积分区间	
 \end{newdef}
 
+\begin{example}
+利用定义计算定积分 $\int_0^1x^2\dif x$.
+\end{example}\begin{solution}函数  $f(x)=x^2$ 在  $[0,1]$  上连续, 故 $f(x)=x^2$ 在  $[0,1]$  上可积.\\
+将 $[0,1]$ $n$ 等分, 其分点为 $x_i=\frac{i}{n},\,(i=1,2,\cdots,n)$, 小区间 $\left[\frac{i-1}{n},\frac{i}{n}\right]\,(i=1,2,\cdots,n)$ \\
+长度为 $\Delta x_i=\frac{1}{n}\,(i=1,2,\cdots,n)$, 
+取 $\xi_i=\frac{i}{n}\,(i=1,2,\cdots,n)$, $\lambda=\max\{\Delta x_i\}=\frac{1}{n}$, 故
+\begin{align*}
+\int_0^1x^2\dif x
+&=\lim_{\lambda\to0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i=\lim_{n\to\infty}\sum_{i=1}^{n}\xi_i^2\Delta x_i\\
+&=\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\left(\frac{i}{n}\right)^2=\lim_{n\to\infty}\frac{1}{n^3}\sum_{i=1}^{n}i^2\\
+&=\lim_{n\to\infty}\frac{\frac{1}{6}n(n+1)(2n+1)}{n^3}=\frac{1}{3}
+\end{align*}	
+\end{solution}
+
+\begin{example}
+利用定义计算定积分 $\int_0^1e^x\dif x$.
+\end{example}\begin{solution}
+函数 $f(x)=e^x$ 在 $[0,1]$ 上连续, 故 $f(x)=e^x$ 在  $[0,1]$  上可积.\\
+将 $[0,1]$ $n$ 等分, 其分点为 $x_i=\frac{i}{n},\,(i=1,2,\cdots,n)$, 小区间 $\left[\frac{i-1}{n},\frac{i}{n}\right]\,(i=1,2,\cdots,n)$ \\
+长度为 $\Delta x_i=\frac{1}{n}\,(i=1,2,\cdots,n)$, 
+取 $\xi_i=\frac{i}{n}\,(i=1,2,\cdots,n)$, $\lambda=\max\{\Delta x_i\}=\frac{1}{n}$, 故
+\begin{align*}
+\int_0^1e^x\dif x
+&=\lim_{\lambda\to0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i=\lim_{n\to\infty}\sum_{i=1}^{n}e^{\xi_i}\Delta x_i\\
+&=\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}e^{\frac{i}{n}}=\lim_{n\to\infty}\frac{(e-1)e^{\frac{1}{n}}}{n(e^{\frac{1}{n}}-1)}\\
+&=e-1
+\end{align*}	
+\end{solution}
+
+\begin{exercise}求极限: $\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\sin\left(\frac{i-\frac{1}{2}}{n}\pi\right)$
+\end{exercise}
+\begin{solution}法1. 考虑 $f(x)=\sin(\pi x)\,(x\in[0,1])$. 将 $[0,1]$ $n$ 等分, 分点为 $\frac{i}{n}$, $(i=1,2,\cdots,n)$, 小区间长度为 $\Delta x_i=\frac{1}{n}\,(i=1,2,\cdots,n)$, 取 $\xi_i=\frac{i-\frac{1}{2}}{n}\,(i=1,2,\cdots,n)$, $\lambda=\max\{\Delta x_i\}=\frac{1}{n}$,  故\[\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\sin\left(\frac{i-\frac{1}{2}}{n}\pi\right)=\lim_{\lambda\to0}\sum_{i=1}^{n}\sin(\xi_i \pi)\Delta x_i=\int_0^1\sin(\pi x)\,\mathrm{d}x=\frac{2}{\pi}\]	
+法2. 考虑 $f(x)=\sin x\,(x\in[0,\pi])$. 将 $[0,\pi]$ $n$ 等分, 分点为 $\frac{i\pi}{n}$, $(i=1,2,\cdots,n)$, \\
+小区间长度为 $\Delta x_i=\frac{\pi}{n}\,(i=1,2,\cdots,n)$, 取 $\xi_i=\frac{i-\frac{1}{2}}{n}\pi\,(i=1,2,\cdots,n)$, $\lambda=\max\{\Delta x_i\}=\frac{\pi}{n}$,  
+故\begin{align*}
+\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\sin\left(\frac{i-\frac{1}{2}}{n}\pi\right)
+&=\frac{1}{\pi}\lim_{n\to\infty}\frac{\pi}{n}\sum_{i=1}^{n}\sin\left(\frac{i-\frac{1}{2}}{n}\pi\right)\\
+&=\frac{1}{\pi}\lim_{\lambda\to0}\sum_{i=1}^{n}\sin(\xi_i )\Delta x_i=\frac{1}{\pi}\int_0^\pi\sin x\,\mathrm{d}x=\frac{2}{\pi}
+\end{align*}	
+\end{solution}
+
 \begin{exercise}求极限\begin{equation*}I=\lim_{n\to\infty}\frac{1}{n}\sqrt[n]{n(n+1)(n+2)\cdots(2n-1)}\end{equation*}
 \end{exercise}\begin{Solution}
 \[I=\exp\left(\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n-1}\ln\left(1+\frac{i}{n}\right)\right)=
@@ -1524,6 +1565,52 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 &=\lim_{\lambda\to0}\sum_{i=1}^{n}\frac{1}{1+(\xi_i)^2}\Delta x_i,\quad\xi_i=\frac{(n-1)^2+1}{n^2},\Delta x_i=\frac{1}{n}\\
 &=\int_0^1\frac{1}{1+x^2}\,\mathrm{d}x=\frac{\pi}{4}
 \end{align*}	
+\end{solution}
+
+\begin{example}
+求极限: $\lim_{n\to\infty}\frac{n^{n+1}}{(1^{\frac{1}{n}}+2^{\frac{1}{n}}+\cdots+n^{\frac{1}{n}})^n}$
+\end{example}\begin{solution}
+注意到\[1^{\frac{1}{n}}+2^{\frac{1}{n}}+\cdots+n^{\frac{1}{n}}=\smash{\overbrace{\sum_{k=1}^{n}\int_{k-1}^{k}k^{\frac{1}{n}}\dif x>\sum_{k=1}^{n}\int_{k-1}^{k}x^{\frac{1}{n}}\dif x}^{k^{\frac{1}{n}}>x^{\frac{1}{n}}}}=\int_0^{n}x^{\frac{1}{n}}\dif x=\frac{n\cdot n^{\frac{1}{n}+1}}{n+1}\]
+\[1^{\frac{1}{n}}+2^{\frac{1}{n}}+\cdots+n^{\frac{1}{n}}<\int_1^{n+1}x^{\frac{1}{n}}\dif x=\frac{n[(n+1)^{\frac{1}{n}+1}-1]}{n+1}\]
+而\[\lim_{n\to\infty}\frac{n^{n+1}}{\Big(\frac{n\cdot n^{\frac{1}{n}+1}}{n+1}\Big)^n}=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n=e\]
+\begin{align*}
+\lim_{n\to\infty}\frac{n^{n+1}}{\left(\frac{n[(n+1)^{\frac{1}{n}+1}-1]}{n+1}\right)^n}
+&=\lim_{n\to\infty}\frac{n(n+1)^n}{\big[(n+1)^{\frac{1}{n}+1}-1\big]}\\
+&=\left\{\exp\left[\lim_{n\to\infty}\left(-\frac{n}{(n+1)^{\frac{1}{n}+1}}\right)\right]\right\}^{-1}=e
+\end{align*}
+由夹逼准则得 $\lim_{n\to\infty}\frac{n^{n+1}}{(1^{\frac{1}{n}}+2^{\frac{1}{n}}+\cdots+n^{\frac{1}{n}})^n}=e$
+\end{solution}
+
+\begin{exercise}
+求极限: $I=\lim_{n\to\infty}\left(\frac{1}{[n\pi]}+\frac{1}{[n\pi+1]}+\cdots+\frac{1}{4n}\right)$
+\end{exercise}\begin{solution}法1. 一方面
+\begin{align*}
+\frac{1}{[n\pi]}+\frac{1}{[n\pi+1]}+\cdots+\frac{1}{4n}
+=&\sum_{k=0}^{4n-[n\pi]}\frac{1}{[n\pi]+k}\\
+<&\sum_{k=0}^{4n-[n\pi]}\int_{k-1}^{k}\frac{1}{[n\pi]+x}\,\mathrm{d}x\\
+=&\int_{-1}^{4n-[n\pi]}\frac{1}{[n\pi]+x}\,\mathrm{d}x\to\ln\frac{4}{\pi}\\[-12mm]
+\end{align*}
+另一方面\begin{align*}
+\frac{1}{[n\pi]}+\frac{1}{[n\pi+1]}+\cdots+\frac{1}{4n}
+=&\sum_{k=0}^{4n-[n\pi]}\frac{1}{[n\pi]+k}\\
+>&\sum_{k=0}^{4n-[n\pi]}\int_{k}^{k+1}\frac{1}{[n\pi]+x}\,\mathrm{d}x\\
+=&\int_0^{4n-[n\pi]+1}\frac{1}{[n\pi]+x}\,\mathrm{d}x\to\ln\frac{4}{\pi}
+\end{align*}
+因此 $\lim_{n\to\infty}\left(\frac{1}{[n\pi]}+\frac{1}{[n\pi+1]}+\cdots+\frac{1}{4n}\right)=\ln\frac{4}{\pi}$\\
+法2. 显然\[n\pi-1<[n\pi]\leqslant n\pi\]
+故有\[\frac{1}{n\pi-1}+\frac{1}{n\pi}+\cdots+\frac{1}{4n-1}< I\leqslant\frac{1}{n\pi}+\frac{1}{n\pi+1}+\cdots+\frac{1}{4n}\]
+其中
+\begin{align*}
+\lim_{n\to\infty}\left(\frac{1}{n\pi}+\frac{1}{n\pi+1}+\cdots+\frac{1}{4n}\right)
+=&\lim_{n\to\infty}\sum_{i=1}^{4n}\frac{1}{n\pi+i}+\lim_{n\to\infty}\frac{1}{n\pi}\\
+=&\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{(4-\pi)n}\frac{1}{\pi+\frac{i}{n}}=\int_0^{4-\pi}\frac{1}{\pi+x}\,\mathrm{d}x=\ln\frac{4}{\pi}
+\end{align*}
+\begin{align*}
+\lim_{n\to\infty}\left(\frac{1}{n\pi-1}+\frac{1}{n\pi}+\cdots+\frac{1}{4n-1}\right)
+=&\lim_{n\to\infty}\sum_{i=1}^{4n}\frac{1}{n\pi+i}-\lim_{n\to\infty}\frac{1}{n\pi}+\lim_{n\to\infty}\frac{1}{n\pi}+\lim_{n\to\infty}\frac{1}{n\pi-1}\\
+=&\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{(4-\pi)n}\frac{1}{\pi+\frac{i}{n}}=\int_0^{4-\pi}\frac{1}{\pi+x}\,\mathrm{d}x=\ln\frac{4}{\pi}
+\end{align*}
+故由夹逼准则知 $\lim_{n\to\infty}\left(\frac{1}{[n\pi]}+\frac{1}{[n\pi+1]}+\cdots+\frac{1}{4n}\right)=\ln\frac{4}{\pi}$
 \end{solution}
 
 \begin{example}
