@@ -1463,6 +1463,13 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 \end{align*}	
 \end{solution}
 
+\begin{example}
+求极限: $I=\lim_{n\to\infty}\frac{1^p+3^p+\cdots+(2n-1)^p}{n^{p+1}}$
+\end{example}\begin{solution}
+考虑 $f(x)=x^p\,(x\in[0,2])$. 将 $[0,2]$ $n$ 等分, 分点为 $\frac{2i}{n}$, $(i=1,2,\cdots,n)$, \\
+小区间长度为 $\Delta x_i=\frac{2}{n}\,(i=1,2,\cdots,n)$, 取 $\xi_i=\frac{2i-1}{n}\,(i=1,2,\cdots,n)$, $\lambda=\max\{\Delta x_i\}=\frac{2}{n}$,  故\[I=\frac{1}{2}\lim_{n\to\infty}\frac{2}{n}\sum_{k=1}^n\left(\frac{2k-1}{n}\right)^p=\frac{1}{2}\lim_{\lambda\to0}\sum_{i=1}^{n}(\xi_i)^p\Delta x_i=\frac{1}{2}\int_0^2x^p\,\mathrm{d}x=\frac{2^p}{p+1}\]	
+\end{solution}
+
 \begin{exercise}求极限\begin{equation*}I=\lim_{n\to\infty}\frac{1}{n}\sqrt[n]{n(n+1)(n+2)\cdots(2n-1)}\end{equation*}
 \end{exercise}\begin{Solution}
 \[I=\exp\left(\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n-1}\ln\left(1+\frac{i}{n}\right)\right)=
