@@ -2961,6 +2961,37 @@ f(x)=e^{\frac{\ln x}{x}}=1+e^{\xi}\frac{\ln x}{x}<1+\frac{\ln x}{x}e^{\frac{\ln 
 又由于 $f''(x)>0,$ 故 $f(x)>x$.	
 \end{solution}
 
+\begin{example}
+设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 内二阶可导,
+\[\lim_{x\to0^+}\frac{f(x)}{x}=1,\;\lim_{x\to1^-}\frac{f(x)}{x-1}=2\] 试证: 
+\begin{enumerate}
+	\item[(1)] 存在 $\xi\in(0,1)$, 使 $f(\xi)=0$;
+	\item[(2)] 存在 $\eta\in(0,1)$, 使 $f''(\eta)=f(\eta)$
+\end{enumerate}
+\end{example}\begin{proof}(1)
+$f(x)$ 在 $[0,1]$ 上连续, 故 $f(0)=\lim_{x\to0}f(x)=0$, $f(1)=\lim_{x\to1}f(x)=0$. 因此, 
+\[f'(0)=f'_+(0)=\lim_{x\to0^+}\frac{f(x)}{x}=1>0,\quad f'(1)=f'_+(1)=\lim_{x\to1^-}\frac{f(x)}{x-1}=2>0\]
+由极限的保号性可知 $\exists x_1\in(0,\delta_1)$ 和 $\exists x_2\in(1-\delta_2,1)$ 使得
+\[f(x_1)>0\;,\;\; f(x_2)<0 \]
+其中: $\delta_1$，$\delta_2$ 为充分小的正数，
+显然 $x_1<x_2$。  在区间 $[x_1,x_2]$ 上应用介值定理得：$\exists\xi\in(x_1,x_2)\subset(0,1)$ 使得 $f(\xi)=0$. \\
+(2) 令 $g(x)=f(x)e^{-x}$, 则 $g'(x)=e^{-x}(f'(x)-f(x)$, 且 $g(\xi)=g(0)=0$,\,显然 $g(x)$ 在 $[0,1]$ 上连续, $(0,1)$ 内二阶可导, 由罗尔定理知,至少存在一点 $\eta_1\in(0,\xi)$,使得 
+\[g'(\eta_1)=0\,(0<\eta_1<\xi)\]
+同理,至少存在一点 $\eta_2\in(\xi,1)$,使得 
+\[g'(\eta_2)=0\,(\xi<\eta_2<1)\]
+令 $h(x)=f^2(x)-[f'(x)]^2$, 易知 $h(\eta_1)=h(\eta_2)$\\
+$h(x)$ 在 $(\eta_1,\eta_2)$ 上满足罗尔定理的条件, 因此至少存在一点 $\eta\in(\eta_1,\eta_2),\,\eta\neq\xi$, 使得 $h'(\eta)=0$, 即 $f''(\eta)=f(\eta)$
+\end{proof}\begin{remark}
+将 $\eta$ 替换为 $x$, 即
+\[f''(x)-f(x)=0\]
+降阶法. 令 $u(x)=f'(x)+af(x)$, 则
+\[u'(x)+bu(x)=f''(x)-f(x)=0\]
+比较系数 $a=1,b=-1$, 从而解得
+\[u=e^{x+C}\Rightarrow (f'(x)+f(x))e^{-x}=e^C\]
+于是, 令
+\[F(x)=(f'(x)+f(x))e^{-x}\]
+\end{remark}
+
 \chapter{特殊函数}
 
 %\begin{newdef}
