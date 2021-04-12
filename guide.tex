@@ -2763,6 +2763,85 @@ s(x) &= s(1)+\int_1^x s'(t)\dif t = 0 + \int_1^x\dfrac{1}{4-t}\dif t=-\ln(4-t)\B
 %\[\sum_{n=1}^{\infty}\frac{x^{n+1}}{n+1}=-x\ln(1-x)\quad \mathrm{when} \quad |x|\leqslant1\wedge x\neq1\]
 %\end{proof}
 
+\begin{exercise}
+已知 $a_1=3$, $a_2=5$, 当 $n\geqslant3$ 时 $a_n=a_{n-2}+a_{n-1}$. \\
+试求级数 $\sum_{n=1}^{\infty}a_nx^n$ 的收敛半径与和函数 %$\lim_{n\to\infty}\sum_{i=1}^{n}a_i$
+\end{exercise}\begin{solution}
+记 $S(x)=\sum_{n=1}^{\infty}a_nx^n$, 则 $\lim_{n\to\infty}\sum_{i=1}^{n}a_i=\lim_{n\to\infty}S(1)$, 考虑比值审敛法
+\[\lim_{n\to\infty}\left|\frac{a_{n+1}x^{n+1}}{a_nx^n}\right|=\lim_{n\to\infty}\frac{a_{n+1}}{a_n}|x|<1\]
+法1(夹逼准则) 令 $b_n=\frac{a_{n+1}}{a_n}$, 则 
+\[b_n=1+\frac{1}{b_{n-1}}\Longleftrightarrow b_nb_{n-1}=b_{n-1}+1\]
+设 $\{b_n\}$ 极限存在并记 $\lim_{n\to\infty}b_n=A$, 则\[A=1+\frac{1}{A}\Longrightarrow A=\frac{\sqrt{5}+1}{2}\;\text{或}\;A=\frac{1-\sqrt{5}}{2}\text{(舍去)}\]
+现证明  $\lim_{n\to\infty}b_n=\frac{\sqrt{5}+1}{2}$
+\begin{align*}
+0<\left|b_n-\frac{\sqrt{5}+1}{2}\right|&=\left|1+\frac{1}{b_{n-1}}-\frac{\sqrt{5}+1}{2}\right|
+=\frac{1}{2b_n}\left|2b_{n-1}-\sqrt{5}\right|\\
+&<\frac{1}{2}\left|2b_{n-1}-\sqrt{5}\right|<\frac{1}{2^2}\left|2b_{n-2}-\sqrt{5}\right|\\
+&<\cdots<\frac{1}{2^{n-1}}\left|2b_{1}-\sqrt{5}\right|\to0\quad(n\to\infty)
+\end{align*}
+这就证明了 $\lim_{n\to\infty}b_n=\frac{\sqrt{5}+1}{2}$, 于是可得 $S(x)$ 的收敛半径为 $R=\frac{\sqrt{5}-1}{2}$\\
+法2(压缩映像原理) 令 $b_n=\frac{a_{n+1}}{a_n}$, 则 
+\[b_n=1+\frac{1}{b_{n-1}}\Longleftrightarrow b_nb_{n-1}=b_{n-1}+1\]
+\begin{align*}
+|b_{n+1}-b_n|&=\left|\Big(1+\frac{1}{b_{n}}\Big)-\Big(1+\frac{1}{b_{n-1}}\Big)\right|
+=\frac{|b_n-b_{n-1}|}{b_nb_{n-1}}\\
+&=\frac{|b_n-b_{n-1}|}{b_{n-1}+1}<\frac{1}{2}|b_n-b_{n-1}|
+\end{align*}
+因此,由压缩映像原理知 $\{b_n\}$ 极限存在并记 $\lim_{n\to\infty}b_n=A$, 则\[A=1+\frac{1}{A}\Longrightarrow A=\frac{\sqrt{5}+1}{2}\;\text{或}\;A=\frac{1-\sqrt{5}}{2}\text{(舍去)}\]
+于是可得 $S(x)$ 的收敛半径为 $R=\frac{\sqrt{5}-1}{2}$\\
+法3(级数收敛的必要条件)为证明数列 $\left\{\frac{a_{n}}{a_{n+1}}\right\}$ 收敛, 考察\\
+\begin{align*}
+\left|\frac{a_{n+1}}{a_{n+2}}-\frac{a_{n}}{a_{n+1}}\right|
+&=\left|\frac{a_{n+1}^2-a_{n+2}a_n}{a_{n+1}a_{n+2}}\right|
+=\left|\frac{a_{n+1}^2-(a_{n+1}+a_n)a_n}{a_{n+1}a_{n+2}}\right|\\
+&=\left|\frac{a_{n}^2-a_{n+1}(a_{n+1}-a_{n})}{a_{n+1}a_{n+2}}\right|
+=\left|\frac{a_{n}^2-a_{n+1}a_{n-1}}{a_{n+1}a_{n+2}}\right|\\
+&=\cdots=\left|\frac{a_{2}^2-a_{3}a_{1}}{a_{n+1}a_{n+2}}\right|=
+\end{align*}
+由数列定义知, 当 $n\geqslant1$ 时, $a_n\geqslant n-1$, 所以级数 $\sum_{n=1}^{\infty}\frac{1}{a_{n+1}a_{n+2}}$ 是收敛的, \\
+从而级数$\frac{a_1}{a_2}+\sum_{n=1}^{\infty}\left(\frac{a_{n+1}}{a_{n+2}}-\frac{a_{n}}{a_{n+1}}\right)$ 绝对收敛, 而后者的前 $n$ 项和恰好为 $\frac{a_{n}}{a_{n+1}}$. \\
+故无穷级数收敛定义知数列  $\left\{\frac{a_{n}}{a_{n+1}}\right\}$ 收敛, 设其收敛于数 $R$, \\
+则将关系式 $a_n=a_{n-2}+a_{n-1}$ 两边同除以 $a_n$ 得
+\[1=\frac{a_{n-2}}{a_n}+\frac{a_{n-1}}{a_n}=\frac{a_{n-2}}{a_{n-1}}\frac{a_{n-1}}{a_{n}}+\frac{a_{n-1}}{a_n}\]
+两边取极限$(n\to\infty)$, 有 $1=R^2+R$. 解此方程 $R=\frac{\sqrt{5}-1}{2}$ (负根舍去).\\
+于是可得 $S(x)$ 的收敛半径为 $R=\frac{\sqrt{5}-1}{2}$\\
+法4(特征根) $a_n=a_{n-2}+a_{n-1}$ 特征方程为 \begin{equation*}\lambda^2-\lambda-1=0\end{equation*}
+有特征根$\lambda_1=\frac{1-\sqrt{5}}{2},\lambda_2=\frac{1+\sqrt{5}}{2}$\\
+所求通解为
+\[a_n=C_1\left(\frac{1-\sqrt{5}}{2}\right)^n+C_2\left(\frac{1+\sqrt{5}}{2}\right)^n\]
+其中$C_1$，$C_2$为任意常数, 由已知 $a_1=3$, $a_2=5$ 得 
+\[a_n=\frac{5-2\sqrt{5}}{5}\left(\frac{1-\sqrt{5}}{2}\right)^n+\frac{5+2\sqrt{5}}{5}\left(\frac{1+\sqrt{5}}{2}\right)^n\]
+故\[\lim_{n\to\infty}\frac{a_{n}}{a_{n+1}}=\frac{\sqrt{5}-1}{2}\]
+于是可得 $S(x)$ 的收敛半径为 $R=\frac{\sqrt{5}-1}{2}$
+\[a_n=a_{n-2}+a_{n-1}\Longrightarrow \sum_{n=3}^{\infty}a_nx^{n}=\sum_{n=3}^{\infty}a_{n-2}x^{n}+\sum_{n=3}^{\infty}a_{n-1}x^{n}\]
+从而\[\big(S(x)-a_1x-a_2x^2\big)=\big(x^2S(x)\big)+\big(x(S(x)-a_1x)\big)\]
+\[\Longrightarrow(1-x-x^2)S(x)=a_1x+(a_2-a_1)x^2\]
+解得和函数
+\[S(x)=\frac{a_1x+(a_2-a_1)x^2}{1-x-x^2}=\frac{3x+2x^2}{1-x-x^2}\;,\quad |x|<\frac{\sqrt{5}-1}{2}\]
+\end{solution}
+
+\begin{example}
+求幂级数 $\sum_{n=0}^{\infty}\frac{x^{4n}}{(4n)!}$ 的和函数
+\end{example}\begin{solution}
+因为
+\begin{align*}
+y&=\sum_{n=0}^{\infty}\frac{x^{4n}}{(4n)!}=1+\frac{x^4}{4!}+\frac{x^8}{8!}+\frac{x^{12}}{12!}+\cdots\\
+y'&=\sum_{n=1}^{\infty}\frac{x^{4n-1}}{(4n-1)!}=\frac{x^3}{3!}+\frac{x^7}{7!}+\frac{x^{11}}{11!}+\cdots\\
+y''&=\sum_{n=1}^{\infty}\frac{x^{4n-2}}{(4n-2)!}=\frac{x^2}{2!}+\frac{x^6}{6!}+\frac{x^{10}}{10!}+\cdots\\
+y'''&=\sum_{n=1}^{\infty}\frac{x^{4n-3}}{(4n-3)!}=\frac{x}{1!}+\frac{x^5}{5!}+\frac{x^9}{9!}+\cdots
+\end{align*}
+以上四式相加得:
+\[y+y'+y''+y'''=\sum_{n=0}^{\infty}\frac{x^{n}}{n!}=e^x\]
+解此微分方程可求得通解
+\[y=C_1\sin x+C_2\cos x+C_3e^{-x}+\frac{e^x}{4}\]
+故\[y'=C_1\cos x-C_2\sin x-C_3e^{-x}+\frac{e^x}{4}\]
+\[y''=-C_1\sin x+C_2\sin x+C_3e^{-x}+\frac{e^x}{4}\]
+易得 $y(0)=1,y'(0)=0,y''(0)=0$ 带入以上式子解得
+\[C_1=0,C_2=\frac{1}{2},C_3=\frac{1}{4}\]
+所求幂级数的和函数为
+\[y=\frac{1}{2}\cos x+\frac{e^x+e^{-x}}{4}\]
+\end{solution}
+
 \chapter{不等式}
 
 \begin{exercise}
