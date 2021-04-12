@@ -3460,6 +3460,16 @@ $\varphi(x)$ 及 $\psi(x)$ 为其实部与虚部, 则用它们来作代换 \eqre
 \[\frac{\partial^2u}{\partial\xi^2}+\frac{\partial^2u}{\partial\eta^2}=F_3\Big(\xi,\eta,u,\frac{\partial u}{\partial\xi},\frac{\partial u}{\partial\eta}\Big)\]
 这是椭圆型方程的正则型.
 
+\begin{example}
+设在区域 $D: |x|+|y|\leqslant1$ 上, 函数 $f(x,y)$ 连续, $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ 存在, 且满足 $|f(x,y)|\leqslant1$. 证明: 在区域 $D$ 内存在一点 $(x_0,y_0)$ 使得
+\[\left(\frac{\partial f}{\partial x}(x_0,y_0)\right)^2+\left(\frac{\partial f}{\partial y}(x_0,y_0)\right)^2\leqslant8\]
+\end{example}\begin{proof}
+设 $g(x,y)=f(x,y)+(|x|+|y|)^2$. 则在区域 $D:\,|x|+|y|\leqslant1$ 上显然有 $g(x,y)\geqslant1$. \\
+而 $g(0,0)\geqslant1$. 所以或者 $g$ 在 $D$ 上恒等于 $1$, 或者在区域 $D$ 内存在一点 $(x_0,y_0)$, 使 $g$ 在该点取到极小值. 总之, 必在区域 $D$ 内存在一点 $(x_0,y_0)$ 使得
+\[\frac{\partial g}{\partial x}\bigg|_{(x_0,y_0)}=\frac{\partial g}{\partial y}\bigg|_{(x_0,y_0)}=0\]
+由此可得\[\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=-2(|x|+|y|)\]
+故\[\left(\frac{\partial f}{\partial x}(x_0,y_0)\right)^2+\left(\frac{\partial f}{\partial y}(x_0,y_0)\right)^2=2\big(-2(|x|+|y|)\big)^2\leqslant8\]
+\end{proof}
 
 \subsection{二阶线性偏微分方程-分离变量法}
 
