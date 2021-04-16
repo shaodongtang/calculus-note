@@ -2434,6 +2434,15 @@ I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
 \end{align*} 结论获证.
 \end{proof}
 
+% 反常积分
+\begin{example}
+判断反常积分 $\int_1^3\frac{1}{\ln x}\dif x$ 的敛散性
+\end{example}\begin{proof}
+这里 $x=1$ 是被积函数的暇点. 由洛必达法则知
+\[\lim_{x\to 1^+}(x-1)\frac{1}{\ln x}=\lim_{x\to 1^+}\frac{1}{\frac{1}{x}}=1>0\]
+根据极限审敛法, 知所给反常积分发散
+\end{proof}
+
 \section{积分不等式}
 
 \begin{example}
