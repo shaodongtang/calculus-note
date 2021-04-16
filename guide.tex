@@ -192,6 +192,58 @@ $$|u\alpha|=|u||\alpha|<M\cdot\frac{\varepsilon}{M}=\varepsilon.$$
 即 $\lim_{n\to\infty}\frac{n+2}{n^2-2}\sin n=0$. 
 \end{solution}
 
+\begin{example}
+	证明 $\lim\limits_{x\to x_0}c=c.$	
+\end{example}\begin{proof}
+	首先 $|f(x)-A|=|c-c|=0$.\\
+	故 $\forall\varepsilon >0$, 任取 $\delta>0,$  当 $0<|x-x_0| <\delta$ 时, 有 $|f(x)-A|<\varepsilon,$ 所以 $\lim\limits_{x\to x_0}c=c.$	
+\end{proof}
+
+\begin{example}
+	证明 $\lim\limits_{x\to x_0}x=x_0.$	
+\end{example}\begin{proof}
+	首先 $|f(x)-A|=|x-x_0|$.\\
+	故 $\forall\varepsilon >0$, 取 $\delta =\varepsilon$, 当 $0<|x-x_0|<\delta$ 时, 有
+	$ |f(x)-A|<\varepsilon,$
+	即 $\lim\limits_{x\to x_0}x=x_0$.
+\end{proof}
+
+\begin{example}
+	利用定义证明 $\lim\limits_{x\to 1}(3x-2)=1.$	
+\end{example}\begin{proof}
+	$|f(x)-A|=|(3x-2)-1|=3|x-1|$.\\
+	$\forall\varepsilon >0$, 要使 $|f(x)-A|<\varepsilon,$ 只要 $3|x-1|<\varepsilon,$ 即 $|x-1|<\frac{1}{3}\varepsilon$.\\
+	故取 $\delta =\frac{\varepsilon}{3}$, 则当 $0<|x-1|<\delta$ 时, 有
+	$$|(3x-2)-1|<3\cdot\frac{\varepsilon}{3}=\varepsilon.$$
+	即 $\lim\limits_{x\to 1}(3x-2)=1.$ 证毕.	
+\end{proof}
+
+\begin{example}
+	证明: 当 $x_0>0$ 时, $\lim\limits_{x\to x_0}\sqrt{x}=\sqrt{x_0}$.	
+\end{example}\begin{proof}
+	$|f(x)-A|=|\sqrt{x}-\sqrt{x_0}|=\Big |\frac{x-x_0}{\sqrt{x}+\sqrt{x_0}}\Big |\leqslant \frac{1}{\sqrt{x_0}}|x-x_0|$.\\
+	$\forall\varepsilon >0$, 要使 $|f(x)-A|<\varepsilon,$ 只要 $ \frac{1}{\sqrt{x_0}}|x-x_0|<\varepsilon,$ \\
+	即 $|x-x_0|<\sqrt{x_0}\varepsilon$. 同时由于 $\sqrt{x}$ 的定义域是 $x\geqslant 0$, 这可用 $|x-x_0|\leqslant x_0$ 保证.\\
+	故取 $\delta ={\rm {min}}\{x_0,\sqrt{x_0}\varepsilon\}$, 则当 $0<|x-x_0|<\delta$ 时, 有 $x\geqslant 0$, 且
+	$$|\sqrt{x}-\sqrt{x_0}|<\varepsilon.$$
+	从而 $\lim\limits_{x\to x_0}\sqrt{x}=\sqrt{x_0}.$ 证毕.	
+\end{proof}
+
+\begin{example}
+	证明: $\lim\limits_{x\to-1}x^2=1$.	
+\end{example}\begin{proof}
+	因为 $x\to-1$, 我们可以设 $|x-(-1)|=|x+1|<1$, 也就是 $-2<x<0$,\\
+	从而有, $|x-1|<3$, 于是\[|x^2-1|=|x-1|\cdot|x+1|<3|x+1|<\varepsilon\]
+	因此, $\forall \,\varepsilon>0$, 要使 $|x^2-1|<\varepsilon$, 只要 $|x+1|<\tfrac{1}{3}\varepsilon$, 又 $|x-1|<3$,\\
+	即只要取 $\delta=\min\{1,\tfrac{\varepsilon}{3}\}$,
+	当 $0<|x+1|<\delta$ 时, $|x^2-1|<\varepsilon$ 成立, \\
+	故 $\lim\limits_{x\to-1}x^2=1$.
+\end{proof}%\begin{remark}
+	限定不唯一, 如：还可以设 $|x-(-1)|=|x+1|<\tfrac{1}{2}$, 也就是 $-\tfrac{3}{2}<x<-\tfrac{1}{2}$, 得到
+	\[|x^2-1|=|x-1|\cdot|x+1|<\frac{5}{2}|x+1|<\varepsilon\,,\,|x+1|<\frac{2}{5}\varepsilon\]
+	于是取 $\delta=\min\{\tfrac{1}{2},\tfrac{2}{5}\varepsilon\}$
+%\end{remark}
+
 \begin{theorem}{}{}
 \[\lim\limits_{x\to 0}\frac{\sin x}{x}=1.\]
 \end{theorem}\begin{proof}
