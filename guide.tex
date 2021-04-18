@@ -2521,6 +2521,42 @@ I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
 若 $D=\{(x,y)|\psi_1(y)\leqslant x\leqslant\psi_2(y),c\leqslant y\leqslant d\}$, $\psi_1(y)$, $\psi_2(y)$  连续 , 则 $D$ 的面积为\begin{equation*}S_D=\int_{c}^{d}\left[\psi_2(y)-\psi_1(y)\right]\,\mathrm{d}y\end{equation*}	
 \end{newthem}
 
+% 积分不等式
+
+\begin{example}
+求所有的连续可导函数 $f:[0,1]\to(0,\infty)$, 满足 $f(1)=ef(0)$,且
+\[\int_0^1\frac{\dif x}{(f(x))^2}+\int_0^1(f'(x))^2\dif x\leqslant 2\]	
+\end{example}\begin{proof}
+法I. 注意
+\begin{align*} 0&\leqslant\int_0^1\left(f'(x)-\frac{1}{f(x)}\right)^2\dif x\\
+	&=\int_0^1(f'(x))^2\dif x-2\int_0^1\frac{f'(x)}{f(x)}\dif x+\int_0^1\frac{\dif x}{(f(x))^2}\\ %&=\left(\int_0^1(f'(x))^2dx+\int_0^1\frac{dx}{(f(x))^2}dx\right)-2\int_0^1(\ln{f(x)})'dx\\% 
+	&=\left(\int_0^1(f'(x))^2\dif x+\int_0^1\frac{1}{(f(x))^2}\dif x\right)-2\ln{\frac{f(1)}{f(0)}}\\ 
+	&\leqslant 0 
+\end{align*}
+所以 $f'(x)=\frac{1}{f(x)}$, 解得 $f(x)=\sqrt{2x+C}$, $C>0$,
+由于\[f(1)=ef(0)\Longrightarrow C=\frac{2}{e^2-1}\]
+故\[f(x)=\sqrt{2x+\frac{2}{e^2-1}}.\]
+法II. 由均值不等式得
+\[\int_0^1\left(\frac{1}{f^2(x)}+(f'(x))^2\right)\dif x\geqslant2\int_0^1\frac{f'(x)}{f(x)}\dif x=2\ln{\frac{f(1)}{f(0)}}=2\]
+结合题意, 当且仅当取等号时成立, 取等条件 $f'(x)=\frac{1}{f(x)}\Longrightarrow f(x)=\sqrt{2x+C}$, $C>0$,
+由于\[f(1)=ef(0)\Longrightarrow C=\frac{2}{e^2-1}\]
+故\[f(x)=\sqrt{2x+\frac{2}{e^2-1}}.\]
+\end{proof}
+
+\begin{example}
+设 $f:[0,1]\to\mathbb{R}$ 求证: 
+\[\int_0^1\big(f(x)\big)^2\dif x\geqslant\frac{15}{4}\int_0^1f(x)\dif x\int_0^1x^4f(x)\dif x\]
+%https://math.stackexchange.com/questions/2086301/
+\end{example}\begin{proof}(by 西西)
+由 Cauchy--Schwarz 不等式
+\[\int_0^1\big(f(x)\big)^2\dif x\cdot\int_0^1(1+3x^4)^2\dif x\geqslant\left(\int_0^1(1+3x^4)f(x)\dif x\right)^2\]
+即\[\sqrt{\int_0^1\big(f(x)\big)^2\dif x}\geqslant\frac{\sqrt{5}}{4}\left(
+\int_0^1f(x)\dif x+3\int_0^1x^4f(x)\dif x\right)\]
+再利用均值
+\[\int_0^1f(x)\dif x+3\int_0^1x^4f(x)\dif x\geqslant2\sqrt{3\int_0^1f(x)\dif x\int_0^1x^4f(x)\dif x}\]
+平方即有\[\int_0^1\big(f(x)\big)^2\dif x\geqslant\frac{15}{4}\int_0^1f(x)\dif x\int_0^1x^4f(x)\dif x\]
+\end{proof}
+
 \begin{example}
 设 $f(x)$ 在 $[0,\pi]$ 上可微，若 $\int_0^\pi f(x)\dif x=0$，则
 \[\int_0^\pi f^2(x)\dif x\leqslant\int_0^\pi\big[f'(x)\big]^2\dif x\]
