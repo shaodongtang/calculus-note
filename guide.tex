@@ -2524,6 +2524,188 @@ I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
 % 积分不等式
 
 \begin{example}
+设$f(x)$在[0,1]上有一阶连续导数，且 $f(0)=f(1)=0$, $M=\max_{x\in[0,1]}|f'(x)|$. 证明：
+\[\Big|\displaystyle\int_0^1 f(x)\dif x\Big|\leqslant\frac{M}{4}\]
+%\href{http://www.math.org.cn/forum.php?mod=viewthread&tid=20265}{\color{red}(tid=20265)}
+\end{example}\begin{proof}
+利用分部积分
+\begin{align*}
+\bigg|\int_0^1 f(x)\dif x\bigg|
+&=\bigg|\int_0^1 f(x)\dif (a+x)\bigg| \\
+&\xlongequal{\text{分部积分}}\bigg|\Big|(x+a)f(x)\Big|_0^1 -\int_0^1 (x+a)f'(x)\dif x\bigg| \\
+&\leqslant M\int_0^1 |x+a|\dif x	
+\end{align*}
+取 $a=-\frac{1}{2}$, 即得欲证不等式。	
+\end{proof}
+
+\begin{exercise}
+设 $f(x)$ 在 $[a,b]$ 上二阶连续可导, 且 $f(a)=f(b)=0$, $f'(a)=1$, $f'(b)=0$,
+求证:\[\int_a^b |f''(x)|^2\mathrm{d}x\geqslant\frac{4}{b-a}\]
+%\href{http://www.math.org.cn/forum.php?mod=viewthread&tid=20852}{\color{red}(tid=20852)}	
+\end{exercise}\begin{proof}
+法I. 设 $g(x)$ 是多项式, 由Cauchy-schwarz不等式
+\[\int_a^b\big(f''(x)\big)^2\dif x\int_a^bg^2(x)\dif x\geqslant\left(\int_a^bg(x)f''(x)\dif x\right)^2\xlongrightarrow{\text{题意}} \text{与 $f$ 无关的常数} \]
+由分部积分
+\begin{align*}
+\int_a^bg(x)f''(x)\dif x
+&=g(x)f'(x)\bigg|_a^b-\int_a^bg'(x)f'(x)\dif x\\
+&\xlongequal{\text{分部积分}}-g(a)+\underbrace{\int_a^bg''(x)f(x)\dif x}_{=0}
+\end{align*}
+只需令 $g''(x)=0$, 故 $g(x)=c_1x+c_0$ 为一次多项式. 故
+\[\int_a^b\big(f''(x)\big)^2\dif x\geqslant \frac{g^2(a)}{\int_a^bg^2(x)\dif x}=\frac{4}{b-a}\]
+即
+\[3c_1(b-a)(c_1a+c_0)^2=4\big[(c_1b+c_0)^3-(c_1a+c_0)^3\big]\]
+化简得
+\[\big((a+2b)c_1+3c_0\big)^2=0\Rightarrow (a+2b)c_1=-3c_0\]
+于是取 $c_1=3$, $c_0=-a-2b$ 即可\\
+法II. 注意到对 $\forall\ c\in [a,b]$, 有
+\[\int_a^b (x-c)f''(x)\mathrm{d}x=(c-a)-\int_a^b f'(x)\mathrm{d}x=c-a,\]
+由Cauchy-Schwarz不等式
+\begin{align*}
+(c-a)^2&\leqslant\int_a^b (x-c)^2\mathrm{d}x\cdot\int_a^b|f''(x)|^2\mathrm{d}x\\
+&=\frac{(b-c)^3+(c-a)^3}{3}\cdot\int_a^b|f''(x)|^2\mathrm{d}x,
+\end{align*}
+即\begin{align*}
+\int_a^b|f''(x)|^2\mathrm{d}x
+&\geqslant\frac{3(c-a)^2}{(b-c)^3+(c-a)^3}\\
+&=\frac{3(c-a)^2}{(b-a)\left[(b-c)^2-(b-c)(c-a)+(c-a)^2\right]}\\
+&=\frac{3}{(b-a)\big[(\frac{b-c}{c-a})^2-\frac{b-c}{c-a}+1\big]}.	
+\end{align*}
+取 $\frac{b-c}{c-a}=\frac{1}{2}\Rightarrow c=\frac{a+2b}{3},$
+我们有\[\int_a^b|f''(x)|^2\mathrm{d}x\geqslant \frac{4}{b-a}.\]
+\end{proof}
+
+\begin{example}
+(\href{http://www.mat.uniroma2.it/~tauraso/AMM/AMM12142.pdf}{AMM12142}) 设 $f(x)$ 为 $[a,b]$ 上的二阶连续可微函数, 且 $\textstyle\int_a^bf(x)\dif x=0$, 求证；
+\[\int_a^b[f''(x)]^2\dif x\geqslant\frac{980}{8\sqrt{2}-2}\cdot\frac{\big(f(a)+f(b)\big)^2}{(b-a)^3}\]
+\end{example}
+\begin{proof}
+\footnote{http://www.mat.uniroma2.it/~tauraso/AMM/AMM12142.pdf}
+分部积分两次，我们有
+\begin{align}
+\int_a^b(b-x)(x-a)f''(x)\dif x
+&=(b-x)(x-a)f'(x)\Big|_a^b-\int_a^b(b+a-2x)f'(x)\dif x\nonumber\\
+&=0-(b+a-2x)f(x)\Big|_a^b-2\int_a^bf(x)\dif x\nonumber\\
+&=(b-a)\big(f(a)+f(b)\big)+0 \label{AMM12142-1}
+\end{align}
+另一方面, 由 Cauchy-Schwarz 不等式
+\begin{align}
+\left(\int_a^b(b-x)(x-a)f''(x)\dif x\right)^2
+&\leqslant\int_a^b(b-x)^2(x-a)^2\dif x\int_a^b[f''(x)]^2\dif x\nonumber\\
+&=\frac{(b-a)^5}{30}\int_a^b[f''(x)]^2\dif x \label{AMM12142-2}
+\end{align}
+结合 \eqref{AMM12142-1}、\eqref{AMM12142-2} 可得
+\[\int_a^b[f''(x)]^2\dif x\geqslant30\cdot\frac{\big(f(a)+f(b)\big)^2}{(b-a)^3} \Longrightarrow \text{证毕}\]
+其中
+\[30>\frac{980}{8\sqrt{2}-2}\approx 9.21\]
+本题30为最佳常数, 这是因为
+\[f(x)=10(x−a)^3(2b−a−x)−3(b−a)^4\]
+我们有 $\textstyle\int_a^bf(x)\dif x=0$, $f(a)+f(b)=4(b-a)^4\neq0$ 且
+\[\frac{(b-a)^3}{\big(f(a)+f(b)\big)^2}\int_a^b[f''(x)]^2\dif x=30\]
+\end{proof}
+
+\begin{example}
+若 $f(x):[0,1]\to\mathbb R$ 是连续可导函数，且 $ \int_{\frac{1}{2n}}^{\frac{1}{n}}f(x)dx=0$, 则有:
+\[\int_0^1(f'(x))^2\dif x\geqslant \frac{12n^2}{4n^2-10n+7}\left(\int_0^1f(x)\dif x\right)^2\]
+\end{example}\begin{proof}
+设
+\[g(x)=\begin{cases}
+x, & x\in[0,\tfrac{1}{2n}]\\
+1-(2n-1)x, & x\in[\tfrac{1}{2n},\tfrac{1}{n}]\\
+x-1, &x\in[\tfrac{1}{n},1].\end{cases}\]
+则
+\begin{align*}
+\int_0^1g(x)f'(x)\dif x
+&=\int_0^{\frac{1}{2n}}xf'(x)\dif x+\int_{\frac{1}{2n}}^{\frac{1}{n}}[1-(2n-1)x]f'(x)\dif x+\int_{\frac{1}{n}}^1(x-1)f'(x)\dif x\\
+&=(2n-1)\int_{\frac{1}{2n}}^{\frac{1}{n}}f(x)\dif x-\int_0^{\frac{1}{2n}}f(x)\dif x-\int_{\frac{1}{n}}^1f(x)\dif x\\
+&=-\int_0^1f(x)\dif x
+\end{align*}
+再由Cauchy不等式得
+\[\left(-\int_0^1f(x)\dif x\right)^2=\left(\int_0^1g(x)f'(x)\dif x\right)^2\leqslant\int_0^1g^2(x)\dif x\int_0^1(f'(x))^2\dif x\]
+又
+\begin{align*}
+\int_0^1g^2(x)\dif x
+&=\int_0^{\frac{1}{2n}}x^2\dif x+\int_{\frac{1}{2n}}^{\frac{1}{n}}[1-(2n-1)x]^2\dif x+\int_{\frac{1}{n}}^1(x-1)^2\dif x\\
+&=\frac{4n^2-10n+7}{12n^2}
+\end{align*}
+则
+\[\int_0^1(f'(x))^2\dif x\geqslant \frac{12n^2}{4n^2-10n+7}\left(\int_0^1f(x)\dif x\right)^2\]
+\end{proof}\begin{remark}
+由Cauchy-schwarz不等式
+\[\int_a^b\big(f'(x)\big)^2\dif x\int_a^bg^2(x)\dif x\geqslant\left(\int_a^bg'(x)f'(x)\dif x\right)^2\]
+由分部积分
+\[\int_0^1g(x)f'(x)\dif x
+=\underbrace{g(x)f(x)\bigg|_0^1}_{\text{0}}-\int_0^1\underbrace{g'(x)}_{\text{常数}}f(x)\dif x\]
+设 $g(x)$ 为分段可微函数. 
+\[g(x)=\begin{cases}
+a_1x+a_0, & x\in[0,\tfrac{1}{2n}]\\
+b_1x+b_0, & x\in[\tfrac{1}{2n},\tfrac{1}{n}]\\
+c_1x+c_0, &x\in[\tfrac{1}{n},1].\end{cases}\]
+显然,
+\[\begin{cases}
+\frac{a_1}{2n}+a_0=\frac{b_1}{2n}+b_0\\
+\frac{b_1}{n}+b_0=\frac{c_1}{n}+c_0
+\end{cases}\]
+需使 $g(x)f(x)\bigg|_0^1=0$, 即
+\[g(1)=g(0)=0\Rightarrow a_0=0,c_1=-c_0\]
+为使 $\int_0^1g'(x)f(x)\dif x$ 为固定, 又 $ \int_{\frac{1}{2n}}^{\frac{1}{n}}f(x)dx=0$, 即
+\[a_1=c_1\]
+综上, 则有
+\[a_0=0,b_0=a_1,b_1=a_1(1-2n),c_0=-a_1,c_1=a_1\]
+于是
+\[g(x)=\begin{cases}
+a_1x, & x\in[0,\tfrac{1}{2n}]\\
+a_1(1-2n)x+a_1, & x\in[\tfrac{1}{2n},\tfrac{1}{n}]\\
+a_1x-a_1, &x\in[\tfrac{1}{n},1].
+\end{cases}\]
+则
+\begin{align*}
+\int_0^1g(x)f'(x)\dif x
+&=\int_0^{\frac{1}{2n}}a_1xf'(x)\dif x+\int_{\frac{1}{2n}}^{\frac{1}{n}}[a_1-a_1(2n-1)x]f'(x)\dif x+\int_{\frac{1}{n}}^1(a_1x-a_1)f'(x)\dif x\\
+&=a_1(2n-1)\int_{\frac{1}{2n}}^{\frac{1}{n}}f(x)\dif x-a_1\int_0^{\frac{1}{2n}}f(x)\dif x-a_1\int_{\frac{1}{n}}^1f(x)\dif x\\
+&=-a_1\int_0^1f(x)\dif x
+\end{align*}
+再由Cauchy不等式得
+\[\left(-a_1\int_0^1f(x)\dif x\right)^2=\left(\int_0^1g(x)f'(x)\dif x\right)^2\leqslant\int_0^1g^2(x)\dif x\int_0^1(f'(x))^2\dif x\]
+又
+\begin{align*}
+\int_0^1g^2(x)\dif x
+&=\int_0^{\frac{1}{2n}}(a_1x)^2\dif x+\int_{\frac{1}{2n}}^{\frac{1}{n}}[a_1(1-2n)x+a_1]^2\dif x+\int_{\frac{1}{n}}^1(a_1x-a_1)^2\dif x\\
+&=\frac{4n^2-10n+7}{12n^2}a_1^2
+\end{align*}
+则
+\[\int_0^1(f'(x))^2\dif x\geqslant \frac{12n^2}{4n^2-10n+7}\left(\int_0^1f(x)\dif x\right)^2\]
+\end{remark}
+
+\begin{example}
+若 $f(x):[0,1]\to \mathbb R$ 是连续可导函数，且 $\int_{\frac{1}{2n+1}}^{\frac{2}{2n+1}}{f(x)dx}=0(n\in\mathbb N^+)$, 求证:
+\[\int_0^1(f'(x))^2\dif x\geqslant \frac{3(2n+1)^2}{4n^2-6n+3}\left(\int_0^1f(x)\dif x\right)^2\]
+\end{example}\begin{proof}
+设
+\[g(x)=\begin{cases}
+x, & x\in[0,\tfrac{1}{2n+1}]\\
+1-2nx, &x\in[\tfrac{1}{2n+1},\tfrac{2}{2n+1}] \\
+x-1, & x\in[\tfrac{2}{2n+1},1].\end{cases}\]
+则
+\begin{align*}
+\int_0^1g(x)f'(x)\dif x
+&=\int_0^{\frac{1}{2n+1}}xf'(x)\dif x+\int_{\frac{1}{2n+1}}^{\frac{2}{2n+1}}(1-2nx)f'(x)\dif x+\int_{\frac{2}{2n+1}}^1(x-1)f'(x)\dif x\\
+&=2n\int_{\frac{1}{2n+1}}^{\frac{2}{2n+1}}f(x)\dif x-\int_0^{\frac{1}{2n+1}}f(x)\dif x-\int_{\frac{2}{2n+1}}^1f(x)\dif x\\
+&=-\int_0^1f(x)\dif x
+\end{align*}
+再由Cauchy不等式得
+\[\left(-\int_0^1f(x)\dif x\right)^2=\left(\int_0^1g(x)f'(x)\dif x\right)^2\leqslant \int_0^1g^2(x)\dif x\int_0^1(f'(x))^2\dif x\]
+又
+\begin{align*}
+\int_0^1g^2(x)\dif x
+&=\int_0^{\frac{1}{2n+1}}x^2\dif x+\int_{\frac{1}{2n+1}}^{\frac{2}{2n+1}}(1-2nx)^2\dif x+\int_{\frac{2}{2n+1}}^1(x-1)^2\dif x\\
+&=\frac{4n^2-6n+3}{3(2n+1)^2}
+\end{align*}
+则
+\[\int_0^1(f'(x))^2dx\geqslant \frac{3(2n+1)^2}{4n^2-6n+3}\left(\int_0^1f(x)\dif x\right)^2\]
+\end{proof}
+
+\begin{example}
 求所有的连续可导函数 $f:[0,1]\to(0,\infty)$, 满足 $f(1)=ef(0)$,且
 \[\int_0^1\frac{\dif x}{(f(x))^2}+\int_0^1(f'(x))^2\dif x\leqslant 2\]	
 \end{example}\begin{proof}
