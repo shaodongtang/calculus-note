@@ -2726,6 +2726,38 @@ x-1, & x\in[\tfrac{2}{2n+1},1].\end{cases}\]
 \end{proof}
 
 \begin{example}
+设 $f(x)$ 是 $[0,1]\to\mathbb R$ 上的连续函数, 且记 $F(x)=\textstyle\int_0^xf(t)\dif t$, 并有
+\[\int_0^1x^2f(x)\dif x=-2\int_{\frac{1}{2}}^1F(t)\dif t\]
+求证:
+\[\int_0^1f^2(x)\dif x\geqslant 80\left(\int_0^1f(x)dx\right)^2\]
+\end{example}\begin{proof}(by 西西)\footnote{\url{http://pxchg1200.is-programmer.com/categories/8320/posts?page=12}}
+由分部积分, 我们有
+\[\int_0^1x^2F'(x)\dif x=x^2F(x)\bigg|_0^1-2\int_0^1xF(x)dx=F(1)-2\int_0^1xF(x)\dif x\]
+故
+\[F(1)=2\int_0^1xF(x)\dif x-2\int_{\frac{1}{2}}^1F(t)\dif t=2\left(\int_0^{\frac{1}{2}}xF(x)\dif x+\int_{\frac{1}{2}}^1(x-1)F(x)\dif x\right)\]
+要证的不等式等价于
+\[\int_0^1(F'(x))^2\dif x\geqslant 24(F(1))^2=80\left[2\left(\int_0^{\frac{1}{2}}xF(x)\dif x+\int_{\frac{1}{2}}^1(x-1)F(x)\dif x\right)\right]^2\]
+由Cauchy-Schwarz不等式, 我们有
+\begin{align*} 
+\int_0^{\frac{1}{2}}x^4\dif x\int_0^{\frac{1}{2}}(F'(x))^2\dif x&\geqslant\left(\int_0^{\frac{1}{2}}x^2F'(x)\dif x\right)^2\\ 
+&=\left[\frac{1}{4}F\left(\frac{1}{2}\right)-2\int_0^{\frac{1}{2}}xF(x)\dif x\right]^2\\ 
+&=A^2 
+\end{align*}
+以及
+\begin{align*} 
+\int_{\frac{1}{2}}^1(x-1)^4\dif x\int_{\frac{1}{2}}^1(F'(x))^2\dif x&\geqslant\left(\int_{\frac{1}{2}}^1{(x-1)^2F'(x)\dif x}\right)^2\\ 
+&=\left[-\frac{1}{4}F\left(\frac{1}{2}\right)-2\int_{\frac{1}{2}}^1(x-1)F(x)\dif x\right]^2\\ 
+&=B^2 
+\end{align*}	 		  
+再由Cauchy-Schwarz不等式，我们有
+\[A^2+B^2\geqslant\frac{1}{2} (A+B)^2=\frac{1}{2} F^2(1)\]
+而
+\[\int_0^{\frac{1}{2}}x^4\dif x=\int_{\frac{1}{2}}^1(1-x)^4\dif x=\frac{1}{160}\]
+故
+\[\int_0^1f^2(x)\dif x\geqslant 80\left( \int_0^1{f(x)dx}\right)^2\]
+\end{proof}
+
+\begin{example}
 设 $f:[0,1]\to\mathbb{R}$ 求证: 
 \[\int_0^1\big(f(x)\big)^2\dif x\geqslant\frac{15}{4}\int_0^1f(x)\dif x\int_0^1x^4f(x)\dif x\]
 %https://math.stackexchange.com/questions/2086301/
