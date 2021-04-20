@@ -2538,6 +2538,37 @@ I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
 取 $a=-\frac{1}{2}$, 即得欲证不等式。	
 \end{proof}
 
+\begin{example}
+设 $f(x)$ 在 $[a,b]$ 上有连续的导函数, 且$ f(\dfrac{a+b}{2})=0$, \\
+证明:\[\int_a^b |f(x)f'(x)|\mathrm{d}x\leqslant \frac{b-a}{4}\int_a^b |f'(x)|^2\mathrm{d}x.\]
+\end{example}\begin{proof}
+令\begin{align*}
+F_1(x)&=\int_x^{\frac{a+b}{2}}|f^\prime(t)|\mathrm{d}t, x\in [a,\frac{a+b}{2}]\\
+F_2(x)&=\int^x_{\frac{a+b}{2}}|f^\prime(t)|\mathrm{d}t, x\in [\frac{a+b}{2},b]
+\end{align*}
+则$F_1(x)$, $F_2(x)$分别在$[a,\dfrac{a+b}{2}]$, $[\dfrac{a+b}{2},b]$上有连续的导函数, $F_1(\dfrac{a+b}{2})=F_2(\dfrac{a+b}{2})=0$, 且
+\begin{align*}
+F_1^\prime(x)&=-|f^\prime(x)|, x\in [a,\frac{a+b}{2}]\\	F_2^\prime(x)&=|f^\prime(x)|, x\in [\frac{a+b}{2},b]
+\end{align*}
+再由 $f(\dfrac{a+b}{2})=0$知
+\begin{equation*}
+f(x)=\int^x_{\frac{a+b}{2}}f^\prime(t)\mathrm{d}t, x\in [a,b]
+\end{equation*}
+从而\begin{align*}
+|f(x)|&\leqslant F_1(x), x\in [a,\frac{a+b}{2}]\\
+|f(x)|&\leqslant F_2(x), x\in [\frac{a+b}{2},b]
+\end{align*}
+因此\begin{align*}
+\int_a^b|f(x)f^\prime(x)|\mathrm{d}x& =\int_a^{\frac{a+b}{2}}|f(x)f^\prime(x)|\mathrm{d}x+\int_{\frac{a+b}{2}}^b|f(x)f^\prime(x)|\mathrm{d}x\\
+&\leqslant -\int_a^{\frac{a+b}{2}}F_1(x)F_1^\prime(x)\mathrm{d}x+\int_{\frac{a+b}{2}}^b F_2(x)F_2^\prime(x)\mathrm{d}x\\
+&=\frac{1}{2}F_1^2(a)+\frac{1}{2}F_2^2(b)\\
+&=\frac{1}{2}\left(\int_a^{\frac{a+b}{2}}|f^\prime(x)|\mathrm{d}x\right)^2+\frac{1}{2}\left(\int_{\frac{a+b}{2}}^b|f^\prime(x)|\mathrm{d}x\right)^2\\
+&\leqslant\frac{1}{2}\int_a^{\frac{a+b}{2}}|f^\prime(x)|^2\mathrm{d}x\int_a^{\frac{a+b}{2}}\mathrm{d}x +\frac{1}{2}\int_{\frac{a+b}{2}}^b|f^\prime(x)|^2\mathrm{d}x
+\int_{\frac{a+b}{2}}^b \mathrm{d}x\\
+&=\frac{b-a}{4}\int_a^b|f^\prime(x)|^2\mathrm{d}x.	
+\end{align*}	
+\end{proof}
+
 \begin{exercise}
 设 $f(x)$ 在 $[a,b]$ 上二阶连续可导, 且 $f(a)=f(b)=0$, $f'(a)=1$, $f'(b)=0$,
 求证:\[\int_a^b |f''(x)|^2\mathrm{d}x\geqslant\frac{4}{b-a}\]
