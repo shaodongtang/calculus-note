@@ -818,6 +818,28 @@ F'_{+}(0)&=\lim_{x\to0^+}\frac{F(x)-F(0)}{x}=\lim_{x\to0^+}\frac{f(x)(1+|\sin x|
 $F(x)$ 在 $x=0$ 处可导 $\Longrightarrow F'(0)=F'_{-}(0)=F'_{+}(0)\Longrightarrow f(0)=0$
 \end{Solution}
 
+\begin{example}
+设函数 $f(x)$ 可导, 在 $F(x)=f(x)(1+|\sin x|)$, 则 $f(0)=0$ 是 $F(x)$ 在 $x=0$ 处可导的充分必要条件
+\end{example}\begin{proof}%\color{green}
+(1) $f(x)$ 可导知 $f(x)$ 连续, 又 $f(0)=0$, 于是可知 $\lim_{x\to0}f(x)=f(0)$ 
+\begin{align*}
+F'(0)&=\lim_{x\to0}\frac{F(x)-F(0)}{x}=\lim_{x\to0}\frac{f(x)(1+|\sin x|)}{x}\\
+&=\lim_{x\to0}\frac{f(x)-f(0)}{x}+\lim_{x\to0}f(x)\lim_{x\to0}\frac{|\sin x|}{x}\\
+&=f'(0)+0=f'(0)
+\end{align*}
+(2) $f(x)$ 可导知 $f(x)$ 连续, 于是可知 $\lim_{x\to0}f(x)=f(0)$ 
+\begin{align*}
+F'_{-}(0)&=\lim_{x\to0^-}\frac{F(x)-F(0)}{x}=\lim_{x\to0^-}\frac{f(x)(1+|\sin x|)-f(0)}{x}\\
+&=\lim_{x\to0^-}\frac{f(x)-f(0)}{x}+\lim_{x\to0}f(x)\lim_{x\to0^-}\frac{|\sin x|}{x}\\
+&=f'(0)+f(0)\lim_{x\to0^-}\frac{-\sin x}{x}=f'(0)-f(0)\\[-3em]
+\end{align*}\begin{align*}
+F'_{+}(0)&=\lim_{x\to0^+}\frac{F(x)-F(0)}{x}=\lim_{x\to0^+}\frac{f(x)(1+|\sin x|)-f(0)}{x}\\
+&=\lim_{x\to0^+}\frac{f(x)-f(0)}{x}+\lim_{x\to0}f(x)\lim_{x\to0^+}\frac{|\sin x|}{x}\\
+&=f'(0)+f(0)\lim_{x\to0^+}\frac{\sin x}{x}=f'(0)+f(0)
+\end{align*}
+$F(x)$可导$\Longrightarrow F'(0)=F'_{-}(0)=F'_{+}(0)\Longrightarrow f(0)=0$
+\end{proof}
+
 \begin{exercise}
 设$f(x)$在$x=0$处连续, 且$\displaystyle\lim_{x\to 0} \frac{f(2x)-f(x)}{x}$存在. 求证$f'(0)$存在.	
 \end{exercise}\begin{solution}
