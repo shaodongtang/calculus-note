@@ -69,6 +69,17 @@ af(x)+f(x)=\frac{b}{x}
 所以 $f(x)$ 是奇函数
 \end{solution}
 
+\begin{example}
+设 $f(x)$ 在 $[a,b]$ 上递增, 且有 $f(a)>a,f(b)<b$, 则存在 $x_0\in(a,b)$, 使得 $f(x_0)=x_0$.
+\end{example}\begin{solution}
+将 $[a,b]$ 二等分. 若 $f\left(\frac{a+b}{2}\right)=\frac{a+b}{2}$,  取 $x_0=\frac{a+b}{2}$. 否则作 $[a_1,b_1]$:
+\[\begin{cases}
+f\left(\frac{a+b}{2}\right)>\frac{a+b}{2} \;\text{时}\,,&[a_1,b_1]=\left[\frac{a+b}{2},b\right];\\[3mm]
+f\left(\frac{a+b}{2}\right)<\frac{a+b}{2} \;\text{时}\,,&[a_1,b_1]=\left[a,\frac{a+b}{2}\right].
+\end{cases}\]
+显然, $f(a_1)>a_1,f(b_1)<b_1$. 再对 $[a_1,b_1]$ 二等分, 用类似的方法取定 $[a_2,b_2],\cdots$, 从而可得二等分区间套序列 $[a_n,b_n](n=1,2,\cdots)$, 其中 $f(a_n)>a_n,f(b_n)<b_n(n=1,2,\cdots)$. 根据闭区间套定理我们有 $x_0\in[a_n,b_n](n=1,2,\cdots)$, 以及 $a_n<f(a_n)\leqslant f(x_0)\leqslant f(b_n)<b_n$. 令 $n\to\infty$, 立即导出 $x_0=f(x_0)$.
+\end{solution}
+
 \chapter{极限}
 
 \begin{example}
