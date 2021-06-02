@@ -1725,6 +1725,32 @@ K &= \int {\frac{1}{{x\sqrt {{x^2} - x + 1} }}} \dif t\xlongequal[{\dif x = \fra
 故由夹逼准则知 $\lim_{n\to\infty}\left(\frac{1}{[n\pi]}+\frac{1}{[n\pi+1]}+\cdots+\frac{1}{4n}\right)=\ln\frac{4}{\pi}$
 \end{solution}
 
+\begin{exercise}
+求积分: $\int_0^{+\infty}\dfrac{\left[\frac{x}{\pi}\right]}{x^3}\,\mathrm{d}x$
+\end{exercise}\begin{solution}
+当 $n\pi\leqslant x\leqslant (n+1)\pi$ 时
+\begin{align*}
+\int_0^{+\infty}\dfrac{\left[\frac{x}{\pi}\right]}{x^3}\,\mathrm{d}x
+&=\sum_{i=0}^{\infty}\int_{i\pi}^{(i+1)\pi}\dfrac{\left[\frac{x}{\pi}\right]}{x^3}\,\mathrm{d}x=\sum_{i=0}^{\infty}\int_{i\pi}^{(i+1)\pi}\dfrac{i}{x^3}\,\mathrm{d}x\\
+&=\sum_{i=0}^{\infty}\left[\frac{i}{2\pi^2}\left(\frac{1}{i^2}-\frac{1}{(i+1)^2}\right)\right]\\
+&=\frac{1}{2\pi^2}\sum_{i=0}^{\infty}\left[\frac{1}{k}-\frac{1}{k+1}+\frac{1}{(k+1)^2}\right]=\frac{1}{12}
+\end{align*}
+其中:\[\lim_{n\to\infty}\left(1+\frac{1}{2^2}+\frac{1}{3^2}+\cdots+\frac{1}{n^2}\right)=\frac{\pi^2}{6}\]	
+\end{solution}
+
+\begin{exercise}
+求极限: $\lim_{x\to\infty}\frac{1}{x}\int_0^x(t-[t])^2\,\mathrm{d}t$
+\end{exercise}
+\begin{solution}当 $n\leqslant t\leqslant n+1$ 时\begin{align*}
+\int_0^x(t-[t])^2\,\mathrm{d}t&\int_0^n(t-[t])^2\,\mathrm{d}t+\int_n^x(t-[t])^2\,\mathrm{d}t\\
+&=\sum_{i=1}^{n-1}\int_i^{i+1}(t-[t])^2\,\mathrm{d}t+\int_n^x(t-n)^2\,\mathrm{d}t\\
+&=\sum_{i=1}^{n-1}\int_i^{i+1}(t-i)^2\,\mathrm{d}t-\frac{1}{3}(n-x)^3=\frac{1}{3}\left[n+(x-n)^3\right]
+\end{align*}
+所以\[\frac{n}{3(n+1)}\leqslant\frac{1}{x}\int_0^x(t-[t])^2\,\mathrm{d}t\leqslant\frac{n+1}{3n},n=1,2\cdots\]
+由于 $\lim_{n\to\infty}\frac{n}{3(n+1)}=\lim_{n\to\infty}\frac{n+1}{3n}=\frac{1}{3}$, 并且当 $n\to\infty$ 时有 $x\to\infty$, 所以
+\[\lim_{x\to\infty}\frac{1}{x}\int_0^x(t-[t])^2\,\mathrm{d}t=\frac{1}{3}\]	
+\end{solution}
+
 \begin{example}
 计算积分 $\int_{0}^{1}\frac{1}{\sqrt{x(1-x)}}\dif x$
 \end{example}\begin{solution}
