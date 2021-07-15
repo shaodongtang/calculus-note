@@ -2911,6 +2911,89 @@ because
 
 %(2.2) 将由 $y$ 轴, 直线 $y=c$, $y=d$ \,$(c<d)$ , 及连续曲线 $x=\varphi(y) \,(\varphi(y)\geqslant0)$ 所围成的曲边梯形绕 $y$ 轴旋转一周所得到的旋转体的体积 \;\;$V_y=\pi\int_c^d\varphi^2(y)\,\mathrm{d}y$
 
+\begin{example}
+求极限: $\lim_{{x\to0}\atop{y\to0}}\frac{\sin(x^2y+y^4)}{x^2+y^2}$. 
+\end{example}\begin{solution}
+因为$|\sin x|\leq|x|$,因而有
+\begin{align*}
+0\leq\left|\frac{\sin(x^2y+y^4)}{x^2+y^2}\right|
+&\leq\left|\frac{x^2y+y^4}{x^2+y^2}\right|\\
+&\leq\frac{x^2}{x^2+y^2}\times|y|+\frac{y^2}{x^2+y^2}\times y^2\\&\leq|y|+y^2\rightarrow0
+\end{align*}
+由夹逼准则知道极限为0
+\end{solution}
+
+\begin{example}
+求极限: $\lim_{{x\to0}\atop{y\to0}}\frac{\sin(x^3+y^3)}{x^2+y^2}$.
+\end{example}\begin{solution}
+由于
+\begin{align*}
+|\sin(x^3+y^3)|&\leq|x^3|+|y^3|\\
+&\leq(|x|+|y|)(x^2+y^2)
+\end{align*}
+从而\[ \lim_{{x\to0}\atop{y\to0}}\left|\frac{\sin(x^3+y^3)}{x^2+y^2}\right|\leq\lim_{{x\to0}\atop{y\to0}}(|x|+|y|)=0\]
+由夹逼准则知\[ \lim_{{x\to0}\atop{y\to0}}\frac{\sin(x^3+y^3)}{x^2+y^2}=0\]
+\end{solution}
+
+\begin{example}
+求极限: $\lim_{{x\to\infty}\atop{y\to\infty}}\frac{x^2+y^2}{x^4+y^4}$.
+\end{example}\begin{solution}由于
+\begin{align*}
+\frac{x^2+y^2}{x^4+y^4}&=\frac{x^4}{x^4+y^4}\times\frac{1}{x^2}+\frac{y^4}{x^4+y^4}\times\frac{1}{y^2}\\
+&\leq\frac{1}{x^2}+\frac{1}{y^2}\to0
+\end{align*}
+故由夹逼准则知
+\[\lim_{{x\to\infty}\atop{y\to\infty}}\frac{x^2+y^2}{x^4+y^4}=0\]
+\end{solution}
+
+\begin{example}
+求极限: $\lim_{{x\to+\infty}\atop{y\to+\infty}}(x^2+y^2)e^{-(x+y)}$. 
+\end{example}\begin{solution}
+由于
+\begin{align*}
+0<\frac{(x^2+y^2)}{e^{x+y}}
+&=\frac{x^2}{e^{x+y}}+\frac{y^2}{e^{x+y}}\\
+&\leq\frac{x^2}{e^x}+\frac{y^2}{e^y}
+\end{align*}
+而\[\lim_{x\to+\infty}\frac{x^2}{e^x}\xlongequal{\text{洛必达}}\lim_{x\to+\infty}\frac{2x}{e^x}\xlongequal{\text{洛必达}}\lim_{x\to+\infty}\frac{2}{e^x}=0\]
+\[\lim_{y\to+\infty}\frac{y^2}{e^y}\xlongequal{\text{洛必达}}\lim_{y\to+\infty}\frac{2y}{e^y}\xlongequal{\text{洛必达}}\lim_{y\to+\infty}\frac{2}{e^y}=0\]
+故由夹逼准则知
+\[\lim_{{x\to+\infty}\atop{y\to+\infty}}(x^2+y^2)e^{-(x+y)}=0\]
+\end{solution}
+
+\begin{example}
+求极限: $\lim_{{x\to+\infty}\atop{y\to+\infty}}\left(\frac{xy}{x^2+y^2}\right)^{x^2}$.
+\end{example}\begin{solution}
+注意到\[0\leq\frac{xy}{x^2+y^2}\leq\frac{\frac{1}{2}(x^2+y^2)}{x^2+y^2}=\frac{1}{2}\]
+所以\[0\leq\left(\frac{xy}{x^2+y^2}\right)^{x^2}\leq\left(\frac{1}{2}\right)^{x^2}\]
+由于\[\lim_{{x\to+\infty}\atop{y\to+\infty}}\left(\frac{1}{2}\right)^{x^2}=0\]
+从而\[ \lim_{{x\to+\infty}\atop{y\to+\infty}}\left(\frac{xy}{x^2+y^2}\right)^{x^2}=0\]
+\end{solution}
+
+\begin{example}
+求极限: $\lim_{(x,y)\rightarrow(0,0)}(x^2+y^2)\ln(x^2+y^2)$.
+\end{example}\begin{solution}
+令 $x^2+y^2=t$ 则 $t\rightarrow 0^{+}$
+所以有
+\begin{align*}
+\lim_{(x,y)\rightarrow(0,0)}(x^2+y^2)\ln(x^2+y^2)
+&=\lim_{t\rightarrow0^+}t\ln t\\
+&=\lim_{t\rightarrow0^+}\frac{\ln t}{1/t}=\lim_{t\rightarrow0^+}\frac{1/t}{-1/t^2}=0
+\end{align*}
+所以
+\[\lim_{(x,y)\rightarrow(0,0)}(x^2+y^2)\ln(x^2+y^2)=0\]
+\end{solution}
+
+\begin{example}
+求极限: $\lim_{(x,y)\rightarrow(0,0)}x^2\ln(x^2+y^2)$.
+\end{example}\begin{solution}
+因为\[\lim_{(x,y)\rightarrow(0,0)}x^2\ln(x^2+y^2)=\lim_{(x,y)\rightarrow(0,0)}\frac{x^2}{x^2+y^2}(x^2+y^2)\ln(x^2+y^2)\]
+接着我们令$x^2+y^2=t$则$t\rightarrow 0^{+}$
+那么\[\lim_{(x,y)\rightarrow(0,0)}(x^2+y^2)\ln(x^2+y^2)=\lim_{t\rightarrow0^+}t\ln t\]
+又\[\lim_{t\rightarrow0^+}t\ln t=\lim_{t\rightarrow0^+}\frac{\ln t}{1/t}=\lim_{t\rightarrow0^+}\frac{1/t}{-1/t^2}=0\]
+所以\[\lim_{(x,y)\rightarrow(0,0)}x^2\ln(x^2+y^2)=0\]
+\end{solution}
+
 \chapter{重积分} %重积分
 
 \begin{example}
