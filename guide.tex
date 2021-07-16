@@ -968,6 +968,46 @@ y^{(60)}&=u^{(60)}v+C_{60}^1 u^{(59)}v'+C_{60}^2 u^{(58)}v''\\
 再代入到方程即可得证
 \end{proof}
 
+\begin{exercise}设~$\displaystyle{a_n} = \frac{{\sum\limits_{i = 0}^n {\frac{{{n^i}}}{{i!}}} }}{{{e^n}}}$,~我们来计算
+~$\displaystyle \lim_{n \to \infty } {a_n}$\\[2mm]\end{exercise}
+\begin{solution}因为\[\left( {1+n+\frac{{{n^2}}}{{2!}} +  \cdots  \cdots  + \frac{{{n^n}}}{{n!}}} \right) = {e^n} - \int_0^n {\frac{{{{(n - t)}^n}}}{{n!}}{e^t}\dif t} \mathop  = \limits^{n - t = x} {e^n} - {e^n}\int_0^n {\frac{{{x^n}{e^{ - x}}}}{{n!}}} \dif x\]
+两边除以~$\displaystyle e^n$
+\[ \Rightarrow {a_n} = 1 - \int_0^n {\frac{{{x^n}{e^{ - x}}}}{{n!}}} \dif x,~\mbox{即求}~\mathop {\lim }\limits_{n \to \infty } \int_0^n {\frac{{{x^n}{e^{ - x}}}}{{n!}}} \dif x~\mbox{就好}\]
+先令~$\displaystyle \eta {\rm{ = }}{n^{ - \frac{1}{2} + \varepsilon }},0 < \varepsilon  < \frac{1}{6}.$\\
+因为\begin{align*}
+\int_0^n {\frac{{{x^n}{e^{ - x}}}}{{n!}}} \dif x&\xlongequal{x = n(z + 1)} \int_{ - 1}^0 {\frac{{{e^{ - n(z + 1)}}{{(z + 1)}^n}{n^{n + 1}}}}{{n!}}} dz \\
+&= n\frac{{{n^n}}}{{n!{e^n}}}\int_{ - 1}^0 {{e^{ - nz}}{{(z + 1)}^n}dz} \\
+&= \sqrt {\frac{n}{{2\pi }}} \left[ {1 + o(\frac{1}{n})} \right]\int_{ - 1}^0 {{{\left[ {{e^{ - z}}(1{\rm{ + z)}}} \right]}^n}dz} \\
+&= \sqrt {\frac{n}{{2\pi }}} \left[ {1 + o(\frac{1}{n})} \right]\left[ {\int_{ - 1}^\eta  {{{\left[ {{e^{ - z}}(1{\rm{ + z)}}} \right]}^n}} dz + \int_{ - \eta }^0 {{{\left[ {{e^{ - z}}\left( {1 + z} \right)} \right]}^n}dz} } \right]\\
+&={{{I}}_1} + {I_2}
+\end{align*}
+设~$\displaystyle f(z) = {e^{ - z}}(1 + z),(z \le 0).f'(z) =  - {e^{ - z}}z \ge 0.$\\
+所以\[\int_{ - 1}^\eta  {{{\left[ {{e^{ - z}}(1{\rm{ + z)}}} \right]}^n}} dz < (1 - \eta ){[{e^{ - \eta }}(1 - \eta )]^n} < {\left[ {{e^{ - \eta }}(1 - \eta )} \right]^n}\]
+所以~$\displaystyle{I_1} = o(\sqrt n {e^{ - \frac{1}{2}{n^{2\varepsilon }}}})$\\
+再来考虑~$\displaystyle {I_2},~{{{e}}^{ - z}}(1 + z) = {e^{ - z + \ln (z{\rm{ + }}1)}}={{{e}}^{ - \frac{{{z^2}}}{2} + \frac{{{z^3}}}{3} - \frac{{{z^4}}}{{4{{(1 + \theta (z))}^4}}}}},0 < \theta (z) < 1$
+\par 所以 \begin{align*}
+{I_2} &= \sqrt {\frac{n}{{2\pi }}} \left[ {1 + o({n^{ - 1 + 4\varepsilon }})} \right]\int_{ - \eta }^0 {e^{ - n(\frac{{{x^2}}}{2} - \frac{{{z^3}}}{3})}}dz\\
+&=\sqrt {\frac{n}{{2\pi }}} \left[ {1 + o({n^{ - 1 + 4\varepsilon }})} \right]\int_{ - \eta }^0 {{e^{ - n\frac{{{z^2}}}{2}}}(1 + n\frac{{{z^3}}}{3})} dz\\
+&= \frac{1}{{\sqrt {2\pi } }}\int_{ - {n^\varepsilon }}^0 {{e^{ - \frac{{{y^2}}}{2}}}\dif y} \left( {1 + \frac{{{y^3}}}{{3\sqrt n }}} \right)\dif y
+\end{align*}	
+所以 \begin{align*}
+\mathop {\lim }\limits_{n \to \infty } {a_n} &= 1 - \mathop {\lim }\limits_{n \to \infty } \int_0^n {\frac{{{x^n}{e^{ - x}}}}{{n!}}} \dif x = 1 - \left( {\mathop {\lim }\limits_{n \to \infty } ({I_1} + {I_2})} \right) \\
+&= 1 - \mathop {\lim }\limits_{n \to \infty } \frac{1}{{\sqrt {2\pi } }}\int_{ - {n^\varepsilon }}^0 {{e^{ - \frac{{{y^2}}}{2}}}\dif y} \left( {1 + \frac{{{y^3}}}{{3\sqrt n }}} \right)\dif y
+\end{align*}
+所以\begin{align*}
+\mathop {\lim }\limits_{n \to \infty } {a_n} &= 1 - \mathop {\lim }\limits_{n \to \infty } \int_0^n {\frac{{{x^n}{e^{ - x}}}}{{n!}}} \dif x = 1 - \left( {\mathop {\lim }\limits_{n \to \infty } ({I_1} + {I_2})} \right)\\
+&= 1 - \mathop {\lim }\limits_{n \to \infty } \frac{1}{{\sqrt {2\pi } }}\int_{ - {n^\varepsilon }}^0 {{e^{ - \frac{{{y^2}}}{2}}}\dif y} \left( {1 + \frac{{{y^3}}}{{3\sqrt n }}} \right)\dif y\\
+&= 1 - \frac{1}{{\sqrt {2\pi } }}\int_{ - \infty }^0 {{e^{ - \frac{{{y^2}}}{2}}}\dif y}  - \mathop {\lim }\limits_{n \to \infty } \frac{1}{{2\sqrt {\pi n} }}\int_{ - \infty }^0 {\frac{{{y^3}}}{3}} {e^{ - \frac{{{y^2}}}{2}}}\dif y \\
+&= 1 - \frac{1}{2} - \mathop {\lim }\limits_{n \to \infty } \frac{1}{{2\sqrt {\pi n} }} \cdot \left( { - \frac{2}{3}} \right)\\
+&= \frac{1}{2}~
+\end{align*}
+\mbox{得证},从这个解答也可以看出\begin{align*}
+\left( {1{\rm{ + }}n{\rm{ + }}\frac{{{n^2}}}{{2!}} +  \cdots  \cdots  + \frac{{{n^n}}}{{n!}}} \right) &= {{\rm{e}}^n} - {e^n}\int_0^n {\frac{{{x^n}}}{{n!}}{e^{ - x}}}  = \frac{1}{{n!}}\int_0^\infty  {{{(x + n)}^n}{e^{ - x}}\dif x} \\
+&= \frac{{{n^n}}}{{n!}}\int_0^\infty  {{{\left( {1 + \frac{x}{n}} \right)}^n}{e^{ - x}}\dif x} \\
+& \sim \frac{{{n^n}}}{{n!}}\sqrt {\frac{{n\pi }}{2}}
+\end{align*}
+\end{solution}
+
 % 凹凸性
 \begin{theorem}{}{}
 设函数 $f(x)$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 内具有一阶和二阶导数, 那么
