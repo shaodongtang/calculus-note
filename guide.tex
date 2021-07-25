@@ -494,6 +494,112 @@ Now, e: \[e^{1/2\cot(1/2)}=e^{\frac{1}{2\tan(1/2)}}\]
 
 % Stolz定理
 
+\begin{theorem}[$\frac{\bullet}{\infty}$型Stolz公式]
+设有数列 $\{x_n\}$, $\{y_n\}$, 其中 $\{x_n\}$ 严格增, 且 $\lim_{n\to\infty}x_n=+\infty\;$\\
+$($注意: 不必$\lim_{n\to\infty}y_n=+\infty$$)$. 如果
+\[\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=a \;(\text{实数}\,,\;+\infty\,,\;-\infty)\,,\]
+则\[\lim_{n\to\infty}\frac{y_n}{x_n}=a=\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}\]
+\end{theorem}\begin{proof}
+{\color{blue}(1) $a$ 为实数.}\\
+$\forall\,\varepsilon>0$, 因为 $\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=a$, 所以
+$\exists\,N_1\in\mathbb{N}$, 当 $n>N_1$ 时, 有
+\[\left|\frac{y_n-y_{n-1}}{x_n-x_{n-1}}-a\right|<\frac{\varepsilon}{2}\,,\]
+即\[a-\frac{\varepsilon}{2}<\frac{y_n-y_{n-1}}{x_n-x_{n-1}}< a+\frac{\varepsilon}{2}\,,\]
+\[\left(a-\frac{\varepsilon}{2}\right)\big(x_n-x_{n-1}\big)< y_n-y_{n-1}<\left(a+\frac{\varepsilon}{2}\right)\big(x_n-x_{n-1}\big)\,.\]
+类推有\[\left(a-\frac{\varepsilon}{2}\right)\big(x_{n-1}-x_{n-2}\big)< y_{n-1}-y_{n-2}<\left(a+\frac{\varepsilon}{2}\right)\big(x_{n-1}-x_{n-2}\big)\,,\]
+\[\vdots\]
+\[\left(a-\frac{\varepsilon}{2}\right)\big(x_{N_1+1}-x_{N_1}\big)< y_{N_1+1}-y_{N_1}<\left(a+\frac{\varepsilon}{2}\right)\big(x_{N_1+1}-x_{N_1}\big)\,.\]
+将上面各式相加得到
+\[\left(a-\frac{\varepsilon}{2}\right)\big(x_{n}-x_{N_1}\big)< y_{n}-y_{N_1}<\left(a+\frac{\varepsilon}{2}\right)\big(x_{n}-x_{N_1}\big)\,.\]
+\[a-\frac{\varepsilon}{2}<\frac{y_n-y_{N_1}}{x_n-x_{N_1}}< a+\frac{\varepsilon}{2}\,.\]
+对固定的 $N_1$, 因为 $\lim_{n\to\infty}x_n=+\infty$, 所以, $\exists\,N>N_1$, s.t. 当 $n>N$ 时, 有\[\frac{y_{N_1}-ax_{N_1}}{x_n}<\frac{\varepsilon}{2}\,,\quad0<\frac{x_{N_1}}{x_n}<1\]
+于是\begin{align*}
+\left|\frac{y_{N_1}}{x_n}-a\right|&=\left|\frac{y_n-y_{N_1}}{x_n}+\frac{y_{N_1}-ax_{N_1}}{x_n}-a\left(1-\frac{x_{N_1}}{x_n}\right)\right|\\
+&=\left|\frac{y_{N_1}-ax_{N_1}}{x_n}-\left(1-\frac{x_{N_1}}{x_n}\right)\left(\frac{y_n-y_{N_1}}{x_n-x_{N_1}}-a\right)\right|\\
+&=\left|\frac{y_{N_1}-ax_{N_1}}{x_n}\right|+\left|\frac{y_n-y_{N_1}}{x_n-x_{N_1}}-a\right|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+\end{align*}
+这就证明了 $\lim_{n\to\infty}\frac{y_n}{x_n}=a$\\
+{\color{blue}(2) $a=+\infty$}\\
+因为 $\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=a=+\infty$, 所以
+$\exists\,N\in\mathbb{N}$, 当 $n>N$ 时, 有
+\[\frac{y_n-y_{n-1}}{x_n-x_{n-1}}>1\,,\quad y_n-y_{n-1}>x_n-x_{n-1}>0\]
+即 $\{y_n\}$ 严格增. 又由于
+\begin{align*}
+y_n-y_{N}&=(y_{n}-y_{n-1})+(y_{n-1}-y_{n-2})+\cdots+(y_{N_1+1}-y_{N})\\
+&>(x_{n}-x_{n-1})+(x_{n-1}-x_{n-2})+\cdots+(x_{N_1+1}-x_{N})\\
+&=x_n-x_{N}\,,
+\end{align*}
+根据 $\lim_{n\to\infty}x_n=+\infty$, 知 $\lim_{n\to\infty}y_n=+\infty$. 应用 (1) 的结果得到
+\[\lim_{n\to\infty}\frac{x_n}{y_n}=\lim_{n\to\infty}\frac{x_n-x_{n-1}}{y_n-y_{n-1}}=\lim_{n\to\infty}\left.1\middle/\frac{y_n-y_{n-1}}{x_n-x_{n-1}}\right.=0\]
+于是\[\lim_{n\to\infty}\frac{y_n}{x_n}=\lim_{n\to\infty}\left.1\middle/\frac{x_n}{y_n}\right.=+\infty=\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}\]
+{\color{blue}(3) $a=-\infty$} \\
+由 $(2)$ 知,\begin{align*}
+\lim_{n\to\infty}\frac{-y_n}{x_n}
+&=\lim_{n\to\infty}\frac{(-y_n)-(-y_{n-1})}{x_n-x_{n-1}}\\
+&=-\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=+\infty
+\end{align*}
+即\[\lim_{n\to\infty}\frac{y_n}{x_n}=-\lim_{n\to\infty}\frac{-y_n}{x_n}=-\infty=\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}\,.\]
+\end{proof}
+
+\begin{theorem}[$\frac{0}{0}$型Stolz公式]
+设有数列 $\{x_n\}$, $\{y_n\}$, 其中 $\{x_n\}$ 严格减, 且 $\lim_{n\to\infty}x_n=0$, $\lim_{n\to\infty}y_n=0$. 如果
+\[\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=a \;(\text{实数}\,,\;+\infty\,,\;-\infty)\,,\]
+则\[\lim_{n\to\infty}\frac{y_n}{x_n}=a=\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}\]
+\end{theorem}\begin{proof}
+{\color{blue}(1) $a$ 为实数.}\\
+$\forall\,A>0$, 因为 $\lim_{n\to\infty}\frac{y_{n}-y_{n+1}}{x_{n}-x_{n+1}}=\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=a$, 所以
+$\exists\,N\in\mathbb{N}$, 当 $n>N$ 时, 有
+\[\left|\frac{y_{n}-y_{n+1}}{x_{n}-x_{n+1}}-a\right|<\frac{\varepsilon}{2}\,,\]
+即\[a-\frac{\varepsilon}{2}<\frac{y_{n}-y_{n+1}}{x_{n}-x_{n+1}}< a+\frac{\varepsilon}{2}\,,\;x_n-x_{n+1}>0\]
+\[\left(a-\frac{\varepsilon}{2}\right)\big(x_n-x_{n+1}\big)< y_{n}-y_{n+1}<\left(a+\frac{\varepsilon}{2}\right)\big(x_n-x_{n+1}\big)\,.\]
+类推有\[\left(a-\frac{\varepsilon}{2}\right)\big(x_{n+1}-x_{n+2}\big)< y_{n+1}-y_{n+2}<\left(a+\frac{\varepsilon}{2}\right)\big(x_{n+1}-x_{n+2}\big)\,,\]
+\[\vdots\]
+\[\left(a-\frac{\varepsilon}{2}\right)\big(x_{n+p-1}-x_{n+p}\big)< y_{n+p-1}-y_{n+p}<\left(a+\frac{\varepsilon}{2}\right)\big(x_{n+p-1}-x_{n+p}\big)\,.\]
+将上面各式相加得到
+\[\left(a-\frac{\varepsilon}{2}\right)\big(x_{n}-x_{n+p}\big)< y_{n}-y_{n+p}<\left(a+\frac{\varepsilon}{2}\right)\big(x_{n}-x_{n+p}\big)\,.\]
+令 $p\to+\infty$, 由 $x_{n+p}\to0$, $y_{n+p}\to0$, 得到
+\[\left(a-\frac{\varepsilon}{2}\right)x_n\leqslant y_n\leqslant\left(a-\frac{\varepsilon}{2}\right)x_n\]
+由于 $x_n>0$, 有 
+\[a-\varepsilon<a-\frac{\varepsilon}{2}\leqslant\frac{y_n}{x_n}\leqslant a+\frac{\varepsilon}{2}<a+\varepsilon\]
+所以, $\lim_{n\to\infty}\frac{y_n}{x_n}=a. $\\
+{\color{blue}(2) $a=+\infty$}\\
+$\forall\,A>0$, 因为 $\lim_{n\to\infty}\frac{y_{n}-y_{n+1}}{x_{n}-x_{n+1}}=\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=+\infty$, 所以
+$\exists\,N\in\mathbb{N}$, 当 $n>N$ 时, 有
+\[\frac{y_n-y_{n+1}}{x_n-x_{n+1}}>2A,,\]
+类似上述论证有
+\[y_n-y_{n+p}>2A(x_n-x_{n+p})\,.\]
+令 $p\to+\infty$, 由 $y_{n+p}\to0$, $x_{n+p}\to0$, 得到
+\[y_n\geqslant 2Ax_n\,,\quad\frac{y_n}{x_n}\geqslant2A>A\,,\]
+所以,\[\lim_{n\to\infty}\frac{y_n}{x_n}=+\infty\]
+{\color{blue}(3) $a=-\infty$} \\
+类似 (2) 的证明或将 $(2)$ 的结论应用到 $\{-y_n\}$ 即得
+\end{proof}
+
+\begin{example}
+设 $a_n=\frac{1!+2!+3!+\cdots+n!}{n!}$, $n\in\mathbb{N}_+$, 求 $\{a_n\}$ 的极限。
+\end{example}\begin{proof}{\color{main1}方法1}
+直接用 Stolz 定理计算如下
+\[\lim_{n\to\infty}\frac{1!+2!+3!+\cdots+n!}{n!}=\lim_{n\to\infty}\frac{(n+1)!}{(n+1)!-n!}=\lim_{n\to\infty}\frac{(n+1)!}{n!n}=1\]
+{\color{main1}方法2}(夹逼准则)
+因为
+\[\frac{1!+2!+3!+\cdots+n!}{n!}=\frac{1!+2!+3!+\cdots+(n-2)!}{n!}+\frac{(n-1)!}{n!}+1\]
+其中\[0<\frac{1!+2!+3!+\cdots+(n-2)!}{n!}<\frac{(n-2)(n-2)!}{n!}\rightarrow0\]
+故\[\lim_{n\to\infty}\frac{1!+2!+3!+\cdots+n!}{n!}=1\]
+\end{proof}
+
+\begin{example}
+求极限: $\lim_{n\to\infty}n^2\left(\frac{\pi^2}{6}-\sum_{k=1}^{n}\frac{1}{k^2}-\frac{1}{n}\right)$
+\end{example}\begin{solution}
+令 $y_n=\frac{\pi^2}{6}-\sum\limits_{k=1}^{n}\frac{1}{k^2}-\frac{1}{n}$, $x_n=\frac{1}{n^2}$. 显然 $\{x_n\}$ 单调递减并趋于$0$.\\
+注意到 $\sum\limits_{k=1}^{\infty}\frac{1}{k^2}=\frac{\pi^2}{6}$,故 $\{y_n\}\to0$, 
+利用 Stolz 公式
+\begin{align*}
+\text{原极限}&=\lim_{n\to\infty}\frac{\frac{\pi^2}{6}-\sum\limits_{k=1}^{n}\frac{1}{k^2}-\frac{1}{n}}{\frac{1}{n^2}}\\
+&=\lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=\lim_{n\to\infty}\frac{\frac{1}{n^2(n-1)}}{\frac{1-2n}{n^2(n-1)^2}}\\
+&=\lim_{n\to\infty}\frac{n-1}{1-2n}=-\frac{1}{2}
+\end{align*}
+\end{solution}
+
 \begin{exercise}
 设$n\in N^{+},I_{n}=\displaystyle\int_0^{\frac {\pi}{2}} \frac{\sin^2nt}{\sin t}\dif t$,计算极限
 $\displaystyle\lim_{n \to \infty}\frac{I_{n}}{\ln n}$\\\end{exercise}
@@ -3088,6 +3194,38 @@ because
 &=\frac{3}{4}\left(\int_0^1x(1-x)\dif x\right)^2=\frac{3}{4} \cdot \frac{1}{36}=\frac{1}{48}
 \end{align*}
 \end{proof}
+
+\begin{exercise}设平面区域 $D=\left\{(x,y)\Big|\frac{x^2}{4}+y^2\leqslant1,x\geqslant0,y\geqslant0\right\}$,\\
+计算二重积分 $\iint_D|x-y|\,\mathrm{d}\sigma$\\[-3mm]
+\end{exercise}\begin{solution}
+作代换\begin{equation*}
+\begin{cases}x=2\rho\cos\theta&\\[1.5mm]y=\rho\sin\theta&\end{cases}\Longrightarrow J(\rho,\theta)=\dfrac{\partial(x,y)}{\partial(\rho,\theta)}=\begin{vmatrix}
+2\cos\theta&-2\rho\sin\theta\\\sin\theta&\rho\cos\theta
+\end{vmatrix}=2\rho
+\end{equation*}
+$x=y\Longrightarrow \theta=\arctan2$
+\begin{align*}
+\iint_D|x-y|\,\mathrm{d}\sigma&=\iint_{D_1}(x-y)\,\mathrm{d}\sigma+\iint_{D_2}(y-x)\,\mathrm{d}\sigma\\
+&=\begin{multlined}[t]\int_0^{\arctan2}\mathrm{d}\theta\int_0^12\rho(2\rho\cos\theta-\rho\sin\theta)\,\mathrm{d}\rho\\
++\int_{\arctan2}^{\frac{\pi}{2}}\mathrm{d}\theta\int_0^12\rho(\rho\sin\theta-2\rho\cos\theta)\,\mathrm{d}\rho
+\end{multlined}\\
+&=\int_0^{\arctan2}\frac{2}{3}(2\cos\theta-\sin\theta)\mathrm{d}\theta+\int_{\arctan2}^{\frac{\pi}{2}}\frac{2}{3}(\sin\theta-2\cos\theta)\mathrm{d}\theta\\
+&=\frac{2}{3}(2\sin\theta+\cos\theta)\Big|_0^{\arctan2}+\frac{2}{3}(-\cos\theta-2\sin\theta)\Big|_{\arctan2}^{\frac{\pi}{2}}\\
+&=\frac{2}{3}(4\sin\arctan2+2\cos\arctan2-3)\\
+&=\frac{4}{3}\sqrt{5}-2
+\end{align*}
+其中
+\begin{align*}
+\raisebox{-4em}{
+	\includegraphics[width=0.3\textwidth]{iint-sjx-x-sqrtu2+1.pdf}}&\quad
+\begin{aligned}
+&\tan x=u\Longrightarrow x=\arctan u\\
+&\begin{cases}
+\sin x=\sin\arctan u=\cfrac{u}{\sqrt{u^+1}}\\
+\cos x=\cos\arctan u=\cfrac{1}{\sqrt{u^+1}}
+\end{cases}\end{aligned}
+\end{align*}
+\end{solution}
 
 \chapter{级数}
 
