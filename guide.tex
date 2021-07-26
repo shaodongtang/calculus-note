@@ -1085,6 +1085,12 @@ y^{(60)}&=u^{(60)}v+C_{60}^1 u^{(59)}v'+C_{60}^2 u^{(58)}v''\\
 再代入到方程即可得证
 \end{proof}
 
+\begin{enumerate}
+\item[(1)] $\frac{A}{B}$ 型, 适用于“上下同阶”原则. 即, 如果分母(或分子)是 $x^k$, 则应把分子(或分母)展开到 $x^k$, 可称为“上下同阶”原则.
+\item[(2)] $A-B$ 型, 适用于“幂次最低”原则. 即, 将 $A,B$ 分别展开到它们的系数不相等的 $x$ 的最低次幂为止.
+\end{enumerate}
+在实际求极限应先尽量化简, 以减少计算量. 如：取对数、等价无穷小、某些恒等式等。在这一过程我们应时刻注意会不会导致高阶无穷小量的变化!
+
 \begin{exercise}设~$\displaystyle{a_n} = \frac{{\sum\limits_{i = 0}^n {\frac{{{n^i}}}{{i!}}} }}{{{e^n}}}$,~我们来计算
 ~$\displaystyle \lim_{n \to \infty } {a_n}$\\[2mm]\end{exercise}
 \begin{solution}因为\[\left( {1+n+\frac{{{n^2}}}{{2!}} +  \cdots  \cdots  + \frac{{{n^n}}}{{n!}}} \right) = {e^n} - \int_0^n {\frac{{{{(n - t)}^n}}}{{n!}}{e^t}\dif t} \mathop  = \limits^{n - t = x} {e^n} - {e^n}\int_0^n {\frac{{{x^n}{e^{ - x}}}}{{n!}}} \dif x\]
