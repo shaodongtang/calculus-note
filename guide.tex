@@ -2393,6 +2393,11 @@ Then we have the result:
 \end{align*}	
 \end{solution}
 
+\begin{definition}[隐函数存在定理2] %\;\cite{TongJDX2014}\;
+设函数 $F(x,y,z)$ 在点 $P(x_0,y_0,z_0)$ 的{\color{red}某一领域内具有连续偏导数}, 且 $F(x_0,y_0,z_0)=0$, $F_z(x_0,y_0,z_0)\neq0$, 则方程 $F(x,y,z)=0$ 在点 $(x_0,y_0,z_0)$ 的某一领域内恒能唯一确定一个连续且具有连续偏导数的函数 $z=f(x,y)$, 它满足条件 $z_0=f(x_0,y_0)$, 并有
+\[\frac{\partial z}{\partial x}=-\frac{F_x}{F_z}\;,\quad\frac{\partial z}{\partial y}=-\frac{F_y}{F_z}\]
+\end{definition}
+
 \begin{example}
 求 $\iint_D\sgn(xy-1)\dif x\dif y$, 其中 $D=\{(x,y)|0\leqslant x\leqslant2, 0\leqslant y\leqslant2\}$	
 \end{example}\begin{Solution}
