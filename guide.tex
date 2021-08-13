@@ -70,6 +70,17 @@ af(x)+f(x)=\frac{b}{x}
 \end{solution}
 
 \begin{example}
+求函数 $f(x)=\sqrt{x^2-x+1}-\sqrt{x^2+x+1}$ 的反函数及反函数的定义域
+\end{example}\begin{solution}
+两边同时平方
+\[f^2(x)=y^2=2+2x^2-2\sqrt{x^4+x^2+1}\]
+移项\[(y^2-2-2x^2)=-2\sqrt{x^4+x^2+1}\]
+两边同时平方\[(y^2-2-2x^2)^2=4(x^4+x^2+1)\Longrightarrow x^2=\frac{y^4-4y^2}{4y^2-4}\]
+于是\[x=\pm\sqrt{\frac{y^4-4y^2}{4y^2-4}}\]
+函数 $f(x)=\sqrt{x^2-x+1}-\sqrt{x^2+x+1}$ 的反函数为 $f(x)=\pm\sqrt{\frac{x^4-4x^2}{4x^2-4}}$
+\end{solution}
+
+\begin{example}
 设 $f(x)$ 在 $[a,b]$ 上递增, 且有 $f(a)>a,f(b)<b$, 则存在 $x_0\in(a,b)$, 使得 $f(x_0)=x_0$.
 \end{example}\begin{solution}
 将 $[a,b]$ 二等分. 若 $f\left(\frac{a+b}{2}\right)=\frac{a+b}{2}$,  取 $x_0=\frac{a+b}{2}$. 否则作 $[a_1,b_1]$:
