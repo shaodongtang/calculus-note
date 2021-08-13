@@ -3546,6 +3546,18 @@ y'''&=\sum_{n=1}^{\infty}\frac{x^{4n-3}}{(4n-3)!}=\frac{x}{1!}+\frac{x^5}{5!}+\f
 \[y=\frac{1}{2}\cos x+\frac{e^x+e^{-x}}{4}\]
 \end{solution}
 
+\begin{example}
+求 $\sum_{n=1}^{\infty}\frac{[(n-1)!]^2}{(2n)!}(2x)^{2n}$ 的和函数.
+\end{example}\begin{solution}
+在 $|x|<1$ 上对 $S(x)$ 逐项求导, 知
+\[S'(x)=2\sum_{n=1}^{\infty}\frac{[(n-1)!]^2}{(2n-1)!}(2x)^{2n-1}\]
+\[S''(x)=4\sum_{n=1}^{\infty}\frac{[(n-1)!]^2}{(2n-2)!}(2x)^{2n-2}\]
+由此可得 \[(1-x^2)S''(x)-xS'(x)=4\]
+在两端乘以 $(1-x^2)^{-1/2}$, 我们有
+\[\big(\sqrt{1-x^2}S'(x)\big)'=\frac{4}{\sqrt{1-x^2}},\]
+故\[S(x)=\frac{4\arcsin x}{\sqrt{1-x^2}}+\frac{1}{\sqrt{1-x^2}}\,,\quad |x|<1.\]
+\end{solution}
+
 \chapter{不等式}
 
 \begin{exercise}
