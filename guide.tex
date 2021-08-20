@@ -3260,6 +3260,54 @@ $x=y\Longrightarrow \theta=\arctan2$
 \end{align*}
 \end{solution}
 
+\begin{example} 
+计算: $\iint\limits_{\sqrt{x}+\sqrt{y}\leqslant1}\sqrt[3]{\sqrt{x}+\sqrt{y}}\,\mathrm{d}x\mathrm{d}y$. 
+\end{example}\begin{solution}
+作变换
+\[\begin{cases}
+{\color{red}x=\rho^4\cos^4\theta}\\{\color{red}y=\rho^4\sin^4\theta}
+\end{cases}\Longrightarrow J=16\rho^7\cos^3\theta\sin^3\theta\]
+在这变换下, 区域 $D=\left\{(x,y)\big|\sqrt{x}+\sqrt{y}\leqslant1\right\}$ 对应区域  $D'=\left\{(\rho,\theta)\Big|0\leqslant \theta\leqslant\frac{\pi}{2},0\leqslant \rho\leqslant1\big|\right\}$, 因此有
+\begin{align*}
+\iint\limits_{\sqrt{x}+\sqrt{y}\leqslant1}\sqrt[3]{\sqrt{x}+\sqrt{y}}\,\mathrm{d}x\mathrm{d}y
+&=16\int_0^{\frac{\pi}{2}}\cos^3\theta\sin^3\theta\mathrm{d}\theta\int_0^1\rho^{\frac{23}{3}}\mathrm{d}\rho=\frac{2}{13}
+\end{align*}
+\end{solution}
+
+\begin{example}
+$\iint_D y\dif x\dif y$, 其中 $D$ 是由 $x$ 轴 $y$ 轴与曲线 $\sqrt{\frac{x}{a}}+\sqrt{\frac{y}{b}}=1$ 围成, $a>0,b>0$
+\end{example}\begin{solution}
+作变换\[\biggl\{\begin{array}{@{}l}
+{\color{red}x=ar^4\cos^4\theta}\\{\color{red}y=br^4\sin^4\theta}
+\end{array}\Longrightarrow J=\dfrac{\partial(x,y)}{\partial(r,\theta)}=16abr^7\cos^3\theta\sin^3\theta\]
+原区域 $D$ 变 $D'$, $D'=\left\{(\rho,\theta)\big|0\leqslant \theta\leqslant\tfrac{\pi}{2},0\leqslant r\leqslant1\big|\right\}$. 因此有\begin{align*}
+\iint_D y\dif x\dif y
+&=\int_0^{\frac{\pi}{2}}\dif\theta\int_0^1br^4\sin^4\theta \cdot 16abr^7\cos^3\theta\sin^3\theta\dif r\\
+&=16ab^2\int_0^{\frac{\pi}{2}}\cos^3\theta\sin^7\theta\dif\theta\int_0^1r^{11}\dif r\\
+%&=\frac{4}{3}ab^2\int_0^{\frac{\pi}{2}}\cos^3\theta\sin^7\theta\dif\theta\\
+&=\frac{4}{3}ab^2\int_0^{\frac{\pi}{2}}\cos\theta(1-\sin^2\theta)\sin^7\theta\dif\theta\\
+&=\frac{4}{3}ab^2\left[\frac{1}{8}\sin^8\theta-\frac{1}{10}\sin^{10}\theta\right]_0^{\frac{\pi}{2}}=\frac{ab^2}{30}
+\end{align*}
+\end{solution}
+
+\begin{example}
+计算 $\iint_D|xy|\dif x\dif y$, 其中 $D=\left\{(x,y)\biggl|\frac{x^2}{a^2}+\frac{y^2}{b^2}\leqslant1\right\}$.	
+\end{example}\begin{solution}
+作代换\begin{equation*}
+\begin{cases}x=a\rho\cos\theta&\\[1.5mm]y=b\rho\sin\theta&\end{cases}\Longrightarrow J(\rho,\theta)=\dfrac{\partial(x,y)}{\partial(\rho,\theta)}=\begin{vmatrix}
+a\cos\theta&-a\rho\sin\theta\\b\sin\theta&b\rho\cos\theta
+\end{vmatrix}=ab\rho
+\end{equation*}
+在这变换下,区域 $D=\left\{(x,y)\biggl|\frac{x^2}{a^2}+\frac{y^2}{b^2}\leqslant1\right\}$ 对应区域  $D'=D=\left\{(\rho,\theta)\big|\rho\leqslant1,0\leqslant\theta\leqslant2\pi\right\}$, 因此有
+\begin{align*}
+\iint\limits_D|xy|\dif x\dif y
+&=\int_0^{2\pi}\dif \theta\int_0^1|ab\rho^2\sin\theta\cos\theta|\cdot|ab\rho|\dif \rho\\
+&=(ab)^2\int_0^{2\pi}\left|\frac{1}{2}\sin2\theta\right|\dif \theta\int_0^1\rho^3\dif \rho\\
+&=\frac{1}{8}(ab)^2\left(\left(\int_0^{\frac{\pi}{2}}+\int_{\pi}^{\frac{3}{2}\pi}\right)\sin2\theta\dif \theta-\left(\int_{\frac{\pi}{2}}^{\pi}+\int_{\frac{3}{2}\pi}^{2\pi}\right)\sin2\theta\dif \theta\right)\\
+&=\frac{1}{2}(ab)^2
+\end{align*}
+\end{solution}
+
 \chapter{级数}
 
 \section{无穷带来的各种悖论}
