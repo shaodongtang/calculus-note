@@ -91,6 +91,110 @@ f\left(\frac{a+b}{2}\right)<\frac{a+b}{2} \;\text{时}\,,&[a_1,b_1]=\left[a,\fra
 显然, $f(a_1)>a_1,f(b_1)<b_1$. 再对 $[a_1,b_1]$ 二等分, 用类似的方法取定 $[a_2,b_2],\cdots$, 从而可得二等分区间套序列 $[a_n,b_n](n=1,2,\cdots)$, 其中 $f(a_n)>a_n,f(b_n)<b_n(n=1,2,\cdots)$. 根据闭区间套定理我们有 $x_0\in[a_n,b_n](n=1,2,\cdots)$, 以及 $a_n<f(a_n)\leqslant f(x_0)\leqslant f(b_n)<b_n$. 令 $n\to\infty$, 立即导出 $x_0=f(x_0)$.
 \end{solution}
 
+\begin{exercise}
+已知 $ 0 < a\leqslant 1$, 求证 $ \left| x+y\right| ^{a}\leqslant \left| x\right| ^{a}+\left| y\right| ^{a}$. 
+\end{exercise}\begin{proof}
+\[|x+y|^a\leqslant (|x|+|y|)^a=|x|(|x|+|y|)^{a-1}+|y|(|x|+|y|)^{a-1}\leqslant |x|^a+|y|^a.\]
+\end{proof}
+
+\begin{exercise}
+求证不等式
+\begin{enumerate}
+\item $\big|x-y\big|\geqslant\big||x|-|y|\big|$
+\item $\big|x+x_1+\cdots+x_n\big|\geqslant|x|-\big(|x_1|+\cdots+|x_n|\big)$
+\end{enumerate}
+\end{exercise}\begin{proof}
+1) 由\[|x-y|=|x+(-y)|\geqslant|x|-|-y|=|x|-|y|\]
+及\[|x-y|=|y-x|\geqslant|y|-|x|=-(|x|-|y|)\]
+即得\[|x-y|\geqslant\big||x|-|y|\big|\]
+也可如下证明：由 $|xy|\geqslant xy$ 知 \[x^2-2xy+y^2\geqslant x^2-2|xy|+y^2\]
+即 $(x-y)^2\geqslant\big(|x|-|y|\big)^2$, 开方即得\[|x-y|\geqslant\big||x|-|y|\big|\]
+2)\[\big|x+x_1+\cdots+x_n\big|\geqslant|x|-|x_1+\cdots+x_n|\]
+而\begin{align*}
+\big|x+x_1+\cdots+x_n\big|&\leqslant|x_1|+|x_2+\cdots+x_n|\\
+&\leqslant \cdots\\
+&\leqslant |x_1|+|x_2|+\cdots+|x_n|
+\end{align*}
+所以\[\big|x+x_1+\cdots+x_n\big|\geqslant|x|-\big(|x_1|+\cdots+|x_n|\big)\]
+\end{proof}
+
+%\begin{lemma}
+%我们有如下不定积分公式:
+%\[\int|x|^\alpha\dif x=\frac{|x|^\alpha\sgn x}{\alpha+1}+C\]
+%\[\int|x|^\alpha\sgn x\dif x=\frac{|x|^\alpha}{\alpha+1}+C\]
+%其中 $\alpha>0$ 为常数, $C$ 为任意常数.
+%\end{lemma}
+
+\begin{example}
+求定积分\[\int_0^1x|x-a|\dif x\]	
+\end{example}\begin{solution} (by Hansschwarzkopf)
+根据\[\int(x-a)|x-a|\dif x=\int|x-a|^2\sgn(x-a)\dif x=\frac{|x-a|^3}{3}+C.\]	
+\[\int|x-a|\dif x=\frac{|x-a|^2\sgn(x-a)}{2}+C\]
+得到\[\int_0^1x|x-a|\dif x=\frac{|1-a|^3-|a|^3}{3}+a\frac{|1-a|^2\sgn(1-a)+a^2\sgn a}{2}\]
+\end{solution}
+
+\begin{example}
+计算重积分 $\iint\limits_D|3x-4y|\dif x\dif y$, 其中 $D=[0,1]\times[0,1]$.	
+\end{example}\begin{solution} (by Hansschwarzkopf)
+\begin{align*}
+\iint\limits_D|3x-4y|\dif x\dif y&=\int_0^1\dif x\int_0^1|4y-3x|\dif y\\
+&=\frac{1}{8}\int_0^1|4y-3x|^2\sgn(4y-3x)\Big|_0^1\dif x\\
+&=\frac{1}{8}\int_0^1\big((4-3x)^2+9x^2\big)\dif x\\
+&=\frac{1}{8}\left(\frac{(3x-4)^3}{9}+3x^3\right)\biggl|_0^1=\frac{5}{4}
+\end{align*}
+\end{solution}
+
+\begin{example}
+计算重积分 $\iint\limits_D\sqrt{\big|x-|y|\big|}\dif x\dif y$, 其中 $D=[0,2]\times[-1,1]$.	
+\end{example}\begin{solution} (by Hansschwarzkopf)
+根据对称性,
+\begin{align*}
+\iint\limits_D\sqrt{\big|x-|y|\big|}\dif x\dif y&=2\int_0^1\dif y\int_0^2\sqrt{|x-y|}\dif x\\
+&=\frac{4}{3}\int_0^1|x-y|^{\frac{3}{2}}\sgn(x-y)\Big|_0^2\dif y\\
+&=\frac{4}{3}\int_0^1\Big((2-y)^{\frac{3}{2}}+y^{\frac{3}{2}}\Big)\dif x\\
+&=\frac{32\sqrt{2}}{15}
+\end{align*}	
+\end{solution}
+
+\begin{example}
+计算重积分 $\iint\limits_{|x|\leqslant1\atop 2\leqslant y\leqslant2}\sqrt{|y-x|}\dif x\dif y$, 其中 $D=[0,2]\times[-1,1]$.	
+\end{example}\begin{solution} (by Hansschwarzkopf)
+根据对称性,
+\begin{align*}
+\iint\limits_{|x|\leqslant1\atop 2\leqslant y\leqslant2}\sqrt{|y-x|}\dif x\dif y
+&=2\int_0^1|y-x^2|^{\frac{3}{2}}\sgn(y-x^2)\Big|_0^2\dif x\\
+&=\frac{4}{3}\int_0^1\Big((2-x^2)^{\frac{3}{2}}+x^3\Big)\dif x\\
+&=\frac{16}{3}\int_0^{\frac{\pi}{4}}\cos^4t\dif t+\frac{1}{3}\\
+&=\frac{\pi}{2}+\frac{5}{3}
+\end{align*}	
+\end{solution}
+
+\begin{example}
+计算重积分 $I=\iint\limits_D\min\{2,x^2y\}\dif x\dif y$, 其中 $D=[0,4]\times[0,3]$.	
+\end{example}\begin{solution} (by Hansschwarzkopf)
+容易算出
+\[I_1=\iint\limits_D\frac{x^2y+2}{2}\dif x\dif y=60\]
+另一方面,\begin{align*}
+I_2&=\iint\limits_D\frac{|x^2y-2|}{2}\dif x\dif y\\
+&=\int_0^4\dif x\int_0^3\frac{|x^2y-2|}{2}\dif y=\int_0^4\frac{(x^2y-2)^2\sgn(x^2y-2)}{4x^2}\Big|_0^3\dif x\\
+&=\int_0^4\frac{(3x^2-2)^2\sgn(3x^2-2)+4}{4x^2}\dif x\\
+&=\int_0^{\sqrt{\frac{2}{3}}}\left(3-\frac{9x^2}{4}\right)\dif x+\int_{\sqrt{\frac{2}{3}}}^4\left(\frac{9x^2}{4}-3+\frac{2}{x^2}\right)\dif x\\
+&=\frac{5\sqrt{6}}{6}+\frac{71}{2}+\frac{11\sqrt{6}}{6}=\frac{71}{2}+\frac{8\sqrt{6}}{3}
+\end{align*}
+从而\[I=I_1-I_2=\frac{49}{2}-\frac{8\sqrt{6}}{3}\]
+\end{solution}
+
+\begin{example}
+计算重积分 $\iint\limits_{[0,1]\times [0.1]}|x^2+y^2-1|\mathrm{d}x\mathrm{d}y$.	
+\end{example}\begin{solution} %(by Hansschwarzkopf)
+\begin{align*}
+\iint\limits_{[0,1]\times [0.1]}|x^2+y^2-1|\mathrm{d}x\mathrm{d}y
+&=\int_0^1\mathrm{d} x\int_0^1|x^2+y^2-1|\mathrm{d} y \\ &=\int_0^1\mathrm{d} x\int_0^1(x^2+y^2-1)\mathrm{sgn}(x^2+y^2-1)\mathrm{d} y\\ &=\int_0^1\left(x^2y+\frac{y^3}{3}-y+\frac{2}{3}(1-x^2)^{\frac{2}{3}}\right)\mathrm{sgn}(x^2+y^2-1)\Big|_0^1\mathrm{d} x\\ &=\int_0^1\left(x^2-\frac{2}{3}+\frac{4}{3}(1-x^2)^{\frac{3}{2}}\right)\mathrm{d} x\\ &=-\frac{1}{3}+\frac{4}{3}\int_0^{\frac{\pi}{2}}\cos^4 t\mathrm{d} t\\ 
+&=\frac{\pi}{4}-\frac{1}{3}. 
+\end{align*}
+\end{solution}
+
+
 \chapter{极限}
 
 \begin{example}
