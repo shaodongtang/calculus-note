@@ -2837,6 +2837,22 @@ I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
 根据极限审敛法, 知所给反常积分发散
 \end{proof}
 
+\begin{example}
+计算积分: $\int_{-\infty}^{+\infty}\frac{\sin^3x}{x^3}\dif x$.
+\end{example}
+\begin{solution}注意到
+\begin{equation*}\sin^3x=\frac{3}{4}\sin x-\frac{1}{4}\sin3x\end{equation*}
+所以\begin{align*}
+\int_{-\infty}^{+\infty}\frac{\sin^3x}{x^3}\dif x&=\int_{-\infty}^{+\infty}\frac{\frac{3}{4}\sin x-\frac{1}{4}\sin3x}{x^3}\dif x\\
+&=\frac{3}{4}\int_{-\infty}^{+\infty}\frac{\sin x}{x^3}\dif x-\frac{1}{4}\int_{-\infty}^{+\infty}\frac{\sin3x}{x^3}\dif x\\
+&=\frac{3}{4}\int_{-\infty}^{+\infty}\sin x\dif\left(\frac{-1}{2x^2}\right)-\frac{1}{4}\int_{-\infty}^{+\infty}\sin3x\dif\left(\frac{-1}{2x^2}\right)\\
+&=\biggl[\frac{-3\sin x}{8x^2}\biggl]_{-\infty}^{+\infty}+\frac{3}{8}\int_{-\infty}^{+\infty}\frac{\cos x}{x^2}\dif x+\biggl[\frac{\sin 3x}{8x^2}\biggl]_{-\infty}^{+\infty}-\frac{3}{8}\int_{-\infty}^{+\infty}\frac{\cos 3x}{x^2}\dif x\\
+&=\frac{3}{8}\int_{-\infty}^{+\infty}\cos x\dif\left(\frac{-1}{x}\right)-\frac{3}{8}\int_{-\infty}^{+\infty}\cos 3x\dif\left(\frac{-1}{x}\right)\\
+&=\biggl[\frac{-3\cos x}{8x^2}\biggl]_{-\infty}^{+\infty}-\frac{3}{8}\int_{-\infty}^{+\infty}\frac{\sin x}{x}\dif x+\biggl[\frac{-3\cos 3x}{8x^2}\biggl]_{-\infty}^{+\infty}+\frac{9}{8}\int_{-\infty}^{+\infty}\frac{\sin 3x}{3x}d(3x)\\
+&=-\frac{3\pi}{8}+\frac{9\pi}{8}=\frac{3\pi}{4}
+\end{align*}	
+\end{solution}
+
 \section{积分不等式}
 
 \begin{example}
@@ -4337,6 +4353,15 @@ k=\smash[b]{\begin{cases}
 %\includegraphics[width=0.28\textwidth,clip]{138gaosigongshiE}
 %\end{wrapfigure}}
 \end{solution}
+
+\begin{align*}
+\iint_S(x^2+y^2+z^2)\mathrm dS
+&\xlongequal{\text{轮换对称性}}3\iint_Sz^2\mathrm dS\\
+&\xlongequal{\text{奇偶对称性}}3\times8\iint_{D_{xy}}(a-x-y)^2\sqrt{1+\bigg(\frac{\partial z}{\partial x}\bigg)^2+\bigg(\frac{\partial z}{\partial y}\bigg)^2}\mathrm dx\mathrm dy\\
+&=24\sqrt{3}\int_0^a\mathrm dx\int_0^{a-x}(a-x-y)^2\mathrm dy\\
+&=-24\sqrt{3}\int_0^a\frac{1}{3}(a-x-y)^3\bigg|_0^{a-x}\mathrm dx\\
+&=8\sqrt{3}\int_0^a(a-x)^3\mathrm dx=2\sqrt{3}a^4
+\end{align*}
 
 \section{二阶线性偏微分方程}
 \begin{definition}{二阶线性偏微分方程一般形式\footnote{徐利治的大学数学解题法诠释P601}}{}
