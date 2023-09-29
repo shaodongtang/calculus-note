@@ -2882,6 +2882,39 @@ I_{n}&=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots \\
 % 积分不等式
 
 \begin{example}
+设 $f(x)$ 为凸函数, 单调递减趋于 $0$, 且 $f(1)=1$, $f(\frac{3}{2})=\frac{2}{3}$,\\
+证明:\[-\frac{1}{8}<\int_1^{+\infty}(x-[x]-\frac{1}{2})f(x)\mathrm{d}x<-\frac{1}{18}\]
+%\href{http://www.math.org.cn/forum.php?mod=viewthread&tid=20575}{\color{red}(tid=20575)}	
+\end{example}\begin{proof}(by \href{http://www.math.org.cn/forum.php?mod=viewthread&tid=20575}{西西})\footnote{\url{http://www.math.org.cn/forum.php?mod=viewthread&tid=20575}}
+\[\because\quad \forall k,\int_k^{k+1}(x-[x]-\dfrac{1}{2})\mathrm{d}x=0\]
+\begin{align*}
+\therefore &\quad\int_1^{+\infty}(x-[x]-\dfrac{1}{2})f(x)\mathrm{d}x
+=\sum_{k=0}^\infty\int_k^{k+1}(x-[x]-\dfrac{1}{2})f(x)\mathrm{d}x
+=-(\sum_{k=1}^\infty a_k+\frac{1}{8}f(1))	
+\end{align*}
+其中
+\[a_k=\int_k^{k+\frac{1}{2}}-(x-[x]-\frac{1}{2})(f(x)-f(k))\mathrm{d}x+\int_{k+\frac{1}{2}}^{k+1}(x-[x]-\frac{1}{2})(f(k+1)-f(x))\mathrm{d}x<0\]
+\[\therefore\quad -\dfrac{1}{8}<\int_1^{+\infty}(x-[x]-\dfrac{1}{2})f(x)\mathrm{d}x\]
+另一方面，我们作分段线性函数
+\[L(x)=2(f(k+1)-f(k+\frac{1}{2}))(x-k-\frac{1}{2})+f(k+\frac{1}{2})\]
+由于$f(x)$是凸的，有$L(x)-f(x)\geqslant 0,x\in(k,k+1)$，
+故\begin{align*}
+\int_1^{+\infty}-(x-[x]-\dfrac{1}{2})f(x)\mathrm{d}x
+&=\begin{multlined}[t]
+	\sum_{k=1}^\infty[\int_k^{k+\frac{1}{2}}-(x-[x]-\frac{1}{2})(f(x)-f(k+\frac{1}{2}))\mathrm{d}x\\+\int_{k+\frac{1}{2}}^{k+1}(x-[x]-\frac{1}{2})(f(k+\frac{1}{2})-f(x))\mathrm{d}x]
+\end{multlined} \\
+&>\begin{multlined}[t]
+	\sum_{k=1}^\infty[\int_k^{k+\frac{1}{2}}-(x-[x]-\frac{1}{2})(L(x)-f(k+\frac{1}{2}))\mathrm{d}x\\+\int_{k+\frac{1}{2}}^{k+1}(x-[x]-\frac{1}{2})(f(k+\frac{1}{2})-L(x))\mathrm{d}x]
+\end{multlined}\\
+&=\frac{1}{6}\sum_{k=1}^\infty(f(k+\frac{1}{2})-f(k+1))\\
+&>\frac{1}{6}\sum_{k=1}^\infty\frac{1}{2}(f(k+\frac{1}{2})-f(k+\frac{2}{3}))\\
+&=\frac{1}{12}f(\frac{3}{2})=\frac{1}{18}	
+\end{align*}
+综合即得
+\[-\dfrac{1}{8}<\displaystyle\int_1^{+\infty}(x-[x]-\dfrac{1}{2})f(x)\mathrm{d}x<-\dfrac{1}{18}\]
+\end{proof}
+
+\begin{example}
 设$f(x)$在[0,1]上有一阶连续导数，且 $f(0)=f(1)=0$, $M=\max_{x\in[0,1]}|f'(x)|$. 证明：
 \[\Big|\displaystyle\int_0^1 f(x)\dif x\Big|\leqslant\frac{M}{4}\]
 %\href{http://www.math.org.cn/forum.php?mod=viewthread&tid=20265}{\color{red}(tid=20265)}
