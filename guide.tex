@@ -607,6 +607,28 @@ Now, e: \[e^{1/2\cot(1/2)}=e^{\frac{1}{2\tan(1/2)}}\]
 即 $\lim_{n\to\infty}|a_n|=0$，因此 $\lim_{n\to\infty}a_n=0$ 
 \end{proof}
 
+\begin{example}
+设 $a\geqslant 0$, $x_0=0, x_{n+1}=\sqrt{x_n+a(a+1)}, n=0,1,2,\cdots$. 计算
+\[\lim_{n\to\infty}\big(a+1\big)^{2n}\big(a+1-x_n\big)\]
+\end{example}\begin{proof}(by MSE\footnote{\url{https://math.stackexchange.com/questions/779823/sequence-x-n1-sqrtx-naa1}})
+由递推式, 易得
+\[x_{n+1}^2=x_n+a(a+1)\Rightarrow (a+1)^2-x_{n+1}^2=(a+1)-x_n\]
+可以化为
+\[\frac{a+1-x_{n+1}}{a+1-x_{n}}=\frac{1}{(a+1)+x_{n+1}}\]
+\[2(a+1)\frac{(a+1)-x_{n+1}}{(a+1)-x_n}=\frac{2(a+1)}{(a+1)+x_{n+1}}=1+\frac{(a+1)-x_{n+1}}{(a+1)+x_{n+1}}\]
+于是
+\[\frac{a+1-x_{n+1}}{a+1-x_{n}}=\frac{1}{2(a+1)}\left(1+\frac{a+1-x_{n+1}}{a+1+x_{n+1}}\right)\]
+归纳可得
+\[a+1-x_{i}\leqslant\dfrac{(a+1)-x_0}{(a+1)^i}\]
+进而得到
+\[a+1-x_{n}=\dfrac{1}{2^n(a+1)^n}(a+1-x_0)\prod_{i=1}^{n}\left(1+\dfrac{a+1-x_{i}}{a+1+x_{i}}\right)\]
+即\[(a+1-x_0)\prod_{i=1}^{n}\left(1+\dfrac{a+1-x_{i}}{a+1+x_{i}}\right)\]
+收敛.到一个常数 $f(a)\in(0,\infty)$,即
+\[\lim_{n\to\infty}2^n(a+1)^n(a+1-x_{n})=f(a)\]
+显然, 我们很容易得到
+\[f(a)=\begin{cases} \infty& a>1\\ \dfrac{\pi^2}{4}&a=1\\ 0&a<1 \end{cases}\]	
+\end{proof}
+
 % Stolz定理
 
 \begin{theorem}[$\frac{\bullet}{\infty}$型Stolz公式]
